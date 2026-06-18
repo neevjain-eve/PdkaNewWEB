@@ -768,14 +768,7 @@
     .about-logo {
       width: min(351px, 88vw); height: auto;
       margin: 0 auto 16px; display: block;
-      -webkit-mask-image:
-        linear-gradient(to right,  transparent 0%, black 6%, black 94%, transparent 100%),
-        linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-      -webkit-mask-composite: source-in;
-      mask-image:
-        linear-gradient(to right,  transparent 0%, black 6%, black 94%, transparent 100%),
-        linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-      mask-composite: intersect;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
     }
     .about-stat-wrap {
       display: inline-flex; flex-direction: column;
