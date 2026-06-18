@@ -183,45 +183,7 @@
       letter-spacing: 0.5px; margin-bottom: 12px;
       text-transform: uppercase;
     }
-    .about-big-num {
-      font-family: 'Bebas Neue', 'Playfair Display', serif;
-      font-size: clamp(88px, 14vw, 160px);
-      font-weight: 400; color: var(--orange); line-height: 1; margin-bottom: 4px;
-      letter-spacing: -2px; display: inline-flex; align-items: baseline; gap: 2px;
-      position: relative;
-    }
-    #aboutBigNum { display: inline-block; }
-    #aboutBigPlus { display: inline-block; font-size: 0.65em; vertical-align: super; opacity: 0; }
-    @keyframes bigNumBurst {
-      0%  { transform: scale(1); }
-      35% { transform: scale(1.18); text-shadow: 0 0 60px rgba(232,96,10,1), 0 0 100px rgba(232,96,10,0.5); }
-      70% { transform: scale(1.08); }
-      100%{ transform: scale(1); }
-    }
-    @keyframes bigPlusPop {
-      0%  { opacity: 0; transform: translateY(10px) scale(0.2); }
-      65% { opacity: 1; transform: translateY(-4px) scale(1.35); }
-      100%{ opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @keyframes glowRingOut {
-      0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.7; }
-      100% { transform: translate(-50%,-50%) scale(2.5); opacity: 0; }
-    }
-    .about-num-glow {
-      position: absolute; width: 260px; height: 260px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(232,96,10,0.22) 0%, transparent 70%);
-      top: 50%; left: 50%; transform: translate(-50%,-50%);
-      pointer-events: none; z-index: -1;
-    }
-    .about-num-glow.fire { animation: glowRingOut 0.9s ease-out forwards; }
-    #aboutBigNum.burst { animation: bigNumBurst 0.75s cubic-bezier(0.34,1.56,0.64,1); }
-    #aboutBigPlus.pop  { animation: bigPlusPop  0.55s cubic-bezier(0.34,1.56,0.64,1) forwards; }
-    @keyframes confettiFly {
-      0%   { transform: translate(0,0) rotate(0deg); opacity: 1; }
-      100% { transform: translate(var(--tx),var(--ty)) rotate(var(--tr)); opacity: 0; }
-    }
-    .abt-confetti { position: absolute; pointer-events: none; z-index: 10; border-radius: 2px;
-      animation: confettiFly var(--cd,0.9s) ease-out forwards; }
+
     .about-sub {
       font-size: clamp(16px, 2.4vw, 28px); font-weight: 600;
       color: rgba(255,255,255,0.9); margin-bottom: 14px;
@@ -801,7 +763,41 @@
     .theme-toggle i { font-size: 14px; }
     .theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
     [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
-  </style>
+  
+    /* ── 28+ RING COUNTER ── */
+    .about-ring-wrap {
+      position: relative; display: inline-flex;
+      align-items: center; justify-content: center;
+      width: clamp(180px,26vw,260px); height: clamp(180px,26vw,260px);
+      margin: 8px auto 20px;
+    }
+    .about-ring-svg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      transform: rotate(-90deg);
+    }
+    .about-ring-bg   { fill: none; stroke: rgba(255,255,255,0.12); stroke-width: 5; }
+    .about-ring-fill {
+      fill: none; stroke: var(--orange); stroke-width: 5; stroke-linecap: round;
+      stroke-dasharray: 565; stroke-dashoffset: 565;
+      transition: stroke-dashoffset 1.8s cubic-bezier(0.25,1,0.5,1);
+      filter: drop-shadow(0 0 8px rgba(232,96,10,0.8));
+    }
+    .about-ring-inner {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', 'Playfair Display', serif;
+      font-size: clamp(68px, 10vw, 108px);
+      color: var(--orange); line-height: 1; letter-spacing: -1px;
+    }
+    #aboutBigNum { display: inline-block; }
+    #aboutBigPlus {
+      font-size: 0.5em; align-self: flex-start; margin-top: 0.14em;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.1s, transform 0.45s cubic-bezier(0.34,1.56,0.64,1) 0.1s;
+      transform: translateY(8px) scale(0.3);
+    }
+    #aboutBigPlus.show { opacity: 1; transform: translateY(0) scale(1); }
+</style>
 </head>
 <body>
 
@@ -861,7 +857,15 @@
   <div class="about-center">
     <div class="about-label">About the Firm</div>
     <div class="about-firm-name">P. Dilip Kumar &amp; Associates</div>
-    <div class="about-big-num" style="position:relative;"><div class="about-num-glow" id="aboutNumGlow"></div><span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span></div>
+    <div class="about-ring-wrap" id="aboutRingWrap">
+      <svg class="about-ring-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle class="about-ring-bg"   cx="100" cy="100" r="90"/>
+        <circle class="about-ring-fill" cx="100" cy="100" r="90" id="aboutRingCircle"/>
+      </svg>
+      <div class="about-ring-inner">
+        <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
+      </div>
+    </div>
     <div class="about-sub">Years of Professional Services</div>
     <p class="about-desc">PDKA is a professional CA firm based in Bangalore, serving clients across India and 9 countries — USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy.</p>
     <div class="about-pills">
@@ -2148,50 +2152,56 @@ function closeSvcIfOutside(e) {
   if (e.target === document.getElementById('serviceModal')) closeService();
 }
 
-  // -- 28+ COUNTER ANIMATION --
+
+  // ── 28+ RING COUNTER ──
   (function() {
+    var wrap   = document.getElementById('aboutRingWrap');
+    var circle = document.getElementById('aboutRingCircle');
     var numEl  = document.getElementById('aboutBigNum');
     var plusEl = document.getElementById('aboutBigPlus');
-    var glow   = document.getElementById('aboutNumGlow');
-    if (!numEl || !plusEl) return;
+    if (!wrap || !numEl) return;
+
+    // Circumference for r=90: 2*PI*90 = 565.5
+    var CIRC = 2 * Math.PI * 90;
+    if (circle) { circle.style.strokeDasharray = CIRC; circle.style.strokeDashoffset = CIRC; }
+
     var fired = false;
     var obs = new IntersectionObserver(function(entries) {
       if (entries[0].isIntersecting && !fired) {
-        fired = true; obs.disconnect(); runCounter();
+        fired = true; obs.disconnect();
+        setTimeout(startAnim, 200);
       }
-    }, { threshold: 0.4 });
-    obs.observe(numEl);
-    function runCounter() {
-      var total = 28, dur = 1800, start = performance.now();
-      function easeOut(t) { return 1 - Math.pow(1-t, 3); }
+    }, { threshold: 0.3 });
+    obs.observe(wrap);
+
+    function startAnim() {
+      // Kick the ring
+      if (circle) {
+        circle.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.25,1,0.5,1)';
+        circle.style.strokeDashoffset = '0';
+      }
+      // Count the number
+      var total = 28, dur = 1700, start = performance.now();
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
       function frame(now) {
         var p = Math.min((now - start) / dur, 1);
         numEl.textContent = Math.floor(easeOut(p) * total);
-        if (p < 1) { requestAnimationFrame(frame); } else { numEl.textContent = '28'; celebrate(); }
+        if (p < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          numEl.textContent = '28';
+          // Show + with CSS transition
+          if (plusEl) plusEl.classList.add('show');
+          // Pulse the number once
+          numEl.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+          numEl.style.transform = 'scale(1.12)';
+          setTimeout(function(){ numEl.style.transform = 'scale(1)'; }, 420);
+        }
       }
       requestAnimationFrame(frame);
     }
-    function celebrate() {
-      numEl.classList.add('burst');
-      numEl.addEventListener('animationend', function(){ numEl.classList.remove('burst'); }, { once: true });
-      setTimeout(function(){ plusEl.classList.add('pop'); }, 180);
-      if (glow) { glow.classList.add('fire'); setTimeout(function(){ glow.classList.remove('fire'); }, 950); }
-      var colors = ['#e8600a','#f47820','#fba55a','#ffcc80','#ffffff','#c9922a'];
-      var wrap = numEl.closest('.about-big-num') || numEl.parentElement;
-      for (var i = 0; i < 28; i++) {
-        var p = document.createElement('div');
-        p.className = 'abt-confetti';
-        var angle = (i/28)*360 + Math.random()*10;
-        var dist  = 80 + Math.random()*100;
-        var tx = Math.round(Math.cos(angle*Math.PI/180)*dist);
-        var ty = Math.round(Math.sin(angle*Math.PI/180)*dist - 60);
-        var sz = 5 + Math.floor(Math.random()*8);
-        p.style.cssText = 'width:'+sz+'px;height:'+sz+'px;background:'+colors[i%colors.length]+';position:absolute;left:50%;top:50%;--tx:'+tx+'px;--ty:'+ty+'px;--tr:'+Math.round(Math.random()*540)+'deg;--cd:'+(0.7+Math.random()*0.5)+'s';
-        wrap.appendChild(p);
-        setTimeout(function(el){ return function(){ el.remove(); }; }(p), 1400);
-      }
-    }
   })();
+
 </script>
 </body>
 </html>
