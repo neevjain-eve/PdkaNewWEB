@@ -765,16 +765,48 @@
     [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
   
     /* ── 28+ STAT COUNTER ── */
-    .about-logo {
-      height: clamp(64px, 9vw, 110px);
-      width: auto;
-      max-width: 480px;
-      margin: 0 auto 16px;
-      display: block;
-      filter: drop-shadow(0 2px 12px rgba(0,0,0,0.6));
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-      opacity: 1;
+    .about-logo-rec {
+      display: inline-flex; flex-direction: column;
+      align-items: flex-start; margin: 0 auto 18px;
+      filter: drop-shadow(0 2px 14px rgba(0,0,0,0.55));
+    }
+    .alr-row1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 900; font-size: clamp(24px, 3.8vw, 46px);
+      color: #F7941D; line-height: 1;
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+    .alr-amp {
+      color: #1B3A6B; font-style: italic; margin-left: 2px;
+    }
+    .alr-row2 {
+      display: flex; align-items: center; gap: 10px; margin-top: 5px;
+    }
+    .alr-barcode {
+      width: clamp(60px, 8vw, 110px); height: clamp(14px, 1.8vw, 22px);
+      background: repeating-linear-gradient(
+        90deg,
+        #1B3A6B 0, #1B3A6B 1.5px,
+        transparent 1.5px, transparent 3px,
+        #1B3A6B 3px, #1B3A6B 4px,
+        transparent 4px, transparent 6.5px,
+        #1B3A6B 6.5px, #1B3A6B 7.5px,
+        transparent 7.5px, transparent 9px,
+        #1B3A6B 9px, #1B3A6B 11px,
+        transparent 11px, transparent 12px
+      );
+      opacity: 0.95;
+    }
+    .alr-assoc {
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-size: clamp(18px, 3vw, 36px);
+      color: #F7941D; line-height: 1; letter-spacing: 1px;
+    }
+    .alr-sub {
+      font-family: 'Inter', sans-serif; font-weight: 400;
+      font-size: clamp(7px, 0.9vw, 10px);
+      color: rgba(255,255,255,0.65); letter-spacing: 3px;
+      text-transform: lowercase; margin-top: 2px;
     }
     .about-stat-wrap {
       display: inline-flex; flex-direction: column;
@@ -863,7 +895,16 @@
   <div class="about-overlay"></div>
   <div class="about-center">
     <div class="about-label">About the Firm</div>
-    <img src="logo-transparent.png" alt="P. Dilip Kumar &amp; Associates" class="about-logo" />
+    <div class="about-logo-rec">
+      <div class="alr-row1">P. Dilip Kumar<span class="alr-amp">&amp;</span></div>
+      <div class="alr-row2">
+        <div class="alr-barcode"></div>
+        <div class="alr-right">
+          <div class="alr-assoc">associates</div>
+          <div class="alr-sub">chartered accountants</div>
+        </div>
+      </div>
+    </div>
     <div class="about-stat-wrap" id="aboutStatWrap">
       <div class="about-stat-num-row">
         <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
