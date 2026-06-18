@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>P. Dilip Kumar & Associates | CA Firm Bangalore | Audit, Tax, FEMA & CISA</title>
   <meta name="description" content="P. Dilip Kumar & Associates – Bangalore-based Chartered Accountants with 28+ years of expertise in Audit, Taxation, FEMA, IS Audit (CISA/DISA) and Virtual CFO services across India and 9 countries." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,21 +19,21 @@
       --white: #ffffff;
       --grey-light: #f5f6fa;
       --grey-mid: #e8eaf0;
-      --text-dark: #1a1a2e;
-      --text-mid: #4a5568;
-      --text-light: #718096;
+      --text-dark: #111827;
+      --text-mid: #374151;
+      --text-light: #4b5563;
       --radius: 12px;
       --shadow: 0 4px 24px rgba(13,27,62,0.10);
       --shadow-lg: 0 8px 48px rgba(13,27,62,0.16);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.6; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(13,27,62,0.97); backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08);
       padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -47,8 +47,8 @@
     .nav-logo-text strong { display: block; font-size: 15px; font-weight: 700; }
     .nav-logo-text span { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: white; }
+    .nav-links a, .nav-links a:visited, .nav-links a:active, .nav-links a:focus { color: var(--orange) !important; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy) !important; }
     .nav-cta {
       background: var(--orange); color: white; padding: 10px 22px; border-radius: 8px;
       font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s;
@@ -56,10 +56,11 @@
     .nav-cta:hover { background: var(--orange-light); }
     .nav-toggle { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
 
-    /* ── HERO ── */
+    /* ── HERO (sticky — about slides over it) ── */
     #home {
+      position: sticky; top: 0;
       height: 100vh; min-height: 580px;
-      position: relative; overflow: hidden;
+      overflow: hidden; z-index: 1;
       display: flex; flex-direction: column;
     }
     .hero-bg { position: absolute; inset: 0; z-index: 0; }
@@ -89,10 +90,12 @@
     }
     .hero-badge i { font-size: 7px; }
     .hero-title {
-      font-family: 'Inter', sans-serif; font-size: clamp(26px, 3.5vw, 46px);
+      font-family: 'Inter', sans-serif; font-size: clamp(30px, 4.2vw, 58px);
       color: white; line-height: 1.1; margin-bottom: 12px; font-weight: 800; letter-spacing: -0.5px;
+      border-left: 5px solid var(--orange);
+      padding-left: 24px;
     }
-    .hero-title span { color: var(--orange-light); }
+    .hero-title span:not(#hero-word) { color: var(--orange-light); }
     .hero-desc { color: rgba(255,255,255,0.75); font-size: 14px; line-height: 1.65; margin-bottom: 22px; max-width: 500px; }
     .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn-primary {
@@ -107,6 +110,11 @@
       transition: border-color 0.2s, background 0.2s;
     }
     .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+    /* Founder email button — navy in light, white in dark */
+    .founder-email-btn { border-color: var(--navy); color: var(--navy); }
+    .founder-email-btn:hover { border-color: var(--navy-mid); background: rgba(13,27,62,0.06); }
+    [data-theme="dark"] .founder-email-btn { border-color: rgba(255,255,255,0.3) !important; color: #e0e8ff !important; }
+    [data-theme="dark"] .founder-email-btn:hover { border-color: rgba(255,255,255,0.6) !important; background: rgba(255,255,255,0.06) !important; }
     .hero-certs { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 16px; }
     .cert-badge {
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
@@ -138,63 +146,81 @@
     .section-title { font-family: 'Playfair Display', serif; font-size: clamp(22px,2.4vw,32px); color: var(--navy); line-height: 1.2; margin-bottom: 8px; }
     .section-sub { font-size: 14px; color: var(--text-mid); max-width: 600px; line-height: 1.6; }
 
-    /* ── ABOUT ── */
-    #about { background: var(--grey-light); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .about-image-wrap { position: relative; }
-    .about-photo-main {
-      border-radius: 20px; overflow: hidden; position: relative;
-      box-shadow: 0 20px 60px rgba(13,27,62,0.18);
+    /* ── ABOUT (slides over hero as a card) ── */
+    #about {
+      height: 100vh; padding: 0; overflow: hidden;
+      border-radius: 28px 28px 0 0;
+      will-change: border-radius, transform;
+      transition: border-radius 0.06s linear;
     }
-    .about-photo-main img { width: 100%; height: 360px; object-fit: cover; object-position: center; display: block; }
-    .about-photo-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 50%, rgba(13,27,62,0.72) 100%);
+    .about-bg-img {
+      position: absolute; inset: 0; z-index: 0;
     }
-    .about-photo-tagline {
-      position: absolute; bottom: 24px; left: 24px; right: 24px; color: white;
+    .about-bg-img img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      display: block; transform: scale(1.08); will-change: transform;
     }
-    .about-photo-tagline h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-    .about-photo-tagline p { font-size: 13px; color: rgba(255,255,255,0.75); }
-    .about-cred-strip {
-      display: flex; gap: 0; margin-top: 16px; border-radius: 14px; overflow: hidden;
-      box-shadow: var(--shadow);
+    .about-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(13,27,62,0.35) 0%, rgba(13,27,62,0.75) 100%);
     }
-    .about-cred-item {
-      flex: 1; background: var(--navy); color: white; padding: 16px 10px; text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.08);
+    .about-center {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 32px 24px;
+      opacity: 0; transform: translateY(50px);
+      will-change: opacity, transform;
     }
-    .about-cred-item:last-child { border-right: none; }
-    .about-cred-item strong { display: block; font-size: 18px; font-weight: 800; color: var(--orange-light); }
-    .about-cred-item span { font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; display: block; }
-    .about-float-badge {
-      position: absolute; top: 24px; right: -20px;
-      background: var(--orange); color: white; border-radius: 14px; padding: 16px 20px;
-      box-shadow: var(--shadow-lg); text-align: center; min-width: 100px;
+    .about-label {
+      font-size: 11px; font-weight: 700; color: var(--orange-light);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
     }
-    .about-float-badge strong { font-size: 28px; font-weight: 800; display: block; line-height: 1; }
-    .about-float-badge span { font-size: 11px; opacity: 0.9; margin-top: 4px; display: block; }
-    .about-content { }
-    .about-points { list-style: none; margin: 16px 0; display: flex; flex-direction: column; gap: 6px; }
-    .about-points li {
-      display: flex; align-items: flex-start; gap: 14px;
-      background: white; border-radius: 10px; padding: 14px 16px;
-      font-size: 14.5px; color: var(--text-mid); box-shadow: 0 2px 8px rgba(13,27,62,0.05);
-      border-left: 3px solid var(--orange);
+    .about-firm-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 3vw, 36px);
+      font-weight: 700; color: #fff;
+      letter-spacing: 0.5px; margin-bottom: 12px;
+      text-transform: uppercase;
     }
-    .about-points li i { color: var(--orange); font-size: 15px; margin-top: 2px; flex-shrink: 0; }
+    .about-big-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(88px, 14vw, 160px);
+      font-weight: 800; color: var(--orange); line-height: 1; margin-bottom: 4px;
+    }
+    .about-sub {
+      font-size: clamp(16px, 2.4vw, 28px); font-weight: 600;
+      color: rgba(255,255,255,0.9); margin-bottom: 14px;
+    }
+    .about-desc {
+      font-size: clamp(13px, 1.2vw, 15px); color: rgba(255,255,255,0.7);
+      max-width: 520px; line-height: 1.6; margin-bottom: 24px;
+    }
+    .about-pills { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .about-pill {
+      padding: 7px 16px; border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: 100px; font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08);
+    }
+
+    /* All sections after hero stack over it */
+    #about, #services, #industries, #founder, #team, #insights, #careers, #dpdpa, #contact, footer {
+      position: relative;
+      z-index: 2;
+    }
 
     /* ── SERVICES ── */
     #services { background: white; }
-    .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    #services { padding-top: 36px; padding-bottom: 36px; }
+    .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .service-card {
-      border: 1.5px solid var(--grey-mid); border-radius: 14px; overflow: hidden;
+      border: 1.5px solid var(--grey-mid); border-radius: 12px; overflow: hidden;
       transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; cursor: default;
     }
-    .service-card:hover { border-color: var(--orange); box-shadow: var(--shadow-lg); transform: translateY(-5px); }
+    .service-card:hover { border-color: var(--orange); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
     .service-img {
-      position: relative; height: 160px; overflow: hidden;
+      position: relative; height: 100px; overflow: hidden;
     }
     .service-img img {
       width: 100%; height: 100%; object-fit: cover; object-position: center;
@@ -206,15 +232,15 @@
       background: linear-gradient(to bottom, rgba(13,27,62,0.25) 0%, rgba(13,27,62,0.55) 100%);
     }
     .service-img-icon {
-      position: absolute; bottom: 14px; left: 18px;
-      width: 44px; height: 44px; background: var(--orange); border-radius: 10px;
+      position: absolute; bottom: 10px; left: 14px;
+      width: 34px; height: 34px; background: var(--orange); border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 19px; color: white; box-shadow: 0 4px 12px rgba(232,96,10,0.4);
+      font-size: 14px; color: white; box-shadow: 0 4px 12px rgba(232,96,10,0.4);
     }
-    .service-body { padding: 22px 24px 26px; }
-    .service-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .service-card p { font-size: 13.5px; color: var(--text-mid); line-height: 1.7; }
-    .service-card a { display: inline-flex; align-items: center; gap: 6px; color: var(--orange); font-size: 13px; font-weight: 600; text-decoration: none; margin-top: 16px; }
+    .service-body { padding: 14px 16px 18px; }
+    .service-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .service-card p { font-size: 12.5px; color: var(--text-mid); line-height: 1.6; }
+    .service-card a { display: inline-flex; align-items: center; gap: 6px; color: var(--orange); font-size: 12px; font-weight: 600; text-decoration: none; margin-top: 10px; }
     .service-card a:hover { gap: 10px; }
 
     /* ── INDUSTRIES ── */
@@ -299,7 +325,58 @@
     .insight-body p { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
     .insight-footer { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; border-top: 1px solid var(--grey-mid); }
     .insight-date { font-size: 12px; color: var(--text-light); }
-    .insight-link { color: var(--orange); font-size: 13px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; }
+    .insight-link { color: var(--orange); font-size: 13px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; cursor: pointer; }
+    .insight-link:hover { gap: 8px; }
+    .svc-know-more { color: var(--orange); font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; transition: gap 0.2s; }
+    .svc-know-more:hover { gap: 8px; }
+
+    /* ── ARTICLE MODAL ── */
+    .article-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9000;
+      background: rgba(5,10,25,0.72); backdrop-filter: blur(6px);
+      align-items: flex-start; justify-content: center; padding: 40px 20px; overflow-y: auto;
+    }
+    .article-modal-overlay.open { display: flex; }
+    .article-modal {
+      background: var(--white); border-radius: 16px; max-width: 740px; width: 100%;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.28); position: relative; overflow: hidden;
+      animation: modalIn 0.28s cubic-bezier(0.22,1,0.36,1);
+    }
+    @keyframes modalIn { from { opacity:0; transform:translateY(32px) scale(0.97); } to { opacity:1; transform:none; } }
+    .article-modal-header {
+      background: linear-gradient(120deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 32px 36px 28px; position: relative;
+    }
+    .article-modal-tag {
+      display: inline-block; background: rgba(232,96,10,0.25); color: var(--orange-light);
+      padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;
+    }
+    .article-modal-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(18px,2.5vw,26px); color: white; line-height: 1.35; margin-bottom: 10px; }
+    .article-modal-meta { font-size: 12px; color: rgba(255,255,255,0.5); }
+    .article-modal-close {
+      position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.12);
+      border: none; color: white; width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      font-size: 16px; transition: background 0.2s;
+    }
+    .article-modal-close:hover { background: rgba(255,255,255,0.25); }
+    .article-modal-body { padding: 32px 36px; }
+    .article-modal-body h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin: 24px 0 8px; }
+    .article-modal-body h3:first-child { margin-top: 0; }
+    .article-modal-body p { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+    .article-modal-body ul { padding-left: 20px; margin-bottom: 14px; }
+    .article-modal-body ul li { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 6px; }
+    .article-modal-body strong { color: var(--text-dark); }
+    .article-modal-cta { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--grey-mid); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .article-modal-cta p { font-size: 13px; color: var(--text-light); margin: 0; }
+    [data-theme="dark"] .article-modal { background: #0f1f47; }
+    [data-theme="dark"] .article-modal-body h3 { color: #e0e8ff; }
+    [data-theme="dark"] .article-modal-body p,
+    [data-theme="dark"] .article-modal-body li { color: rgba(200,215,255,0.8); }
+    [data-theme="dark"] .article-modal-body strong { color: #f0f4ff; }
+    [data-theme="dark"] .article-modal-cta { border-color: rgba(255,255,255,0.1); }
+    [data-theme="dark"] .article-modal-cta p { color: rgba(200,215,255,0.6); }
 
     /* ── DPDPA BANNER ── */
     #dpdpa {
@@ -315,7 +392,8 @@
     }
     .dpdpa-tag span { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; animation: pulse 1.5s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
-    /* dpdpa h2 — see overrides below */
+    .dpdpa-inner h2 { font-family:'Playfair Display',serif; font-size:32px; color:white; margin-bottom:12px; line-height:1.3; }
+    @media (max-width:768px) { .dpdpa-inner h2 { font-size:24px; } }
     .dpdpa-inner p { color:rgba(255,255,255,0.65); font-size:15px; line-height:1.7; margin-bottom:20px; max-width:580px; }
     .dpdpa-chips { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
     .dpdpa-chip {
@@ -323,6 +401,7 @@
       color:rgba(255,255,255,0.8); padding:5px 12px; border-radius:6px; font-size:12px; font-weight:600;
     }
     .countdown-card { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:28px; text-align:center; min-width:240px; }
+    [data-theme="dark"] .countdown-card { background:rgba(232,96,10,0.1); border:1px solid rgba(232,96,10,0.35); box-shadow: 0 0 32px rgba(232,96,10,0.12); }
     .countdown-label { font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
     .countdown-nums { display:flex; gap:12px; justify-content:center; }
     .countdown-unit { text-align:center; }
@@ -443,27 +522,12 @@
       transition: background 0.2s; white-space: nowrap;
     }
     .newsletter-form button:hover { background: #0a1530; }
-
-    /* ── WHATSAPP FLOAT ── */
-    .whatsapp-btn {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      width: 56px; height: 56px; background: #25d366; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.45); text-decoration: none;
-      transition: transform 0.2s; font-size: 26px; color: white;
-    }
-    .whatsapp-btn:hover { transform: scale(1.1); }
-    .whatsapp-tooltip {
-      position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
-      background: var(--navy); color: white; font-size: 13px; font-weight: 600;
-      padding: 6px 12px; border-radius: 6px; white-space: nowrap; pointer-events: none;
-      opacity: 0; transition: opacity 0.2s;
-    }
-    .whatsapp-btn:hover .whatsapp-tooltip { opacity: 1; }
+    
 
 
     /* ── FOUNDER ── */
     #founder { background: white; }
+    [data-theme="dark"] #founder { background: #0b1628; }
     .founder-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: center; }
     .founder-photo-wrap { position: relative; }
     .founder-photo {
@@ -532,17 +596,19 @@
     .dept-info h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
     .dept-info .dept-role { font-size: 12px; color: var(--text-mid); margin-bottom: 4px; }
     .dept-info .dept-quals { font-size: 11px; color: var(--text-light); font-weight: 600; }
+    .dept-team-link { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; color: var(--orange); text-decoration: none; margin-top: 10px; transition: gap 0.2s; }
+    .dept-team-link:hover { gap: 8px; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .hero-grid, .about-grid, .contact-grid, .founder-grid { grid-template-columns: 1fr; }
+      .hero-grid, .contact-grid, .founder-grid { grid-template-columns: 1fr; }
       .services-grid, .team-grid, .insights-grid { grid-template-columns: repeat(2,1fr); }
       .industries-grid { grid-template-columns: repeat(2,1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .hero-content-wrap { padding: 0 5%; }
       .hero-stats-inner { flex-wrap: wrap; }
       .hero-stat-item { min-width: 50%; border-bottom: 1px solid rgba(255,255,255,0.08); }
-      .about-float-badge { right: 0; top: 16px; }
+
       .team-dept-grid { grid-template-columns: repeat(3,1fr); }
       .founder-photo { max-width: 100%; }
     }
@@ -609,319 +675,132 @@
     }
 
 
-    /* Section nav dots */
-    #section-dots {
-      position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
-      z-index: 900; display: flex; flex-direction: column; gap: 10px;
-    }
-    .sdot {
-      width: 9px; height: 9px; border-radius: 50%;
-      background: rgba(13,27,62,0.2); border: 2px solid rgba(13,27,62,0.3);
-      cursor: pointer; transition: all 0.25s; display: block;
-    }
-    .sdot:hover, .sdot.active { background: var(--orange); border-color: var(--orange); transform: scale(1.3); }
 
-    /* ── ABOUT SECTION REDESIGN ── */
-    #about {
-      position: relative; overflow: hidden;
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding: 100px 5%;
-    }
-    .about-bg {
-      position: absolute; inset: 0; z-index: 0;
-    }
-    .about-bg img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
-    .about-bg-overlay {
-      position:absolute; inset:0;
-      background: linear-gradient(135deg, rgba(10,18,40,0.88) 0%, rgba(13,27,62,0.80) 100%);
-    }
-    .about-center {
-      position: relative; z-index: 2;
-      text-align: center; max-width: 760px; margin: 0 auto;
-    }
-    .about-center .section-label { color: var(--orange); margin-bottom: 10px; letter-spacing: 2px; }
-    .about-firm-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(22px, 3.5vw, 42px);
-      color: white; margin-bottom: 28px; letter-spacing: 0.5px; line-height: 1.2;
-    }
-
-    /* The big 28+ */
-    .about-big-num-wrap {
-      margin: 0 auto 12px;
-      display: inline-flex; align-items: baseline; gap: 4px;
-      position: relative;
-    }
-    #aboutBigNum {
-      font-family: 'Bebas Neue', 'Playfair Display', serif;
-      font-size: clamp(120px, 18vw, 200px);
-      color: var(--orange);
-      line-height: 1;
+  
+  
+  
+  
+    
+    /* Hero word typewriter */
+    #hero-word {
       display: inline-block;
-      text-shadow: 0 0 40px rgba(232,96,10,0.4);
-      letter-spacing: -2px;
-    }
-    #aboutBigPlus {
-      font-family: 'Bebas Neue', 'Playfair Display', serif;
-      font-size: clamp(70px, 11vw, 120px);
       color: var(--orange);
-      line-height: 1;
-      opacity: 0;
-      vertical-align: super;
+      border-right: 3px solid var(--orange);
+      padding-right: 4px;
+      animation: cursor-blink 0.75s step-end infinite;
+      min-width: 2px;
+      white-space: nowrap;
     }
-    .about-years-label {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(16px, 2vw, 24px);
-      font-weight: 700;
-      color: rgba(255,255,255,0.92);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .about-desc {
-      color: rgba(255,255,255,0.72);
-      font-size: 15px; line-height: 1.8;
-      max-width: 580px; margin: 0 auto 28px;
-    }
-    .about-pills {
-      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px;
-    }
-    .about-pill {
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22);
-      color: rgba(255,255,255,0.88); padding: 7px 18px; border-radius: 40px;
-      font-size: 13px; font-weight: 600; letter-spacing: 0.3px;
-      backdrop-filter: blur(4px);
-    }
-    [data-theme="dark"] .about-pill { background: rgba(255,255,255,0.07); }
-
-    /* Glow ring behind number */
-    .about-num-glow {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 260px; height: 260px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(232,96,10,0.18) 0%, rgba(232,96,10,0) 70%);
-      pointer-events: none; z-index: -1;
-    }
-    .about-num-glow.burst {
-      animation: glowRing 0.9s ease-out forwards;
-    }
-    @keyframes glowRing {
-      0%   { transform:translate(-50%,-50%) scale(1);   opacity:1; }
-      100% { transform:translate(-50%,-50%) scale(2.2); opacity:0; }
+    @keyframes cursor-blink {
+      0%, 100% { border-color: var(--orange); }
+      50%       { border-color: transparent; }
     }
 
-    /* Number burst on land */
-    #aboutBigNum.burst {
-      animation: bigNumBurst 0.75s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    @keyframes bigNumBurst {
-      0%  { transform:scale(1); }
-      35% { transform:scale(1.18); text-shadow: 0 0 60px rgba(232,96,10,1), 0 0 100px rgba(232,96,10,0.6); }
-      70% { transform:scale(1.08); }
-      100%{ transform:scale(1); }
-    }
-    #aboutBigPlus.pop {
-      animation: bigPlusPop 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards;
-    }
-    @keyframes bigPlusPop {
-      0%  { opacity:0; transform:translateY(12px) scale(0.2); }
-      65% { opacity:1; transform:translateY(-6px) scale(1.35); }
-      100%{ opacity:1; transform:translateY(0) scale(1); }
-    }
-    .about-confetti {
-      position: absolute; pointer-events: none; z-index: 10; border-radius: 3px;
-      animation: confettiFly 1s ease-out forwards;
-    }
-    @media (max-width: 768px) { #section-dots { display: none; } }
-
-    /* ── THEME TOGGLE ── */
-    .theme-toggle {
-      background: #0d1b3e; border: 1.5px solid rgba(255,255,255,0.18);
-      color: white; border-radius: 24px; padding: 7px 16px;
-      font-size: 13px; font-weight: 600; display: flex; align-items: center;
-      gap: 7px; cursor: pointer; transition: all 0.2s; letter-spacing: 0.2px;
-    }
-    .theme-toggle:hover { background: #162444; }
-    .theme-toggle i { font-size: 14px; }
-    [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
-
-    /* ── DARK MODE GLOBAL ── */
-    [data-theme="dark"] body { background: #0c1120; color: #e0e4ef; }
-    [data-theme="dark"] .section-title { color: #e8eaf5; }
-    [data-theme="dark"] .section-sub { color: #a0a8c0; }
-    [data-theme="dark"] .section-label { color: rgba(232,96,10,0.9); }
-    [data-theme="dark"] section:not(#home):not(#dpdpa) { background: #0c1120; }
-    [data-theme="dark"] .insight-card { background: #111827; border-color: rgba(255,255,255,0.08); }
-    [data-theme="dark"] .insight-body h3 { color: #e8eaf5; }
-    [data-theme="dark"] .insight-body p { color: #a0a8c0; }
-    [data-theme="dark"] .service-card { background: #111827; }
-    [data-theme="dark"] .service-body h3 { color: #e8eaf5; }
-    [data-theme="dark"] .service-body p { color: #a0a8c0; }
-    [data-theme="dark"] .career-card { background: #111827; border-color: rgba(255,255,255,0.08); }
-    [data-theme="dark"] .career-card h3 { color: #e8eaf5; }
-    [data-theme="dark"] .career-card p { color: #a0a8c0; }
-    [data-theme="dark"] .dept-card { background: #111827; border-color: rgba(255,255,255,0.08); }
-    [data-theme="dark"] .dept-info h4 { color: #e8eaf5; }
-    [data-theme="dark"] .about-content .section-title { color: #e8eaf5; }
-    [data-theme="dark"] .about-content .section-sub { color: #a0a8c0; }
-    [data-theme="dark"] .about-points li span { color: #c0c8e0; }
-    [data-theme="dark"] .founder-bio { color: #a0a8c0; }
-    [data-theme="dark"] .founder-content h3 { color: #e8eaf5 !important; }
-    [data-theme="dark"] footer { background: #060c1a; }
-    [data-theme="dark"] .contact-form-wrap, [data-theme="dark"] .contact-info-box { background: #111827; }
-    [data-theme="dark"] .form-input, [data-theme="dark"] .form-select, [data-theme="dark"] .form-textarea {
-      background: #1a2540; border-color: rgba(255,255,255,0.12); color: #e0e4ef;
-    }
-
-    /* DPDPA dark mode */
-    [data-theme="dark"] #dpdpa {
+    /* ── DARK / LIGHT THEME ── */
+    [data-theme="dark"] body { background: #0b1628; color: #e8edf8; }
+    [data-theme="dark"] #about,
+    [data-theme="dark"] #team,
+    [data-theme="dark"] #insights,
+    [data-theme="dark"] #careers { background: #0f1f47 !important; }
+    [data-theme="dark"] #dpdpa  {
       background: linear-gradient(135deg, #0a1020 0%, #0f1e3e 45%, #162444 100%) !important;
       border-top: 3px solid var(--orange);
       border-bottom: 3px solid rgba(232,96,10,0.3);
     }
-    [data-theme="dark"] .countdown-card {
-      background: rgba(232,96,10,0.1);
-      border: 1px solid rgba(232,96,10,0.35);
-      box-shadow: 0 0 32px rgba(232,96,10,0.12);
-    }
+    [data-theme="dark"] #services,
+    [data-theme="dark"] #founder,
+    [data-theme="dark"] #contact { background: #0b1628 !important; }
+    [data-theme="dark"] footer   { background: #060e1f !important; }
 
-    /* DPDPA heading fixed */
-    .dpdpa-inner h2 { font-family:'Playfair Display',serif; font-size:32px; color:white; margin-bottom:12px; line-height:1.3; }
-    @media (max-width:768px) { .dpdpa-inner h2 { font-size:24px; } }
+    [data-theme="dark"] .section-title,
+    [data-theme="dark"] h1,h2,h3,h4,h5 { color: #f0f4ff; }
+    [data-theme="dark"] p,
+    [data-theme="dark"] .section-sub { color: rgba(220,230,255,0.75); }
+    [data-theme="dark"] .section-label { color: var(--orange-light); }
 
-    /* ── SERVICE KNOW MORE ── */
-    .svc-know-more {
-      display: inline-flex; align-items: center; gap: 6px;
-      color: var(--orange); font-weight: 600; font-size: 14px;
-      text-decoration: none; cursor: pointer; background: none; border: none;
-      padding: 0; transition: gap 0.2s;
-    }
-    .svc-know-more:hover { gap: 10px; }
+    [data-theme="dark"] .service-card,
+    [data-theme="dark"] .insight-card,
+    [data-theme="dark"] .team-card,
+    [data-theme="dark"] .dept-card,
+    [data-theme="dark"] .career-card,
+    [data-theme="dark"] .founder-card { background: #1a2f5e !important; border-color: rgba(255,255,255,0.08) !important; }
 
-    /* ── ARTICLE / SERVICE MODALS ── */
-    .article-modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 2000;
-      background: rgba(8,14,32,0.82); backdrop-filter: blur(8px);
-      align-items: center; justify-content: center; padding: 20px;
-    }
-    .article-modal-overlay.open { display: flex; }
-    .article-modal {
-      background: white; border-radius: 20px; max-width: 720px; width: 100%;
-      max-height: 88vh; overflow-y: auto; box-shadow: 0 24px 80px rgba(13,27,62,0.3);
-      animation: modalSlideIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    @keyframes modalSlideIn {
-      from { opacity:0; transform:scale(0.92) translateY(20px); }
-      to { opacity:1; transform:scale(1) translateY(0); }
-    }
-    .article-modal-header {
-      background: linear-gradient(135deg, var(--navy) 0%, #162444 100%);
-      padding: 32px 32px 24px; border-radius: 20px 20px 0 0; position: relative;
-    }
-    .article-modal-close {
-      position: absolute; top: 16px; right: 16px;
-      background: rgba(255,255,255,0.1); border: none; color: white;
-      width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
-      font-size: 18px; display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s;
-    }
-    .article-modal-close:hover { background: rgba(255,255,255,0.2); }
-    .article-modal-tag {
-      display: inline-block; background: var(--orange); color: white;
-      font-size: 10px; font-weight: 700; letter-spacing: 1px;
-      padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; text-transform: uppercase;
-    }
-    .article-modal-header h2 { color: white; font-size: 22px; line-height: 1.3; margin-bottom: 8px; }
-    .article-modal-meta { color: rgba(255,255,255,0.55); font-size: 12px; }
-    .article-modal-body { padding: 28px 32px 32px; }
-    .article-modal-body h3 { color: var(--navy); font-size: 17px; margin: 20px 0 8px; }
-    .article-modal-body p { color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; font-size: 15px; }
-    .article-modal-body ul { margin: 0 0 14px 20px; }
-    .article-modal-body li { color: var(--text-mid); line-height: 1.75; margin-bottom: 6px; font-size: 15px; }
-    .article-modal-cta {
-      margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--grey-mid);
-      display: flex; gap: 12px; flex-wrap: wrap;
-    }
-    [data-theme="dark"] .article-modal { background: #111827; }
-    [data-theme="dark"] .article-modal-body h3 { color: #e8eaf5; }
-    [data-theme="dark"] .article-modal-body p,
-    [data-theme="dark"] .article-modal-body li { color: #a0a8c0; }
-    [data-theme="dark"] .article-modal-cta { border-color: rgba(255,255,255,0.1); }
-    @media (max-width:600px) {
-      .article-modal-header { padding: 24px 20px 18px; }
-      .article-modal-header h2 { font-size: 18px; }
-      .article-modal-body { padding: 20px; }
-    }
+    [data-theme="dark"] .service-card h3,
+    [data-theme="dark"] .insight-card h3,
+    [data-theme="dark"] .team-card h4,
+    [data-theme="dark"] .dept-card h4,
+    [data-theme="dark"] .career-card h3 { color: #f0f4ff; }
 
-    /* ── 28+ CELEBRATION ── */
-    @keyframes numBurst {
-      0%  { transform: scale(1); }
-      30% { transform: scale(1.5); filter: drop-shadow(0 0 20px rgba(232,96,10,0.9)); }
-      60% { transform: scale(1.25); }
-      100%{ transform: scale(1); }
+    [data-theme="dark"] .service-card p,
+    [data-theme="dark"] .insight-card p,
+    [data-theme="dark"] .team-card p,
+    [data-theme="dark"] .dept-info span,
+    [data-theme="dark"] .dept-role,
+    [data-theme="dark"] .dept-quals,
+    [data-theme="dark"] .career-card p  { color: rgba(200,215,255,0.7); }
+    [data-theme="dark"] .dept-card h4   { color: #f0f4ff !important; }
+
+    [data-theme="dark"] .footer-inner,
+    [data-theme="dark"] .footer-bottom { color: rgba(200,215,255,0.6); }
+    [data-theme="dark"] .footer-links a { color: rgba(200,215,255,0.7); }
+
+    /* Founder section dark mode fixes */
+    [data-theme="dark"] #founder h3 { color: #f0f4ff !important; }
+    [data-theme="dark"] #founder p   { color: rgba(220,230,255,0.85) !important; }
+    [data-theme="dark"] .founder-cred { background: rgba(255,255,255,0.1) !important; color: #e0e8ff !important; border-color: rgba(255,255,255,0.15) !important; }
+
+    /* Contact section dark mode fixes */
+    [data-theme="dark"] .contact-info h3,
+    [data-theme="dark"] .contact-form-card h3 { color: #f0f4ff !important; }
+    [data-theme="dark"] .contact-info > p,
+    [data-theme="dark"] .contact-item-text p,
+    [data-theme="dark"] .contact-item-text a { color: rgba(220,230,255,0.85) !important; }
+    [data-theme="dark"] .contact-item-text strong { color: rgba(180,200,255,0.6) !important; }
+
+    /* Theme toggle button */
+    .theme-toggle {
+      background: #0d1b3e; border: 1.5px solid rgba(255,255,255,0.18);
+      color: white; border-radius: 24px; padding: 7px 16px;
+      cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center;
+      gap: 7px; transition: all 0.2s; white-space: nowrap; letter-spacing: 0.2px;
     }
-    @keyframes plusPop {
-      0%  { opacity:0; transform: translateY(8px) scale(0.3); }
-      60% { opacity:1; transform: translateY(-3px) scale(1.4); }
-      100%{ opacity:1; transform: translateY(0) scale(1); }
-    }
-    @keyframes badgeGlow {
-      0%,100% { box-shadow: 0 8px 32px rgba(232,96,10,0.3); }
-      50%      { box-shadow: 0 8px 60px rgba(232,96,10,0.85), 0 0 0 8px rgba(232,96,10,0.15); }
-    }
-    @keyframes confettiFly {
-      0%   { transform: translate(0,0) rotate(0deg); opacity: 1; }
-      100% { transform: translate(var(--tx),var(--ty)) rotate(var(--tr)); opacity: 0; }
-    }
-    .about-float-badge.celebrating { animation: badgeGlow 0.7s ease 3; }
-    #aboutYearsNum.burst { display: inline-block; animation: numBurst 0.7s cubic-bezier(0.34,1.56,0.64,1); }
-    #aboutYearsPlus { display: inline; opacity: 0; }
-    #aboutYearsPlus.pop { animation: plusPop 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards; }
-    .confetti-particle {
-      position: absolute; pointer-events: none; z-index: 10; border-radius: 2px;
-      animation: confettiFly 0.9s ease-out forwards;
-    }
+    .theme-toggle i { font-size: 14px; }
+    .theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
+    [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
   </style>
 </head>
 <body>
 
 <!-- SECTION DOTS -->
-<nav id="section-dots" aria-label="Section navigation"></nav>
 
 <!-- NAV -->
 <nav>
   <a href="#home" class="nav-logo">
-    <div class="nav-logo-text">
-      <strong>P. Dilip Kumar &amp; Associates</strong>
-      <span>Chartered Accountants · Bangalore</span>
-    </div>
+    <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" style="height:40px;width:auto;display:block;" />
   </a>
   <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
+    <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#founder">Founder</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#insights">Insights</a></li>
-    <li><a href="#careers">Careers</a></li>
+    <li><a href="careers.html">Careers</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-      <i class="fas fa-moon" id="themeIcon"></i>
-      <span id="themeLabel">Dark</span>
-    </button>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
     <a href="#contact" class="nav-cta">Get Started</a>
     <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO (sticky — about slides over it) -->
 <section id="home">
   <!-- Full-bleed background image -->
   <div class="hero-bg">
     <img
-      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1800&h=1000&fit=crop&crop=center"
+      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&h=1000&fit=crop&crop=center"
       alt="Financial charts and data"
       loading="eager"
     />
@@ -934,73 +813,28 @@
   <!-- Main content -->
   <div class="hero-content-wrap">
     <div class="hero-content">
-      <div class="hero-badge"><i class="fas fa-circle"></i> Est. 1998 · Bangalore, India</div>
-      <h1 class="hero-title">P. Dilip Kumar<br/>&amp; Associates —<br/><span>Audit, Tax<br/>&amp; Advisory</span></h1>
-      <p class="hero-desc">P. Dilip Kumar &amp; Associates — ICAI-registered Chartered Accountants specialising in Audit, Taxation, FEMA, IS Audit (CISA/DISA), and Virtual CFO services across India and 9 countries.</p>
-      <div class="hero-btns">
-        <a href="#services" class="btn-primary">Explore Services <i class="fas fa-arrow-right"></i></a>
-        <a href="#contact" class="btn-outline"><i class="fas fa-phone"></i> Talk to an Expert</a>
-      </div>
-      <div class="hero-certs">
-        <span class="cert-badge"><i class="fas fa-check-circle"></i> ICAI Registered</span>
-        <span class="cert-badge"><i class="fas fa-check-circle"></i> CISA Certified</span>
-        <span class="cert-badge"><i class="fas fa-check-circle"></i> DISA Certified</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Stats strip at bottom -->
-  <div class="hero-stats-strip">
-    <div class="hero-stats-inner">
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">28+</div>
-        <div class="hero-stat-label">Years of Experience</div>
-      </div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">500+</div>
-        <div class="hero-stat-label">Clients Served</div>
-      </div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">53+</div>
-        <div class="hero-stat-label">Professionals</div>
-      </div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">9</div>
-        <div class="hero-stat-label">Countries Presence</div>
-      </div>
+      <h1 class="hero-title">Empowering<br/>Businesses with<br/><span id="hero-word"></span></h1>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <!-- Full-bleed background -->
-  <div class="about-bg">
-    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1800&h=1000&fit=crop&crop=center" alt="P. Dilip Kumar & Associates — CA Firm Bangalore" loading="lazy" />
-    <div class="about-bg-overlay"></div>
+  <div class="about-bg-img">
+    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1800&h=1200&fit=crop&crop=center" alt="Professional CA firm" loading="lazy" />
   </div>
-
+  <div class="about-overlay"></div>
   <div class="about-center">
-    <div class="section-label">About the Firm</div>
-    <h2 class="about-firm-name">P. Dilip Kumar &amp; Associates</h2>
-
-    <!-- Animated 28+ -->
-    <div class="about-big-num-wrap" id="aboutBadge">
-      <div class="about-num-glow" id="aboutNumGlow"></div>
-      <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
-    </div>
-
-    <div class="about-years-label">Years of Professional Services</div>
-
-    <p class="about-desc">PDKA is a professional CA firm committed to quality, ethics and ICAI standards. Based in Bangalore, we serve clients across India and 9 countries — USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy.</p>
-
+    <div class="about-label">About the Firm</div>
+    <div class="about-firm-name">P. Dilip Kumar &amp; Associates</div>
+    <div class="about-big-num">28+</div>
+    <div class="about-sub">Years of Professional Services</div>
+    <p class="about-desc">PDKA is a professional CA firm based in Bangalore, serving clients across India and 9 countries — USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy.</p>
     <div class="about-pills">
       <span class="about-pill">FCA Leadership</span>
       <span class="about-pill">CISA · IS Audit</span>
       <span class="about-pill">DISA Certified</span>
       <span class="about-pill">9 Countries</span>
-      <span class="about-pill">53+ Professionals</span>
-      <span class="about-pill">Since 1998 · Bangalore</span>
     </div>
   </div>
 </section>
@@ -1013,19 +847,11 @@
     <div class="founder-grid" style="margin-top:28px;">
       <div class="founder-photo-wrap">
         <div class="founder-photo" style="border-radius:20px;overflow:hidden;max-width:380px;aspect-ratio:3/4;position:relative;box-shadow:0 20px 60px rgba(13,27,62,0.18);">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop&crop=top" alt="Founder — Shri. Dilip Kumar P., FCA CISA DISA" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(13,27,62,0.65) 100%);"></div>
-          <div style="position:absolute;bottom:18px;left:18px;right:18px;">
-            <div style="background:rgba(232,96,10,0.9);color:white;font-size:10px;font-weight:700;letter-spacing:1px;padding:4px 10px;border-radius:4px;display:inline-block;text-transform:uppercase;">Photo to be updated by firm</div>
-          </div>
-        </div>
-        <div class="founder-badge">
-          <strong>28+</strong>
-          <span>Years of Practice</span>
+          <img src="p-dilip-kumar-ca.jpg" alt="Founder — Dilip Kumar P., FCA CISA DISA" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
         </div>
       </div>
       <div class="founder-content">
-        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--navy);margin-bottom:6px;">Shri. Dilip Kumar P.</h3>
+        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--navy);margin-bottom:6px;">Dilip Kumar P.</h3>
         <p style="font-size:15px;color:var(--orange);font-weight:600;margin-bottom:4px;">Founder &amp; Managing Partner</p>
         <p style="font-size:13px;color:var(--text-light);">P. Dilip Kumar &amp; Associates, Bangalore</p>
         <div class="founder-creds">
@@ -1035,29 +861,10 @@
           <span class="founder-cred">ICAI Registered</span>
           <span class="founder-cred">28+ Years Experience</span>
         </div>
-        <p class="founder-bio">Shri. Dilip Kumar P. is the founding partner of P. Dilip Kumar &amp; Associates. A Fellow Chartered Accountant (FCA) holding CISA and DISA qualifications, he has extensive experience in Information Systems Audit and IT/ITES sector taxation.</p>
-        <p class="founder-bio">Under his leadership, PDKA has developed a multi-disciplinary practice serving clients across India and 9 countries — including USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy — in Statutory Audit, FEMA, Transfer Pricing, and Virtual CFO services.</p>
-        <div class="founder-milestones">
-          <div class="milestone">
-            <div class="milestone-num">500+</div>
-            <div class="milestone-label">Clients Served</div>
-          </div>
-          <div class="milestone">
-            <div class="milestone-num">9</div>
-            <div class="milestone-label">Countries Presence</div>
-          </div>
-          <div class="milestone">
-            <div class="milestone-num">53+</div>
-            <div class="milestone-label">Team Members</div>
-          </div>
-        </div>
-        <div class="founder-quote">
-          <p>"Our commitment has always been simple — deliver advice that is not just technically correct, but practically useful. Every client deserves the same diligence we would apply to our own affairs."</p>
-          <cite>— Shri. Dilip Kumar P., Founder &amp; Managing Partner</cite>
-        </div>
+        <p class="founder-bio">Dilip Kumar P. is the founding partner of P. Dilip Kumar &amp; Associates. A Fellow Chartered Accountant (FCA) holding CISA and DISA qualifications, he has extensive experience in Information Systems Audit, IT/ITES sector taxation, FEMA, and Virtual CFO services — serving clients across India and 9 countries including USA, UK, Australia, Dubai and Singapore.</p>
         <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
           <a href="#contact" class="btn-primary"><i class="fas fa-calendar-check"></i> Schedule a Meeting</a>
-          <a href="mailto:dilip@pdka.in" class="btn-outline" style="border-color:var(--navy);color:var(--navy);"><i class="fas fa-envelope"></i> dilip@pdka.in</a>
+          <a href="mailto:dilip@pdka.in" class="btn-outline founder-email-btn"><i class="fas fa-envelope"></i> dilip@pdka.in</a>
         </div>
       </div>
     </div>
@@ -1085,7 +892,7 @@
         <div class="service-body">
           <h3>Audit &amp; Assurance</h3>
           <p>Statutory audit, internal audit, tax audit, and concurrent audit services with rigorous quality standards for all entity types — listed, unlisted, and foreign subsidiaries.</p>
-          <button class="svc-know-more" onclick="openService('audit')">Know More <i class="fas fa-arrow-right"></i></button>
+          <a href="javascript:void(0)" onclick="openService('audit')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -1098,7 +905,7 @@
         <div class="service-body">
           <h3>Taxation</h3>
           <p>Corporate tax, personal tax, transfer pricing, international taxation, GST advisory, TDS compliance, and tax litigation support across India and cross-border.</p>
-          <button class="svc-know-more" onclick="openService('taxation')">Know More <i class="fas fa-arrow-right"></i></button>
+          <a href="javascript:void(0)" onclick="openService('taxation')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -1111,7 +918,7 @@
         <div class="service-body">
           <h3>FEMA &amp; International</h3>
           <p>FEMA compliance, RBI reporting, ECB, ODI, FDI advisory, overseas remittances, and foreign exchange management for companies operating globally.</p>
-          <button class="svc-know-more" onclick="openService('fema')">Know More <i class="fas fa-arrow-right"></i></button>
+          <a href="javascript:void(0)" onclick="openService('fema')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -1124,7 +931,7 @@
         <div class="service-body">
           <h3>IS Audit (CISA/DISA)</h3>
           <p>Information Systems Audit, IT General Controls review, cybersecurity risk assessments, ERP audit, and data privacy compliance — CISA &amp; DISA certified team.</p>
-          <button class="svc-know-more" onclick="openService('isaudit')">Know More <i class="fas fa-arrow-right"></i></button>
+          <a href="javascript:void(0)" onclick="openService('isaudit')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -1137,7 +944,7 @@
         <div class="service-body">
           <h3>Virtual CFO</h3>
           <p>Outsourced CFO services — MIS reporting, cash flow management, budgeting, investor relations, fundraising support, and board-level financial advisory.</p>
-          <button class="svc-know-more" onclick="openService('vcfo')">Know More <i class="fas fa-arrow-right"></i></button>
+          <a href="javascript:void(0)" onclick="openService('vcfo')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -1150,7 +957,7 @@
         <div class="service-body">
           <h3>Business Advisory</h3>
           <p>Business valuations, internal controls, corporate governance, ROC &amp; MCA compliance, restructuring advisory, and risk management for growing businesses.</p>
-          <button class="svc-know-more" onclick="openService('advisory')">Know More <i class="fas fa-arrow-right"></i></button>
+          <a href="javascript:void(0)" onclick="openService('advisory')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -1218,60 +1025,64 @@
         <div class="dept-card">
           <div class="dept-photo">
             <div style="text-align:center">
-              <div class="dept-initials">PS</div>
+              <div class="dept-initials">R</div>
               <div class="dept-photo-note">Photo to be updated</div>
             </div>
           </div>
           <div class="dept-info">
             <div class="dept-tag">Company Secretary</div>
-            <h4>Priya Sharma</h4>
+            <h4>Rinkal</h4>
             <div class="dept-role">Head — Corporate Compliance</div>
-            <div class="dept-quals">ACS · B.Com · 10 Yrs Exp</div>
+            <div class="dept-quals">Company Secretary</div>
+            <a href="team.html#company-secretary" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
 
         <div class="dept-card">
           <div class="dept-photo">
             <div style="text-align:center">
-              <div class="dept-initials">KN</div>
+              <div class="dept-initials">V</div>
               <div class="dept-photo-note">Photo to be updated</div>
             </div>
           </div>
           <div class="dept-info">
             <div class="dept-tag">Audit &amp; Assurance</div>
-            <h4>Karthik Nair</h4>
+            <h4>Vedamurthy</h4>
             <div class="dept-role">Head — Audit &amp; Assurance</div>
-            <div class="dept-quals">ACA · DISA · 12 Yrs Exp</div>
+            <div class="dept-quals">Audit &amp; Assurance</div>
+            <a href="team.html#audit" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
 
         <div class="dept-card">
           <div class="dept-photo">
             <div style="text-align:center">
-              <div class="dept-initials">MK</div>
+              <div class="dept-initials">R</div>
               <div class="dept-photo-note">Photo to be updated</div>
             </div>
           </div>
           <div class="dept-info">
             <div class="dept-tag">Advisory</div>
-            <h4>Meera Krishnan</h4>
+            <h4>Richa</h4>
             <div class="dept-role">Head — Business Advisory</div>
-            <div class="dept-quals">MBA · ACA · 9 Yrs Exp</div>
+            <div class="dept-quals">Business Advisory</div>
+            <a href="team.html#advisory" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
 
         <div class="dept-card">
           <div class="dept-photo">
             <div style="text-align:center">
-              <div class="dept-initials">RM</div>
+              <div class="dept-initials">S·R</div>
               <div class="dept-photo-note">Photo to be updated</div>
             </div>
           </div>
           <div class="dept-info">
             <div class="dept-tag">Taxation</div>
-            <h4>Rajan Mehta</h4>
+            <h4>Sandeep &amp; Rakesh</h4>
             <div class="dept-role">Head — Direct &amp; Indirect Tax</div>
-            <div class="dept-quals">ACA · LLB · 14 Yrs Exp</div>
+            <div class="dept-quals">Taxation</div>
+            <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
 
@@ -1287,6 +1098,7 @@
             <h4>Ananya Reddy</h4>
             <div class="dept-role">Head — FinOps &amp; Digital Finance</div>
             <div class="dept-quals">CPA · MBA · 8 Yrs Exp</div>
+            <a href="team.html#finops" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
 
@@ -1328,7 +1140,7 @@
         </div>
         <div class="insight-footer">
           <span class="insight-date">Apr 8, 2026</span>
-          <a href="#" class="insight-link" onclick="openArticle('itr2026')">Read More <i class="fas fa-arrow-right"></i></a>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('itr2026')">Read More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="insight-card">
@@ -1347,54 +1159,6 @@
   </div>
 </section>
 
-<!-- CAREERS -->
-<section id="careers">
-  <div class="section-inner">
-    <div class="section-label">Join Our Team</div>
-    <h2 class="section-title">Careers at PDKA</h2>
-    <p class="careers-intro">We are a growing practice committed to professional development. We welcome qualified Chartered Accountants, Company Secretaries, and ICAI articleship candidates to join our team.</p>
-    <div class="careers-grid">
-
-      <div class="career-card">
-        <div class="career-badge">Open</div>
-        <h3>Article Assistant</h3>
-        <div class="career-meta">
-          <span><i class="fas fa-graduation-cap"></i> CA Foundation / Inter</span>
-          <span><i class="fas fa-map-marker-alt"></i> Bangalore</span>
-          <span><i class="fas fa-briefcase"></i> Full-time Articleship</span>
-        </div>
-        <p>Gain structured practical training across Audit, Taxation and Compliance under direct mentorship. Exposure to IT/ITES, Retail and international client assignments.</p>
-        <div class="career-tags">
-          <span class="career-tag">Audit</span>
-          <span class="career-tag">Taxation</span>
-          <span class="career-tag">ICAI Registered</span>
-        </div>
-        <a href="mailto:dilip@pdka.in?subject=Application: Article Assistant" class="career-apply"><i class="fas fa-envelope"></i> Apply Now</a>
-      </div>
-
-      <div class="career-card">
-        <div class="career-badge">Open</div>
-        <h3>Senior CA / Assistant Manager</h3>
-        <div class="career-meta">
-          <span><i class="fas fa-graduation-cap"></i> FCA / ACA</span>
-          <span><i class="fas fa-map-marker-alt"></i> Bangalore</span>
-          <span><i class="fas fa-briefcase"></i> Full-time</span>
-        </div>
-        <p>Lead audit and advisory engagements for IT, ITES, and international clients. Manage articleship teams, client deliverables, and coordinate on partner-level assignments.</p>
-        <div class="career-tags">
-          <span class="career-tag">FCA / ACA</span>
-          <span class="career-tag">IT/ITES Experience</span>
-          <span class="career-tag">Advisory</span>
-        </div>
-        <a href="mailto:dilip@pdka.in?subject=Application: Senior CA / Assistant Manager" class="career-apply"><i class="fas fa-envelope"></i> Apply Now</a>
-      </div>
-
-    </div>
-    <div class="careers-open-app">
-      Don't see a suitable role? <a href="mailto:dilip@pdka.in?subject=Open Application — PDKA">Send us your CV</a> — we consider strong candidates on an ongoing basis.
-    </div>
-  </div>
-</section>
 
 
 <!-- DPDPA BANNER -->
@@ -1455,7 +1219,7 @@
             <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div class="contact-item-text">
               <strong>Office</strong>
-              <p>Unit FF-5 &amp; FF-6, First Floor, Sampurna Chambers,<br/>No. 13, Vasavi Temple Street, V.V. Puram, Bangalore – 560 004</p>
+              <a href="https://www.google.com/maps/search/Sampurna+Chambers+No+13+Vasavi+Temple+Street+VV+Puram+Bangalore+560004" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--orange);">Unit FF-5 &amp; FF-6, First Floor, Sampurna Chambers,<br/>No. 13, Vasavi Temple Street, V.V. Puram, Bangalore – 560 004</a>
             </div>
           </div>
           <div class="contact-item">
@@ -1467,10 +1231,9 @@
           </div>
         </div>
         <div class="social-links">
-          <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://wa.me/918041219056" class="social-link" title="WhatsApp" style="color:#25d366;"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.linkedin.com/company/pdka/" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="javascript:void(0)" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="javascript:void(0)" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
       <div class="contact-form-card">
@@ -1517,14 +1280,6 @@
         <p class="form-note">🔒 Your information is confidential and will not be shared.</p>
       </div>
     </div>
-    <!-- MAP -->
-    <div style="margin-top:48px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);">
-      <iframe
-        src="https://maps.google.com/maps?q=Sampurna+Chambers+No+13+Vasavi+Temple+Road+VV+Puram+Bangalore+560004&t=&z=16&ie=UTF8&iwloc=&output=embed"
-        width="100%" height="300" style="border:0;display:block;" allowfullscreen="" loading="lazy"
-        title="PDKA Office Location — Sampurna Chambers, V.V. Puram, Bangalore">
-      </iframe>
-    </div>
   </div>
 </section>
 
@@ -1541,7 +1296,7 @@
           </div>
         </a>
         <p>A professional firm of Chartered Accountants committed to quality, integrity, and ICAI standards since 1998.</p>
-        <p class="reg">ICAI Firm Reg. No.: [XXXXXX] · GSTIN: [XXXXXXXXX]</p>
+        <a href="client-portal.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--orange);color:white;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#f47820'" onmouseout="this.style.background='var(--orange)'"><i class="fas fa-user-circle"></i> Client Portal</a>
         <!-- ICAI Logo -->
         <div style="display:flex;align-items:center;gap:14px;margin-top:20px;">
           <svg height="52" viewBox="0 0 80 52" xmlns="http://www.w3.org/2000/svg" aria-label="ICAI — Institute of Chartered Accountants of India" style="opacity:0.85;">
@@ -1570,7 +1325,7 @@
           <li><a href="#about">About Us</a></li>
           <li><a href="#team">Our Team</a></li>
           <li><a href="#insights">Insights</a></li>
-          <li><a href="#careers">Careers</a></li>
+          <li><a href="careers.html">Careers</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
@@ -1588,19 +1343,13 @@
     <div class="footer-bottom">
       <p>© 2026 P. Dilip Kumar &amp; Associates. All rights reserved.</p>
       <div class="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms &amp; Conditions</a>
-        <a href="#" title="Registered with the Institute of Chartered Accountants of India">ICAI Registered</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+        <a href="javascript:void(0)" title="Registered with the Institute of Chartered Accountants of India">ICAI Registered</a>
       </div>
     </div>
   </div>
 </footer>
-
-<!-- WHATSAPP -->
-<a href="https://wa.me/918041219056" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
-</a>
 
 
 <script>
@@ -1635,54 +1384,9 @@
   });
 
 
-  // ── SECTION NAV DOTS ──
-  const sections = Array.from(document.querySelectorAll('section[id], #home'));
-  const dotsContainer = document.getElementById('section-dots');
-  sections.forEach((sec, i) => {
-    const dot = document.createElement('span');
-    dot.className = 'sdot';
-    dot.title = sec.id.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-    dot.addEventListener('click', () => sec.scrollIntoView({ behavior: 'smooth' }));
-    dotsContainer.appendChild(dot);
-  });
-  function updateDots() {
-    const mid = window.scrollY + window.innerHeight / 2;
-    sections.forEach((sec, i) => {
-      const top = sec.offsetTop, bot = top + sec.offsetHeight;
-      dotsContainer.children[i]?.classList.toggle('active', mid >= top && mid < bot);
-    });
-  }
-  window.addEventListener('scroll', updateDots, { passive: true });
-  updateDots();
 
-  // ── HERO TYPING EFFECT ──
-  (function() {
-    const titleEl = document.querySelector('.hero-title');
-    if (!titleEl) return;
-    const fullText = titleEl.innerHTML;
-    // Extract plain text parts (skip HTML tags for typing, then restore markup)
-    const lines = ['P. Dilip Kumar', '& Associates'];
-    titleEl.innerHTML = '';
-    const cursor = document.createElement('span');
-    cursor.className = 'typed-cursor';
-    titleEl.appendChild(cursor);
-    let lineIdx = 0, charIdx = 0;
-    let displayed = '';
-    function type() {
-      if (lineIdx >= lines.length) { cursor.remove(); return; }
-      const line = lines[lineIdx];
-      if (charIdx < line.length) {
-        displayed += line[charIdx++];
-        titleEl.innerHTML = displayed.replace('& Associates', '<span>& Associates</span>') + '<span class="typed-cursor"></span>';
-        setTimeout(type, charIdx === 1 ? 400 : 55);
-      } else {
-        displayed += lineIdx === 0 ? '<br/>' : '';
-        lineIdx++; charIdx = 0;
-        setTimeout(type, lineIdx < lines.length ? 180 : 0);
-      }
-    }
-    setTimeout(type, 600);
-  })();
+
+
 
   // ── ANIMATED STAT COUNTERS ──
   function animateCounter(el, target, suffix) {
@@ -1931,359 +1635,153 @@
   })();
 
   // Smooth nav active state
-  const sections = document.querySelectorAll('section[id], div[id]');
+  const navSections = document.querySelectorAll('section[id], div[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'white' : '';
-    });
+    navSections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    // nav link colors handled by CSS only
   });
 
-  // ── THEME TOGGLE ──
+
+
+
+  // Hero word typewriter effect
   (function() {
-    const saved = localStorage.getItem('pdka-theme');
-    if (saved === 'dark') {
-      document.documentElement.setAttribute('data-theme','dark');
-      const icon = document.getElementById('themeIcon');
-      const label = document.getElementById('themeLabel');
-      if (icon) icon.className = 'fas fa-sun';
-      if (label) label.textContent = 'Light';
+    const phrases = ['Tax Advisory','Audit & Assurance','Compliance Services','Business Advisory','CFO Services'];
+    const el = document.getElementById('hero-word');
+    if (!el) return;
+    el.textContent = '';
+    let pi = 0, ci = 0, deleting = false;
+
+    function type() {
+      const phrase = phrases[pi];
+      if (!deleting) {
+        el.textContent = phrase.substring(0, ci + 1);
+        ci++;
+        if (ci === phrase.length) { deleting = true; setTimeout(type, 1800); return; }
+        setTimeout(type, 90);
+      } else {
+        el.textContent = phrase.substring(0, ci - 1);
+        ci--;
+        if (ci === 0) {
+          deleting = false;
+          pi = (pi + 1) % phrases.length;
+          setTimeout(type, 350);
+          return;
+        }
+        setTimeout(type, 45);
+      }
     }
+    setTimeout(type, 500);
   })();
+
+  // Animated counters
+  (function() {
+    const counters = document.querySelectorAll('.hero-stat-num[data-count]');
+    if (!counters.length) return;
+    function animateCounters() {
+      counters.forEach(el => {
+        const target = parseInt(el.getAttribute('data-count'));
+        const suffix = target === 28 || target === 53 ? '+' : '';
+        let start = 0;
+        const dur = 1800;
+        const t0 = performance.now();
+        (function step(now) {
+          const p = Math.min((now - t0) / dur, 1);
+          const val = Math.floor(p * p * target);
+          el.textContent = val + (p === 1 ? suffix : '');
+          if (p < 1) requestAnimationFrame(step);
+        })(t0);
+      });
+    }
+    // Trigger when hero is visible
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { animateCounters(); observer.disconnect(); }
+    }, { threshold: 0.3 });
+    const strip = document.querySelector('.hero-stats-strip');
+    if (strip) observer.observe(strip);
+    else animateCounters();
+  })();
+
+
+  // ── DARK / LIGHT THEME TOGGLE ──
   function toggleTheme() {
-    const html = document.documentElement;
-    const icon = document.getElementById('themeIcon');
+    const html  = document.documentElement;
+    const icon  = document.getElementById('themeIcon');
     const label = document.getElementById('themeLabel');
     if (html.getAttribute('data-theme') === 'dark') {
       html.removeAttribute('data-theme');
-      if (icon) icon.className = 'fas fa-moon';
+      if (icon)  icon.className  = 'fas fa-moon';
       if (label) label.textContent = 'Dark';
-      localStorage.setItem('pdka-theme','light');
+      localStorage.setItem('pdka-theme', 'light');
     } else {
-      html.setAttribute('data-theme','dark');
-      if (icon) icon.className = 'fas fa-sun';
+      html.setAttribute('data-theme', 'dark');
+      if (icon)  icon.className  = 'fas fa-sun';
       if (label) label.textContent = 'Light';
-      localStorage.setItem('pdka-theme','dark');
+      localStorage.setItem('pdka-theme', 'dark');
     }
   }
-
-  // ── ARTICLE MODALS ──
-  const articles = {
-    icai2026: {
-      tag: 'ICAI · Apr 2026', title: 'ICAI Code of Ethics 2026: What Changed for CA Firms',
-      meta: 'April 15, 2026 · 8 min read · P. Dilip Kumar & Associates',
-      body: `<p>The 13th Edition of the ICAI Code of Ethics, effective April 1, 2026, introduces significant changes that affect how CA firms may advertise, network, and present themselves publicly.</p>
-<h3>Key Changes in the 2026 Edition</h3>
-<p>The revised code aligns with the IESBA International Code of Ethics and brings sweeping revisions to Part B (independence) and Part C (professional conduct for members in business).</p>
-<ul>
-<li><strong>Advertising Guidelines:</strong> CA firms may now mention specific service areas and qualifications on their websites, but testimonials and comparative claims remain prohibited.</li>
-<li><strong>Website Disclosures:</strong> Firms must disclose their ICAI registration number, partner details, and office addresses on their website.</li>
-<li><strong>Networking:</strong> Networking arrangements with foreign firms are now permitted under stricter independence safeguards.</li>
-<li><strong>Independence for Auditors:</strong> Self-review, familiarity, and advocacy threats must now be documented explicitly.</li>
-</ul>
-<h3>What This Means for PDKA Clients</h3>
-<p>For audit clients, there are enhanced documentation requirements for independence evaluations. For advisory clients, updated conflict-of-interest policies apply when serving multiple entities in the same group.</p>
-<div class="article-modal-cta">
-  <a href="#contact" class="btn-primary" onclick="closeArticle()">Talk to Our Team</a>
-  <a href="insights.html" class="btn-outline">More Insights</a>
-</div>`
-    },
-    itr2026: {
-      tag: 'ITR · Apr 2026', title: 'ITR Filing FY 2025-26: Compliance Checklist for Businesses',
-      meta: 'April 8, 2026 · 6 min read · P. Dilip Kumar & Associates',
-      body: `<p>With the Income Tax Return (ITR) filing season for FY 2025-26 open, here is a structured compliance checklist for businesses — covering deadlines, updated forms, and key areas of focus.</p>
-<h3>Key Deadlines</h3>
-<ul>
-<li><strong>July 31, 2026:</strong> ITR for non-audit cases (individuals, HUFs, non-corporate entities)</li>
-<li><strong>October 31, 2026:</strong> ITR for audit cases (companies, firms requiring tax audit u/s 44AB)</li>
-<li><strong>November 30, 2026:</strong> Transfer Pricing Report (Form 3CEB) and ITR for international transactions</li>
-</ul>
-<h3>Updated ITR Forms for FY 2025-26</h3>
-<ul>
-<li><strong>ITR-1 (Sahaj):</strong> Individuals with income up to Rs.50L from salary/house property/other sources</li>
-<li><strong>ITR-3:</strong> Individuals/HUFs with business/profession income</li>
-<li><strong>ITR-6:</strong> Companies (other than those claiming exemption u/s 11)</li>
-</ul>
-<h3>Compliance Checklist</h3>
-<ul>
-<li>Reconcile Books of Accounts with Form 26AS and Annual Information Statement (AIS)</li>
-<li>Verify TDS credits, advance tax payments, and self-assessment tax paid</li>
-<li>Ensure GST reconciliation with ITR turnover figures</li>
-<li>Review capital gains from sale of securities, property, or business assets</li>
-<li>Document all related-party transactions for transfer pricing compliance</li>
-</ul>
-<div class="article-modal-cta">
-  <a href="#contact" class="btn-primary" onclick="closeArticle()">Get Filing Help</a>
-  <a href="insights.html" class="btn-outline">More Insights</a>
-</div>`
-    },
-    fema2025: {
-      tag: 'FEMA · Jan 2025', title: 'FEMA 2025: Foreign Remittances, ODI Rules & Compliance for IT Companies',
-      meta: 'January 20, 2025 · 10 min read · P. Dilip Kumar & Associates',
-      body: `<p>The FEMA framework underwent significant updates in 2024-2025, particularly affecting IT & ITES companies that operate globally or remit funds overseas.</p>
-<h3>Key Updates in 2025</h3>
-<ul>
-<li><strong>ODI Liberalisation:</strong> Indian entities can now invest up to 400% of their net worth in overseas JVs/subsidiaries under the automatic route.</li>
-<li><strong>LRS Limit:</strong> The Liberalised Remittance Scheme (LRS) limit remains at USD 250,000 per financial year for resident individuals.</li>
-<li><strong>Form FC-GPR Simplification:</strong> Reporting form for foreign equity inflows streamlined with auto-population from FIRMS portal.</li>
-<li><strong>ECB Rationalisation:</strong> ECB tracks A and B merged, with a single all-in-cost ceiling of 500 bps over benchmark.</li>
-</ul>
-<h3>Obligations for IT/ITES Companies</h3>
-<ul>
-<li>Annual Performance Reports (APR) for overseas subsidiaries due by December 31</li>
-<li>Form ODI Part II (Share Certificate) submission within 30 days of allotment</li>
-<li>Hedging of ECB if tenor exceeds 5 years</li>
-<li>RBI reporting through FIRMS portal for all FDI/ODI transactions</li>
-</ul>
-<div class="article-modal-cta">
-  <a href="#contact" class="btn-primary" onclick="closeArticle()">FEMA Advisory</a>
-  <a href="insights.html" class="btn-outline">More Insights</a>
-</div>`
-    }
-  };
-
-  function openArticle(id) {
-    const art = articles[id]; if (!art) return;
-    document.getElementById('articleTag').textContent = art.tag;
-    document.getElementById('articleTitle').textContent = art.title;
-    document.getElementById('articleMeta').textContent = art.meta;
-    document.getElementById('articleBody').innerHTML = art.body;
-    document.getElementById('articleModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeArticle() {
-    document.getElementById('articleModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closeArticleIfOutside(e) {
-    if (e.target === document.getElementById('articleModal')) closeArticle();
-  }
-
-  // ── SERVICE MODALS ──
-  const services = {
-    audit: {
-      tag: 'Audit & Assurance', title: 'Audit & Assurance Services',
-      meta: 'Statutory · Internal · Tax · Concurrent Audit',
-      body: `<p>Our Audit & Assurance practice provides independent, objective assurance that helps organisations meet regulatory requirements and strengthen internal controls.</p>
-<h3>Statutory Audit</h3>
-<p>Statutory audits under the Companies Act 2013, reporting under SA 700 series. Our methodology aligns with ICAI Standards on Auditing and includes risk-based audit planning, substantive procedures, and management representation letters.</p>
-<h3>Tax Audit (Sec. 44AB)</h3>
-<p>Tax audits under Section 44AB of the Income Tax Act — including preparation of Form 3CA/3CB and Form 3CD with all required disclosures on related-party transactions, MSME dues, and deemed dividends.</p>
-<h3>Internal Audit</h3>
-<p>Risk-based internal audit for IT/ITES, retail, and manufacturing companies. We assess process controls, compliance with SOPs, and provide actionable recommendations to management and audit committees.</p>
-<h3>Concurrent Audit</h3>
-<p>Real-time concurrent audits for banks and financial institutions, ensuring day-to-day compliance with RBI guidelines and internal policies.</p>
-<div class="article-modal-cta">
-  <a href="#contact" class="btn-primary" onclick="closeService()">Get Audit Quote</a>
-  <a href="#contact" class="btn-outline" onclick="closeService()">Contact Us</a>
-</div>`
-    },
-    taxation: {
-      tag: 'Taxation', title: 'Taxation Services',
-      meta: 'Direct Tax · Indirect Tax · Transfer Pricing · GST',
-      body: `<p>Our taxation practice spans direct and indirect taxes — delivering compliant, efficient, and strategic tax solutions for businesses operating in India and internationally.</p>
-<h3>Corporate & Personal Taxation</h3>
-<p>ITR filing, advance tax computation, TDS compliance, and tax planning for corporates, LLPs, firms, and HNIs. We handle assessments, appeals before CIT(A), ITAT, and High Courts.</p>
-<h3>GST Advisory & Compliance</h3>
-<p>GST registration, monthly/quarterly returns (GSTR-1, 3B), annual returns (GSTR-9/9C), GST audits, reconciliations, and advisory on complex issues like ITC eligibility, place of supply, and reverse charge.</p>
-<h3>Transfer Pricing</h3>
-<p>Transfer pricing documentation (Form 3CEB), benchmarking studies, APA applications, and representation before TPO and DRP for IT/ITES and multinational groups.</p>
-<h3>International Taxation</h3>
-<p>DTAA analysis, WHT planning, Form 15CA/15CB, PE risk assessment, and structuring of cross-border transactions for companies expanding globally.</p>
-<div class="article-modal-cta">
-  <a href="#contact" class="btn-primary" onclick="closeService()">Tax Consultation</a>
-  <a href="#contact" class="btn-outline" onclick="closeService()">Contact Us</a>
-</div>`
-    },
-    fema: {
-      tag: 'FEMA & International', title: 'FEMA & International Advisory',
-      meta: 'FDI · ODI · ECB · RBI Reporting · DTAA',
-      body: `<p>Our FEMA & International practice is one of PDKA's core strengths — built over years of advising IT, ITES, and manufacturing companies on inbound and outbound cross-border transactions.</p>
-<h3>Foreign Direct Investment (FDI)</h3>
-<p>Advisory on FDI structuring, applicable entry routes (automatic vs. government), sectoral caps, downstream investment rules, and Form FC-GPR/FC-TRS filings with RBI through the FIRMS portal.</p>
-<h3>Overseas Direct Investment (ODI)</h3>
-<p>ODI structuring for Indian entities investing abroad. APR filings, share certificate compliance, and monitoring remittance limits under FEMA (ODI) Regulations 2022.</p>
-<h3>External Commercial Borrowings (ECB)</h3>
-<p>ECB structuring, all-in-cost compliance, end-use monitoring, Form ECB/ECB 2 filings, and hedging obligations for long-tenor borrowings.</p>
-<h3>RBI Compounding</h3>
-<p>Advisory and representation for compounding of FEMA contraventions before the Reserve Bank of India — covering delayed reporting, excess remittances, and non-compliant structures.</p>
-<div class="article-modal-cta">
-  <a href="#contact" class="btn-primary" onclick="closeService()">FEMA Advisory</a>
-  <a href="#contact" class="btn-outline" onclick="closeService()">Contact Us</a>
-</div>`
-    },
-    isaudit: {
-      tag: 'IS Audit (CISA/DISA)', title: 'Information Systems Audit',
-      meta: 'CISA · DISA · IT General Controls · Cybersecurity · ERP Audit',
-      body: `<p>Led by our CISA and DISA certified professionals, the IS Audit practice provides comprehensive assurance on IT systems, data security, and technology controls.</p>
-<h3>IT General Controls (ITGC) Review</h3>
-<p>Assessment of ITGCs covering logical access, change management, computer operations, and data backup/recovery — essential for SOX compliance and RBI IT framework compliance.</p>
-<h3>ERP & Application Audit</h3>
-<p>Audit of SAP, Oracle, Microsoft Dynamics, and Tally ERP environments — covering access controls, segregation of duties, configuration review, and automated controls testing.</p>
-<h3>Cybersecurity Risk Assessment</h3>
-<p>Cyber risk assessments aligned with ISO 27001, NIST CSF, and RBI Cybersecurity Framework. We identify vulnerabilities, evaluate controls, and provide risk-rated remediation roadmaps.</p>
-<h3>DPDPA & Data Privacy Compliance</h3>
-<p>Advisory on Digital Personal Data Protection Act 2023 — data mapping, consent management framework, breach notification procedures, and readiness assessments.</p>
-<div class="article-modal-cta">
-  <a href="#contact" class="btn-primary" onclick="closeService()">IS Audit Inquiry</a>
-  <a href="#contact" class="btn-outline" onclick="closeService()">Contact Us</a>
-</div>`
-    },
-    vcfo: {
-      tag: 'Virtual CFO', title: 'Virtual CFO Services',
-      meta: 'MIS · Budgeting · Investor Relations · Cash Flow Management',
-      body: `<p>Our Virtual CFO service gives growing businesses access to senior-level financial leadership — without the cost of a full-time CFO. We act as your strategic finance partner.</p>
-<h3>MIS & Financial Reporting</h3>
-<p>Monthly MIS reports, board packs, variance analysis, and KPI dashboards. We tailor reporting to your investor, banker, and management needs.</p>
-<h3>Budgeting & Cash Flow Management</h3>
-<p>Annual operating budgets, rolling 13-week cash flow forecasts, working capital optimisation, and cash conversion cycle analysis.</p>
-<h3>Fundraising & Investor Relations</h3>
-<p>Financial modelling for funding rounds, preparation of investor data rooms, due diligence support, and term sheet analysis. We have supported clients raising debt and equity from Indian and foreign investors.</p>
-<h3>ERP Implementation & Finance Transformation</h3>
-<p>Process mapping for finance automation, ERP selection, and post-implementation review to help finance teams move from spreadsheets to audit-ready systems.</p>
-<div class="article-modal-cta">
-  <a href="#contact" class="btn-primary" onclick="closeService()">Explore vCFO Plans</a>
-  <a href="#contact" class="btn-outline" onclick="closeService()">Contact Us</a>
-</div>`
-    },
-    advisory: {
-      tag: 'Business Advisory', title: 'Business Advisory Services',
-      meta: 'Valuation · Governance · ROC/MCA · Risk · Restructuring',
-      body: `<p>Our Business Advisory practice supports entrepreneurs, boards, and investors with independent advice on corporate governance, compliance, restructuring, and risk.</p>
-<h3>Business Valuation</h3>
-<p>Valuations under Income, Market, and Asset approaches for M&A transactions, ESOP issuance, FDI structuring (Rule 11UA), tax planning, and NCLT proceedings.</p>
-<h3>ROC & MCA Compliance</h3>
-<p>Annual filings (AOC-4, MGT-7), secretarial audit (Form MR-3), ROC inquiry responses, compounding applications, and advisory on Companies Act 2013 corporate governance requirements.</p>
-<h3>Internal Controls & Risk Management</h3>
-<p>Internal financial controls (IFC) design and testing under Section 134, enterprise risk management frameworks, and process audits.</p>
-<h3>Restructuring & Transaction Advisory</h3>
-<p>Business restructuring, mergers, demergers, slump sales, and NCLT schemes. End-to-end support from structure design through regulatory filings and implementation.</p>
-<div class="article-modal-cta">
-  <a href="#contact" class="btn-primary" onclick="closeService()">Advisory Consultation</a>
-  <a href="#contact" class="btn-outline" onclick="closeService()">Contact Us</a>
-</div>`
-    }
-  };
-
-  function openService(id) {
-    const svc = services[id]; if (!svc) return;
-    document.getElementById('svcTag').textContent = svc.tag;
-    document.getElementById('svcTitle').textContent = svc.title;
-    document.getElementById('svcMeta').textContent = svc.meta;
-    document.getElementById('svcBody').innerHTML = svc.body;
-    document.getElementById('serviceModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeService() {
-    document.getElementById('serviceModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closeSvcIfOutside(e) {
-    if (e.target === document.getElementById('serviceModal')) closeService();
-  }
-
-  // ── 28+ COUNTER ANIMATION ──
+  // Apply saved preference on load
   (function() {
-    const wrap  = document.getElementById('aboutBadge');
-    const numEl = document.getElementById('aboutBigNum');
-    const plusEl= document.getElementById('aboutBigPlus');
-    const glow  = document.getElementById('aboutNumGlow');
-    if (!wrap || !numEl || !plusEl) return;
-
-    let fired = false;
-    const obs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !fired) {
-        fired = true;
-        obs.disconnect();
-        runCounter();
-      }
-    }, { threshold: 0.4 });
-    obs.observe(wrap);
-
-    function runCounter() {
-      const total = 28, duration = 1800, start = performance.now();
-      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-      function frame(now) {
-        const p = Math.min((now - start) / duration, 1);
-        numEl.textContent = Math.floor(easeOut(p) * total);
-        if (p < 1) { requestAnimationFrame(frame); }
-        else { numEl.textContent = '28'; celebrate(); }
-      }
-      requestAnimationFrame(frame);
-    }
-
-    function celebrate() {
-      // Number burst
-      numEl.classList.add('burst');
-      numEl.addEventListener('animationend', () => numEl.classList.remove('burst'), { once: true });
-
-      // + pop
-      setTimeout(() => plusEl.classList.add('pop'), 180);
-
-      // Glow ring expand
-      if (glow) {
-        glow.classList.add('burst');
-        setTimeout(() => glow.classList.remove('burst'), 950);
-      }
-
-      // Confetti burst
-      const colors = ['#e8600a','#f47820','#fba55a','#ffcc80','#ffffff','#c9922a'];
-      const count = 28;
-      for (let i = 0; i < count; i++) {
-        const p = document.createElement('div');
-        p.className = 'about-confetti';
-        const angle = (i / count) * 360 + Math.random() * 10;
-        const dist  = 80 + Math.random() * 100;
-        const tx = Math.round(Math.cos(angle * Math.PI/180) * dist);
-        const ty = Math.round(Math.sin(angle * Math.PI/180) * dist - 60);
-        const size = 6 + Math.floor(Math.random() * 9);
-        const shape = Math.random() > 0.5 ? '50%' : '2px';
-        p.style.cssText = [
-          'width:'  + size + 'px',
-          'height:' + size + 'px',
-          'border-radius:' + shape,
-          'background:' + colors[i % colors.length],
-          'position:absolute',
-          'left:50%','top:50%',
-          '--tx:' + tx + 'px',
-          '--ty:' + ty + 'px',
-          '--tr:' + Math.round(Math.random()*540) + 'deg',
-          'animation-duration:' + (0.7 + Math.random()*0.5) + 's',
-          'animation-delay:' + (Math.random()*0.1) + 's'
-        ].join(';');
-        wrap.appendChild(p);
-        setTimeout(() => p.remove(), 1400);
-      }
+    const saved = localStorage.getItem('pdka-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      const icon  = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+      if (icon)  icon.className  = 'fas fa-sun';
+      if (label) label.textContent = 'Light';
     }
   })();
 
-  // Escape key closes modals
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') { closeArticle(); closeService(); }
-  });
+  // ── ABOUT FULLSCREEN RISE (smooth RAF-driven) ──
+  (function () {
+    const about  = document.getElementById('about');
+    const img    = document.querySelector('#about .about-bg-img img');
+    const center = document.querySelector('#about .about-center');
+    if (!about) return;
+
+    // Cubic ease-out for a buttery feel
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    let ticking = false;
+    function update() {
+      const rect = about.getBoundingClientRect();
+      const vh   = window.innerHeight;
+      // raw progress: 0 = about just entering bottom, 1 = about top at viewport top
+      const raw = Math.max(0, Math.min(1, 1 - rect.top / vh));
+      const p   = easeOut(raw);
+
+      // Border-radius: 28px → 0
+      const r = (28 * (1 - p)).toFixed(1);
+      about.style.borderRadius = r + 'px ' + r + 'px 0 0';
+
+      // Photo de-zoom: scale 1.08 → 1.0
+      if (img) img.style.transform = 'scale(' + (1.08 - raw * 0.08).toFixed(4) + ')';
+
+      // Centre content: fade + rise
+      if (center) {
+        const op = Math.min(1, raw * 2);          // fades in faster
+        const ty = Math.round((1 - p) * 48);
+        center.style.opacity   = op.toFixed(3);
+        center.style.transform = 'translateY(' + ty + 'px)';
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  })();
 
 </script>
-
-<!-- ARTICLE MODAL -->
-<div class="article-modal-overlay" id="articleModal" onclick="closeArticleIfOutside(event)">
-  <div class="article-modal">
-    <div class="article-modal-header">
-      <button class="article-modal-close" onclick="closeArticle()" aria-label="Close">&times;</button>
-      <div class="article-modal-tag" id="articleTag"></div>
-      <h2 id="articleTitle"></h2>
-      <div class="article-modal-meta" id="articleMeta"></div>
-    </div>
-    <div class="article-modal-body" id="articleBody"></div>
-  </div>
-</div>
 
 <!-- SERVICE MODAL -->
 <div class="article-modal-overlay" id="serviceModal" onclick="closeSvcIfOutside(event)">
   <div class="article-modal">
     <div class="article-modal-header">
-      <button class="article-modal-close" onclick="closeService()" aria-label="Close">&times;</button>
+      <button class="article-modal-close" onclick="closeService()"><i class="fas fa-times"></i></button>
       <div class="article-modal-tag" id="svcTag"></div>
       <h2 id="svcTitle"></h2>
       <div class="article-modal-meta" id="svcMeta"></div>
@@ -2291,5 +1789,330 @@
     <div class="article-modal-body" id="svcBody"></div>
   </div>
 </div>
+
+<!-- ARTICLE MODAL -->
+<div class="article-modal-overlay" id="articleModal" onclick="closeArticleIfOutside(event)">
+  <div class="article-modal">
+    <div class="article-modal-header">
+      <button class="article-modal-close" onclick="closeArticle()"><i class="fas fa-times"></i></button>
+      <div class="article-modal-tag" id="modalTag"></div>
+      <h2 id="modalTitle"></h2>
+      <div class="article-modal-meta" id="modalMeta"></div>
+    </div>
+    <div class="article-modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const articles = {
+  icai2026: {
+    tag: 'ICAI · Apr 2026',
+    title: 'ICAI Code of Ethics 2026: What Changed for CA Firms',
+    meta: 'Published April 15, 2026 · 5 min read',
+    body: `
+      <h3>Overview</h3>
+      <p>The Institute of Chartered Accountants of India (ICAI) released the <strong>13th Edition of the Code of Ethics</strong>, effective from April 1, 2026. This edition aligns Indian standards closer to the IESBA International Code and introduces substantive changes that every CA firm must be aware of.</p>
+
+      <h3>Key Changes: Advertising & Publicity</h3>
+      <p>CA firms are now permitted to maintain a professional website and list their services, provided content is factual and not misleading. The following are now permitted:</p>
+      <ul>
+        <li>Listing services offered, fee ranges (indicative), and team credentials</li>
+        <li>Publishing technical articles, insights, and thought leadership content</li>
+        <li>Mentioning major client industries (without naming clients)</li>
+      </ul>
+      <p>However, <strong>comparative advertising, testimonials, and ranking claims</strong> remain prohibited. Firms must not imply superiority over other CA firms in any medium.</p>
+
+      <h3>Networking & Referral Arrangements</h3>
+      <p>The 2026 edition provides greater clarity on permitted networking. CA firms may enter into formal alliances with non-CA professionals (lawyers, valuers, consultants) for cross-referrals, provided independence is not compromised and clients are informed of such arrangements upfront.</p>
+
+      <h3>Independence for Audit Engagements</h3>
+      <p>Significant tightening of independence rules for statutory auditors includes:</p>
+      <ul>
+        <li>Cooling-off period of 2 years before an audit firm partner can join an audit client</li>
+        <li>Explicit prohibition on audit firms providing bookkeeping, payroll, or IT implementation to audit clients</li>
+        <li>Strengthened provisions on financial self-interest and advocacy threats</li>
+      </ul>
+
+      <h3>What PDKA Is Doing</h3>
+      <p>At P. Dilip Kumar & Associates, we have reviewed our engagement letters, website content, and referral practices to ensure full compliance with the updated Code. Our team undertook internal training in March 2026 ahead of the April effective date.</p>
+
+      <div class="article-modal-cta">
+        <p>Questions about how the new Code impacts your firm or engagement with us?</p>
+        <a href="#contact" class="btn-primary" onclick="closeArticle()" style="display:inline-flex;">Contact Us <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `
+  },
+  itr2026: {
+    tag: 'ITR · Apr 2026',
+    title: 'ITR Filing FY 2025-26: Compliance Checklist for Businesses',
+    meta: 'Published April 8, 2026 · 6 min read',
+    body: `
+      <h3>Key Deadlines for FY 2025-26</h3>
+      <p>Staying ahead of ITR deadlines is critical to avoiding interest under Section 234A/B/C and late filing fees under Section 234F. Here are the key dates:</p>
+      <ul>
+        <li><strong>July 31, 2026</strong> — Non-audit cases (individuals, HUFs, firms not requiring audit)</li>
+        <li><strong>October 31, 2026</strong> — Audit cases (companies, firms requiring tax audit)</li>
+        <li><strong>November 30, 2026</strong> — Entities with transfer pricing report (Form 3CEB)</li>
+      </ul>
+
+      <h3>Updated ITR Forms for AY 2026-27</h3>
+      <p>The CBDT notified revised ITR forms in March 2026. Notable changes include:</p>
+      <ul>
+        <li><strong>ITR-3 & ITR-5:</strong> New schedules for reporting crypto assets and VDA income separately</li>
+        <li><strong>ITR-6:</strong> Enhanced disclosure for related-party transactions and deferred tax</li>
+        <li><strong>All forms:</strong> Mandatory linking of PAN with Aadhaar; mismatches will result in processing delays</li>
+      </ul>
+
+      <h3>Pre-Filing Compliance Checklist</h3>
+      <ul>
+        <li>☑ Reconcile Books of Accounts with 26AS, AIS, and TIS</li>
+        <li>☑ Verify TDS credits — mismatches are a primary cause of ITR processing delays</li>
+        <li>☑ Confirm depreciation calculation under both Companies Act and Income Tax Act</li>
+        <li>☑ Review MAT/AMT applicability and compute book profits under Section 115JB</li>
+        <li>☑ Compile details of carried-forward losses and ensure proper schedule filing</li>
+        <li>☑ MSME vendor outstanding — Section 43B(h) disallowance applicable where dues unpaid beyond agreed period</li>
+        <li>☑ Ensure Form 3CD, 3CB, and 3CA are finalised before due date</li>
+      </ul>
+
+      <h3>Common Pitfalls to Avoid</h3>
+      <p>Our team frequently encounters these errors during tax filings. Double-check your returns against these before submission:</p>
+      <ul>
+        <li>Incorrect reporting of deemed dividends under Section 2(22)(e)</li>
+        <li>Missing disclosure of director loans in closely-held companies</li>
+        <li>Failure to report exempt income (LTCG on equities below ₹1 lakh threshold must still be disclosed)</li>
+      </ul>
+
+      <div class="article-modal-cta">
+        <p>Need assistance with ITR filing or tax audit for FY 2025-26?</p>
+        <a href="#contact" class="btn-primary" onclick="closeArticle()" style="display:inline-flex;">Get in Touch <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `
+  },
+  fema2025: {
+    tag: 'FEMA · Jan 2025',
+    title: 'FEMA 2025: Foreign Remittances, ODI Rules & Compliance for IT Companies',
+    meta: 'Published January 20, 2025 · 7 min read',
+    body: `
+      <h3>Background</h3>
+      <p>The Foreign Exchange Management Act (FEMA) framework saw significant regulatory updates in 2024–25. For IT and ITES companies with global operations, understanding the updated ODI rules, LRS limits, and AD bank obligations is essential to remain compliant.</p>
+
+      <h3>Overseas Direct Investment (ODI) — Revised Framework</h3>
+      <p>FEMA (Overseas Investment) Rules, 2022 and subsequent RBI circulars have reshaped how Indian companies can invest abroad. Key points for IT firms:</p>
+      <ul>
+        <li><strong>Financial Commitment (FC) limit:</strong> Indian entities can invest up to 400% of their net worth in overseas JVs/WOS, subject to RBI approval beyond automatic route thresholds</li>
+        <li><strong>Step-down subsidiaries:</strong> Any indirect investment through a foreign holding company must now be reported in the Annual Performance Report (APR)</li>
+        <li><strong>Round-tripping:</strong> Structures where funds remitted overseas are reinvested in India via a foreign entity remain under enhanced scrutiny</li>
+      </ul>
+
+      <h3>LRS (Liberalised Remittance Scheme) Updates</h3>
+      <p>The $250,000 per financial year limit remains unchanged for individuals. However, the TCS implications under Section 206C(1G) must be factored in:</p>
+      <ul>
+        <li>TCS @ 20% applies on remittances exceeding ₹7 lakh per FY under LRS (except for education loans and medical treatment)</li>
+        <li>Employers must account for TCS on overseas travel packages arranged for employees</li>
+        <li>Form 15CA/CB requirements remain mandatory for most foreign remittances above prescribed thresholds</li>
+      </ul>
+
+      <h3>Compliance Obligations for IT & ITES Companies</h3>
+      <p>IT companies with subsidiaries or branch offices overseas face the following ongoing compliance requirements:</p>
+      <ul>
+        <li><strong>APR (Annual Performance Report):</strong> Due by December 31 each year; covers financial details of foreign entity and repatriation of dividends</li>
+        <li><strong>Form ODI:</strong> Must be filed within 30 days of any new investment or change in shareholding of the overseas entity</li>
+        <li><strong>SOFTEX / STPI:</strong> IT exporters must file SOFTEX forms for software exports; non-compliance attracts RBI notice</li>
+        <li><strong>ECB compliance:</strong> External Commercial Borrowings from overseas group entities require RBI filing and adherence to all-in-cost ceilings</li>
+      </ul>
+
+      <h3>How PDKA Can Help</h3>
+      <p>Our FEMA practice, led by our founder P. Dilip Kumar (a CISA-certified expert with experience across 9 countries), assists IT and ITES companies with ODI filings, APR preparation, SOFTEX compliance, and RBI compounding applications where past non-compliances need to be regularised.</p>
+
+      <div class="article-modal-cta">
+        <p>Need a FEMA compliance review for your company's overseas operations?</p>
+        <a href="#contact" class="btn-primary" onclick="closeArticle()" style="display:inline-flex;">Talk to Our Team <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `
+  }
+};
+
+function openArticle(id) {
+  const a = articles[id];
+  if (!a) return;
+  document.getElementById('modalTag').textContent = a.tag;
+  document.getElementById('modalTitle').textContent = a.title;
+  document.getElementById('modalMeta').textContent = a.meta;
+  document.getElementById('modalBody').innerHTML = a.body;
+  const overlay = document.getElementById('articleModal');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeArticle() {
+  document.getElementById('articleModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeArticleIfOutside(e) {
+  if (e.target === document.getElementById('articleModal')) closeArticle();
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeArticle(); closeService(); }
+});
+
+// ── SERVICE MODALS ──
+const services = {
+  audit: {
+    tag: 'Audit & Assurance',
+    title: 'Audit & Assurance Services',
+    meta: 'Statutory · Internal · Tax · Concurrent Audit',
+    body: `
+      <h3>Overview</h3>
+      <p>PDKA provides comprehensive audit and assurance services to businesses across sectors. With 28+ years of experience and a CISA/DISA-certified team, we bring rigorous methodology and deep sectoral knowledge to every engagement.</p>
+      <h3>Statutory Audit</h3>
+      <p>We conduct statutory audits under the Companies Act, 2013 for private limited companies, public companies, LLPs, and foreign subsidiaries. Our audits comply fully with Standards on Auditing (SAs) issued by ICAI and focus on giving a true and fair view of financial statements.</p>
+      <h3>Internal Audit</h3>
+      <p>Our internal audit practice helps organisations strengthen their internal control frameworks. We evaluate risk management processes, identify control gaps, and provide actionable recommendations to management. Industries served include IT, manufacturing, retail, NBFCs, and real estate.</p>
+      <h3>Tax Audit (Section 44AB)</h3>
+      <p>We conduct tax audits for businesses and professionals whose turnover exceeds prescribed thresholds under the Income Tax Act. Our Form 3CA/3CB and 3CD preparation is thorough and completed well ahead of deadlines to avoid last-minute pressure.</p>
+      <h3>Concurrent Audit</h3>
+      <p>For banks, NBFCs, and large corporates, we provide concurrent audit services — real-time review of transactions and processes to ensure ongoing compliance with regulatory guidelines and internal policies.</p>
+      <h3>Why PDKA</h3>
+      <ul>
+        <li>ICAI-empanelled audit firm with 28+ years of practice</li>
+        <li>Experienced with listed companies, foreign subsidiaries, and MNC branches</li>
+        <li>Strong quality control processes aligned with ICAI Quality Review Board standards</li>
+        <li>Timely delivery — we have never missed a statutory filing deadline</li>
+      </ul>
+      <div class="article-modal-cta">
+        <p>Discuss your audit requirements with our team.</p>
+        <a href="#contact" class="btn-primary" onclick="closeService()">Get in Touch <i class="fas fa-arrow-right"></i></a>
+      </div>`
+  },
+  taxation: {
+    tag: 'Taxation',
+    title: 'Taxation Services',
+    meta: 'Direct Tax · GST · Transfer Pricing · International Tax',
+    body: `
+      <h3>Overview</h3>
+      <p>Tax compliance and planning is at the core of PDKA's practice. We serve corporates, HNIs, startups, and NRIs with comprehensive direct and indirect tax services, combining technical depth with practical, business-oriented advice.</p>
+      <h3>Direct Tax — Corporate & Personal</h3>
+      <p>We handle ITR preparation and filing for companies, LLPs, firms, and individuals. Our services include tax planning, advance tax computation, TDS compliance, and handling scrutiny assessments before the Income Tax Department.</p>
+      <h3>GST Advisory & Compliance</h3>
+      <p>From GST registration and monthly return filing (GSTR-1, GSTR-3B) to annual return (GSTR-9) and GST audits, PDKA provides end-to-end GST compliance. We also assist with refund claims for exporters and handle GST litigation and departmental notices.</p>
+      <h3>Transfer Pricing</h3>
+      <p>For companies with international transactions with associated enterprises, we prepare Transfer Pricing documentation (Local File, Master File, Form 3CEB), conduct benchmarking analysis, and represent clients before the Transfer Pricing Officer and DRP.</p>
+      <h3>International Taxation</h3>
+      <p>We advise on withholding tax on cross-border payments, DTAA benefits, PE exposure, and tax-efficient structuring of international operations for Indian companies going global and foreign companies entering India.</p>
+      <h3>Tax Litigation</h3>
+      <p>Our team represents clients at all levels — from the Assessing Officer to CIT(Appeals), ITAT, and High Court. We prepare strong written submissions backed by case law and aim to resolve disputes efficiently.</p>
+      <div class="article-modal-cta">
+        <p>Need tax advisory or compliance support?</p>
+        <a href="#contact" class="btn-primary" onclick="closeService()">Talk to Our Tax Team <i class="fas fa-arrow-right"></i></a>
+      </div>`
+  },
+  fema: {
+    tag: 'FEMA & International',
+    title: 'FEMA & International Services',
+    meta: 'FEMA · RBI · ECB · ODI · FDI · Cross-Border Advisory',
+    body: `
+      <h3>Overview</h3>
+      <p>PDKA is one of Bangalore's most experienced CA firms in FEMA and cross-border compliance. Our founder P. Dilip Kumar holds a CISA certification and has personally handled FEMA advisory engagements across 9 countries — including the US, UK, UAE, Singapore, and Germany.</p>
+      <h3>Inbound Investment (FDI)</h3>
+      <p>We assist foreign companies and investors with FDI compliance — automatic route reporting (FC-GPR, FC-TRS), sectoral cap analysis, downstream investment structuring, and compounding of past violations with RBI.</p>
+      <h3>Outbound Investment (ODI)</h3>
+      <p>For Indian companies investing abroad, we handle ODI filings, Annual Performance Reports (APR), step-down subsidiary reporting, LRS compliance, and Form 15CA/CB for foreign remittances.</p>
+      <h3>External Commercial Borrowings (ECB)</h3>
+      <p>We advise on ECB structures — automatic vs. approval route, all-in-cost compliance, reporting requirements (ECB-2 returns), and end-use monitoring for Indian companies borrowing from overseas lenders.</p>
+      <h3>SOFTEX & STPI Compliance</h3>
+      <p>IT and software exporters must file SOFTEX forms for deemed exports. PDKA handles SOFTEX filing, STPI registration, and export proceeds realisation compliance under FEMA.</p>
+      <h3>RBI Compounding</h3>
+      <p>Inadvertent FEMA violations can be regularised through RBI's compounding process. We prepare and file compounding applications and represent clients before the RBI compounding authority.</p>
+      <div class="article-modal-cta">
+        <p>Have a cross-border compliance requirement?</p>
+        <a href="#contact" class="btn-primary" onclick="closeService()">Speak to Our FEMA Expert <i class="fas fa-arrow-right"></i></a>
+      </div>`
+  },
+  isaudit: {
+    tag: 'IS Audit (CISA/DISA)',
+    title: 'Information Systems Audit',
+    meta: 'IS Audit · IT General Controls · Cybersecurity · ERP Audit · DPDPA',
+    body: `
+      <h3>Overview</h3>
+      <p>PDKA's IS Audit practice is led by our founder P. Dilip Kumar, a globally certified <strong>CISA (Certified Information Systems Auditor)</strong> and <strong>DISA (Diploma in Information Systems Audit)</strong> professional. We bring international standards to IT audit engagements across banking, IT/ITES, manufacturing, and healthcare.</p>
+      <h3>IT General Controls (ITGC) Review</h3>
+      <p>We assess the effectiveness of ITGCs — covering access management, change management, IT operations, and data backup and recovery. ITGC reviews are essential for SOX compliance, RBI IT frameworks, and SEBI system audit requirements.</p>
+      <h3>ERP System Audit</h3>
+      <p>We conduct audits of ERP systems (SAP, Oracle, Tally, Microsoft Dynamics) to evaluate configuration controls, segregation of duties, user access provisioning, and financial reporting integrity from the IT perspective.</p>
+      <h3>Cybersecurity Risk Assessment</h3>
+      <p>Using frameworks such as NIST CSF and ISO 27001, we assess an organisation's cybersecurity posture — identifying vulnerabilities in network security, endpoint protection, incident response readiness, and vendor risk management.</p>
+      <h3>Data Privacy & DPDPA Compliance</h3>
+      <p>As India's DPDPA 2023 enforcement approaches, we assist organisations with data audits, privacy impact assessments, consent management reviews, and breach response preparedness — bridging the gap between IT controls and legal compliance.</p>
+      <h3>RBI IS Audit for NBFCs & Banks</h3>
+      <p>We conduct IS audits as required by RBI's Master Directions on IT Framework for NBFCs and Urban Co-operative Banks, covering cyber risk management, IT governance, and business continuity planning.</p>
+      <div class="article-modal-cta">
+        <p>Want an IS audit or cybersecurity assessment?</p>
+        <a href="#contact" class="btn-primary" onclick="closeService()">Contact Our IS Audit Team <i class="fas fa-arrow-right"></i></a>
+      </div>`
+  },
+  vcfo: {
+    tag: 'Virtual CFO',
+    title: 'Virtual CFO Services',
+    meta: 'MIS Reporting · Financial Strategy · Investor Relations · Fundraising',
+    body: `
+      <h3>Overview</h3>
+      <p>PDKA's Virtual CFO service gives growing businesses access to senior financial leadership — on a fractional basis and at a fraction of the cost of a full-time CFO. We serve startups, SMEs, and family businesses typically between ₹2 Cr and ₹100 Cr in revenue.</p>
+      <h3>Management Reporting (MIS)</h3>
+      <p>We prepare monthly MIS packs covering P&L, balance sheet, cash flow statement, and key business KPIs. Our dashboards give promoters and boards a clear, real-time view of financial performance — not just accounting numbers.</p>
+      <h3>Budgeting & Forecasting</h3>
+      <p>We build annual budgets, rolling forecasts, and scenario models so management can make informed decisions. Monthly budget-vs-actuals variance analysis highlights where the business is performing ahead or behind plan.</p>
+      <h3>Investor Relations & Fundraising Support</h3>
+      <p>For startups raising Angel, Seed, or Series A funding, we prepare financial models, investor decks, data rooms, and cap table analyses. We also handle investor reporting post-fundraise and coordinate with legal teams on term sheet financial terms.</p>
+      <h3>Cash Flow & Working Capital Management</h3>
+      <p>We monitor receivables, payables, and inventory cycles to optimise working capital. We also prepare CMA data for bank lending proposals and manage relationships with bankers on behalf of clients.</p>
+      <h3>Compliance Oversight</h3>
+      <p>The Virtual CFO coordinates all statutory compliance — GST, TDS, advance tax, ROC filings, and annual audits — ensuring nothing falls through the cracks as the business scales.</p>
+      <div class="article-modal-cta">
+        <p>Explore whether PDKA's Virtual CFO service is right for your business.</p>
+        <a href="#contact" class="btn-primary" onclick="closeService()">Schedule a Consultation <i class="fas fa-arrow-right"></i></a>
+      </div>`
+  },
+  advisory: {
+    tag: 'Business Advisory',
+    title: 'Business Advisory Services',
+    meta: 'Valuations · Corporate Governance · ROC/MCA · Restructuring',
+    body: `
+      <h3>Overview</h3>
+      <p>PDKA's Business Advisory practice helps promoters and management navigate complex business decisions — from valuations and restructuring to governance and regulatory compliance. We act as trusted advisors, not just compliance professionals.</p>
+      <h3>Business Valuations</h3>
+      <p>We conduct valuations for various purposes — M&A transactions, ESOP schemes, FDI (Rule 11UA), gift tax (Section 56), goodwill amortisation, and dispute resolution. Our valuations are prepared using recognised methodologies (DCF, NAV, market multiples) and are defensible before tax authorities and courts.</p>
+      <h3>Corporate Governance & Internal Controls</h3>
+      <p>We assist boards and audit committees in strengthening corporate governance frameworks — including risk management policies, whistleblower mechanisms, related-party transaction policies, and board evaluation processes aligned with SEBI LODR and Companies Act requirements.</p>
+      <h3>ROC & MCA Compliance</h3>
+      <p>We handle all Ministry of Corporate Affairs filings — annual returns (MGT-7), financial statement filings (AOC-4), director KYC (DIR-3 KYC), charge creation and satisfaction, and event-based filings for share allotments, director changes, and registered office shifts.</p>
+      <h3>Business Restructuring</h3>
+      <p>We advise on mergers, demergers, slump sales, and business transfers — covering tax implications, valuation, NCLT/RD procedures, and post-merger integration from a financial and compliance perspective.</p>
+      <h3>ESOP Structuring</h3>
+      <p>We assist startups and growth-stage companies with ESOP plan design, valuation for grant and exercise, tax implications for employees, and accounting treatment under Ind AS 102 / AS 15.</p>
+      <div class="article-modal-cta">
+        <p>Need strategic business advisory support?</p>
+        <a href="#contact" class="btn-primary" onclick="closeService()">Talk to Our Advisory Team <i class="fas fa-arrow-right"></i></a>
+      </div>`
+  }
+};
+
+function openService(id) {
+  const s = services[id];
+  if (!s) return;
+  document.getElementById('svcTag').textContent   = s.tag;
+  document.getElementById('svcTitle').textContent = s.title;
+  document.getElementById('svcMeta').textContent  = s.meta;
+  document.getElementById('svcBody').innerHTML    = s.body;
+  const overlay = document.getElementById('serviceModal');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeService() {
+  document.getElementById('serviceModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeSvcIfOutside(e) {
+  if (e.target === document.getElementById('serviceModal')) closeService();
+}
+</script>
 </body>
 </html>
