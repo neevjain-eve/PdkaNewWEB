@@ -765,6 +765,14 @@
     [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
   
     /* ── 28+ STAT COUNTER ── */
+    .about-logo {
+      height: clamp(48px, 7vw, 80px);
+      width: auto;
+      margin: 0 auto 12px;
+      display: block;
+      filter: brightness(0) invert(1);
+      opacity: 0.95;
+    }
     .about-stat-wrap {
       display: inline-flex; flex-direction: column;
       align-items: center; margin: 8px auto 20px;
@@ -852,7 +860,7 @@
   <div class="about-overlay"></div>
   <div class="about-center">
     <div class="about-label">About the Firm</div>
-    <div class="about-firm-name">P. Dilip Kumar &amp; Associates</div>
+    <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="P. Dilip Kumar &amp; Associates" class="about-logo" />
     <div class="about-stat-wrap" id="aboutStatWrap">
       <div class="about-stat-num-row">
         <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
