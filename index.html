@@ -765,10 +765,17 @@
     [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
   
     /* ── 28+ STAT COUNTER ── */
-    .about-logo-svg {
-      width: min(440px, 90vw); height: auto;
+    .about-logo {
+      width: min(351px, 88vw); height: auto;
       margin: 0 auto 16px; display: block;
-      filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+      -webkit-mask-image:
+        linear-gradient(to right,  transparent 0%, black 6%, black 94%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to right,  transparent 0%, black 6%, black 94%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+      mask-composite: intersect;
     }
     .about-stat-wrap {
       display: inline-flex; flex-direction: column;
@@ -857,76 +864,7 @@
   <div class="about-overlay"></div>
   <div class="about-center">
     <div class="about-label">About the Firm</div>
-        <svg class="about-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 96" role="img" aria-label="P. Dilip Kumar &amp; Associates, Chartered Accountants">
-      <defs>
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400;700&display=swap');
-        </style>
-      </defs>
-      <!-- Row 1: P. DILIP KUMAR& -->
-      <text x="0" y="52"
-        font-family="'Playfair Display', Georgia, 'Times New Roman', serif"
-        font-weight="900" font-size="54" fill="#F7941D" letter-spacing="1">P. DILIP KUMAR<tspan fill="#1B3A6B" font-style="italic">&amp;</tspan></text>
-      <!-- Barcode bars -->
-      <rect x="0"   y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="4"   y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="7"   y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="12"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="15"  y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="19"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="22"  y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="27"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="30"  y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="34"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="37"  y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="42"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="45"  y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="49"  y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="54"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="57"  y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="61"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="64"  y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="69"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="72"  y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="76"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="79"  y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="84"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="87"  y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="91"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="94"  y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="99"  y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="102" y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="106" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="109" y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="114" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="117" y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="121" y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="125" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="128" y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="133" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="136" y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="140" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="143" y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="148" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="151" y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="155" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="158" y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="163" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="166" y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="170" y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <rect x="174" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="177" y="60" width="3"   height="26" fill="#1B3A6B"/>
-      <rect x="182" y="60" width="1"   height="26" fill="#1B3A6B"/>
-      <rect x="185" y="60" width="2"   height="26" fill="#1B3A6B"/>
-      <!-- associates -->
-      <text x="198" y="83"
-        font-family="'Inter', Arial, sans-serif"
-        font-weight="700" font-size="28" fill="#F7941D" letter-spacing="0.5">associates</text>
-      <!-- chartered accountants -->
-      <text x="199" y="95"
-        font-family="'Inter', Arial, sans-serif"
-        font-weight="400" font-size="9" fill="rgba(255,255,255,0.75)" letter-spacing="2">chartered accountants</text>
-    </svg>
+        <img src="logo-1x.png" srcset="logo-1x.png 1x, logo-2x.png 2x, logo-3x.png 3x" width="351" height="91" alt="P. Dilip Kumar &amp; Associates" class="about-logo" />
     <div class="about-stat-wrap" id="aboutStatWrap">
       <div class="about-stat-num-row">
         <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
