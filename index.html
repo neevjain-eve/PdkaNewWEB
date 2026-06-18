@@ -764,39 +764,34 @@
     .theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
     [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
   
-    /* ── 28+ RING COUNTER ── */
-    .about-ring-wrap {
-      position: relative; display: inline-flex;
-      align-items: center; justify-content: center;
-      width: clamp(180px,26vw,260px); height: clamp(180px,26vw,260px);
-      margin: 8px auto 20px;
+    /* ── 28+ STAT COUNTER ── */
+    .about-stat-wrap {
+      display: inline-flex; flex-direction: column;
+      align-items: center; margin: 8px auto 20px;
     }
-    .about-ring-svg {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      transform: rotate(-90deg);
-    }
-    .about-ring-bg   { fill: none; stroke: rgba(255,255,255,0.12); stroke-width: 5; }
-    .about-ring-fill {
-      fill: none; stroke: var(--orange); stroke-width: 5; stroke-linecap: round;
-      stroke-dasharray: 565; stroke-dashoffset: 565;
-      transition: stroke-dashoffset 1.8s cubic-bezier(0.25,1,0.5,1);
-      filter: drop-shadow(0 0 8px rgba(232,96,10,0.8));
-    }
-    .about-ring-inner {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', 'Playfair Display', serif;
-      font-size: clamp(68px, 10vw, 108px);
-      color: var(--orange); line-height: 1; letter-spacing: -1px;
+    .about-stat-num-row {
+      display: flex; align-items: flex-start; justify-content: center;
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(88px, 13vw, 140px);
+      color: var(--orange); line-height: 1; letter-spacing: -3px;
+      text-shadow: 0 0 40px rgba(232,96,10,0.35);
     }
     #aboutBigNum { display: inline-block; }
     #aboutBigPlus {
-      font-size: 0.5em; align-self: flex-start; margin-top: 0.14em;
-      opacity: 0;
-      transition: opacity 0.4s ease 0.1s, transform 0.45s cubic-bezier(0.34,1.56,0.64,1) 0.1s;
-      transform: translateY(8px) scale(0.3);
+      font-size: 0.42em; align-self: flex-start; margin-top: 0.12em;
+      opacity: 0; font-weight: 700;
+      transition: opacity 0.5s ease 0.1s, transform 0.55s cubic-bezier(0.34,1.56,0.64,1) 0.1s;
+      transform: translateY(12px) scale(0.2);
     }
     #aboutBigPlus.show { opacity: 1; transform: translateY(0) scale(1); }
+    .about-stat-line {
+      height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--orange), rgba(232,96,10,0.4));
+      border-radius: 2px; margin-top: 8px;
+      box-shadow: 0 0 14px rgba(232,96,10,0.55);
+      transition: width 0.9s cubic-bezier(0.25,1,0.5,1);
+    }
+    .about-stat-line.draw { width: clamp(120px, 15vw, 190px); }
 </style>
 </head>
 <body>
@@ -857,14 +852,11 @@
   <div class="about-center">
     <div class="about-label">About the Firm</div>
     <div class="about-firm-name">P. Dilip Kumar &amp; Associates</div>
-    <div class="about-ring-wrap" id="aboutRingWrap">
-      <svg class="about-ring-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle class="about-ring-bg"   cx="100" cy="100" r="90"/>
-        <circle class="about-ring-fill" cx="100" cy="100" r="90" id="aboutRingCircle"/>
-      </svg>
-      <div class="about-ring-inner">
+    <div class="about-stat-wrap" id="aboutStatWrap">
+      <div class="about-stat-num-row">
         <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
       </div>
+      <div class="about-stat-line" id="aboutStatLine"></div>
     </div>
     <div class="about-sub">Years of Professional Services</div>
     <p class="about-desc">PDKA is a professional CA firm based in Bangalore, serving clients across India and 9 countries — USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy.</p>
@@ -2153,35 +2145,25 @@ function closeSvcIfOutside(e) {
 }
 
 
-  // ── 28+ RING COUNTER ──
+  // ── 28+ STAT COUNTER ──
   (function() {
-    var wrap   = document.getElementById('aboutRingWrap');
-    var circle = document.getElementById('aboutRingCircle');
+    var wrap   = document.getElementById('aboutStatWrap');
     var numEl  = document.getElementById('aboutBigNum');
     var plusEl = document.getElementById('aboutBigPlus');
+    var lineEl = document.getElementById('aboutStatLine');
     if (!wrap || !numEl) return;
-
-    // Circumference for r=90: 2*PI*90 = 565.5
-    var CIRC = 2 * Math.PI * 90;
-    if (circle) { circle.style.strokeDasharray = CIRC; circle.style.strokeDashoffset = CIRC; }
 
     var fired = false;
     var obs = new IntersectionObserver(function(entries) {
       if (entries[0].isIntersecting && !fired) {
         fired = true; obs.disconnect();
-        setTimeout(startAnim, 200);
+        setTimeout(startAnim, 150);
       }
     }, { threshold: 0.3 });
     obs.observe(wrap);
 
     function startAnim() {
-      // Kick the ring
-      if (circle) {
-        circle.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.25,1,0.5,1)';
-        circle.style.strokeDashoffset = '0';
-      }
-      // Count the number
-      var total = 28, dur = 1700, start = performance.now();
+      var total = 28, dur = 1800, start = performance.now();
       function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
       function frame(now) {
         var p = Math.min((now - start) / dur, 1);
@@ -2190,12 +2172,11 @@ function closeSvcIfOutside(e) {
           requestAnimationFrame(frame);
         } else {
           numEl.textContent = '28';
-          // Show + with CSS transition
           if (plusEl) plusEl.classList.add('show');
-          // Pulse the number once
-          numEl.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
-          numEl.style.transform = 'scale(1.12)';
-          setTimeout(function(){ numEl.style.transform = 'scale(1)'; }, 420);
+          if (lineEl) lineEl.classList.add('draw');
+          numEl.style.transition = 'transform 0.45s cubic-bezier(0.34,1.56,0.64,1)';
+          numEl.style.transform = 'scale(1.08)';
+          setTimeout(function(){ numEl.style.transform = 'scale(1)'; }, 460);
         }
       }
       requestAnimationFrame(frame);
