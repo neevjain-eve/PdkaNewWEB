@@ -779,12 +779,12 @@
     }
     #aboutBigNum { display: inline-block; }
     #aboutBigPlus {
-      font-size: 0.42em; align-self: flex-start; margin-top: 0.12em;
+      font-size: 0.72em; align-self: center; margin-left: 4px;
       opacity: 0; font-weight: 700;
       transition: opacity 0.5s ease 0.1s, transform 0.55s cubic-bezier(0.34,1.56,0.64,1) 0.1s;
-      transform: translateY(12px) scale(0.2);
+      transform: translateX(-8px) scale(0.3);
     }
-    #aboutBigPlus.show { opacity: 1; transform: translateY(0) scale(1); }
+    #aboutBigPlus.show { opacity: 1; transform: translateX(0) scale(1); }
     .about-stat-line {
       height: 3px; width: 0;
       background: linear-gradient(90deg, var(--orange), rgba(232,96,10,0.4));
@@ -2146,7 +2146,7 @@ function closeSvcIfOutside(e) {
 }
 
 
-  // ── 28+ STAT COUNTER ──
+  // ── 28+ STAT COUNTER (loops every 4 s while visible) ──
   (function() {
     var wrap   = document.getElementById('aboutStatWrap');
     var numEl  = document.getElementById('aboutBigNum');
@@ -2154,16 +2154,24 @@ function closeSvcIfOutside(e) {
     var lineEl = document.getElementById('aboutStatLine');
     if (!wrap || !numEl) return;
 
-    var fired = false;
-    var obs = new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting && !fired) {
-        fired = true; obs.disconnect();
-        setTimeout(startAnim, 150);
-      }
-    }, { threshold: 0.3 });
-    obs.observe(wrap);
+    var loopTimer = null;
+    var animating = false;
+
+    function reset() {
+      numEl.textContent = '0';
+      numEl.style.transition = 'none';
+      numEl.style.transform = 'scale(1)';
+      if (plusEl) plusEl.classList.remove('show');
+      if (lineEl) { lineEl.style.transition = 'none'; lineEl.classList.remove('draw'); }
+      // force reflow so transition resets properly
+      void wrap.offsetWidth;
+      if (lineEl) lineEl.style.transition = '';
+    }
 
     function startAnim() {
+      if (animating) return;
+      animating = true;
+      reset();
       var total = 28, dur = 1800, start = performance.now();
       function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
       function frame(now) {
@@ -2177,11 +2185,22 @@ function closeSvcIfOutside(e) {
           if (lineEl) lineEl.classList.add('draw');
           numEl.style.transition = 'transform 0.45s cubic-bezier(0.34,1.56,0.64,1)';
           numEl.style.transform = 'scale(1.08)';
-          setTimeout(function(){ numEl.style.transform = 'scale(1)'; }, 460);
+          setTimeout(function(){ numEl.style.transform = 'scale(1)'; animating = false; }, 460);
         }
       }
       requestAnimationFrame(frame);
     }
+
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        startAnim();
+        loopTimer = setInterval(startAnim, 4000);
+      } else {
+        clearInterval(loopTimer);
+        loopTimer = null;
+      }
+    }, { threshold: 0.3 });
+    obs.observe(wrap);
   })();
 
 </script>
