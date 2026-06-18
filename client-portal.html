@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portal | P. Dilip Kumar & Associates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d1b3e; --navy-mid: #1a2f5e; --orange: #e8600a; --orange-light: #f47820;
+      --white: #ffffff; --grey-light: #f5f6fa; --grey-mid: #e8eaf0;
+      --text-dark: #111827; --text-mid: #374151; --text-light: #6b7280;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a2a5e 50%, #0d1b3e 100%);
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 24px 16px; position: relative;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0;
+      background-image: radial-gradient(circle at 20% 20%, rgba(232,96,10,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(232,96,10,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .back-link {
+      position: fixed; top: 24px; left: 24px; z-index: 10;
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      font-size: 13px; font-weight: 500; transition: color 0.2s;
+    }
+    .back-link:hover { color: #f47820; }
+    .portal-card {
+      position: relative; z-index: 1; width: 100%; max-width: 440px;
+      background: white; border-radius: 20px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35); overflow: hidden;
+    }
+    .card-header {
+      background: linear-gradient(120deg, #0d1b3e 0%, #1a2f5e 100%);
+      padding: 32px 36px 28px; text-align: center;
+    }
+    .logo-wrap { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 20px; }
+    .logo-icon {
+      width: 40px; height: 40px; background: #e8600a; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: white; font-size: 15px;
+    }
+    .logo-text strong { display: block; font-size: 14px; font-weight: 700; color: white; }
+    .logo-text span { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; }
+    .tab-row {
+      display: flex; gap: 4px; background: rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 4px;
+    }
+    .tab-btn {
+      flex: 1; padding: 9px; border: none; border-radius: 7px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s; color: rgba(255,255,255,0.6); background: none;
+    }
+    .tab-btn.active { background: #e8600a; color: white; }
+    .tab-btn:hover:not(.active) { color: white; }
+    .card-body { padding: 32px 36px 36px; }
+    .form-panel { display: none; }
+    .form-panel.active { display: block; }
+    .form-heading { font-size: 20px; font-weight: 700; color: #0d1b3e; margin-bottom: 4px; }
+    .form-sub { font-size: 13px; color: #6b7280; margin-bottom: 24px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 11px; font-weight: 700; color: #374151; margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .input-wrap { position: relative; }
+    .input-wrap i.field-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 14px; pointer-events: none; }
+    .input-wrap input {
+      width: 100%; padding: 11px 14px 11px 38px;
+      border: 1.5px solid #e8eaf0; border-radius: 9px;
+      font-size: 14px; color: #111827; background: #f5f6fa;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s; font-family: inherit;
+    }
+    .input-wrap input:focus { border-color: #e8600a; background: white; box-shadow: 0 0 0 3px rgba(232,96,10,0.1); }
+    .input-wrap input::placeholder { color: #9ca3af; }
+    .pwd-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 14px; padding: 4px; }
+    .pwd-toggle:hover { color: #e8600a; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .forgot-link { display: block; text-align: right; font-size: 12px; color: #e8600a; text-decoration: none; margin-top: -8px; margin-bottom: 16px; font-weight: 600; }
+    .btn-submit {
+      width: 100%; padding: 13px; background: #e8600a; color: white;
+      border: none; border-radius: 10px; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s, transform 0.1s;
+      display: flex; align-items: center; justify-content: center; gap: 8px; font-family: inherit;
+    }
+    .btn-submit:hover { background: #f47820; }
+    .btn-submit:active { transform: scale(0.98); }
+    .divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; }
+    .divider span { font-size: 12px; color: #9ca3af; white-space: nowrap; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #e8eaf0; }
+    .btn-sso {
+      width: 100%; padding: 11px; background: white; color: #111827;
+      border: 1.5px solid #e8eaf0; border-radius: 10px; font-size: 14px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: border-color 0.2s, box-shadow 0.2s; font-family: inherit;
+    }
+    .btn-sso:hover { border-color: #aaa; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .btn-sso img { width: 18px; height: 18px; }
+    .success-banner {
+      display: none; background: rgba(16,185,129,0.1); border: 1.5px solid rgba(16,185,129,0.3);
+      border-radius: 9px; padding: 12px 16px; margin-bottom: 16px;
+      color: #065f46; font-size: 13px; font-weight: 500; align-items: center; gap: 10px;
+    }
+    .success-banner.show { display: flex; }
+    .error-banner {
+      display: none; background: rgba(239,68,68,0.08); border: 1.5px solid rgba(239,68,68,0.25);
+      border-radius: 9px; padding: 12px 16px; margin-bottom: 16px;
+      color: #991b1b; font-size: 13px; font-weight: 500; align-items: center; gap: 10px;
+    }
+    .error-banner.show { display: flex; }
+    .pwd-strength { margin-top: 6px; }
+    .pwd-strength-bar { display: flex; gap: 4px; margin-bottom: 4px; }
+    .pwd-strength-bar span { flex: 1; height: 3px; border-radius: 2px; background: #e8eaf0; transition: background 0.3s; }
+    .pwd-strength-label { font-size: 11px; }
+    .check-field { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; }
+    .check-field input[type="checkbox"] { width: 16px; height: 16px; margin-top: 2px; accent-color: #e8600a; flex-shrink: 0; cursor: pointer; }
+    .check-field label { font-size: 12px; color: #374151; line-height: 1.5; cursor: pointer; }
+    .check-field label a { color: #e8600a; text-decoration: none; }
+    .switch-note { font-size: 13px; color: #6b7280; text-align: center; margin-top: 20px; }
+    .switch-note a { color: #e8600a; font-weight: 600; text-decoration: none; cursor: pointer; }
+    .terms-note { font-size: 11px; color: #9ca3af; text-align: center; margin-top: 16px; line-height: 1.6; }
+    .terms-note a { color: #e8600a; text-decoration: none; }
+    [data-theme="dark"] .portal-card { background: #0f1f47; }
+    [data-theme="dark"] .form-heading { color: #e0e8ff; }
+    [data-theme="dark"] .form-sub { color: rgba(200,215,255,0.6); }
+    [data-theme="dark"] .field label { color: rgba(200,215,255,0.7); }
+    [data-theme="dark"] .input-wrap input { background: #0b1628; border-color: rgba(255,255,255,0.12); color: #e0e8ff; }
+    [data-theme="dark"] .input-wrap input:focus { background: #0d1b3e; border-color: #e8600a; }
+    [data-theme="dark"] .btn-sso { background: #0b1628; border-color: rgba(255,255,255,0.12); color: #e0e8ff; }
+    [data-theme="dark"] .divider::before,[data-theme="dark"] .divider::after { background: rgba(255,255,255,0.1); }
+    [data-theme="dark"] .switch-note { color: rgba(200,215,255,0.6); }
+    [data-theme="dark"] .check-field label { color: rgba(200,215,255,0.7); }
+    @media (max-width: 480px) {
+      .card-body { padding: 24px 24px 28px; }
+      .card-header { padding: 24px 24px 20px; }
+      .field-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="pdka-website.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Website</a>
+
+<div class="portal-card">
+  <div class="card-header">
+    <a href="pdka-website.html" class="logo-wrap">
+      <div class="logo-icon">PK</div>
+      <div class="logo-text">
+        <strong>P. Dilip Kumar &amp; Associates</strong>
+        <span>Chartered Accountants &middot; Bangalore</span>
+      </div>
+    </a>
+    <div class="tab-row">
+      <button class="tab-btn active" id="tabSignin" onclick="switchTab('signin')"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+      <button class="tab-btn" id="tabSignup" onclick="switchTab('signup')"><i class="fas fa-user-plus"></i> Sign Up</button>
+    </div>
+  </div>
+
+  <div class="card-body">
+
+    <!-- SIGN IN -->
+    <div class="form-panel active" id="panelSignin">
+      <div class="form-heading">Welcome back</div>
+      <div class="form-sub">Sign in to access your client documents and updates.</div>
+      <div class="success-banner" id="signinSuccess"><i class="fas fa-check-circle"></i>&nbsp; Signed in successfully! Redirecting&hellip;</div>
+      <div class="error-banner" id="signinError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signinErrorMsg"></span></div>
+      <div class="field">
+        <label>Email Address</label>
+        <div class="input-wrap">
+          <i class="fas fa-envelope field-icon"></i>
+          <input type="email" id="signinEmail" placeholder="you@example.com" autocomplete="email" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="input-wrap">
+          <i class="fas fa-lock field-icon"></i>
+          <input type="password" id="signinPassword" placeholder="Enter your password" autocomplete="current-password" style="padding-right:40px;" />
+          <button class="pwd-toggle" type="button" onclick="togglePwd('signinPassword',this)"><i class="fas fa-eye"></i></button>
+        </div>
+      </div>
+      <a href="#" class="forgot-link" onclick="showForgot(event)">Forgot password?</a>
+      <button class="btn-submit" onclick="handleSignin()"><i class="fas fa-sign-in-alt"></i> Sign In to Portal</button>
+      <div class="divider"><span>or continue with</span></div>
+      <button class="btn-sso" onclick="ssoNotice()">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
+        Sign in with Google
+      </button>
+      <div class="switch-note">Don't have an account? <a onclick="switchTab('signup')">Sign Up</a></div>
+    </div>
+
+    <!-- SIGN UP -->
+    <div class="form-panel" id="panelSignup">
+      <div class="form-heading">Create your account</div>
+      <div class="form-sub">Register to receive documents, filings and updates from PDKA.</div>
+      <div class="success-banner" id="signupSuccess"><i class="fas fa-check-circle"></i>&nbsp; Account request submitted! We'll activate it within 1 business day.</div>
+      <div class="error-banner" id="signupError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signupErrorMsg"></span></div>
+      <div class="field-row">
+        <div class="field">
+          <label>First Name</label>
+          <div class="input-wrap">
+            <i class="fas fa-user field-icon"></i>
+            <input type="text" id="signupFirst" placeholder="First name" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <div class="input-wrap">
+            <i class="fas fa-user field-icon"></i>
+            <input type="text" id="signupLast" placeholder="Last name" />
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Company / Organisation</label>
+        <div class="input-wrap">
+          <i class="fas fa-building field-icon"></i>
+          <input type="text" id="signupCompany" placeholder="Your company name" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Email Address</label>
+        <div class="input-wrap">
+          <i class="fas fa-envelope field-icon"></i>
+          <input type="email" id="signupEmail" placeholder="you@company.com" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Mobile Number</label>
+        <div class="input-wrap">
+          <i class="fas fa-phone field-icon"></i>
+          <input type="tel" id="signupPhone" placeholder="+91 98XXX XXXXX" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Create Password</label>
+        <div class="input-wrap">
+          <i class="fas fa-lock field-icon"></i>
+          <input type="password" id="signupPassword" placeholder="Min. 8 characters" style="padding-right:40px;" oninput="checkStrength(this.value)" />
+          <button class="pwd-toggle" type="button" onclick="togglePwd('signupPassword',this)"><i class="fas fa-eye"></i></button>
+        </div>
+        <div class="pwd-strength" id="pwdStrength" style="display:none;">
+          <div class="pwd-strength-bar"><span id="s1"></span><span id="s2"></span><span id="s3"></span><span id="s4"></span></div>
+          <div class="pwd-strength-label" id="pwdLabel"></div>
+        </div>
+      </div>
+      <div class="check-field">
+        <input type="checkbox" id="agreeTerms" />
+        <label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I consent to PDKA contacting me regarding my account.</label>
+      </div>
+      <button class="btn-submit" onclick="handleSignup()"><i class="fas fa-user-plus"></i> Create Account</button>
+      <div class="switch-note">Already have an account? <a onclick="switchTab('signin')">Sign In</a></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Forgot Password Modal -->
+<div id="forgotOverlay" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(5,10,25,0.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:white;border-radius:16px;max-width:380px;width:100%;padding:32px;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
+    <h3 style="font-size:18px;font-weight:700;color:#0d1b3e;margin-bottom:6px;">Reset Password</h3>
+    <p style="font-size:13px;color:#6b7280;margin-bottom:20px;">Enter your registered email and we'll send you a reset link.</p>
+    <div class="input-wrap" style="margin-bottom:16px;">
+      <i class="fas fa-envelope field-icon"></i>
+      <input type="email" id="forgotEmail" placeholder="you@example.com" />
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button onclick="closeForgot()" style="flex:1;padding:11px;border:1.5px solid #e8eaf0;border-radius:9px;background:none;font-size:14px;font-weight:600;cursor:pointer;color:#374151;font-family:inherit;">Cancel</button>
+      <button onclick="submitForgot()" style="flex:1;padding:11px;background:#e8600a;border:none;border-radius:9px;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">Send Link</button>
+    </div>
+    <div id="forgotMsg" style="display:none;margin-top:12px;font-size:13px;color:#065f46;background:rgba(16,185,129,0.1);border-radius:8px;padding:10px 12px;"></div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    if (localStorage.getItem('pdka-theme') === 'dark')
+      document.documentElement.setAttribute('data-theme','dark');
+  })();
+
+  function switchTab(tab) {
+    document.getElementById('panelSignin').classList.toggle('active', tab==='signin');
+    document.getElementById('panelSignup').classList.toggle('active', tab==='signup');
+    document.getElementById('tabSignin').classList.toggle('active', tab==='signin');
+    document.getElementById('tabSignup').classList.toggle('active', tab==='signup');
+    ['signinSuccess','signinError','signupSuccess','signupError'].forEach(id=>document.getElementById(id).classList.remove('show'));
+  }
+
+  function togglePwd(id, btn) {
+    const inp = document.getElementById(id);
+    inp.type = inp.type==='password' ? 'text' : 'password';
+    btn.querySelector('i').className = inp.type==='text' ? 'fas fa-eye-slash' : 'fas fa-eye';
+  }
+
+  function checkStrength(v) {
+    const w = document.getElementById('pwdStrength');
+    if (!v) { w.style.display='none'; return; }
+    w.style.display='block';
+    let sc=0;
+    if(v.length>=8) sc++;
+    if(/[A-Z]/.test(v)) sc++;
+    if(/[0-9]/.test(v)) sc++;
+    if(/[^A-Za-z0-9]/.test(v)) sc++;
+    const clr=['#ef4444','#f97316','#eab308','#22c55e'];
+    const lbl=['Weak','Fair','Good','Strong'];
+    ['s1','s2','s3','s4'].forEach((id,i)=>{ document.getElementById(id).style.background = i<sc ? clr[sc-1] : '#e8eaf0'; });
+    const el = document.getElementById('pwdLabel');
+    el.textContent = lbl[sc-1]||''; el.style.color = clr[sc-1]||'#9ca3af';
+  }
+
+  function handleSignin() {
+    const email=document.getElementById('signinEmail').value.trim();
+    const pwd=document.getElementById('signinPassword').value;
+    document.getElementById('signinError').classList.remove('show');
+    document.getElementById('signinSuccess').classList.remove('show');
+    if (!email||!pwd) { showErr('signinErrorMsg','signinError','Please enter your email and password.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('signinErrorMsg','signinError','Please enter a valid email address.'); return; }
+    document.getElementById('signinSuccess').classList.add('show');
+  }
+
+  function handleSignup() {
+    const first=document.getElementById('signupFirst').value.trim();
+    const last=document.getElementById('signupLast').value.trim();
+    const email=document.getElementById('signupEmail').value.trim();
+    const pwd=document.getElementById('signupPassword').value;
+    const agreed=document.getElementById('agreeTerms').checked;
+    document.getElementById('signupError').classList.remove('show');
+    document.getElementById('signupSuccess').classList.remove('show');
+    if (!first||!last||!email||!pwd) { showErr('signupErrorMsg','signupError','Please fill in all required fields.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('signupErrorMsg','signupError','Please enter a valid email address.'); return; }
+    if (pwd.length<8) { showErr('signupErrorMsg','signupError','Password must be at least 8 characters.'); return; }
+    if (!agreed) { showErr('signupErrorMsg','signupError','Please agree to the Terms of Service to continue.'); return; }
+    document.getElementById('signupSuccess').classList.add('show');
+    ['signupFirst','signupLast','signupCompany','signupEmail','signupPhone','signupPassword'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('agreeTerms').checked=false;
+    document.getElementById('pwdStrength').style.display='none';
+  }
+
+  function showErr(msgId, bannerId, txt) {
+    document.getElementById(msgId).textContent=txt;
+    document.getElementById(bannerId).classList.add('show');
+  }
+
+  function ssoNotice() { alert('Google Sign-In will be enabled once the portal backend is connected. Please use email sign-in for now.'); }
+
+  function showForgot(e) { e.preventDefault(); document.getElementById('forgotOverlay').style.display='flex'; }
+  function closeForgot() { document.getElementById('forgotOverlay').style.display='none'; document.getElementById('forgotMsg').style.display='none'; document.getElementById('forgotEmail').value=''; }
+  function submitForgot() {
+    const email=document.getElementById('forgotEmail').value.trim();
+    if (!email) return;
+    const msg=document.getElementById('forgotMsg');
+    msg.textContent='Reset link sent to '+email+'. Please check your inbox.';
+    msg.style.display='block';
+    setTimeout(closeForgot,3000);
+  }
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Enter') { if(document.getElementById('panelSignin').classList.contains('active')) handleSignin(); else handleSignup(); }
+    if(e.key==='Escape') closeForgot();
+  });
+</script>
+</body>
+</html>
