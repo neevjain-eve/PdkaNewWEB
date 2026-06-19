@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions | P. Dilip Kumar & Associates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d1b3e; --navy-mid: #1a2f5e; --orange: #e8600a; --orange-light: #f47820;
+      --white: #ffffff; --grey-light: #f5f6fa; --grey-mid: #e8eaf0;
+      --text-dark: #111827; --text-mid: #374151; --text-light: #4b5563;
+      --radius: 12px; --shadow: 0 4px 24px rgba(13,27,62,0.10);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--grey-light); min-height: 100vh; display: flex; flex-direction: column; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-back { display: flex; align-items: center; gap: 8px; color: var(--orange); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--navy); }
+    .theme-toggle { background: none; border: none; color: var(--orange); padding: 0; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 6px; font-weight: 500; white-space: nowrap; }
+
+    [data-theme="dark"] body { background: #0b1628; color: #e8edf8; }
+    [data-theme="dark"] nav { background: rgba(11,22,40,0.98) !important; border-bottom-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .hero-band { background: #060e1f !important; }
+    [data-theme="dark"] .legal-card { background: #0f1f47 !important; border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .legal-card h2 { color: #f0f4ff !important; border-color: rgba(255,255,255,0.1) !important; }
+    [data-theme="dark"] .legal-card p, [data-theme="dark"] .legal-card li { color: rgba(220,230,255,0.8) !important; }
+    [data-theme="dark"] .legal-card ul li::before { color: var(--orange) !important; }
+    [data-theme="dark"] .toc-box { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .toc-box a { color: rgba(200,220,255,0.75) !important; }
+    [data-theme="dark"] .toc-box a:hover { color: var(--orange) !important; }
+    [data-theme="dark"] .contact-strip { background: #060e1f !important; }
+    [data-theme="dark"] .contact-strip p { color: rgba(220,230,255,0.7) !important; }
+    [data-theme="dark"] footer { background: #060e1f !important; }
+
+    .hero-band { background: var(--navy); padding: 110px 5% 50px; }
+    .hero-band .label { font-size: 11px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .hero-band h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 44px); color: white; margin-bottom: 10px; }
+    .hero-band .meta { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+    main { flex: 1; max-width: 1100px; margin: 0 auto; padding: 52px 5%; width: 100%; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+
+    .toc-box { background: white; border: 1.5px solid var(--grey-mid); border-radius: 14px; padding: 24px; position: sticky; top: 92px; }
+    .toc-box h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--orange); margin-bottom: 14px; }
+    .toc-box ol { list-style: none; counter-reset: toc; }
+    .toc-box ol li { counter-increment: toc; margin-bottom: 8px; }
+    .toc-box ol li a { font-size: 13px; color: var(--text-mid); text-decoration: none; display: flex; gap: 8px; align-items: baseline; transition: color 0.2s; line-height: 1.4; }
+    .toc-box ol li a::before { content: counter(toc); font-size: 10px; color: var(--orange); font-weight: 700; flex-shrink: 0; min-width: 14px; }
+    .toc-box ol li a:hover { color: var(--orange); }
+
+    .legal-card { background: white; border: 1.5px solid var(--grey-mid); border-radius: 16px; padding: 44px 48px; }
+    .legal-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--grey-mid); }
+    .legal-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .legal-card h2 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--grey-mid); display: flex; align-items: center; gap: 10px; }
+    .legal-card h2 .sec-num { font-size: 12px; background: var(--orange); color: white; border-radius: 5px; padding: 2px 7px; font-family: 'Inter', sans-serif; font-weight: 700; }
+    .legal-card p { font-size: 14.5px; color: var(--text-mid); line-height: 1.8; margin-bottom: 12px; }
+    .legal-card p:last-child { margin-bottom: 0; }
+    .legal-card ul { padding-left: 0; list-style: none; margin: 12px 0; }
+    .legal-card ul li { font-size: 14.5px; color: var(--text-mid); line-height: 1.75; padding: 4px 0 4px 20px; position: relative; }
+    .legal-card ul li::before { content: '›'; position: absolute; left: 0; color: var(--orange); font-weight: 700; font-size: 16px; }
+
+    .contact-strip { background: white; border-top: 1px solid var(--grey-mid); padding: 40px 5%; text-align: center; }
+    .contact-strip h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .contact-strip p { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
+    .contact-strip-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .contact-strip-links a { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--navy); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .contact-strip-links a:hover { color: var(--orange); }
+    .contact-strip-links i { color: var(--orange); }
+
+    footer { background: var(--navy); padding: 20px 5%; text-align: center; font-size: 12px; color: rgba(255,255,255,0.4); }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: var(--orange); }
+
+    @media (max-width: 768px) {
+      main { grid-template-columns: 1fr; }
+      .toc-box { position: static; }
+      .legal-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="pdka-website.html" class="nav-logo">
+    <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" />
+  </a>
+  <a href="pdka-website.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Website</a>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+</nav>
+
+<div class="hero-band">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="label">Legal</div>
+    <h1>Terms &amp; Conditions</h1>
+    <p class="meta">Last updated: March 2025 &nbsp;·&nbsp; P. Dilip Kumar &amp; Associates</p>
+  </div>
+</div>
+
+<main>
+  <aside>
+    <div class="toc-box">
+      <h4>Contents</h4>
+      <ol>
+        <li><a href="#s1">Acceptance of Terms</a></li>
+        <li><a href="#s2">Nature of Information</a></li>
+        <li><a href="#s3">Services</a></li>
+        <li><a href="#s4">Client Responsibilities</a></li>
+        <li><a href="#s5">Engagement Terms</a></li>
+        <li><a href="#s6">Confidentiality</a></li>
+        <li><a href="#s7">Limitation of Liability</a></li>
+        <li><a href="#s8">Intellectual Property</a></li>
+        <li><a href="#s9">Termination of Engagement</a></li>
+        <li><a href="#s10">Governing Law</a></li>
+        <li><a href="#s11">Website Usage</a></li>
+        <li><a href="#s12">Changes to Terms</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <div class="legal-card">
+
+    <div class="legal-section" id="s1">
+      <h2><span class="sec-num">1</span> Acceptance of Terms</h2>
+      <p>By accessing or using the website of P. Dilip Kumar &amp; Associates (PDKA), you agree to be bound by these Terms &amp; Conditions. If you do not agree, please discontinue use of this website.</p>
+    </div>
+
+    <div class="legal-section" id="s2">
+      <h2><span class="sec-num">2</span> Nature of Information</h2>
+      <p>The content on this website is for general informational purposes only and does not constitute professional advice. No professional-client relationship is established through this website alone. For professional advice, please contact the firm directly.</p>
+    </div>
+
+    <div class="legal-section" id="s3">
+      <h2><span class="sec-num">3</span> Services</h2>
+      <p>PDKA provides professional services including Audit &amp; Assurance, Tax Advisory, Virtual CFO, Business Advisory, Compliance &amp; Regulatory services, and Risk Management, in accordance with the guidelines and standards of the Institute of Chartered Accountants of India (ICAI). All services are subject to individual engagement terms.</p>
+    </div>
+
+    <div class="legal-section" id="s4">
+      <h2><span class="sec-num">4</span> Client Responsibilities</h2>
+      <p>Clients engaging with PDKA agree to:</p>
+      <ul>
+        <li>Provide accurate, complete and timely information relevant to the engagement</li>
+        <li>Comply with all applicable laws and regulations</li>
+        <li>Maintain confidentiality of professional advice received</li>
+        <li>Adhere to terms specified in individual engagement letters</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="s5">
+      <h2><span class="sec-num">5</span> Engagement Terms</h2>
+      <p>Terms of engagement, including scope of work and other conditions, are specified in individual engagement letters agreed upon before commencement of any professional assignment.</p>
+    </div>
+
+    <div class="legal-section" id="s6">
+      <h2><span class="sec-num">6</span> Confidentiality</h2>
+      <p>PDKA maintains strict confidentiality of all client information in accordance with ICAI ethical standards. Disclosure may occur only where required by law, regulatory authority, or with prior written consent of the client.</p>
+    </div>
+
+    <div class="legal-section" id="s7">
+      <h2><span class="sec-num">7</span> Limitation of Liability</h2>
+      <p>The firm's liability in connection with any professional engagement shall be limited to the professional fees received for that specific assignment. PDKA shall not be liable for indirect, consequential, or incidental losses.</p>
+    </div>
+
+    <div class="legal-section" id="s8">
+      <h2><span class="sec-num">8</span> Intellectual Property</h2>
+      <p>All reports, documents, and materials prepared by PDKA remain the intellectual property of the firm. Clients are granted a non-exclusive licence for internal use only. Reproduction or distribution without written consent is not permitted.</p>
+    </div>
+
+    <div class="legal-section" id="s9">
+      <h2><span class="sec-num">9</span> Termination of Engagement</h2>
+      <p>Either party may terminate an engagement by providing written notice. All outstanding professional dues must be settled upon termination. The firm reserves the right to retain work product until dues are cleared.</p>
+    </div>
+
+    <div class="legal-section" id="s10">
+      <h2><span class="sec-num">10</span> Governing Law</h2>
+      <p>These Terms are governed by the laws of India and the regulations of ICAI. Any disputes shall be subject to the exclusive jurisdiction of courts in Bangalore, Karnataka.</p>
+    </div>
+
+    <div class="legal-section" id="s11">
+      <h2><span class="sec-num">11</span> Website Usage</h2>
+      <p>This website is maintained solely for the purpose of providing information about the professional services offered by the firm, in accordance with ICAI guidelines. Unauthorised use, reproduction or modification of website content is prohibited.</p>
+    </div>
+
+    <div class="legal-section" id="s12">
+      <h2><span class="sec-num">12</span> Changes to Terms</h2>
+      <p>PDKA reserves the right to update these Terms at any time. Continued use of the website after changes constitutes acceptance of the revised Terms.</p>
+    </div>
+
+  </div>
+</main>
+
+<div class="contact-strip">
+  <h3>Questions about these terms?</h3>
+  <p>Contact us directly for any clarifications regarding our terms of engagement.</p>
+  <div class="contact-strip-links">
+    <a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a>
+    <a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a>
+    <a href="pdka-website.html#contact"><i class="fas fa-arrow-right"></i> Contact Page</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 P. Dilip Kumar &amp; Associates &nbsp;·&nbsp;
+    <a href="pdka-website.html">Home</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="pdka-website.html#contact">Contact</a>
+  </p>
+</footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.removeAttribute('data-theme'); btn.textContent = '🌙 Dark';
+      localStorage.setItem('pdka-theme', 'light');
+    } else {
+      html.setAttribute('data-theme', 'dark'); btn.textContent = '☀️ Light';
+      localStorage.setItem('pdka-theme', 'dark');
+    }
+  }
+  (function() {
+    const saved = localStorage.getItem('pdka-theme');
+    const btn = document.getElementById('themeToggle');
+    if (saved === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); if (btn) btn.textContent = '☀️ Light'; }
+  })();
+</script>
+</body>
+</html>
