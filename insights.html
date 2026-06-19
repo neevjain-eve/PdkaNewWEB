@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights | P. Dilip Kumar & Associates | CA Firm Bangalore</title>
+  <meta name="description" content="Expert insights, regulatory updates, and compliance guides from P. Dilip Kumar & Associates — Bangalore CA firm." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b3e;
+      --navy-mid: #1a2f5e;
+      --orange: #e8600a;
+      --orange-light: #f47820;
+      --white: #ffffff;
+      --grey-light: #f5f6fa;
+      --grey-mid: #e8eaf0;
+      --text-dark: #111827;
+      --text-mid: #374151;
+      --text-light: #4b5563;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(13,27,62,0.10);
+      --shadow-lg: 0 8px 48px rgba(13,27,62,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(13,27,62,0.97); backdrop-filter: blur(12px);
+      padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 42px; height: 42px; background: var(--orange); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: white; font-size: 16px; letter-spacing: -1px;
+    }
+    .nav-logo-text { color: white; }
+    .nav-logo-text strong { display: block; font-size: 15px; font-weight: 700; }
+    .nav-logo-text span { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--orange); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: white; }
+    .nav-links a.active { color: white; font-weight: 700; }
+    .nav-cta {
+      background: var(--orange); color: white !important; padding: 10px 22px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--orange-light) !important; }
+    .theme-toggle {
+      background: #0d1b3e; border: 1.5px solid rgba(255,255,255,0.18);
+      color: white; border-radius: 24px; padding: 7px 16px;
+      cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center;
+      gap: 7px; transition: all 0.2s; white-space: nowrap; letter-spacing: 0.2px;
+    }
+    .theme-toggle i { font-size: 14px; }
+    [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
+    .theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
+    .nav-toggle { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
+
+    /* Mobile nav drawer */
+    .nav-mobile {
+      display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
+      background: rgba(13,27,62,0.98); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 5% 24px; flex-direction: column; gap: 0;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile li { list-style: none; }
+    .nav-mobile a { display: block; padding: 12px 0; color: var(--orange); font-size: 15px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-mobile a:hover { color: white; }
+    .nav-mobile a.active { color: white; font-weight: 700; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      height: 340px; position: relative; overflow: hidden;
+      display: flex; align-items: flex-end; padding: 0 5% 48px;
+    }
+    .page-hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+    .page-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(13,27,62,0.55) 0%, rgba(13,27,62,0.88) 100%);
+    }
+    .page-hero-content { position: relative; z-index: 1; max-width: 1200px; width: 100%; margin: 0 auto; }
+    .page-hero-label { font-size: 11px; font-weight: 700; color: var(--orange-light); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .page-hero-title { font-family: 'Playfair Display', serif; font-size: clamp(32px,5vw,56px); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 12px; }
+    .page-hero-sub { font-size: 16px; color: rgba(255,255,255,0.75); max-width: 520px; line-height: 1.6; }
+
+    /* ── INSIGHTS PAGE ── */
+    .insights-page { background: var(--grey-light); padding: 64px 5%; }
+    .insights-inner { max-width: 1100px; margin: 0 auto; }
+
+    /* Filter bar */
+    .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+    .filter-btn {
+      padding: 7px 18px; border-radius: 20px; font-size: 13px; font-weight: 600;
+      border: 1.5px solid var(--grey-mid); background: white; color: var(--text-mid);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--orange); color: white; border-color: var(--orange); }
+
+    /* Article cards grid */
+    .articles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+
+    .article-card {
+      background: white; border-radius: 16px; overflow: hidden;
+      box-shadow: var(--shadow); display: flex; flex-direction: column;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+    .article-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .article-card-header {
+      height: 10px; background: linear-gradient(90deg, var(--orange) 0%, var(--orange-light) 100%);
+    }
+    .article-card-body { padding: 28px; flex: 1; }
+    .article-tag {
+      display: inline-block; background: rgba(232,96,10,0.1); color: var(--orange);
+      padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;
+    }
+    .article-card-body h3 { font-size: 17px; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 10px; }
+    .article-card-body p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+    .article-card-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 28px; border-top: 1px solid var(--grey-mid);
+    }
+    .article-date { font-size: 12px; color: var(--text-light); }
+    .article-read-btn {
+      color: var(--orange); font-size: 13px; font-weight: 600;
+      text-decoration: none; display: flex; align-items: center; gap: 4px;
+      background: none; border: none; cursor: pointer; transition: gap 0.2s;
+    }
+    .article-read-btn:hover { gap: 8px; }
+
+    /* Full article section */
+    .article-full {
+      display: none; background: white; border-radius: 20px;
+      box-shadow: var(--shadow-lg); margin-bottom: 40px; overflow: hidden;
+    }
+    .article-full.open { display: block; }
+    .article-full-header {
+      background: linear-gradient(120deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 40px 48px 36px; position: relative;
+    }
+    .article-full-header .article-tag { background: rgba(232,96,10,0.25); color: var(--orange-light); }
+    .article-full-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px,3vw,34px); color: white; line-height: 1.3; margin-bottom: 10px; }
+    .article-full-meta { font-size: 12px; color: rgba(255,255,255,0.5); }
+    .article-close-btn {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(255,255,255,0.12); border: none; color: white;
+      width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; cursor: pointer; font-size: 16px; transition: background 0.2s;
+    }
+    .article-close-btn:hover { background: rgba(255,255,255,0.25); }
+    .article-full-body { padding: 40px 48px; }
+    .article-full-body h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin: 28px 0 10px; }
+    .article-full-body h3:first-child { margin-top: 0; }
+    .article-full-body p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; }
+    .article-full-body ul { padding-left: 22px; margin-bottom: 16px; }
+    .article-full-body ul li { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 8px; }
+    .article-full-body strong { color: var(--text-dark); }
+    .article-cta-bar { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--grey-mid); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .article-cta-bar p { font-size: 14px; color: var(--text-light); margin: 0; }
+
+    /* CTA */
+    .btn-primary {
+      background: var(--orange); color: white; padding: 12px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 700; text-decoration: none; display: inline-flex;
+      align-items: center; gap: 8px; transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--orange-light); }
+
+    /* Footer */
+    footer { background: #060e1f; padding: 32px 5%; text-align: center; }
+    footer p { color: rgba(255,255,255,0.4); font-size: 13px; }
+    footer a { color: var(--orange); text-decoration: none; }
+
+    /* Dark mode */
+    [data-theme="dark"] body { background: #0b1628; color: #e8edf8; }
+    [data-theme="dark"] .insights-page { background: #0a1520; }
+    [data-theme="dark"] .article-card { background: #0f1f47; }
+    [data-theme="dark"] .article-card-body h3 { color: #e0e8ff; }
+    [data-theme="dark"] .article-card-body p { color: rgba(200,215,255,0.75); }
+    [data-theme="dark"] .article-card-footer { border-color: rgba(255,255,255,0.08); }
+    [data-theme="dark"] .article-date { color: rgba(200,215,255,0.45); }
+    [data-theme="dark"] .filter-btn { background: #0f1f47; border-color: rgba(255,255,255,0.12); color: rgba(200,215,255,0.7); }
+    [data-theme="dark"] .filter-btn:hover, [data-theme="dark"] .filter-btn.active { background: var(--orange); color: white; border-color: var(--orange); }
+    [data-theme="dark"] .article-full { background: #0f1f47; }
+    [data-theme="dark"] .article-full-body h3 { color: #e0e8ff; }
+    [data-theme="dark"] .article-full-body p,
+    [data-theme="dark"] .article-full-body li { color: rgba(200,215,255,0.8); }
+    [data-theme="dark"] .article-full-body strong { color: #f0f4ff; }
+    [data-theme="dark"] .article-cta-bar { border-color: rgba(255,255,255,0.1); }
+    [data-theme="dark"] .article-cta-bar p { color: rgba(200,215,255,0.55); }
+
+    @media (max-width: 900px) {
+      .articles-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links, .theme-toggle { display: none; }
+      .nav-toggle { display: block; }
+      .article-full-body, .article-full-header { padding: 28px 24px; }
+    }
+    @media (max-width: 600px) {
+      .articles-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="pdka-website.html" class="nav-logo" onclick="window.location.href='pdka-website.html'">
+    <div class="nav-logo-icon">PK</div>
+    <div class="nav-logo-text">
+      <strong>P. Dilip Kumar &amp; Associates</strong>
+      <span>Chartered Accountants · Bangalore</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="pdka-website.html">Home</a></li>
+    <li><a href="pdka-website.html#about">About</a></li>
+    <li><a href="pdka-website.html#founder">Founder</a></li>
+    <li><a href="pdka-website.html#services">Services</a></li>
+    <li><a href="pdka-website.html#team">Team</a></li>
+    <li><a href="insights.html" class="active">Insights</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="pdka-website.html#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <i class="fas fa-moon" id="themeIcon"></i>
+      <span id="themeLabel">Dark</span>
+    </button>
+    <a href="pdka-website.html#contact" class="nav-cta">Get in Touch</a>
+    <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+<ul class="nav-mobile" id="mobileNav">
+  <li><a href="pdka-website.html">Home</a></li>
+  <li><a href="pdka-website.html#about">About</a></li>
+  <li><a href="pdka-website.html#founder">Founder</a></li>
+  <li><a href="pdka-website.html#services">Services</a></li>
+  <li><a href="pdka-website.html#team">Team</a></li>
+  <li><a href="insights.html" class="active">Insights</a></li>
+  <li><a href="careers.html">Careers</a></li>
+  <li><a href="pdka-website.html#contact">Contact</a></li>
+</ul>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="margin-top:72px;">
+  <div class="page-hero-bg">
+    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1800&h=600&fit=crop&crop=top" alt="Insights" loading="lazy" />
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Knowledge Hub</div>
+    <h1 class="page-hero-title">Expert Insights &amp; Updates</h1>
+    <p class="page-hero-sub">Regulatory updates, compliance guides, and expert commentary from the PDKA team.</p>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<div class="insights-page">
+  <div class="insights-inner">
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterArticles('all', this)">All</button>
+      <button class="filter-btn" onclick="filterArticles('ICAI', this)">ICAI</button>
+      <button class="filter-btn" onclick="filterArticles('ITR', this)">Taxation</button>
+      <button class="filter-btn" onclick="filterArticles('FEMA', this)">FEMA</button>
+      <button class="filter-btn" onclick="filterArticles('GST', this)">GST</button>
+      <button class="filter-btn" onclick="filterArticles('COMPANY', this)">Company Law</button>
+      <button class="filter-btn" onclick="filterArticles('DPDPA', this)">DPDPA</button>
+      <button class="filter-btn" onclick="filterArticles('CFO', this)">Virtual CFO</button>
+    </div>
+
+    <!-- Articles Grid -->
+    <div class="articles-grid" id="articlesGrid">
+
+      <div class="article-card" data-category="ICAI">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ICAI · Apr 2026</span>
+          <h3>ICAI Code of Ethics 2026: What Changed for CA Firms</h3>
+          <p>The 13th Edition of the ICAI Code of Ethics effective April 2026 brings significant changes to advertising, website, and networking guidelines for CA firms.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 15, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('icai2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ITR · Apr 2026</span>
+          <h3>ITR Filing FY 2025-26: Compliance Checklist for Businesses</h3>
+          <p>Key deadlines, updated ITR forms, and a practical compliance checklist to ensure accurate and timely ITR filing for FY 2025-26.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 8, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('itr2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="FEMA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">FEMA · Jan 2025</span>
+          <h3>FEMA 2025: Foreign Remittances, ODI Rules &amp; Compliance for IT Companies</h3>
+          <p>Updated FEMA compliance guide covering overseas direct investment, LRS limits, and key obligations for IT &amp; ITES companies with foreign operations.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 20, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('fema2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST · Mar 2026</span>
+          <h3>GSTR-9 & GSTR-9C FY 2025-26: Filing Guide & Common Errors</h3>
+          <p>A practical guide to filing the GST Annual Return and Reconciliation Statement, covering common reconciliation pitfalls and how to avoid notices from the GST department.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Mar 10, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('gst2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="COMPANY">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Company Law · Feb 2026</span>
+          <h3>Companies Act Amendments 2025: Key Changes for Private Limited Companies</h3>
+          <p>MCA's 2025 amendments to the Companies Act introduce revised thresholds for small companies, new CSR reporting formats, and tightened related-party transaction disclosures.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Feb 18, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('companylaw2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Transfer Pricing · Jan 2026</span>
+          <h3>Transfer Pricing Documentation: What Indian Companies Must Prepare for FY 2025-26</h3>
+          <p>With CBDT tightening TP scrutiny, Indian companies in international transactions must maintain robust Master File and Local File documentation or face steep penalties.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 12, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('tp2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="DPDPA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">DPDPA · Dec 2025</span>
+          <h3>DPDPA 2023: A Practical Compliance Roadmap for Businesses</h3>
+          <p>India's Digital Personal Data Protection Act enforcement begins May 2027. Here is a step-by-step readiness roadmap — from data mapping to consent management and breach response protocols.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Dec 5, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('dpdpa2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="CFO">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Virtual CFO · Nov 2025</span>
+          <h3>When Does a Startup Need a Virtual CFO? 7 Signs to Watch For</h3>
+          <p>As startups scale from ₹1 Cr to ₹25 Cr revenue, financial complexity grows faster than the team. Here are the clear signals that it is time to engage a Virtual CFO.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Nov 22, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('vcfo2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST · Oct 2025</span>
+          <h3>GST on IT Services: Place of Supply, Export Benefits & ITC Optimisation</h3>
+          <p>IT and software companies often leave significant GST refunds on the table. This guide covers export of services, place of supply rules, and how to maximise ITC for tech businesses.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Oct 8, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('gstit2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+    </div><!-- /articles-grid -->
+
+    <!-- Full Article Reader (expands below grid) -->
+    <div class="article-full" id="articleFull" style="margin-top:40px;">
+      <div class="article-full-header">
+        <button class="article-close-btn" onclick="closeArticle()"><i class="fas fa-times"></i></button>
+        <div class="article-tag" id="fullTag"></div>
+        <h2 id="fullTitle"></h2>
+        <div class="article-full-meta" id="fullMeta"></div>
+      </div>
+      <div class="article-full-body" id="fullBody"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 P. Dilip Kumar &amp; Associates · Chartered Accountants · Bangalore &nbsp;|&nbsp; <a href="pdka-website.html#contact">Contact Us</a></p>
+</footer>
+
+<script>
+  // ── Theme ──
+  (function () {
+    const saved = localStorage.getItem('pdka-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('themeIcon').className = 'fas fa-sun';
+      document.getElementById('themeLabel').textContent = 'Light';
+    }
+  })();
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('pdka-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeIcon').className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+    document.getElementById('themeLabel').textContent = isDark ? 'Dark' : 'Light';
+  }
+
+  // ── Mobile nav ──
+  function toggleMobileNav() {
+    const nav = document.getElementById('mobileNav');
+    const icon = document.getElementById('navToggle').querySelector('i');
+    nav.classList.toggle('open');
+    icon.className = nav.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+  }
+
+  // ── Filter ──
+  function filterArticles(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.article-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+    });
+    closeArticle();
+  }
+
+  // ── Articles ──
+  const articles = {
+    icai2026: {
+      tag: 'ICAI · Apr 2026',
+      title: 'ICAI Code of Ethics 2026: What Changed for CA Firms',
+      meta: 'Published April 15, 2026 · 5 min read',
+      body: `
+        <h3>Overview</h3>
+        <p>The Institute of Chartered Accountants of India (ICAI) released the <strong>13th Edition of the Code of Ethics</strong>, effective from April 1, 2026. This edition aligns Indian standards closer to the IESBA International Code and introduces substantive changes that every CA firm must be aware of.</p>
+
+        <h3>Key Changes: Advertising & Publicity</h3>
+        <p>CA firms are now permitted to maintain a professional website and list their services, provided content is factual and not misleading. The following are now permitted:</p>
+        <ul>
+          <li>Listing services offered, fee ranges (indicative), and team credentials</li>
+          <li>Publishing technical articles, insights, and thought leadership content</li>
+          <li>Mentioning major client industries (without naming clients)</li>
+        </ul>
+        <p>However, <strong>comparative advertising, testimonials, and ranking claims</strong> remain prohibited. Firms must not imply superiority over other CA firms in any medium.</p>
+
+        <h3>Networking & Referral Arrangements</h3>
+        <p>The 2026 edition provides greater clarity on permitted networking. CA firms may enter into formal alliances with non-CA professionals (lawyers, valuers, consultants) for cross-referrals, provided independence is not compromised and clients are informed of such arrangements upfront.</p>
+
+        <h3>Independence for Audit Engagements</h3>
+        <p>Significant tightening of independence rules for statutory auditors includes:</p>
+        <ul>
+          <li>Cooling-off period of 2 years before an audit firm partner can join an audit client</li>
+          <li>Explicit prohibition on audit firms providing bookkeeping, payroll, or IT implementation to audit clients</li>
+          <li>Strengthened provisions on financial self-interest and advocacy threats</li>
+        </ul>
+
+        <h3>What PDKA Is Doing</h3>
+        <p>At P. Dilip Kumar & Associates, we have reviewed our engagement letters, website content, and referral practices to ensure full compliance with the updated Code. Our team undertook internal training in March 2026 ahead of the April effective date.</p>
+
+        <div class="article-cta-bar">
+          <p>Questions about how the new Code impacts your engagement with us?</p>
+          <a href="pdka-website.html#contact" class="btn-primary">Contact Us <i class="fas fa-arrow-right"></i></a>
+        </div>
+      `
+    },
+    itr2026: {
+      tag: 'ITR · Apr 2026',
+      title: 'ITR Filing FY 2025-26: Compliance Checklist for Businesses',
+      meta: 'Published April 8, 2026 · 6 min read',
+      body: `
+        <h3>Key Deadlines for FY 2025-26</h3>
+        <p>Staying ahead of ITR deadlines is critical to avoiding interest under Section 234A/B/C and late filing fees under Section 234F. Here are the key dates:</p>
+        <ul>
+          <li><strong>July 31, 2026</strong> — Non-audit cases (individuals, HUFs, firms not requiring audit)</li>
+          <li><strong>October 31, 2026</strong> — Audit cases (companies, firms requiring tax audit)</li>
+          <li><strong>November 30, 2026</strong> — Entities with transfer pricing report (Form 3CEB)</li>
+        </ul>
+
+        <h3>Updated ITR Forms for AY 2026-27</h3>
+        <p>The CBDT notified revised ITR forms in March 2026. Notable changes include:</p>
+        <ul>
+          <li><strong>ITR-3 & ITR-5:</strong> New schedules for reporting crypto assets and VDA income separately</li>
+          <li><strong>ITR-6:</strong> Enhanced disclosure for related-party transactions and deferred tax</li>
+          <li><strong>All forms:</strong> Mandatory linking of PAN with Aadhaar; mismatches will result in processing delays</li>
+        </ul>
+
+        <h3>Pre-Filing Compliance Checklist</h3>
+        <ul>
+          <li>☑ Reconcile Books of Accounts with 26AS, AIS, and TIS</li>
+          <li>☑ Verify TDS credits — mismatches are a primary cause of processing delays</li>
+          <li>☑ Confirm depreciation under both Companies Act and Income Tax Act</li>
+          <li>☑ Review MAT/AMT applicability and compute book profits under Section 115JB</li>
+          <li>☑ Compile details of carried-forward losses and ensure proper schedule filing</li>
+          <li>☑ MSME vendor outstanding — Section 43B(h) disallowance applicable where dues unpaid beyond agreed period</li>
+          <li>☑ Ensure Form 3CD, 3CB, and 3CA are finalised before due date</li>
+        </ul>
+
+        <h3>Common Pitfalls to Avoid</h3>
+        <p>Our team frequently encounters these errors during tax filings. Double-check your returns against these before submission:</p>
+        <ul>
+          <li>Incorrect reporting of deemed dividends under Section 2(22)(e)</li>
+          <li>Missing disclosure of director loans in closely-held companies</li>
+          <li>Failure to report exempt income (LTCG on equities below ₹1 lakh threshold must still be disclosed)</li>
+        </ul>
+
+        <div class="article-cta-bar">
+          <p>Need assistance with ITR filing or tax audit for FY 2025-26?</p>
+          <a href="pdka-website.html#contact" class="btn-primary">Get in Touch <i class="fas fa-arrow-right"></i></a>
+        </div>
+      `
+    },
+    fema2025: {
+      tag: 'FEMA · Jan 2025',
+      title: 'FEMA 2025: Foreign Remittances, ODI Rules & Compliance for IT Companies',
+      meta: 'Published January 20, 2025 · 7 min read',
+      body: `
+        <h3>Background</h3>
+        <p>The Foreign Exchange Management Act (FEMA) framework saw significant regulatory updates in 2024–25. For IT and ITES companies with global operations, understanding the updated ODI rules, LRS limits, and AD bank obligations is essential to remain compliant.</p>
+
+        <h3>Overseas Direct Investment (ODI) — Revised Framework</h3>
+        <p>FEMA (Overseas Investment) Rules, 2022 and subsequent RBI circulars have reshaped how Indian companies can invest abroad. Key points for IT firms:</p>
+        <ul>
+          <li><strong>Financial Commitment (FC) limit:</strong> Indian entities can invest up to 400% of their net worth in overseas JVs/WOS, subject to RBI approval beyond automatic route thresholds</li>
+          <li><strong>Step-down subsidiaries:</strong> Any indirect investment through a foreign holding company must now be reported in the Annual Performance Report (APR)</li>
+          <li><strong>Round-tripping:</strong> Structures where funds remitted overseas are reinvested in India via a foreign entity remain under enhanced scrutiny</li>
+        </ul>
+
+        <h3>LRS (Liberalised Remittance Scheme) Updates</h3>
+        <p>The $250,000 per financial year limit remains unchanged for individuals. However, the TCS implications under Section 206C(1G) must be factored in:</p>
+        <ul>
+          <li>TCS @ 20% applies on remittances exceeding ₹7 lakh per FY under LRS (except for education loans and medical treatment)</li>
+          <li>Employers must account for TCS on overseas travel packages arranged for employees</li>
+          <li>Form 15CA/CB requirements remain mandatory for most foreign remittances above prescribed thresholds</li>
+        </ul>
+
+        <h3>Compliance Obligations for IT & ITES Companies</h3>
+        <p>IT companies with subsidiaries or branch offices overseas face the following ongoing compliance requirements:</p>
+        <ul>
+          <li><strong>APR (Annual Performance Report):</strong> Due by December 31 each year; covers financial details of foreign entity and repatriation of dividends</li>
+          <li><strong>Form ODI:</strong> Must be filed within 30 days of any new investment or change in shareholding of the overseas entity</li>
+          <li><strong>SOFTEX / STPI:</strong> IT exporters must file SOFTEX forms for software exports; non-compliance attracts RBI notice</li>
+          <li><strong>ECB compliance:</strong> External Commercial Borrowings from overseas group entities require RBI filing and adherence to all-in-cost ceilings</li>
+        </ul>
+
+        <h3>How PDKA Can Help</h3>
+        <p>Our FEMA practice, led by our founder P. Dilip Kumar (a CISA-certified expert with experience across 9 countries), assists IT and ITES companies with ODI filings, APR preparation, SOFTEX compliance, and RBI compounding applications where past non-compliances need to be regularised.</p>
+
+        <div class="article-cta-bar">
+          <p>Need a FEMA compliance review for your company's overseas operations?</p>
+          <a href="pdka-website.html#contact" class="btn-primary">Talk to Our Team <i class="fas fa-arrow-right"></i></a>
+        </div>
+      `
+    }
+  };
+
+  articles.gst2026 = {
+    tag: 'GST · Mar 2026',
+    title: 'GSTR-9 & GSTR-9C FY 2025-26: Filing Guide & Common Errors',
+    meta: 'Published March 10, 2026 · 6 min read',
+    body: `
+      <h3>Overview</h3>
+      <p>GSTR-9 (Annual Return) and GSTR-9C (Reconciliation Statement) for FY 2025-26 are due by <strong>December 31, 2026</strong>. With GST scrutiny intensifying, errors in the annual return have become the primary trigger for departmental notices. This guide walks you through the filing process and highlights the most frequent problem areas.</p>
+
+      <h3>Key Changes for FY 2025-26</h3>
+      <ul>
+        <li><strong>Table 8A auto-population:</strong> GSTR-9 now auto-populates ITC eligible as per GSTR-2B; manual overrides are flagged for scrutiny</li>
+        <li><strong>ITC reversal disclosures:</strong> Enhanced disclosures required for Rule 42/43 reversals (proportionate ITC on exempt supplies)</li>
+        <li><strong>HSN-wise outward supply:</strong> Mandatory for taxpayers with annual turnover above ₹5 crore (6-digit HSN)</li>
+        <li><strong>GSTR-9C self-certification:</strong> Taxpayers above ₹5 Cr turnover must file a self-certified reconciliation — CA certification no longer mandatory but recommended</li>
+      </ul>
+
+      <h3>Most Common Reconciliation Errors</h3>
+      <p>Our team has identified these recurring issues during GSTR-9 filings:</p>
+      <ul>
+        <li><strong>GSTR-1 vs GSTR-3B mismatch:</strong> Amendments filed in later months create differences between declared and paid tax; all amendments must be captured in Table 9/10</li>
+        <li><strong>ITC in books vs GSTR-2B:</strong> ITC claimed in books but not appearing in GSTR-2B due to supplier non-filing leads to reversals and interest liability</li>
+        <li><strong>RCM non-disclosure:</strong> Reverse charge mechanism transactions on import of services are frequently omitted from Table 6B</li>
+        <li><strong>Advance receipts:</strong> GST on advances received but invoice not issued in the same year creates a reconciling item that must be separately disclosed</li>
+      </ul>
+
+      <h3>Pre-Filing Checklist</h3>
+      <ul>
+        <li>☑ Reconcile turnover as per books with GSTR-1 and GSTR-3B</li>
+        <li>☑ Verify ITC availed in GSTR-3B against GSTR-2B for all 12 months</li>
+        <li>☑ Identify and reverse ineligible ITC (Section 17(5) blocked credits)</li>
+        <li>☑ Confirm HSN summary is accurate for all outward supplies</li>
+        <li>☑ Reconcile e-way bills with invoices for high-value outward supplies</li>
+        <li>☑ Review any pending refund claims and ensure they are reflected correctly</li>
+      </ul>
+
+      <h3>Penalties for Non-Filing</h3>
+      <p>Late filing of GSTR-9 attracts a fee of <strong>₹200 per day</strong> (₹100 CGST + ₹100 SGST), capped at 0.25% of turnover in the state. Additionally, discrepancies between GSTR-9 and GSTR-3B exceeding thresholds can trigger scrutiny notices under Section 61.</p>
+
+      <div class="article-cta-bar">
+        <p>Need help with GSTR-9 reconciliation or annual return filing?</p>
+        <a href="pdka-website.html#contact" class="btn-primary">Contact PDKA <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `
+  };
+
+  articles.companylaw2025 = {
+    tag: 'Company Law · Feb 2026',
+    title: 'Companies Act Amendments 2025: Key Changes for Private Limited Companies',
+    meta: 'Published February 18, 2026 · 5 min read',
+    body: `
+      <h3>Overview</h3>
+      <p>The Ministry of Corporate Affairs (MCA) notified several amendments to the Companies Act, 2013 in 2025, aimed at easing compliance for small and medium enterprises while tightening governance for larger entities. Private limited companies must review their compliance calendars in light of these changes.</p>
+
+      <h3>Revised Small Company Thresholds</h3>
+      <p>Effective April 1, 2025, a company is classified as a <strong>small company</strong> if:</p>
+      <ul>
+        <li>Paid-up share capital does not exceed <strong>₹4 crore</strong> (previously ₹2 crore), AND</li>
+        <li>Turnover does not exceed <strong>₹40 crore</strong> (previously ₹20 crore)</li>
+      </ul>
+      <p>Small companies benefit from relaxed compliance — simplified board meeting requirements (2 meetings per year), abridged annual return (MGT-7A), and no mandatory rotation of auditors.</p>
+
+      <h3>CSR Reporting — New Format</h3>
+      <p>Companies with CSR obligations under Section 135 must now file the revised <strong>Form CSR-2</strong> alongside their financial statements. Key additions include:</p>
+      <ul>
+        <li>Activity-wise fund utilisation with GPS coordinates of project sites</li>
+        <li>Mandatory disclosure of implementing agency credentials</li>
+        <li>Impact assessment reports for CSR expenditure exceeding ₹1 crore per project</li>
+      </ul>
+
+      <h3>Related Party Transaction (RPT) Tightening</h3>
+      <p>Amendments to Section 188 now require board approval (not just audit committee) for RPTs exceeding <strong>10% of annual turnover</strong> or ₹100 crore, whichever is lower. Disclosure in the Board Report must include the business rationale and pricing methodology for each material RPT.</p>
+
+      <h3>Director KYC & Disqualification</h3>
+      <p>MCA has launched a continuous monitoring system for director disqualifications. Directors of companies that have failed to file financial statements for 3 consecutive years are automatically disqualified. PDKA recommends all companies conduct a director DIN status check as part of the annual compliance review.</p>
+
+      <div class="article-cta-bar">
+        <p>Need a Companies Act compliance review for your organisation?</p>
+        <a href="pdka-website.html#contact" class="btn-primary">Get in Touch <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `
+  };
+
+  articles.tp2026 = {
+    tag: 'Transfer Pricing · Jan 2026',
+    title: 'Transfer Pricing Documentation: What Indian Companies Must Prepare for FY 2025-26',
+    meta: 'Published January 12, 2026 · 7 min read',
+    body: `
+      <h3>Why Transfer Pricing Matters More Than Ever</h3>
+      <p>CBDT's transfer pricing (TP) assessments have intensified following India's adoption of BEPS Action Plans. Companies engaged in international transactions with associated enterprises (AEs) are now under heightened scrutiny, particularly in sectors like IT services, pharmaceuticals, and manufacturing.</p>
+
+      <h3>Documentation Requirements Under Income Tax Act</h3>
+      <p>Section 92D and Rule 10D mandate that every company with international transactions exceeding <strong>₹1 crore</strong> maintain contemporaneous TP documentation. This includes:</p>
+      <ul>
+        <li><strong>Local File:</strong> Entity profile, functional analysis (FAR — Functions, Assets, Risks), industry overview, transaction descriptions, comparability analysis, and method selection</li>
+        <li><strong>Master File (Form 3CEAA):</strong> Required for Indian constituent entities of MNE groups with consolidated revenue exceeding ₹500 crore or Indian aggregate value of international transactions exceeding ₹50 crore</li>
+        <li><strong>CbCR (Country-by-Country Report):</strong> Applicable for Indian parent entities of MNE groups with consolidated revenue exceeding ₹5,500 crore</li>
+      </ul>
+
+      <h3>Most Scrutinised Transaction Types in 2025-26</h3>
+      <ul>
+        <li>Management fee charges from overseas parent companies — CBDT is challenging these where services are not demonstrably received</li>
+        <li>Software development services rendered to AEs — benchmarking of cost-plus margins under TNMM is closely examined</li>
+        <li>Guarantee commissions on loans extended by foreign holding companies</li>
+        <li>Secondment of employees from overseas entities — service PE risk and TP implications</li>
+      </ul>
+
+      <h3>Penalties for Non-Compliance</h3>
+      <p>Failure to maintain or furnish TP documentation attracts:</p>
+      <ul>
+        <li><strong>2% of transaction value</strong> for failure to maintain documentation</li>
+        <li><strong>2% of transaction value</strong> for failure to report international transactions</li>
+        <li><strong>100% to 300%</strong> of tax sought to be evaded if TP adjustment exceeds ₹1 crore</li>
+      </ul>
+
+      <h3>PDKA's Transfer Pricing Practice</h3>
+      <p>Our TP team assists clients with documentation preparation, benchmarking analysis using TP databases, Advance Pricing Agreements (APAs), and representation before the TP Officer and Dispute Resolution Panel (DRP).</p>
+
+      <div class="article-cta-bar">
+        <p>Concerned about your company's TP exposure for FY 2025-26?</p>
+        <a href="pdka-website.html#contact" class="btn-primary">Talk to Our TP Team <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `
+  };
+
+  articles.dpdpa2025 = {
+    tag: 'DPDPA · Dec 2025',
+    title: 'DPDPA 2023: A Practical Compliance Roadmap for Businesses',
+    meta: 'Published December 5, 2025 · 8 min read',
+    body: `
+      <h3>What Is the DPDPA?</h3>
+      <p>The Digital Personal Data Protection Act, 2023 (DPDPA) is India's first comprehensive data protection law. Full enforcement begins <strong>May 13, 2027</strong>, with penalties of up to <strong>₹250 crore per breach</strong>. Every organisation that processes "digital personal data" of Indian residents — whether in India or abroad — must comply.</p>
+
+      <h3>Step 1: Data Mapping & Inventory</h3>
+      <p>The foundation of DPDPA compliance is understanding what personal data you hold, where it lives, and how it flows. Your data map should capture:</p>
+      <ul>
+        <li>Categories of personal data collected (name, contact, financial, health, biometric)</li>
+        <li>Purpose of processing for each data category</li>
+        <li>Data flows — internal teams, third-party processors, cross-border transfers</li>
+        <li>Retention periods and disposal mechanisms</li>
+      </ul>
+
+      <h3>Step 2: Consent Management</h3>
+      <p>DPDPA mandates <strong>free, specific, informed, unconditional, and unambiguous</strong> consent before processing personal data. Key implementation requirements:</p>
+      <ul>
+        <li>Consent notice must be in clear, plain language — not buried in terms and conditions</li>
+        <li>Consent must be as easy to withdraw as it is to give</li>
+        <li>A "Consent Manager" (registered with the Data Protection Board) may be used for managing consent at scale</li>
+        <li>Children's data (under 18) requires verifiable parental consent</li>
+      </ul>
+
+      <h3>Step 3: Data Principal Rights</h3>
+      <p>Every individual whose data you process has rights under the DPDPA that you must operationalise:</p>
+      <ul>
+        <li>Right to access — summary of personal data and processing details on request</li>
+        <li>Right to correction and erasure</li>
+        <li>Right to grievance redressal — you must appoint a Data Protection Officer (DPO) or grievance officer</li>
+        <li>Right to nominate — individuals can nominate another person to exercise rights in the event of death or incapacity</li>
+      </ul>
+
+      <h3>Step 4: Breach Notification</h3>
+      <p>In the event of a personal data breach, the Data Fiduciary (your organisation) must notify:</p>
+      <ul>
+        <li>The <strong>Data Protection Board of India</strong> — within 72 hours of becoming aware</li>
+        <li>Affected Data Principals — in prescribed format, without undue delay</li>
+      </ul>
+
+      <h3>Step 5: Vendor & Cross-Border Compliance</h3>
+      <p>Data processors (vendors handling data on your behalf) must be contractually bound to DPDPA obligations. Cross-border data transfers are permitted only to countries notified by the Central Government — watch for the whitelist notification expected in 2026.</p>
+
+      <h3>Penalties at a Glance</h3>
+      <ul>
+        <li>Failure to implement adequate security safeguards: up to <strong>₹250 crore</strong></li>
+        <li>Failure to notify breach: up to <strong>₹200 crore</strong></li>
+        <li>Non-fulfilment of Data Principal rights: up to <strong>₹50 crore</strong></li>
+        <li>Violation of children's data provisions: up to <strong>₹200 crore</strong></li>
+      </ul>
+
+      <div class="article-cta-bar">
+        <p>Let PDKA help you build a DPDPA compliance programme before enforcement begins.</p>
+        <a href="pdka-website.html#contact" class="btn-primary">Start Your DPDPA Journey <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `
+  };
+
+  articles.vcfo2025 = {
+    tag: 'Virtual CFO · Nov 2025',
+    title: 'When Does a Startup Need a Virtual CFO? 7 Signs to Watch For',
+    meta: 'Published November 22, 2025 · 5 min read',
+    body: `
+      <h3>The CFO Gap in Growing Startups</h3>
+      <p>Most startups hire a full-time CFO only when they cross ₹50–100 crore in revenue. Yet the financial complexity that demands strategic finance leadership often appears much earlier — typically between ₹5 and ₹25 crore. A Virtual CFO bridges this gap: providing senior finance expertise on a fractional basis, at a fraction of the cost.</p>
+
+      <h3>Sign 1: Investor Conversations Are Getting Serious</h3>
+      <p>When venture capital, private equity, or angel investors begin requesting financial models, cap table analyses, or due diligence data rooms, having a CFO-level voice on your team becomes essential. A Virtual CFO structures your financials to investor standards and speaks the language of VC term sheets.</p>
+
+      <h3>Sign 2: You Are Missing Tax & Compliance Deadlines</h3>
+      <p>If TDS filings, GST returns, advance tax payments, or ROC filings are being missed — or being filed late with penalties — it is a sign that financial governance has outgrown your current team's bandwidth. A Virtual CFO builds a compliance calendar and accountability structure.</p>
+
+      <h3>Sign 3: You Cannot Explain Your Gross Margin</h3>
+      <p>If your P&L is produced by your accountant but you cannot explain the drivers behind your gross margin movement month-on-month, you lack the management reporting layer that a CFO provides. MIS reports, unit economics dashboards, and variance commentary are core Virtual CFO deliverables.</p>
+
+      <h3>Sign 4: You Are Planning International Expansion</h3>
+      <p>Setting up a subsidiary overseas, dealing with FEMA ODI filings, managing transfer pricing, or receiving foreign investment all introduce regulatory complexity that requires CFO-level navigation. PDKA's Virtual CFO service is particularly well-suited to tech companies expanding into the US, UK, UAE, or Singapore.</p>
+
+      <h3>Sign 5: Banking & Working Capital Is Strained</h3>
+      <p>If you are struggling to manage working capital, negotiate better credit lines, or present a compelling case to your bank, a Virtual CFO can prepare CMA data, cash flow projections, and fund utilisation statements that strengthen your banking relationships.</p>
+
+      <h3>Sign 6: Your Audit Is Consistently Messy</h3>
+      <p>If your statutory audit involves extended back-and-forth, numerous queries, and audit adjustments each year, it reflects weak financial controls. A Virtual CFO implements internal controls, standardises accounts preparation, and ensures audit-readiness year-round.</p>
+
+      <h3>Sign 7: You Are Preparing for an Acquisition or ESOP Scheme</h3>
+      <p>M&A transactions, secondary sales, and employee stock option schemes (ESOPs) require valuation reports, shareholder agreement reviews, and Section 56(2)(x) analysis. These are squarely in the Virtual CFO's domain.</p>
+
+      <h3>What PDKA's Virtual CFO Service Covers</h3>
+      <ul>
+        <li>Monthly MIS and management reporting</li>
+        <li>Budget vs. actuals analysis and cash flow management</li>
+        <li>Investor reporting and data room preparation</li>
+        <li>FEMA, RBI, and cross-border compliance</li>
+        <li>Coordination with statutory and internal auditors</li>
+        <li>ESOP structuring and valuation support</li>
+      </ul>
+
+      <div class="article-cta-bar">
+        <p>Explore whether PDKA's Virtual CFO service is right for your business.</p>
+        <a href="pdka-website.html#contact" class="btn-primary">Talk to Us <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `
+  };
+
+  articles.gstit2025 = {
+    tag: 'GST · Oct 2025',
+    title: 'GST on IT Services: Place of Supply, Export Benefits & ITC Optimisation',
+    meta: 'Published October 8, 2025 · 6 min read',
+    body: `
+      <h3>Why IT Companies Face Unique GST Challenges</h3>
+      <p>IT and software companies operate at the intersection of domestic B2B, domestic B2C, and export transactions — each governed by different GST rules. Mis-classification of the place of supply or failure to claim export benefits can result in significant tax leakage or blocked ITC.</p>
+
+      <h3>Place of Supply: Getting It Right</h3>
+      <p>For IT services, the place of supply determines whether GST is charged at all and which state's SGST applies. Key rules:</p>
+      <ul>
+        <li><strong>B2B (GSTIN customers):</strong> Place of supply is the <em>recipient's registered location</em>. IGST applies for inter-state; CGST+SGST for intra-state</li>
+        <li><strong>B2C (unregistered customers):</strong> Place of supply is the <em>location of the service provider</em> — important for SaaS platforms serving individual consumers</li>
+        <li><strong>Export of services:</strong> Place of supply is outside India; transaction is zero-rated. Ensure the recipient is outside India AND payment is received in foreign exchange (except Nepal/Bhutan)</li>
+      </ul>
+
+      <h3>Maximising Export Benefits</h3>
+      <p>IT companies exporting services have two options for handling GST on their costs:</p>
+      <ul>
+        <li><strong>LUT (Letter of Undertaking):</strong> Export without paying GST and claim full ITC refund on inputs. This is generally the preferred route — no cash flow blockage</li>
+        <li><strong>Export with IGST payment:</strong> Pay IGST on exports and claim a refund. Useful only if the company has insufficient ITC and prefers a clean cash refund</li>
+      </ul>
+      <p>PDKA strongly recommends filing LUT annually (before April 1 each year) and ensuring your export contracts clearly define the nature of services, payment terms in foreign currency, and completion milestones for service export treatment.</p>
+
+      <h3>ITC Optimisation for IT Companies</h3>
+      <p>Common areas of ITC leakage in IT companies:</p>
+      <ul>
+        <li><strong>Cloud infrastructure (AWS, Azure, GCP):</strong> IGST paid on these invoices is fully creditable — ensure vendor invoices carry your GSTIN</li>
+        <li><strong>Software licences:</strong> SAC code 9972 — eligible for ITC if used in the course of business</li>
+        <li><strong>Office rent:</strong> GST on commercial leases is creditable; residential accommodation leased for employees is blocked under Section 17(5)</li>
+        <li><strong>Business travel:</strong> GST on business-class air travel is blocked under Section 17(5); economy class is creditable</li>
+      </ul>
+
+      <h3>Refund Claims: Common Rejection Grounds</h3>
+      <p>GST refund claims for IT exporters are frequently rejected or delayed due to:</p>
+      <ul>
+        <li>FIRC (Foreign Inward Remittance Certificate) not matching invoice amounts due to forex fluctuation — use BRC/FIRC with bank endorsement</li>
+        <li>Services not qualifying as "export" due to the recipient having a PE in India</li>
+        <li>Mismatch between turnover declared in GSTR-1 and GSTR-3B</li>
+      </ul>
+
+      <div class="article-cta-bar">
+        <p>Is your IT company claiming all the GST benefits it is entitled to?</p>
+        <a href="pdka-website.html#contact" class="btn-primary">Get a GST Review <i class="fas fa-arrow-right"></i></a>
+      </div>
+    `
+  };
+
+  function openArticle(id) {
+    const a = articles[id];
+    if (!a) return;
+    document.getElementById('fullTag').textContent = a.tag;
+    document.getElementById('fullTitle').textContent = a.title;
+    document.getElementById('fullMeta').textContent = a.meta;
+    document.getElementById('fullBody').innerHTML = a.body;
+    const fullEl = document.getElementById('articleFull');
+    fullEl.classList.add('open');
+    setTimeout(() => fullEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+
+  function closeArticle() {
+    document.getElementById('articleFull').classList.remove('open');
+  }
+</script>
+</body>
+</html>
