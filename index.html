@@ -820,12 +820,12 @@
   </a>
   <ul class="nav-links">
     <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)">Home</a></li>
-    <li><a href="about.html" target="_blank" rel="noopener">About</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaModal('about-modal')">About</a></li>
     <li><a href="#founder">Founder</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#insights">Insights</a></li>
-    <li><a href="careers.html">Careers</a></li>
+    <li><a href="#careers">Careers</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
@@ -1341,7 +1341,7 @@
           </div>
         </a>
         <p>A professional firm of Chartered Accountants committed to quality, integrity, and ICAI standards since 1998.</p>
-        <a href="client-portal.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--orange);color:white;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#f47820'" onmouseout="this.style.background='var(--orange)'"><i class="fas fa-user-circle"></i> Client Portal</a>
+        <a href="javascript:void(0)" onclick="openPdkaModal('portal-modal')" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--orange);color:white;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#f47820'" onmouseout="this.style.background='var(--orange)'"><i class="fas fa-user-circle"></i> Client Portal</a>
         <!-- ICAI Logo -->
         <div style="display:flex;align-items:center;gap:14px;margin-top:20px;">
           <svg height="52" viewBox="0 0 80 52" xmlns="http://www.w3.org/2000/svg" aria-label="ICAI — Institute of Chartered Accountants of India" style="opacity:0.85;">
@@ -1370,7 +1370,7 @@
           <li><a href="#about">About Us</a></li>
           <li><a href="#team">Our Team</a></li>
           <li><a href="#insights">Insights</a></li>
-          <li><a href="careers.html">Careers</a></li>
+          <li><a href="#careers">Careers</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
@@ -1388,8 +1388,8 @@
     <div class="footer-bottom">
       <p>© 2026 P. Dilip Kumar &amp; Associates. All rights reserved.</p>
       <div class="footer-bottom-links">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+        <a href="javascript:void(0)" onclick="openPdkaModal('privacy-modal')">Privacy Policy</a>
+        <a href="javascript:void(0)" onclick="openPdkaModal('terms-modal')">Terms &amp; Conditions</a>
         <a href="javascript:void(0)" title="Registered with the Institute of Chartered Accountants of India">ICAI Registered</a>
       </div>
     </div>
@@ -2217,6 +2217,264 @@ function closeSvcIfOutside(e) {
     obs.observe(wrap);
   })();
 
+
+  // ── PDKA MODAL SYSTEM ──
+  function openPdkaModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePdkaModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      ['about-modal','portal-modal','terms-modal','privacy-modal'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.remove('open');
+      });
+      document.body.style.overflow = '';
+    }
+  });
+  // Close modal on background click
+  ['about-modal','portal-modal','terms-modal','privacy-modal'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', function(e) {
+      if (e.target === el) { el.classList.remove('open'); document.body.style.overflow = ''; }
+    });
+  });
+  // Portal tab switch
+  function switchPortalTab(tab) {
+    document.getElementById('panelSignin').classList.toggle('active', tab === 'signin');
+    document.getElementById('panelSignup').classList.toggle('active', tab === 'signup');
+    document.getElementById('tabSignin').classList.toggle('active', tab === 'signin');
+    document.getElementById('tabSignup').classList.toggle('active', tab === 'signup');
+    ['signinSuccess','signinError','signupSuccess','signupError'].forEach(function(id) {
+      var el = document.getElementById(id); if (el) el.classList.remove('show');
+    });
+  }
+  function togglePwd(id, btn) {
+    var inp = document.getElementById(id);
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    btn.querySelector('i').className = inp.type === 'text' ? 'fas fa-eye-slash' : 'fas fa-eye';
+  }
+  function checkStrength(v) {
+    var w = document.getElementById('pwdStrength');
+    if (!v) { w.style.display = 'none'; return; }
+    w.style.display = 'block';
+    var sc = 0;
+    if (v.length >= 8) sc++;
+    if (/[A-Z]/.test(v)) sc++;
+    if (/[0-9]/.test(v)) sc++;
+    if (/[^A-Za-z0-9]/.test(v)) sc++;
+    var clr = ['#ef4444','#f97316','#eab308','#22c55e'];
+    var lbl = ['Weak','Fair','Good','Strong'];
+    ['s1','s2','s3','s4'].forEach(function(id, i) {
+      document.getElementById(id).style.background = i < sc ? clr[sc-1] : '#e8eaf0';
+    });
+    var el = document.getElementById('pwdLabel');
+    el.textContent = lbl[sc-1] || ''; el.style.color = clr[sc-1] || '#9ca3af';
+  }
+  function handleSignin() {
+    var email = document.getElementById('signinEmail').value.trim();
+    var pwd = document.getElementById('signinPassword').value;
+    document.getElementById('signinError').classList.remove('show');
+    document.getElementById('signinSuccess').classList.remove('show');
+    if (!email || !pwd) { showPortalErr('signinErrorMsg','signinError','Please enter your email and password.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showPortalErr('signinErrorMsg','signinError','Please enter a valid email address.'); return; }
+    document.getElementById('signinSuccess').classList.add('show');
+  }
+  function handleSignup() {
+    var first = document.getElementById('signupFirst').value.trim();
+    var last = document.getElementById('signupLast').value.trim();
+    var email = document.getElementById('signupEmail').value.trim();
+    var pwd = document.getElementById('signupPassword').value;
+    var agreed = document.getElementById('agreeTerms').checked;
+    document.getElementById('signupError').classList.remove('show');
+    document.getElementById('signupSuccess').classList.remove('show');
+    if (!first || !last || !email || !pwd) { showPortalErr('signupErrorMsg','signupError','Please fill in all required fields.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showPortalErr('signupErrorMsg','signupError','Please enter a valid email address.'); return; }
+    if (pwd.length < 8) { showPortalErr('signupErrorMsg','signupError','Password must be at least 8 characters.'); return; }
+    if (!agreed) { showPortalErr('signupErrorMsg','signupError','Please agree to the Terms to continue.'); return; }
+    document.getElementById('signupSuccess').classList.add('show');
+    ['signupFirst','signupLast','signupCompany','signupEmail','signupPhone','signupPassword'].forEach(function(id) { document.getElementById(id).value = ''; });
+    document.getElementById('agreeTerms').checked = false;
+    document.getElementById('pwdStrength').style.display = 'none';
+  }
+  function showPortalErr(msgId, bannerId, txt) {
+    document.getElementById(msgId).textContent = txt;
+    document.getElementById(bannerId).classList.add('show');
+  }
+  function ssoNotice() { alert('Google Sign-In will be enabled once the portal backend is connected.'); }
+  function showPortalForgot(e) { e.preventDefault(); document.getElementById('forgotOverlay').style.display = 'flex'; }
+  function closeForgot() { document.getElementById('forgotOverlay').style.display = 'none'; document.getElementById('forgotMsg').style.display = 'none'; document.getElementById('forgotEmail').value = ''; }
+  function submitForgot() {
+    var email = document.getElementById('forgotEmail').value.trim();
+    if (!email) return;
+    var msg = document.getElementById('forgotMsg');
+    msg.textContent = 'Reset link sent to ' + email + '. Please check your inbox.';
+    msg.style.display = 'block';
+    setTimeout(closeForgot, 3000);
+  }
 </script>
+
+<!-- ═══════════════════ ABOUT MODAL ═══════════════════ -->
+<div class="pdka-modal-bg" id="about-modal">
+  <div class="pdka-modal-inner" style="max-width:820px;">
+    <button class="pdka-modal-close-btn" onclick="closePdkaModal('about-modal')"><i class="fas fa-times"></i></button>
+    <div style="background:linear-gradient(120deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:20px 20px 0 0;padding:48px 48px 32px;">
+      <div style="font-size:11px;font-weight:700;color:var(--orange-light);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">The Firm</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,34px);color:white;margin-bottom:12px;">P. Dilip Kumar &amp; Associates</h2>
+      <p style="color:rgba(255,255,255,0.7);font-size:15px;line-height:1.7;">A professional firm of Chartered Accountants committed to quality, ICAI Standards &mdash; established 1998, Bangalore.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--grey-mid);">
+      <div style="padding:18px;text-align:center;border-right:1px solid var(--grey-mid);"><strong style="display:block;font-size:22px;font-weight:800;color:var(--orange);">28+</strong><span style="font-size:12px;color:var(--text-light);">Years of Practice</span></div>
+      <div style="padding:18px;text-align:center;border-right:1px solid var(--grey-mid);"><strong style="display:block;font-size:22px;font-weight:800;color:var(--orange);">9</strong><span style="font-size:12px;color:var(--text-light);">Countries Served</span></div>
+      <div style="padding:18px;text-align:center;border-right:1px solid var(--grey-mid);"><strong style="display:block;font-size:22px;font-weight:800;color:var(--orange);">60+</strong><span style="font-size:12px;color:var(--text-light);">Staff</span></div>
+      <div style="padding:18px;text-align:center;"><strong style="display:block;font-size:22px;font-weight:800;color:var(--orange);">1998</strong><span style="font-size:12px;color:var(--text-light);">Est. Bangalore</span></div>
+    </div>
+    <div style="padding:36px 48px;">
+      <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Who We Are</div>
+      <p style="font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:12px;">PDKA is a fast growing professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards. Over the last twenty-eight years of practice, the firm has created a niche for itself offering a bouquet of services to a selected clientele from India and other countries.</p>
+      <p style="font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:12px;">Based in Bangalore, the IT Capital of India, the firm has made a name for itself by offering end-to-end services under one roof &mdash; in particular for the IT &amp; ITES industry and the Retail sector.</p>
+      <p style="font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:24px;">The firm serves clients across India, USA, Australia, Dubai, UK, Ireland, Singapore, Japan and Italy.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+        <span style="padding:5px 14px;background:rgba(232,96,10,0.1);color:var(--orange);border-radius:20px;font-size:13px;font-weight:600;">India</span>
+        <span style="padding:5px 14px;background:rgba(232,96,10,0.1);color:var(--orange);border-radius:20px;font-size:13px;font-weight:600;">USA</span>
+        <span style="padding:5px 14px;background:rgba(232,96,10,0.1);color:var(--orange);border-radius:20px;font-size:13px;font-weight:600;">Australia</span>
+        <span style="padding:5px 14px;background:rgba(232,96,10,0.1);color:var(--orange);border-radius:20px;font-size:13px;font-weight:600;">Dubai</span>
+        <span style="padding:5px 14px;background:rgba(232,96,10,0.1);color:var(--orange);border-radius:20px;font-size:13px;font-weight:600;">UK</span>
+        <span style="padding:5px 14px;background:rgba(232,96,10,0.1);color:var(--orange);border-radius:20px;font-size:13px;font-weight:600;">Ireland</span>
+        <span style="padding:5px 14px;background:rgba(232,96,10,0.1);color:var(--orange);border-radius:20px;font-size:13px;font-weight:600;">Singapore</span>
+        <span style="padding:5px 14px;background:rgba(232,96,10,0.1);color:var(--orange);border-radius:20px;font-size:13px;font-weight:600;">Japan</span>
+        <span style="padding:5px 14px;background:rgba(232,96,10,0.1);color:var(--orange);border-radius:20px;font-size:13px;font-weight:600;">Italy</span>
+      </div>
+      <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Our Values</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+        <div style="background:var(--grey-light);border-radius:10px;padding:16px 20px;font-size:14px;font-weight:700;color:var(--navy);">Trust &amp; Integrity</div>
+        <div style="background:var(--grey-light);border-radius:10px;padding:16px 20px;font-size:14px;font-weight:700;color:var(--navy);">Professional Ethics</div>
+        <div style="background:var(--grey-light);border-radius:10px;padding:16px 20px;font-size:14px;font-weight:700;color:var(--navy);">Confidentiality</div>
+        <div style="background:var(--grey-light);border-radius:10px;padding:16px 20px;font-size:14px;font-weight:700;color:var(--navy);">Personalised Service</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CLIENT PORTAL MODAL ═══════════════════ -->
+<div class="pdka-modal-bg" id="portal-modal">
+  <div class="pdka-modal-inner" style="max-width:460px;background:transparent;box-shadow:none;">
+    <button onclick="closePdkaModal('portal-modal')" style="position:fixed;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:18px;color:white;display:flex;align-items:center;justify-content:center;z-index:10;"><i class="fas fa-times"></i></button>
+    <div class="portal-card">
+      <div class="card-header">
+        <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <div style="width:40px;height:40px;background:#e8600a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:15px;">PK</div>
+          <div><strong style="display:block;font-size:14px;font-weight:700;color:white;">P. Dilip Kumar &amp; Associates</strong><span style="font-size:11px;color:rgba(255,255,255,0.5);">Chartered Accountants &middot; Bangalore</span></div>
+        </div>
+        <div class="tab-row">
+          <button class="tab-btn active" id="tabSignin" onclick="switchPortalTab('signin')"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+          <button class="tab-btn" id="tabSignup" onclick="switchPortalTab('signup')"><i class="fas fa-user-plus"></i> Sign Up</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-panel active" id="panelSignin">
+          <div class="form-heading">Welcome back</div>
+          <div class="form-sub">Sign in to access your client documents.</div>
+          <div class="success-banner" id="signinSuccess"><i class="fas fa-check-circle"></i>&nbsp; Signed in successfully!</div>
+          <div class="error-banner" id="signinError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signinErrorMsg"></span></div>
+          <div class="field"><label>Email Address</label><div class="input-wrap"><i class="fas fa-envelope field-icon"></i><input type="email" id="signinEmail" placeholder="you@example.com" /></div></div>
+          <div class="field"><label>Password</label><div class="input-wrap"><i class="fas fa-lock field-icon"></i><input type="password" id="signinPassword" placeholder="Enter your password" style="padding-right:40px;" /><button class="pwd-toggle" type="button" onclick="togglePwd('signinPassword',this)"><i class="fas fa-eye"></i></button></div></div>
+          <a href="#" class="forgot-link" onclick="showPortalForgot(event)">Forgot password?</a>
+          <button class="btn-submit" onclick="handleSignin()"><i class="fas fa-sign-in-alt"></i> Sign In to Portal</button>
+          <div class="divider"><span>or</span></div>
+          <button class="btn-sso" onclick="ssoNotice()"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style="width:18px;height:18px;" /> Sign in with Google</button>
+          <div class="switch-note">No account? <a onclick="switchPortalTab('signup')">Sign Up</a></div>
+        </div>
+        <div class="form-panel" id="panelSignup">
+          <div class="form-heading">Create your account</div>
+          <div class="form-sub">Register to receive documents and updates from PDKA.</div>
+          <div class="success-banner" id="signupSuccess"><i class="fas fa-check-circle"></i>&nbsp; Request submitted! We'll activate within 1 business day.</div>
+          <div class="error-banner" id="signupError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signupErrorMsg"></span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="field"><label>First Name</label><div class="input-wrap"><i class="fas fa-user field-icon"></i><input type="text" id="signupFirst" placeholder="First name" /></div></div>
+            <div class="field"><label>Last Name</label><div class="input-wrap"><i class="fas fa-user field-icon"></i><input type="text" id="signupLast" placeholder="Last name" /></div></div>
+          </div>
+          <div class="field"><label>Company</label><div class="input-wrap"><i class="fas fa-building field-icon"></i><input type="text" id="signupCompany" placeholder="Your company name" /></div></div>
+          <div class="field"><label>Email Address</label><div class="input-wrap"><i class="fas fa-envelope field-icon"></i><input type="email" id="signupEmail" placeholder="you@company.com" /></div></div>
+          <div class="field"><label>Mobile Number</label><div class="input-wrap"><i class="fas fa-phone field-icon"></i><input type="tel" id="signupPhone" placeholder="+91 98XXX XXXXX" /></div></div>
+          <div class="field"><label>Password</label><div class="input-wrap"><i class="fas fa-lock field-icon"></i><input type="password" id="signupPassword" placeholder="Min. 8 characters" style="padding-right:40px;" oninput="checkStrength(this.value)" /><button class="pwd-toggle" type="button" onclick="togglePwd('signupPassword',this)"><i class="fas fa-eye"></i></button></div><div class="pwd-strength" id="pwdStrength" style="display:none;"><div class="pwd-strength-bar"><span id="s1"></span><span id="s2"></span><span id="s3"></span><span id="s4"></span></div><div class="pwd-strength-label" id="pwdLabel"></div></div></div>
+          <div class="check-field"><input type="checkbox" id="agreeTerms" /><label for="agreeTerms">I agree to the <a href="javascript:void(0)" onclick="closePdkaModal('portal-modal');openPdkaModal('terms-modal')" style="color:var(--orange);">Terms</a> and <a href="javascript:void(0)" onclick="closePdkaModal('portal-modal');openPdkaModal('privacy-modal')" style="color:var(--orange);">Privacy Policy</a>.</label></div>
+          <button class="btn-submit" onclick="handleSignup()"><i class="fas fa-user-plus"></i> Create Account</button>
+          <div class="switch-note">Have an account? <a onclick="switchPortalTab('signin')">Sign In</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Forgot Password Overlay (inside portal) -->
+<div id="forgotOverlay" style="display:none;position:fixed;inset:0;z-index:9600;background:rgba(5,10,25,0.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:white;border-radius:16px;max-width:380px;width:100%;padding:32px;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
+    <h3 style="font-size:18px;font-weight:700;color:#0d1b3e;margin-bottom:6px;">Reset Password</h3>
+    <p style="font-size:13px;color:#6b7280;margin-bottom:20px;">Enter your email and we'll send a reset link.</p>
+    <div class="input-wrap" style="margin-bottom:16px;"><i class="fas fa-envelope field-icon"></i><input type="email" id="forgotEmail" placeholder="you@example.com" /></div>
+    <div style="display:flex;gap:10px;">
+      <button onclick="closeForgot()" style="flex:1;padding:11px;border:1.5px solid #e8eaf0;border-radius:9px;background:none;font-size:14px;font-weight:600;cursor:pointer;color:#374151;font-family:inherit;">Cancel</button>
+      <button onclick="submitForgot()" style="flex:1;padding:11px;background:#e8600a;border:none;border-radius:9px;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">Send Link</button>
+    </div>
+    <div id="forgotMsg" style="display:none;margin-top:12px;font-size:13px;color:#065f46;background:rgba(16,185,129,0.1);border-radius:8px;padding:10px 12px;"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TERMS MODAL ═══════════════════ -->
+<div class="pdka-modal-bg" id="terms-modal">
+  <div class="pdka-modal-inner" style="max-width:860px;">
+    <button class="pdka-modal-close-btn" onclick="closePdkaModal('terms-modal')"><i class="fas fa-times"></i></button>
+    <div style="background:linear-gradient(120deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:20px 20px 0 0;padding:40px 48px 32px;">
+      <div style="font-size:11px;font-weight:700;color:var(--orange-light);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Legal</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(20px,3.5vw,30px);color:white;margin-bottom:8px;">Terms &amp; Conditions</h2>
+      <p style="color:rgba(255,255,255,0.5);font-size:13px;">Last updated: March 2025 &nbsp;&middot;&nbsp; P. Dilip Kumar &amp; Associates</p>
+    </div>
+    <div style="padding:36px 48px;max-height:65vh;overflow-y:auto;">
+      <div class="legal-modal-section" id="ts1"><h2><span class="sec-num">1</span> Acceptance of Terms</h2><p>By accessing or using the website of P. Dilip Kumar &amp; Associates (PDKA), you agree to be bound by these Terms &amp; Conditions. If you do not agree, please discontinue use of this website.</p></div>
+      <div class="legal-modal-section" id="ts2"><h2><span class="sec-num">2</span> Nature of Information</h2><p>The content on this website is for general informational purposes only and does not constitute professional advice. No professional-client relationship is established through this website alone.</p></div>
+      <div class="legal-modal-section" id="ts3"><h2><span class="sec-num">3</span> Services</h2><p>PDKA provides professional services including Audit &amp; Assurance, Tax Advisory, Virtual CFO, Business Advisory, Compliance &amp; Regulatory services, and Risk Management, in accordance with ICAI guidelines.</p></div>
+      <div class="legal-modal-section" id="ts4"><h2><span class="sec-num">4</span> Client Responsibilities</h2><p>Clients engaging with PDKA agree to:</p><ul><li>Provide accurate, complete and timely information relevant to the engagement</li><li>Comply with all applicable laws and regulations</li><li>Maintain confidentiality of professional advice received</li><li>Adhere to terms specified in individual engagement letters</li></ul></div>
+      <div class="legal-modal-section" id="ts5"><h2><span class="sec-num">5</span> Engagement Terms</h2><p>Terms of engagement, including scope of work, are specified in individual engagement letters agreed upon before commencement of any professional assignment.</p></div>
+      <div class="legal-modal-section" id="ts6"><h2><span class="sec-num">6</span> Confidentiality</h2><p>PDKA maintains strict confidentiality of all client information in accordance with ICAI ethical standards. Disclosure may occur only where required by law or with prior written consent of the client.</p></div>
+      <div class="legal-modal-section" id="ts7"><h2><span class="sec-num">7</span> Limitation of Liability</h2><p>The firm's liability shall be limited to the professional fees received for that specific assignment. PDKA shall not be liable for indirect, consequential, or incidental losses.</p></div>
+      <div class="legal-modal-section" id="ts8"><h2><span class="sec-num">8</span> Intellectual Property</h2><p>All reports and materials prepared by PDKA remain the intellectual property of the firm. Clients are granted a non-exclusive licence for internal use only.</p></div>
+      <div class="legal-modal-section" id="ts9"><h2><span class="sec-num">9</span> Termination of Engagement</h2><p>Either party may terminate an engagement by providing written notice. All outstanding professional dues must be settled upon termination.</p></div>
+      <div class="legal-modal-section" id="ts10"><h2><span class="sec-num">10</span> Governing Law</h2><p>These Terms are governed by the laws of India and ICAI regulations. Disputes shall be subject to the exclusive jurisdiction of courts in Bangalore, Karnataka.</p></div>
+      <div class="legal-modal-section" id="ts11"><h2><span class="sec-num">11</span> Website Usage</h2><p>This website is maintained for informational purposes in accordance with ICAI guidelines. Unauthorised use or reproduction of website content is prohibited.</p></div>
+      <div class="legal-modal-section" id="ts12"><h2><span class="sec-num">12</span> Changes to Terms</h2><p>PDKA reserves the right to update these Terms at any time. Continued use of the website after changes constitutes acceptance of the revised Terms.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PRIVACY MODAL ═══════════════════ -->
+<div class="pdka-modal-bg" id="privacy-modal">
+  <div class="pdka-modal-inner" style="max-width:860px;">
+    <button class="pdka-modal-close-btn" onclick="closePdkaModal('privacy-modal')"><i class="fas fa-times"></i></button>
+    <div style="background:linear-gradient(120deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:20px 20px 0 0;padding:40px 48px 32px;">
+      <div style="font-size:11px;font-weight:700;color:var(--orange-light);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Legal</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(20px,3.5vw,30px);color:white;margin-bottom:8px;">Privacy Policy</h2>
+      <p style="color:rgba(255,255,255,0.5);font-size:13px;">Last updated: March 2025 &nbsp;&middot;&nbsp; P. Dilip Kumar &amp; Associates</p>
+    </div>
+    <div style="padding:36px 48px;max-height:65vh;overflow-y:auto;">
+      <div class="legal-modal-section" id="ps1"><h2><span class="sec-num">1</span> Introduction</h2><p>P. Dilip Kumar &amp; Associates ("PDKA") is committed to protecting the privacy of visitors to this website. This Privacy Policy explains how we collect, use, and safeguard any information you provide.</p></div>
+      <div class="legal-modal-section" id="ps2"><h2><span class="sec-num">2</span> Information We Collect</h2><p>We may collect: name and contact details, business name, nature of service enquiry, messages submitted through our contact form, and technical information such as browser type and IP address.</p></div>
+      <div class="legal-modal-section" id="ps3"><h2><span class="sec-num">3</span> How We Use Your Information</h2><p>Information is used solely to respond to enquiries, provide professional services, comply with legal obligations under Indian law and ICAI guidelines, and improve website functionality. We do not use your information for marketing without explicit consent.</p></div>
+      <div class="legal-modal-section" id="ps4"><h2><span class="sec-num">4</span> Confidentiality of Client Information</h2><p>All client information received in connection with professional engagements is treated as strictly confidential in accordance with ICAI's Code of Ethics. Disclosure only occurs where required by law or with prior written consent.</p></div>
+      <div class="legal-modal-section" id="ps5"><h2><span class="sec-num">5</span> Sharing of Information</h2><p>We do not sell or transfer your personal information to third parties. Information may be shared only where required by a court or regulatory authority, with your explicit consent, or with professional advisors bound by confidentiality.</p></div>
+      <div class="legal-modal-section" id="ps6"><h2><span class="sec-num">6</span> Data Security</h2><p>We take reasonable technical and organisational measures to protect information from unauthorised access or disclosure. No method of internet transmission is entirely secure.</p></div>
+      <div class="legal-modal-section" id="ps7"><h2><span class="sec-num">7</span> Data Retention</h2><p>We retain personal information only as long as necessary to fulfil the purpose collected, or as required by applicable law and ICAI requirements.</p></div>
+      <div class="legal-modal-section" id="ps8"><h2><span class="sec-num">8</span> Your Rights</h2><p>You have the right to access, correct, or request deletion of your personal information, and to withdraw consent for discretionary use. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a>.</p></div>
+      <div class="legal-modal-section" id="ps9"><h2><span class="sec-num">9</span> Cookies</h2><p>This website may use cookies to improve your browsing experience. You can manage or disable cookies through your browser settings.</p></div>
+      <div class="legal-modal-section" id="ps10"><h2><span class="sec-num">10</span> Third-Party Links</h2><p>Any external links are for informational purposes only. PDKA is not responsible for the privacy practices of external sites.</p></div>
+      <div class="legal-modal-section" id="ps11"><h2><span class="sec-num">11</span> Governing Law</h2><p>This Privacy Policy is governed by the laws of India, including the Information Technology Act, 2000. Disputes shall be subject to the jurisdiction of courts in Bangalore, Karnataka.</p></div>
+      <div class="legal-modal-section" id="ps12"><h2><span class="sec-num">12</span> Changes to This Policy</h2><p>We reserve the right to update this Privacy Policy. Changes will be posted with a revised "Last updated" date. Continued use constitutes acceptance of the updated policy.</p></div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
