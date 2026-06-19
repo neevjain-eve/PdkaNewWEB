@@ -807,6 +807,57 @@
       transition: width 0.9s cubic-bezier(0.25,1,0.5,1);
     }
     .about-stat-line.draw { width: clamp(120px, 15vw, 190px); }
+
+    /* ===== PDKA MODAL SYSTEM ===== */
+    .pdka-modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9500;
+      background: rgba(0,0,0,0.72);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .pdka-modal-bg.open {
+      display: flex;
+    }
+    .pdka-modal-inner,
+    .pdka-modal-box {
+      position: relative;
+      background: var(--bg, #fff);
+      border-radius: 14px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+      padding: 48px 40px 40px;
+      animation: modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @media (max-width: 600px) {
+      .pdka-modal-inner,
+      .pdka-modal-box { padding: 36px 20px 24px; }
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.88) translateY(20px); }
+      to   { opacity: 1; transform: scale(1)    translateY(0); }
+    }
+    .pdka-modal-close {
+      position: absolute;
+      top: 14px; right: 18px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--text-muted, #888);
+      transition: color 0.15s;
+      z-index: 10;
+    }
+    .pdka-modal-close:hover { color: var(--orange, #e8600a); }
+    .pdka-modal-wide { max-width: 980px; }
+    /* ===== END MODAL SYSTEM ===== */
 </style>
 </head>
 <body>
