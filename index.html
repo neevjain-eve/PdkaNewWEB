@@ -61,7 +61,7 @@
 
     /* ── HERO (sticky — about slides over it) ── */
     #home {
-      position: sticky; top: 0;
+      position: relative;
       height: 100vh; min-height: 580px;
       overflow: hidden; z-index: 1;
       display: flex; flex-direction: column;
@@ -823,9 +823,9 @@
     <li><a href="javascript:void(0)" onclick="openPdkaModal('about-modal')">About</a></li>
     <li><a href="#founder">Founder</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#insights">Insights</a></li>
-    <li><a href="#careers">Careers</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaModal('team-modal')">Team</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaModal('insights-modal')">Insights</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaModal('careers-modal')">Careers</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
@@ -1161,7 +1161,7 @@
         <div class="section-label">Knowledge Hub</div>
         <h2 class="section-title">Expert Insights &amp; Updates</h2>
       </div>
-      <a href="insights.html" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;">View All <i class="fas fa-arrow-right"></i></a>
+      <a href="javascript:void(0)" onclick="openPdkaModal('insights-modal')" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;">View All <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="insights-grid">
       <div class="insight-card">
@@ -1369,8 +1369,8 @@
         <ul>
           <li><a href="#about">About Us</a></li>
           <li><a href="#team">Our Team</a></li>
-          <li><a href="#insights">Insights</a></li>
-          <li><a href="#careers">Careers</a></li>
+          <li><a href="javascript:void(0)" onclick="openPdkaModal('insights-modal')">Insights</a></li>
+          <li><a href="javascript:void(0)" onclick="openPdkaModal('careers-modal')">Careers</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
@@ -2476,5 +2476,470 @@ function closeSvcIfOutside(e) {
   </div>
 </div>
 
+
+<!-- CAREERS MODAL -->
+<div id="careers-modal" class="pdka-modal-bg" onclick="if(event.target===this)closePdkaModal('careers-modal')">
+  <div class="pdka-modal-box pdka-modal-wide" style="max-width:900px;max-height:90vh;overflow-y:auto;">
+    <button class="pdka-modal-close" onclick="closePdkaModal('careers-modal')" aria-label="Close">&times;</button>
+    <!-- NAV -->
+
+
+<!-- MOBILE NAV DRAWER -->
+
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg">
+    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1800&h=600&fit=crop&crop=center" alt="Careers at PDKA" loading="eager" />
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Join Our Team</div>
+    <h1 class="page-hero-title">Careers at PDKA</h1>
+    <p class="page-hero-sub">Build your career with one of Bangalore's most respected CA firms. We invest in people who are passionate about excellence.</p>
+  </div>
+</div>
+
+<!-- CAREERS CONTENT -->
+<div class="careers-page">
+  <div class="careers-inner">
+
+    <!-- Intro -->
+    <div class="careers-intro-strip">
+      <div class="cis-icon"><i class="fas fa-users"></i></div>
+      <p>We are a growing practice committed to professional development. We welcome qualified Chartered Accountants, Company Secretaries, and ICAI articleship candidates to join our team. Working at PDKA means exposure to diverse industries, international clients across 9 countries, and mentorship from a 28+ year experienced leadership team.</p>
+    </div>
+
+    <!-- Open Roles -->
+    <div class="careers-section-label">Open Positions</div>
+    <h2 class="careers-section-title">Current Openings</h2>
+
+    <div class="careers-grid">
+
+      <div class="career-card">
+        <div class="career-badge">Open</div>
+        <h3>Article Assistant</h3>
+        <div class="career-meta">
+          <span><i class="fas fa-graduation-cap"></i> CA Foundation / Inter</span>
+          <span><i class="fas fa-map-marker-alt"></i> Bangalore</span>
+          <span><i class="fas fa-briefcase"></i> Full-time Articleship</span>
+        </div>
+        <p>Gain structured practical training across Audit, Taxation and Compliance under direct mentorship. Exposure to IT/ITES, Retail and international client assignments. Registered ICAI articleship with certificate upon completion.</p>
+        <div class="career-tags">
+          <span class="career-tag">Audit</span>
+          <span class="career-tag">Taxation</span>
+          <span class="career-tag">ICAI Registered</span>
+        </div>
+        <a href="mailto:dilip@pdka.in?subject=Application: Article Assistant" class="career-apply"><i class="fas fa-envelope"></i> Apply Now</a>
+      </div>
+
+      <div class="career-card">
+        <div class="career-badge">Open</div>
+        <h3>Senior CA / Assistant Manager</h3>
+        <div class="career-meta">
+          <span><i class="fas fa-graduation-cap"></i> FCA / ACA</span>
+          <span><i class="fas fa-map-marker-alt"></i> Bangalore</span>
+          <span><i class="fas fa-briefcase"></i> Full-time</span>
+        </div>
+        <p>Lead audit and advisory engagements for IT, ITES, and international clients. Manage articleship teams, client deliverables, and coordinate on partner-level assignments. Opportunity to work across India and international mandates.</p>
+        <div class="career-tags">
+          <span class="career-tag">FCA / ACA</span>
+          <span class="career-tag">IT/ITES Experience</span>
+          <span class="career-tag">Advisory</span>
+        </div>
+        <a href="mailto:dilip@pdka.in?subject=Application: Senior CA / Assistant Manager" class="career-apply"><i class="fas fa-envelope"></i> Apply Now</a>
+      </div>
+
+    </div>
+
+    <div class="careers-open-app">
+      Don't see a suitable role? <a href="mailto:dilip@pdka.in?subject=Open Application ΓÇö PDKA">Send us your CV</a> ΓÇö we consider strong candidates on an ongoing basis.
+    </div>
+
+    <!-- Why Join -->
+    <div class="why-join">
+      <div class="careers-section-label">Why PDKA</div>
+      <h2 class="careers-section-title">What Makes Us Different</h2>
+      <div class="why-join-grid">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-globe"></i></div>
+          <h4>International Exposure</h4>
+          <p>Work on engagements spanning 9 countries including USA, UK, Australia, Dubai, Singapore and more.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h4>Expert Mentorship</h4>
+          <p>Learn directly from our founder ΓÇö a FCA, CISA & DISA qualified professional with 28+ years of experience.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-layer-group"></i></div>
+          <h4>Diverse Practice Areas</h4>
+          <p>Gain exposure across Audit, Taxation, FEMA, IS Audit, Virtual CFO and Business Advisory in one firm.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-certificate"></i></div>
+          <h4>ICAI Standards</h4>
+          <p>We uphold the highest professional ethics and ICAI standards, building a career you can be proud of.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-chart-line"></i></div>
+          <h4>Career Growth</h4>
+          <p>Fast-track progression opportunities with structured roles, clear deliverables and performance recognition.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-handshake"></i></div>
+          <h4>Collaborative Culture</h4>
+          <p>A close-knit, collegial team where every member's contribution is valued and leadership is accessible.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+  </div>
+</div>
+
+<!-- INSIGHTS MODAL -->
+<div id="insights-modal" class="pdka-modal-bg" onclick="if(event.target===this)closePdkaModal('insights-modal')">
+  <div class="pdka-modal-box pdka-modal-wide" style="max-width:980px;max-height:90vh;overflow-y:auto;">
+    <button class="pdka-modal-close" onclick="closePdkaModal('insights-modal')" aria-label="Close">&times;</button>
+    <!-- NAV -->
+
+
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="margin-top:72px;">
+  <div class="page-hero-bg">
+    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1800&h=600&fit=crop&crop=top" alt="Insights" loading="lazy" />
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Knowledge Hub</div>
+    <h1 class="page-hero-title">Expert Insights &amp; Updates</h1>
+    <p class="page-hero-sub">Regulatory updates, compliance guides, and expert commentary from the PDKA team.</p>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<div class="insights-page">
+  <div class="insights-inner">
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterArticles('all', this)">All</button>
+      <button class="filter-btn" onclick="filterArticles('ICAI', this)">ICAI</button>
+      <button class="filter-btn" onclick="filterArticles('ITR', this)">Taxation</button>
+      <button class="filter-btn" onclick="filterArticles('FEMA', this)">FEMA</button>
+      <button class="filter-btn" onclick="filterArticles('GST', this)">GST</button>
+      <button class="filter-btn" onclick="filterArticles('COMPANY', this)">Company Law</button>
+      <button class="filter-btn" onclick="filterArticles('DPDPA', this)">DPDPA</button>
+      <button class="filter-btn" onclick="filterArticles('CFO', this)">Virtual CFO</button>
+    </div>
+
+    <!-- Articles Grid -->
+    <div class="articles-grid" id="articlesGrid">
+
+      <div class="article-card" data-category="ICAI">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ICAI ┬╖ Apr 2026</span>
+          <h3>ICAI Code of Ethics 2026: What Changed for CA Firms</h3>
+          <p>The 13th Edition of the ICAI Code of Ethics effective April 2026 brings significant changes to advertising, website, and networking guidelines for CA firms.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 15, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('icai2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ITR ┬╖ Apr 2026</span>
+          <h3>ITR Filing FY 2025-26: Compliance Checklist for Businesses</h3>
+          <p>Key deadlines, updated ITR forms, and a practical compliance checklist to ensure accurate and timely ITR filing for FY 2025-26.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 8, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('itr2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="FEMA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">FEMA ┬╖ Jan 2025</span>
+          <h3>FEMA 2025: Foreign Remittances, ODI Rules &amp; Compliance for IT Companies</h3>
+          <p>Updated FEMA compliance guide covering overseas direct investment, LRS limits, and key obligations for IT &amp; ITES companies with foreign operations.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 20, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('fema2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST ┬╖ Mar 2026</span>
+          <h3>GSTR-9 & GSTR-9C FY 2025-26: Filing Guide & Common Errors</h3>
+          <p>A practical guide to filing the GST Annual Return and Reconciliation Statement, covering common reconciliation pitfalls and how to avoid notices from the GST department.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Mar 10, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('gst2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="COMPANY">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Company Law ┬╖ Feb 2026</span>
+          <h3>Companies Act Amendments 2025: Key Changes for Private Limited Companies</h3>
+          <p>MCA's 2025 amendments to the Companies Act introduce revised thresholds for small companies, new CSR reporting formats, and tightened related-party transaction disclosures.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Feb 18, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('companylaw2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Transfer Pricing ┬╖ Jan 2026</span>
+          <h3>Transfer Pricing Documentation: What Indian Companies Must Prepare for FY 2025-26</h3>
+          <p>With CBDT tightening TP scrutiny, Indian companies in international transactions must maintain robust Master File and Local File documentation or face steep penalties.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 12, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('tp2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="DPDPA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">DPDPA ┬╖ Dec 2025</span>
+          <h3>DPDPA 2023: A Practical Compliance Roadmap for Businesses</h3>
+          <p>India's Digital Personal Data Protection Act enforcement begins May 2027. Here is a step-by-step readiness roadmap ΓÇö from data mapping to consent management and breach response protocols.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Dec 5, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('dpdpa2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="CFO">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Virtual CFO ┬╖ Nov 2025</span>
+          <h3>When Does a Startup Need a Virtual CFO? 7 Signs to Watch For</h3>
+          <p>As startups scale from Γé╣1 Cr to Γé╣25 Cr revenue, financial complexity grows faster than the team. Here are the clear signals that it is time to engage a Virtual CFO.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Nov 22, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('vcfo2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST ┬╖ Oct 2025</span>
+          <h3>GST on IT Services: Place of Supply, Export Benefits & ITC Optimisation</h3>
+          <p>IT and software companies often leave significant GST refunds on the table. This guide covers export of services, place of supply rules, and how to maximise ITC for tech businesses.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Oct 8, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('gstit2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+    </div><!-- /articles-grid -->
+
+    <!-- Full Article Reader (expands below grid) -->
+    <div class="article-full" id="articleFull" style="margin-top:40px;">
+      <div class="article-full-header">
+        <button class="article-close-btn" onclick="closeArticle()"><i class="fas fa-times"></i></button>
+        <div class="article-tag" id="fullTag"></div>
+        <h2 id="fullTitle"></h2>
+        <div class="article-full-meta" id="fullMeta"></div>
+      </div>
+      <div class="article-full-body" id="fullBody"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+  </div>
+</div>
+
+<!-- TEAM MODAL -->
+<div id="team-modal" class="pdka-modal-bg" onclick="if(event.target===this)closePdkaModal('team-modal')">
+  <div class="pdka-modal-box pdka-modal-wide" style="max-width:980px;max-height:90vh;overflow-y:auto;">
+    <button class="pdka-modal-close" onclick="closePdkaModal('team-modal')" aria-label="Close">&times;</button>
+    <div class="hero-band">
+  <div class="hero-inner">
+    <div class="label">Our People</div>
+    <h1>Meet the Full Team</h1>
+    <p>P. Dilip Kumar &amp; Associates is powered by a team of qualified professionals across five practice areas. Click a department below to jump to that team.</p>
+  </div>
+</div>
+
+<!-- DEPT NAV -->
+<div class="dept-nav">
+  <div class="dept-nav-inner">
+    <a href="#company-secretary" class="dept-nav-pill"><i class="fas fa-file-contract"></i> Company Secretary</a>
+    <a href="#audit" class="dept-nav-pill"><i class="fas fa-search-dollar"></i> Audit &amp; Assurance</a>
+    <a href="#advisory" class="dept-nav-pill"><i class="fas fa-chart-line"></i> Advisory</a>
+    <a href="#taxation" class="dept-nav-pill"><i class="fas fa-file-invoice-dollar"></i> Taxation</a>
+    <a href="#finops" class="dept-nav-pill"><i class="fas fa-coins"></i> FinOps</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- COMPANY SECRETARY -->
+  <div class="dept-section" id="company-secretary">
+    <div class="dept-section-header">
+      <div>
+        <div class="dept-badge"><i class="fas fa-file-contract"></i> Company Secretary</div>
+        <h2>Corporate Compliance Team</h2>
+        <p>Handling ROC filings, secretarial compliance, board governance, and statutory registers for companies across industries.</p>
+      </div>
+    </div>
+    <div class="head-card">
+      <div class="head-photo-wrap">PS</div>
+      <div class="head-info">
+        <div class="head-badge">Department Head</div>
+        <h3>Priya Sharma</h3>
+        <div class="role">Head ΓÇö Corporate Compliance</div>
+        <div class="quals">ACS ┬╖ B.Com ┬╖ 10 Yrs Exp</div>
+      </div>
+    </div>
+    <hr class="dept-divider">
+    <div class="team-grid">
+      <div class="empty-state" style="grid-column: 1/-1;">
+        <i class="fas fa-users"></i>
+        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIT & ASSURANCE -->
+  <div class="dept-section" id="audit">
+    <div class="dept-section-header">
+      <div>
+        <div class="dept-badge"><i class="fas fa-search-dollar"></i> Audit &amp; Assurance</div>
+        <h2>Audit &amp; Assurance Team</h2>
+        <p>Statutory audit, internal audit, tax audit, and IS audit engagements carried out under ICAI standards for listed, unlisted, and foreign subsidiaries.</p>
+      </div>
+    </div>
+    <div class="head-card">
+      <div class="head-photo-wrap">KN</div>
+      <div class="head-info">
+        <div class="head-badge">Department Head</div>
+        <h3>Karthik Nair</h3>
+        <div class="role">Head ΓÇö Audit &amp; Assurance</div>
+        <div class="quals">ACA ┬╖ DISA ┬╖ 12 Yrs Exp</div>
+      </div>
+    </div>
+    <hr class="dept-divider">
+    <div class="team-grid">
+      <div class="empty-state" style="grid-column: 1/-1;">
+        <i class="fas fa-users"></i>
+        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADVISORY -->
+  <div class="dept-section" id="advisory">
+    <div class="dept-section-header">
+      <div>
+        <div class="dept-badge"><i class="fas fa-chart-line"></i> Advisory</div>
+        <h2>Business Advisory Team</h2>
+        <p>Business consulting, valuations, internal controls review, and governance advisory for growth-stage and established organisations.</p>
+      </div>
+    </div>
+    <div class="head-card">
+      <div class="head-photo-wrap">MK</div>
+      <div class="head-info">
+        <div class="head-badge">Department Head</div>
+        <h3>Meera Krishnan</h3>
+        <div class="role">Head ΓÇö Business Advisory</div>
+        <div class="quals">MBA ┬╖ ACA ┬╖ 9 Yrs Exp</div>
+      </div>
+    </div>
+    <hr class="dept-divider">
+    <div class="team-grid">
+      <div class="empty-state" style="grid-column: 1/-1;">
+        <i class="fas fa-users"></i>
+        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAXATION -->
+  <div class="dept-section" id="taxation">
+    <div class="dept-section-header">
+      <div>
+        <div class="dept-badge"><i class="fas fa-file-invoice-dollar"></i> Taxation</div>
+        <h2>Taxation Team</h2>
+        <p>Corporate and personal tax planning, GST advisory, TDS compliance, transfer pricing, and international taxation across India and cross-border jurisdictions.</p>
+      </div>
+    </div>
+    <div class="head-card">
+      <div class="head-photo-wrap">RM</div>
+      <div class="head-info">
+        <div class="head-badge">Department Head</div>
+        <h3>Rajan Mehta</h3>
+        <div class="role">Head ΓÇö Direct &amp; Indirect Tax</div>
+        <div class="quals">ACA ┬╖ LLB ┬╖ 14 Yrs Exp</div>
+      </div>
+    </div>
+    <hr class="dept-divider">
+    <div class="team-grid">
+      <div class="empty-state" style="grid-column: 1/-1;">
+        <i class="fas fa-users"></i>
+        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINOPS -->
+  <div class="dept-section" id="finops">
+    <div class="dept-section-header">
+      <div>
+        <div class="dept-badge"><i class="fas fa-coins"></i> FinOps</div>
+        <h2>FinOps &amp; Digital Finance Team</h2>
+        <p>Virtual CFO services, MIS reporting, financial modelling, and digital finance operations for startups and scaling businesses.</p>
+      </div>
+    </div>
+    <div class="head-card">
+      <div class="head-photo-wrap">AR</div>
+      <div class="head-info">
+        <div class="head-badge">Department Head</div>
+        <h3>Ananya Reddy</h3>
+        <div class="role">Head ΓÇö FinOps &amp; Digital Finance</div>
+        <div class="quals">CPA ┬╖ MBA ┬╖ 8 Yrs Exp</div>
+      </div>
+    </div>
+    <hr class="dept-divider">
+    <div class="team-grid">
+      <div class="empty-state" style="grid-column: 1/-1;">
+        <i class="fas fa-users"></i>
+        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+  </div>
+</div>
 </body>
 </html>
