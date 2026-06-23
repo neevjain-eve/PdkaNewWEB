@@ -3157,7 +3157,7 @@ function closeSvcIfOutside(e) {
   window.setLang = function(lang) {
     window.pdkaLang = lang;
     var d = sections[lang];
-    var sids = ['about','founder','services','team','insights','contact'];
+    var sids = ['founder','services','team','insights','contact'];
     sids.forEach(function(id) {
       var el = document.getElementById(id);
       if (el && d[id]) el.innerHTML = d[id];
@@ -3188,6 +3188,16 @@ function closeSvcIfOutside(e) {
     // Store preference
     try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
   };
+
+
+  window.toggleLangMenu = function(e) {
+    e.stopPropagation();
+    document.getElementById('langMenu').classList.toggle('open');
+  };
+  document.addEventListener('click', function() {
+    var m = document.getElementById('langMenu');
+    if (m) m.classList.remove('open');
+  });
 
   // Auto-apply saved language on page load
   document.addEventListener('DOMContentLoaded', function() {
