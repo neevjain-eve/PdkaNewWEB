@@ -3189,6 +3189,16 @@ function closeSvcIfOutside(e) {
     try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
   };
 
+
+  window.toggleLangMenu = function(e) {
+    e.stopPropagation();
+    document.getElementById('langMenu').classList.toggle('open');
+  };
+  document.addEventListener('click', function() {
+    var m = document.getElementById('langMenu');
+    if (m) m.classList.remove('open');
+  });
+
   // Auto-apply saved language on page load
   document.addEventListener('DOMContentLoaded', function() {
     try {
