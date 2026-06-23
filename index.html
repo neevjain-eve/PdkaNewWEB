@@ -819,18 +819,19 @@
     <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" style="height:40px;width:auto;display:block;" />
   </a>
   <ul class="nav-links">
-    <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)">Home</a></li>
-    <li><a href="about.html" target="_blank" rel="noopener">About</a></li>
-    <li><a href="#founder">Founder</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#insights">Insights</a></li>
-    <li><a href="careers.html">Careers</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)" data-i18n="nav-home">Home</a></li>
+    <li><a href="about.html" target="_blank" rel="noopener" data-i18n="nav-about">About</a></li>
+    <li><a href="#founder" data-i18n="nav-founder">Founder</a></li>
+    <li><a href="#services" data-i18n="nav-services">Services</a></li>
+    <li><a href="#team" data-i18n="nav-team">Team</a></li>
+    <li><a href="#insights" data-i18n="nav-insights">Insights</a></li>
+    <li><a href="careers.html" data-i18n="nav-careers">Careers</a></li>
+    <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
+    <button id="langToggle" onclick="toggleLanguage()" style="background:none;border:1.5px solid var(--orange,#e8600a);color:var(--orange,#e8600a);padding:5px 12px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:0.5px;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--orange,#e8600a)';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='var(--orange,#e8600a)'">JP</button>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
-    <a href="#contact" class="nav-cta">Get Started</a>
+    <a href="#contact" class="nav-cta" data-i18n="nav-cta">Get Started</a>
     <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
   </div>
 </nav>
@@ -853,7 +854,7 @@
   <!-- Main content -->
   <div class="hero-content-wrap">
     <div class="hero-content">
-      <h1 class="hero-title">Empowering<br/>Businesses with<br/><span id="hero-word"></span></h1>
+      <h1 class="hero-title" data-i18n="hero-title">Empowering<br/>Businesses with<br/><span id="hero-word"></span></h1>
     </div>
   </div>
 </section>
@@ -921,8 +922,8 @@
   <div class="section-inner">
     <div class="services-header">
       <div>
-        <div class="section-label">What We Do</div>
-        <h2 class="section-title">Comprehensive Professional Services</h2>
+        <div class="section-label" data-i18n="svc-label">What We Do</div>
+        <h2 class="section-title" data-i18n="svc-title">Comprehensive Professional Services</h2>
       </div>
       <a href="#contact" class="btn-primary" style="white-space:nowrap;"><i class="fas fa-envelope"></i> Contact Us</a>
     </div>
@@ -1057,8 +1058,8 @@
 <section id="team">
   <div class="section-inner">
     <div style="text-align:center;">
-      <div class="section-label">Our People</div>
-      <h2 class="section-title">Meet the Team</h2>
+      <div class="section-label" data-i18n="team-label">Our People</div>
+      <h2 class="section-title" data-i18n="team-title">Meet the Team</h2>
       <p class="section-sub" style="margin:0 auto;">Our partners and department leads bring decades of specialised experience, professional certifications, and a client-first approach to every engagement.</p>
     </div>
 
@@ -1158,10 +1159,10 @@
   <div class="section-inner">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0;">
       <div>
-        <div class="section-label">Knowledge Hub</div>
-        <h2 class="section-title">Expert Insights &amp; Updates</h2>
+        <div class="section-label" data-i18n="insights-label">Knowledge Hub</div>
+        <h2 class="section-title" data-i18n="insights-title">Expert Insights &amp; Updates</h2>
       </div>
-      <a href="insights.html" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;">View All <i class="fas fa-arrow-right"></i></a>
+      <a href="insights.html" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="insights-viewall">View All <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="insights-grid">
       <div class="insight-card">
@@ -1239,11 +1240,11 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-    <div class="section-label">Get In Touch</div>
-    <h2 class="section-title">Let's Work Together</h2>
+    <div class="section-label" data-i18n="contact-label">Get In Touch</div>
+    <h2 class="section-title" data-i18n="contact-title">Let's Work Together</h2>
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>Talk to Our Experts</h3>
+        <h3 data-i18n="contact-sub">Talk to Our Experts</h3>
         <p>We typically respond within one business day. Whether you need audit, tax, FEMA, or advisory support — our team is ready to help.</p>
         <div class="contact-items">
           <div class="contact-item">
@@ -1286,21 +1287,21 @@
         <div class="form-row">
           <div class="form-group">
             <label>Your Name *</label>
-            <input type="text" placeholder="Full name" />
+            <input type="text" data-i18n-placeholder="form-name" placeholder="Full name" />
           </div>
           <div class="form-group">
             <label>Email Address *</label>
-            <input type="email" placeholder="you@company.com" />
+            <input type="email" data-i18n-placeholder="form-email" placeholder="you@company.com" />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="tel" placeholder="+91 98765 43210" />
+            <input type="tel" data-i18n-placeholder="form-phone" placeholder="+91 98765 43210" />
           </div>
           <div class="form-group">
             <label>Company Name</label>
-            <input type="text" placeholder="Your company" />
+            <input type="text" data-i18n-placeholder="form-company" placeholder="Your company" />
           </div>
         </div>
         <div class="form-group">
@@ -1319,7 +1320,7 @@
         </div>
         <div class="form-group">
           <label>Message</label>
-          <textarea placeholder="Briefly describe your requirement..."></textarea>
+          <textarea data-i18n-placeholder="form-message" placeholder="Briefly describe your requirement..."></textarea>
         </div>
         <button class="form-submit"><i class="fas fa-paper-plane"></i> Send Message</button>
         <p class="form-note">🔒 Your information is confidential and will not be shared.</p>
@@ -1386,7 +1387,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 P. Dilip Kumar &amp; Associates. All rights reserved.</p>
+      <p data-i18n="footer-copy">© 2026 P. Dilip Kumar &amp; Associates. All rights reserved.</p>
       <div class="footer-bottom-links">
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="terms-conditions.html">Terms &amp; Conditions</a>
