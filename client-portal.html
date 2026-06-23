@@ -363,5 +363,60 @@
     if(e.key==='Escape') closeForgot();
   });
 </script>
+
+<script id="pdka-iframe-nav">
+// When this page is loaded inside the main site overlay iframe,
+// intercept internal page links and route them through the parent overlay.
+(function() {
+  var inIframe = (window.self !== window.top);
+  if (!inIframe) return;
+
+  var pageTitles = {
+    'about.html': 'About', 'careers.html': 'Careers',
+    'client-portal.html': 'Client Portal', 'insights.html': 'Insights',
+    'team.html': 'Our Team', 'privacy-policy.html': 'Privacy Policy',
+    'terms-conditions.html': 'Terms & Conditions'
+  };
+
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') ||
+        href.startsWith('tel:') || href.startsWith('javascript:') ||
+        href.startsWith('http')) return;
+
+    // Check if it's a known internal page
+    var filename = href.split('#')[0].split('?')[0];
+    if (pageTitles[filename]) {
+      e.preventDefault();
+      if (window.parent && window.parent.openPdkaPage) {
+        window.parent.openPdkaPage(filename, pageTitles[filename]);
+      } else {
+        window.top.location.href = filename;
+      }
+      return;
+    }
+
+    // pdka-website.html links — close overlay and scroll to section
+    if (href.includes('pdka-website.html') || href.includes('index.html')) {
+      e.preventDefault();
+      var hash = href.split('#')[1] || '';
+      if (window.parent && window.parent.closePdkaPage) {
+        window.parent.closePdkaPage();
+        if (hash) {
+          setTimeout(function() {
+            var el = window.parent.document.getElementById(hash);
+            if (el) el.scrollIntoView({behavior:'smooth'});
+          }, 300);
+        }
+      } else {
+        window.top.location.href = href;
+      }
+    }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
