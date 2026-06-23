@@ -838,7 +838,15 @@
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
     /* ===== End Language Dropdown ===== */
 
-  </style>
+  
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to   { transform: translateX(0);    opacity: 1; }
+    }
+    #pdka-page-overlay { display:none; }
+    #pdka-page-overlay.open { display:flex !important; }
+
+    </style>
 </head>
 <body>
 
@@ -876,6 +884,41 @@
     <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
   </div>
 </nav>
+
+<!-- ── PAGE OVERLAY (About / Careers / etc.) ── -->
+<div id="pdka-page-overlay" style="
+  display:none; position:fixed; inset:0; z-index:3000;
+  background:#fff; flex-direction:column;
+  animation:slideInRight 0.28s cubic-bezier(.4,0,.2,1);
+">
+  <!-- Back bar -->
+  <div id="pdka-back-bar" style="
+    position:sticky; top:0; left:0; right:0; height:56px;
+    background:#fff; border-bottom:2px solid var(--orange,#e8600a);
+    display:flex; align-items:center; padding:0 20px; z-index:10;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+  ">
+    <button onclick="closePdkaPage()" style="
+      display:flex; align-items:center; gap:8px;
+      background:none; border:none; cursor:pointer;
+      color:var(--navy,#0d1b3e); font-size:15px; font-weight:700;
+      padding:8px 14px; border-radius:8px;
+      transition:background 0.15s;
+    " onmouseover="this.style.background='#f5f6fa'" onmouseout="this.style.background='none'">
+      <i class="fas fa-arrow-left" style="color:var(--orange,#e8600a);"></i> Back
+    </button>
+    <span id="pdka-page-title" style="
+      margin-left:16px; font-size:15px; font-weight:600;
+      color:var(--text-light,#6b7280);
+    "></span>
+  </div>
+  <!-- Page content iframe -->
+  <iframe id="pdka-page-frame"
+    src="" frameborder="0"
+    style="flex:1; width:100%; height:calc(100vh - 56px); border:none; display:block;">
+  </iframe>
+</div>
+
 
 <!-- HERO (sticky — about slides over it) -->
 <section id="home">
@@ -1412,7 +1455,7 @@
           <li><a href="#about">About Us</a></li>
           <li><a href="#team">Our Team</a></li>
           <li><a href="#insights">Insights</a></li>
-          <li><a href="careers.html">Careers</a></li>
+          <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">Careers</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
@@ -2690,7 +2733,7 @@ function closeSvcIfOutside(e) {
           <li><a href="#about">About Us</a></li>
           <li><a href="#team">Our Team</a></li>
           <li><a href="#insights">Insights</a></li>
-          <li><a href="careers.html">Careers</a></li>
+          <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">Careers</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
@@ -2758,12 +2801,12 @@ function closeSvcIfOutside(e) {
 `,
       nav:      `  <ul class="nav-links">
     <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)">Home</a></li>
-    <li><a href="about.html" target="_blank" rel="noopener">About</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaPage('about.html','About')">About</a></li>
     <li><a href="#founder">Founder</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#insights">Insights</a></li>
-    <li><a href="careers.html">Careers</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">Careers</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>`
     },
@@ -3150,7 +3193,7 @@ function closeSvcIfOutside(e) {
           <li><a href="#about">会社概要</a></li>
           <li><a href="#team">チーム</a></li>
           <li><a href="#insights">インサイト</a></li>
-          <li><a href="careers.html">採用情報</a></li>
+          <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','採用情報')">採用情報</a></li>
           <li><a href="#contact">お問い合わせ</a></li>
         </ul>
       </div>
@@ -3218,12 +3261,12 @@ function closeSvcIfOutside(e) {
 `,
       nav:      `  <ul class="nav-links">
     <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)">ホーム</a></li>
-    <li><a href="about.html" target="_blank" rel="noopener">会社概要</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaPage('about.html','会社概要')">会社概要</a></li>
     <li><a href="#founder">創業者</a></li>
     <li><a href="#services">サービス</a></li>
     <li><a href="#team">チーム</a></li>
     <li><a href="#insights">インサイト</a></li>
-    <li><a href="careers.html">採用情報</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','採用情報')">採用情報</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
   </ul>`
     }
@@ -3279,6 +3322,38 @@ function closeSvcIfOutside(e) {
   document.addEventListener('click', function() {
     var m = document.getElementById('langMenu');
     if (m) m.classList.remove('open');
+  });
+
+
+  // ── Page overlay navigation ──
+  window.openPdkaPage = function(url, title) {
+    var overlay = document.getElementById('pdka-page-overlay');
+    var frame   = document.getElementById('pdka-page-frame');
+    var label   = document.getElementById('pdka-page-title');
+    frame.src = url;
+    if (label) label.textContent = title || '';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    history.pushState({pdkaPage: url}, title, '#page');
+  };
+
+  window.closePdkaPage = function() {
+    var overlay = document.getElementById('pdka-page-overlay');
+    var frame   = document.getElementById('pdka-page-frame');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    frame.src = '';
+    if (history.state && history.state.pdkaPage) history.back();
+  };
+
+  // Handle browser back button
+  window.addEventListener('popstate', function(e) {
+    var overlay = document.getElementById('pdka-page-overlay');
+    if (overlay && overlay.classList.contains('open')) {
+      overlay.classList.remove('open');
+      document.getElementById('pdka-page-frame').src = '';
+      document.body.style.overflow = '';
+    }
   });
 
   // Auto-apply saved language on page load

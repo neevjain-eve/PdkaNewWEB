@@ -699,5 +699,20 @@
 })();
 </script>
 
+
+<script>
+// When loaded inside the page overlay iframe, auto-apply saved language
+(function() {
+  try {
+    var s = localStorage.getItem('pdka-lang');
+    if (s && s !== 'en') {
+      document.addEventListener('DOMContentLoaded', function() {
+        var fn = window.setAboutLang || window.setCarLang;
+        if (fn) fn(s);
+      });
+    }
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
