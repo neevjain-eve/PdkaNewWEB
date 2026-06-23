@@ -787,14 +787,14 @@
 </nav>
 
 <!-- HERO BAND -->
-<div class="about-page-hero">
+<div class="about-page-hero" id="abt-hero">
   <div class="label">The Firm</div>
   <img src="logo-1x.png" srcset="logo-1x.png 1x, logo-2x.png 2x, logo-3x.png 3x" width="351" height="91" alt="P. Dilip Kumar &amp; Associates" style="max-width:min(351px,88vw);height:auto;display:block;margin:0 auto 8px;image-rendering:crisp-edges;" />
   <p>A professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards — established 1998, Bangalore.</p>
 </div>
 
 <!-- STATS BAND -->
-<div class="stats-band">
+<div class="stats-band" id="abt-stats">
   <div class="stat-cell"><strong>28+</strong><span>Years of Practice</span></div>
   <div class="stat-cell"><strong>9</strong><span>Countries Served</span></div>
   <div class="stat-cell"><strong>60+</strong><span>Staff</span></div>
@@ -802,7 +802,7 @@
 </div>
 
 <!-- BODY -->
-<div class="about-body">
+<div class="about-body" id="abt-body">
   <div class="section-label">Who We Are</div>
   <h2>About the Firm</h2>
   <p>PDKA is a fast growing professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards. Over the last twenty-eight years of practice, the firm has created a niche for itself offering a bouquet of services to a selected clientele from India and other countries.</p>
@@ -854,76 +854,101 @@
   })();
 </script>
 
+
+
+
 <script id="pdka-about-i18n">
 (function(){
   var T = {
     en: {
-      heroTitle: 'About Us',
-      heroSub: 'Established 1998 &bull; Bangalore, India',
-      aboutLabel: 'About the Firm',
-      aboutSub: 'Years of Professional Services',
-      aboutDesc: 'PDKA is a Chartered Accountancy firm based in Bangalore, India, serving clients across India and in 9 countries including the USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy.',
-      pill1: 'FCA Leadership', pill2: 'CISA &bull; IS Audit', pill3: 'DISA Certified', pill4: '9 Countries',
-      missionLabel: 'Our Mission',
-      missionTitle: 'Why PDKA',
-      missionDesc: 'We combine deep technical expertise with personal service, treating every client engagement as a long-term partnership. Our team brings decades of experience across industries, jurisdictions, and disciplines.',
-      valTitle1: 'Technical Excellence', valDesc1: 'CISA/DISA-certified IS auditors alongside FCAs with sector-deep expertise in IT/ITES, manufacturing, and services.',
-      valTitle2: 'Client-First Service', valDesc2: "We respond within 24 hours and assign a dedicated manager for each engagement — you'll always know who to call.",
-      valTitle3: 'Global Reach', valDesc3: 'Serving clients across 9 countries with fluency in cross-border taxation, FEMA, transfer pricing, and international reporting.',
-      valTitle4: 'Integrity & Compliance', valDesc4: 'Fully compliant with ICAI regulations, registered under ICAI, and committed to the highest ethical and professional standards.',
-      teamLabel: 'Leadership',
-      teamTitle: 'Meet Our Founder',
-      founderName: 'Dilip Kumar P.',
-      founderRole: 'Founder &amp; Managing Partner',
-      founderFirm: 'P. Dilip Kumar &amp; Associates, Bangalore',
-      founderBio: 'Dilip Kumar P. is the founding partner of P. Dilip Kumar &amp; Associates. A Fellow Chartered Accountant (FCA) with CISA and DISA certifications, he has deep expertise in Information Systems Audit, taxation for IT/ITES companies, FEMA, and Virtual CFO services. He serves clients across India and in 9 countries including the USA, UK, Australia, Dubai, and Singapore.',
-      bookMeeting: '<i class="fas fa-calendar-check"></i> Book a Meeting',
-      credEmail: 'dilip@pdka.in',
-      ctaTitle: 'Ready to Work Together?',
-      ctaDesc: "Whether you're a startup scaling rapidly or an established business seeking expert compliance support, we're here to help. Reach out today.",
-      ctaBtn1: '<i class="fas fa-envelope"></i> Get In Touch',
-      ctaBtn2: '<i class="fas fa-phone"></i> Call Us Now'
+      hero:  `
+  <div class="label">The Firm</div>
+  <img src="logo-1x.png" srcset="logo-1x.png 1x, logo-2x.png 2x, logo-3x.png 3x" width="351" height="91" alt="P. Dilip Kumar &amp; Associates" style="max-width:min(351px,88vw);height:auto;display:block;margin:0 auto 8px;image-rendering:crisp-edges;" />
+  <p>A professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards — established 1998, Bangalore.</p>`,
+      stats: `
+  <div class="stat-cell"><strong>28+</strong><span>Years of Practice</span></div>
+  <div class="stat-cell"><strong>9</strong><span>Countries Served</span></div>
+  <div class="stat-cell"><strong>60+</strong><span>Staff</span></div>
+  <div class="stat-cell"><strong>1998</strong><span>Est. Bangalore</span></div>`,
+      body:  `
+  <div class="section-label">Who We Are</div>
+  <h2>About the Firm</h2>
+  <p>PDKA is a fast growing professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards. Over the last twenty-eight years of practice, the firm has created a niche for itself offering a bouquet of services to a selected clientele from India and other countries.</p>
+  <p>Based in Bangalore, the IT Capital of India, the firm has made a name for itself by offering end-to-end services under one roof — in particular for the IT &amp; ITES industry and the Retail sector in India.</p>
+  <p>The firm serves clients across India, USA, Australia, Dubai, UK, Ireland, Singapore, Japan and Italy.</p>
+
+  <div class="countries-strip">
+    <span class="country-tag">🇮🇳 India</span>
+    <span class="country-tag">🇺🇸 USA</span>
+    <span class="country-tag">🇦🇺 Australia</span>
+    <span class="country-tag">🇦🇪 Dubai</span>
+    <span class="country-tag">🇬🇧 UK</span>
+    <span class="country-tag">🇮🇪 Ireland</span>
+    <span class="country-tag">🇸🇬 Singapore</span>
+    <span class="country-tag">🇯🇵 Japan</span>
+    <span class="country-tag">🇮🇹 Italy</span>
+  </div>
+
+  <div class="section-label" style="margin-top:48px;">Our Values</div>
+  <div class="values-grid">
+    <div class="value-card"><h4>Trust &amp; Integrity</h4></div>
+    <div class="value-card"><h4>Professional Ethics</h4></div>
+    <div class="value-card"><h4>Confidentiality</h4></div>
+    <div class="value-card"><h4>Personalised Service</h4></div>
+  </div>`
     },
     ja: {
-      heroTitle: '会社概要',
-      heroSub: '1998年設立 &bull; インド・バンガロール',
-      aboutLabel: '事務所について',
-      aboutSub: '年の専門サービス',
-      aboutDesc: 'PDKAはバンガロールを拠点とする公認会計士事務所で、インド全土および米国、英国、オーストラリア、ドバイ、シンガポール、アイルランド、日本、イタリアの9カ国のクライアントにサービスを提供しています。',
-      pill1: 'FCAリーダーシップ', pill2: 'CISA・ISオーディット', pill3: 'DISA認定', pill4: '9カ国',
-      missionLabel: '私たちのミッション',
-      missionTitle: 'なぜPDKAを選ぶのか',
-      missionDesc: '私どもは深い専門知識とパーソナルなサービスを組み合わせ、すべてのクライアントとの関係を長期的なパートナーシップとして大切にしています。チームは業界・法域・専門分野にわたる数十年の経験を有しています。',
-      valTitle1: '技術的卓越性', valDesc1: 'CISA/DISA認定のISオーディターとFCAが、IT/ITES、製造業、サービス業において深い専門知識を提供します。',
-      valTitle2: 'クライアント第一', valDesc2: '24時間以内に回答し、各案件に専任マネージャーを配置します。いつでも担当者に直接連絡が取れる体制です。',
-      valTitle3: 'グローバルなリーチ', valDesc3: '9カ国のクライアントに、国際税務、FEMA、移転価格、国際報告に精通したサービスを提供しています。',
-      valTitle4: '誠実さとコンプライアンス', valDesc4: 'ICAI規程に完全準拠し、ICAI登録事務所として最高水準の倫理・専門基準を遵守しています。',
-      teamLabel: 'リーダーシップ',
-      teamTitle: '創業者のご紹介',
-      founderName: 'ディリップ・クマール P.',
-      founderRole: '創業者・マネージングパートナー',
-      founderFirm: 'P. ディリップ・クマール &amp; アソシエイツ、バンガロール',
-      founderBio: 'ディリップ・クマール P.は、P. ディリップ・クマール &amp; アソシエイツの創業パートナーです。CISA・DISA資格を有するフェロー公認会計士（FCA）として、情報システム監査、IT/ITES業界の税務、FEMA、バーチャルCFOサービスに豊富な実績を持ち、インド国内および米国、英国、オーストラリア、ドバイ、シンガポールを含む9カ国のクライアントにサービスを提供しています。',
-      bookMeeting: '<i class="fas fa-calendar-check"></i> ミーティングを予約する',
-      credEmail: 'dilip@pdka.in',
-      ctaTitle: '一緒に働きましょう',
-      ctaDesc: '急成長中のスタートアップから、専門的なコンプライアンスサポートを必要とする確立した企業まで、どのようなご要望にもお応えします。今すぐご連絡ください。',
-      ctaBtn1: '<i class="fas fa-envelope"></i> お問い合わせ',
-      ctaBtn2: '<i class="fas fa-phone"></i> お電話はこちら'
+      hero:  `
+  <div class="label">事務所について</div>
+  <img src="logo-1x.png" srcset="logo-1x.png 1x, logo-2x.png 2x, logo-3x.png 3x" width="351" height="91" alt="P. ディリップ・クマール &amp; アソシエイツ" style="max-width:min(351px,88vw);height:auto;display:block;margin:0 auto 8px;image-rendering:crisp-edges;" />
+  <p>品質、誠実さ、ICAIの規程を遵守するプロフェッショナルな公認会計士事務所。1998年バンガロール設立。</p>
+`,
+      stats: `
+  <div class="stat-cell"><strong>28+</strong><span>実績年数</span></div>
+  <div class="stat-cell"><strong>9</strong><span>対応国数</span></div>
+  <div class="stat-cell"><strong>60+</strong><span>スタッフ</span></div>
+  <div class="stat-cell"><strong>1998</strong><span>バンガロール創業</span></div>
+`,
+      body:  `
+  <div class="section-label">私たちについて</div>
+  <h2>事務所概要</h2>
+  <p>PDKAは、急成長中のプロフェッショナルな公認会計士事務所です。28年にわたる実績の中で、インド国内外の選ばれたクライアントに多様なサービスを提供し、独自の地位を確立してきました。</p>
+  <p>インドのITの首都であるバンガロールを拠点に、特にIT・ITES産業とインドの小売セクターにおいて、ワンストップでエンドツーエンドのサービスを提供しています。</p>
+  <p>事務所はインド、米国、オーストラリア、ドバイ、英国、アイルランド、シンガポール、日本、イタリアのクライアントにサービスを提供しています。</p>
+
+  <div class="countries-strip">
+    <span class="country-tag">🇮🇳 インド</span>
+    <span class="country-tag">🇺🇸 米国</span>
+    <span class="country-tag">🇦🇺 オーストラリア</span>
+    <span class="country-tag">🇦🇪 ドバイ</span>
+    <span class="country-tag">🇬🇧 英国</span>
+    <span class="country-tag">🇮🇪 アイルランド</span>
+    <span class="country-tag">🇸🇬 シンガポール</span>
+    <span class="country-tag">🇯🇵 日本</span>
+    <span class="country-tag">🇮🇹 イタリア</span>
+  </div>
+
+  <div class="section-label" style="margin-top:48px;">私たちの価値観</div>
+  <div class="values-grid">
+    <div class="value-card"><h4>信頼と誠実さ</h4></div>
+    <div class="value-card"><h4>プロとしての倫理</h4></div>
+    <div class="value-card"><h4>守秘義務</h4></div>
+    <div class="value-card"><h4>個別対応サービス</h4></div>
+  </div>
+`
     }
   };
 
   window.setAboutLang = function(lang) {
-    var t = T[lang];
-    // Update all data-i18n-about elements
-    document.querySelectorAll('[data-i18n-about]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n-about');
-      if (t[key] !== undefined) el.innerHTML = t[key];
+    ['hero','stats','body'].forEach(function(k) {
+      var ids = {hero:'abt-hero', stats:'abt-stats', body:'abt-body'};
+      var el = document.getElementById(ids[k]);
+      if (el && T[lang][k]) el.innerHTML = T[lang][k];
     });
-    document.getElementById('aboutLangLabel').textContent = lang === 'ja' ? 'JP' : 'EN';
-    document.querySelectorAll('#aboutLangMenu button').forEach(function(b){ b.style.fontWeight = ''; });
-    var btn = document.getElementById('aopt-' + lang);
-    if (btn) btn.style.fontWeight = '700';
+    // Also update nav CTA
+    var cta = document.querySelector('.nav-cta');
+    if (cta) cta.textContent = lang==='ja' ? '始める' : 'Get Started';
+    document.getElementById('aboutLangLabel').textContent = lang==='ja' ? 'JP' : 'EN';
     document.getElementById('aboutLangMenu').style.display = 'none';
     document.documentElement.lang = lang;
     try { localStorage.setItem('pdka-lang', lang); } catch(e){}
@@ -932,18 +957,18 @@
   window.toggleAboutLang = function(e) {
     e.stopPropagation();
     var m = document.getElementById('aboutLangMenu');
-    m.style.display = m.style.display === 'none' ? 'block' : 'none';
+    m.style.display = m.style.display==='none' ? 'block' : 'none';
   };
 
-  document.addEventListener('click', function() {
+  document.addEventListener('click', function(){
     var m = document.getElementById('aboutLangMenu');
     if (m) m.style.display = 'none';
   });
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function(){
     try {
-      var saved = localStorage.getItem('pdka-lang');
-      if (saved && saved !== 'en') setAboutLang(saved);
+      var s = localStorage.getItem('pdka-lang');
+      if (s && s !== 'en') window.setAboutLang(s);
     } catch(e){}
   });
 })();
