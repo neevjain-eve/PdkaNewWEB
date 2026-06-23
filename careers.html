@@ -715,57 +715,69 @@
 })();
 </script>
 
+
+
+
 <script id="pdka-iframe-nav">
-// When this page is loaded inside the main site overlay iframe,
-// intercept internal page links and route them through the parent overlay.
 (function() {
   var inIframe = (window.self !== window.top);
   if (!inIframe) return;
 
+  // Hide this page's own nav — parent nav handles navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    var nav = document.querySelector('nav');
+    if (nav) { nav.style.display = 'none'; }
+    // Remove top padding that was meant for the fixed nav
+    document.body.style.paddingTop = '0';
+    document.body.style.marginTop = '0';
+    var firstSection = document.querySelector('.page-hero, .about-page-hero, section, .portal-hero, .insights-hero, .team-hero');
+    if (firstSection) firstSection.style.paddingTop = '32px';
+  });
+
   var pageTitles = {
-    'about.html': 'About', 'careers.html': 'Careers',
-    'client-portal.html': 'Client Portal', 'insights.html': 'Insights',
-    'team.html': 'Our Team', 'privacy-policy.html': 'Privacy Policy',
-    'terms-conditions.html': 'Terms & Conditions'
+    'about.html':'About', 'careers.html':'Careers',
+    'client-portal.html':'Client Portal', 'insights.html':'Insights',
+    'team.html':'Our Team', 'privacy-policy.html':'Privacy Policy',
+    'terms-conditions.html':'Terms & Conditions'
   };
 
+  // Single capture-phase handler — intercepts ALL link clicks before default
   document.addEventListener('click', function(e) {
     var a = e.target.closest('a[href]');
     if (!a) return;
-    var href = a.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('mailto:') ||
+    var href = a.getAttribute('href') || '';
+    if (!href || href === '#' || href.startsWith('mailto:') ||
         href.startsWith('tel:') || href.startsWith('javascript:') ||
         href.startsWith('http')) return;
 
-    // Check if it's a known internal page
-    var filename = href.split('#')[0].split('?')[0];
+    var filename = href.split('?')[0].split('#')[0];
+    var hash = href.split('#')[1] || '';
+
+    // Internal page link → open in parent overlay (one click)
     if (pageTitles[filename]) {
       e.preventDefault();
+      e.stopPropagation();
       if (window.parent && window.parent.openPdkaPage) {
         window.parent.openPdkaPage(filename, pageTitles[filename]);
-      } else {
-        window.top.location.href = filename;
       }
       return;
     }
 
-    // pdka-website.html links — close overlay and scroll to section
-    if (href.includes('pdka-website.html') || href.includes('index.html')) {
+    // Home / index / pdka-website → close overlay, optionally scroll
+    if (!filename || filename === 'index.html' || filename.includes('pdka-website')) {
       e.preventDefault();
-      var hash = href.split('#')[1] || '';
+      e.stopPropagation();
       if (window.parent && window.parent.closePdkaPage) {
         window.parent.closePdkaPage();
         if (hash) {
           setTimeout(function() {
             var el = window.parent.document.getElementById(hash);
             if (el) el.scrollIntoView({behavior:'smooth'});
-          }, 300);
+          }, 320);
         }
-      } else {
-        window.top.location.href = href;
       }
     }
-  }, true);
+  }, true); // capture phase — fires before any inline onclick
 })();
 </script>
 
