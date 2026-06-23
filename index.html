@@ -807,7 +807,38 @@
       transition: width 0.9s cubic-bezier(0.25,1,0.5,1);
     }
     .about-stat-line.draw { width: clamp(120px, 15vw, 190px); }
-</style>
+
+    /* ===== Language Dropdown ===== */
+    .lang-dropdown { position: relative; }
+    .lang-btn {
+      display: flex; align-items: center; gap: 5px;
+      background: none;
+      border: 1.5px solid var(--orange, #e8600a);
+      color: var(--orange, #e8600a);
+      padding: 5px 11px; border-radius: 6px;
+      cursor: pointer; font-size: 13px; font-weight: 700;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; }
+    .lang-menu {
+      display: none; position: absolute; top: calc(100% + 6px); right: 0;
+      background: var(--bg, #fff); border: 1px solid var(--border, #e5e5e5);
+      border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      list-style: none; padding: 6px; margin: 0; min-width: 130px; z-index: 9999;
+    }
+    .lang-menu.open { display: block; }
+    .lang-option {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 9px 12px; border-radius: 6px; cursor: pointer;
+      font-size: 14px; color: var(--text, #1a1a1a);
+      transition: background 0.15s;
+    }
+    .lang-option:hover { background: var(--surface, #f5f5f5); }
+    .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
+    /* ===== End Language Dropdown ===== */
+
+  </style>
 </head>
 <body>
 
@@ -829,7 +860,17 @@
     <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
-    <button id="langToggle" onclick="toggleLanguage()" style="background:none;border:1.5px solid var(--orange,#e8600a);color:var(--orange,#e8600a);padding:5px 12px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:0.5px;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--orange,#e8600a)';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='var(--orange,#e8600a)'">JP</button>
+        <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-btn" onclick="toggleLangMenu(event)" aria-label="Language">
+        <i class="fas fa-globe"></i>
+        <span id="langLabel">EN</span>
+        <i class="fas fa-chevron-down" style="font-size:10px;"></i>
+      </button>
+      <ul class="lang-menu" id="langMenu">
+        <li><button onclick="setLang('en')" class="lang-option active" id="opt-en">English</button></li>
+        <li><button onclick="setLang('ja')" class="lang-option" id="opt-ja">日本語</button></li>
+      </ul>
+    </div>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
     <a href="#contact" class="nav-cta" data-i18n="nav-cta">Get Started</a>
     <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
@@ -1159,10 +1200,10 @@
   <div class="section-inner">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0;">
       <div>
-        <div class="section-label" data-i18n="insights-label">Knowledge Hub</div>
-        <h2 class="section-title" data-i18n="insights-title">Expert Insights &amp; Updates</h2>
+        <div class="section-label" data-i18n="ins-label">Knowledge Hub</div>
+        <h2 class="section-title" data-i18n="ins-title">Expert Insights &amp; Updates</h2>
       </div>
-      <a href="insights.html" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="insights-viewall">View All <i class="fas fa-arrow-right"></i></a>
+      <a href="insights.html" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="ins-all">View All <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="insights-grid">
       <div class="insight-card">
@@ -1240,11 +1281,11 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-    <div class="section-label" data-i18n="contact-label">Get In Touch</div>
-    <h2 class="section-title" data-i18n="contact-title">Let's Work Together</h2>
+    <div class="section-label" data-i18n="con-label">Get In Touch</div>
+    <h2 class="section-title" data-i18n="con-title">Let's Work Together</h2>
     <div class="contact-grid">
       <div class="contact-info">
-        <h3 data-i18n="contact-sub">Talk to Our Experts</h3>
+        <h3 data-i18n="con-sub">Talk to Our Experts</h3>
         <p>We typically respond within one business day. Whether you need audit, tax, FEMA, or advisory support — our team is ready to help.</p>
         <div class="contact-items">
           <div class="contact-item">
@@ -1287,21 +1328,21 @@
         <div class="form-row">
           <div class="form-group">
             <label>Your Name *</label>
-            <input type="text" data-i18n-placeholder="form-name" placeholder="Full name" />
+            <input type="text" data-i18n-ph="form-name" placeholder="Full name" />
           </div>
           <div class="form-group">
             <label>Email Address *</label>
-            <input type="email" data-i18n-placeholder="form-email" placeholder="you@company.com" />
+            <input type="email" data-i18n-ph="form-email" placeholder="you@company.com" />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="tel" data-i18n-placeholder="form-phone" placeholder="+91 98765 43210" />
+            <input type="tel" data-i18n-ph="form-phone" placeholder="+91 98765 43210" />
           </div>
           <div class="form-group">
             <label>Company Name</label>
-            <input type="text" data-i18n-placeholder="form-company" placeholder="Your company" />
+            <input type="text" data-i18n-ph="form-company" placeholder="Your company" />
           </div>
         </div>
         <div class="form-group">
@@ -1320,7 +1361,7 @@
         </div>
         <div class="form-group">
           <label>Message</label>
-          <textarea data-i18n-placeholder="form-message" placeholder="Briefly describe your requirement..."></textarea>
+          <textarea data-i18n-ph="form-msg" placeholder="Briefly describe your requirement..."></textarea>
         </div>
         <button class="form-submit"><i class="fas fa-paper-plane"></i> Send Message</button>
         <p class="form-note">🔒 Your information is confidential and will not be shared.</p>
@@ -2219,5 +2260,81 @@ function closeSvcIfOutside(e) {
   })();
 
 </script>
+
+<script>
+/* ===== Language System ===== */
+var i18n = {
+  en: {
+    'nav-home':'Home','nav-about':'About','nav-founder':'Founder',
+    'nav-services':'Services','nav-team':'Team','nav-insights':'Insights',
+    'nav-careers':'Careers','nav-contact':'Contact','nav-cta':'Get Started',
+    'hero-title':'Empowering<br/>Businesses with<br/>',
+    'svc-label':'What We Do','svc-title':'Comprehensive Professional Services',
+    'team-label':'Our People','team-title':'Meet the Team',
+    'ins-label':'Knowledge Hub','ins-title':'Expert Insights &amp; Updates',
+    'ins-all':'View All <i class="fas fa-arrow-right"></i>',
+    'con-label':'Get In Touch','con-title':"Let's Work Together",'con-sub':'Talk to Our Experts',
+    'form-name':'Full name','form-email':'you@company.com',
+    'form-phone':'+91 98765 43210','form-company':'Your company',
+    'form-msg':'Briefly describe your requirement...',
+    'footer-copy':'© 2026 P. Dilip Kumar'
+  },
+  ja: {
+    'nav-home':'ホーム','nav-about':'会社概要',
+    'nav-founder':'創業者','nav-services':'サービス',
+    'nav-team':'チーム','nav-insights':'インサイト',
+    'nav-careers':'游用情報','nav-contact':'お問い合わせ',
+    'nav-cta':'始める',
+    'hero-title':'ビジネスを<br/>力強く支える<br/>',
+    'svc-label':'サービス内容',
+    'svc-title':'総合的な専門サービス',
+    'team-label':'私たちのチーム',
+    'team-title':'チームのご紹介',
+    'ins-label':'ナレッジハブ',
+    'ins-title':'専門家の見解・最新情報',
+    'ins-all':'すべて見る <i class="fas fa-arrow-right"></i>',
+    'con-label':'お問い合わせ',
+    'con-title':'一緒に働きましょう',
+    'con-sub':'専門家に相談する',
+    'form-name':'お名前','form-email':'メールアドレス',
+    'form-phone':'電話番号','form-company':'会社名',
+    'form-msg':'要件を簡単にご記入ください…',
+    'footer-copy':'© 2026 P. ディリップ・クマール'
+  }
+};
+
+var currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  var data = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var k = el.getAttribute('data-i18n');
+    if (data[k] !== undefined) el.innerHTML = data[k];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+    var k = el.getAttribute('data-i18n-ph');
+    if (data[k] !== undefined) el.placeholder = data[k];
+  });
+  document.getElementById('langLabel').textContent = lang === 'ja' ? 'JP' : 'EN';
+  document.querySelectorAll('.lang-option').forEach(function(b) { b.classList.remove('active'); });
+  var opt = document.getElementById('opt-' + lang);
+  if (opt) opt.classList.add('active');
+  document.getElementById('langMenu').classList.remove('open');
+  document.documentElement.lang = lang;
+}
+
+function toggleLangMenu(e) {
+  e.stopPropagation();
+  document.getElementById('langMenu').classList.toggle('open');
+}
+
+document.addEventListener('click', function() {
+  var m = document.getElementById('langMenu');
+  if (m) m.classList.remove('open');
+});
+/* ===== End Language System ===== */
+</script>
+
 </body>
 </html>
