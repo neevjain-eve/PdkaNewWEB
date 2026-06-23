@@ -885,6 +885,7 @@
       <ul class="lang-menu" id="langMenu">
         <li><button onclick="setLang('en')" class="lang-option active" id="opt-en">English</button></li>
         <li><button onclick="setLang('ja')" class="lang-option" id="opt-ja">日本語</button></li>
+        <li><button onclick="setLang('hi')" class="lang-option" id="opt-hi">हिन्दी</button></li>
       </ul>
     </div>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
@@ -3276,7 +3277,460 @@ function closeSvcIfOutside(e) {
     <li><a href="#insights">インサイト</a></li>
     <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','採用情報')">採用情報</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
+  </ul>`,
+    hi: {
+      about:    `
+  <div class="about-bg-img">
+    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1800&h=1200&fit=crop&crop=center" alt="पेशेवर CA फर्म" loading="lazy" />
+  </div>
+  <div class="about-overlay"></div>
+  <div class="about-center">
+    <div class="about-label">फर्म के बारे में</div>
+    <img src="logo-1x.png" srcset="logo-1x.png 1x, logo-2x.png 2x, logo-3x.png 3x" width="351" height="91" alt="पी. दिलीप कुमार एंड एसोसिएट्स" class="about-logo" />
+    <div class="about-stat-wrap" id="aboutStatWrap">
+      <div class="about-stat-num-row">
+        <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
+      </div>
+      <div class="about-stat-line" id="aboutStatLine"></div>
+    </div>
+    <div class="about-sub">वर्षों की पेशेवर सेवा</div>
+    <p class="about-desc">PDKA बेंगलूरु स्थित एक प्रमुख CA फर्म है जो भारत भर के तथा अमेरिका, ब्रिटेन, ऑस्ट्रेलिया, दुबई, सिंगापुर, आयरलैंड, जापान और इटली — 9 देशों के ग्राहकों की सेवा करती है।</p>
+    <div class="about-pills">
+      <span class="about-pill">FCA नेतृत्व</span>
+      <span class="about-pill">CISA · IS लेखापरीक्षा</span>
+      <span class="about-pill">DISA प्रमाणित</span>
+      <span class="about-pill">9 देश</span>
+    </div>
+  </div>
+`,
+      founder:  `  <div class="section-inner">
+    <div class="section-label">नेतृत्व</div>
+    <h2 class="section-title">हमारे संस्थापक से मिलें</h2>
+    <div class="founder-grid" style="margin-top:28px;">
+      <div class="founder-photo-wrap">
+        <div class="founder-photo" style="border-radius:20px;overflow:hidden;max-width:380px;aspect-ratio:3/4;position:relative;box-shadow:0 20px 60px rgba(13,27,62,0.18);">
+          <img src="p-dilip-kumar-ca.jpg" alt="संस्थापक — दिलीप कुमार पी., FCA CISA DISA" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
+        </div>
+      </div>
+      <div class="founder-content">
+        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--navy);margin-bottom:6px;">दिलीप कुमार पी.</h3>
+        <p style="font-size:15px;color:var(--orange);font-weight:600;margin-bottom:4px;">संस्थापक एवं प्रबंध भागीदार</p>
+        <p style="font-size:13px;color:var(--text-light);">पी. दिलीप कुमार एंड एसोसिएट्स, बेंगलूरु</p>
+        <div class="founder-creds">
+          <span class="founder-cred">FCA</span>
+          <span class="founder-cred">CISA</span>
+          <span class="founder-cred">DISA</span>
+          <span class="founder-cred">ICAI सदस्य</span>
+          <span class="founder-cred">28+ वर्षों का अनुभव</span>
+        </div>
+        <p class="founder-bio">दिलीप कुमार पी., पी. दिलीप कुमार एंड एसोसिएट्स के संस्थापक भागीदार हैं। CISA और DISA प्रमाणित फेलो चार्टर्ड अकाउंटेंट (FCA) के रूप में, उनके पास सूचना प्रणाली लेखापरीक्षा, IT/ITES उद्योग कराधान, FEMA (विदेशी मुद्रा प्रबंधन अधिनियम) और वर्चुअल CFO सेवाओं में व्यापक विशेषज्ञता है। वे भारत सहित अमेरिका, ब्रिटेन, ऑस्ट्रेलिया, दुबई, सिंगापुर सहित 9 देशों के ग्राहकों को सेवाएं प्रदान करते हैं।</p>
+        <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+          <a href="#contact" class="btn-primary"><i class="fas fa-calendar-check"></i> मीटिंग बुक करें</a>
+          <a href="mailto:dilip@pdka.in" class="btn-outline founder-email-btn"><i class="fas fa-envelope"></i> dilip@pdka.in</a>
+        </div>
+      </div>
+    </div>
+  </div>`
+,
+      services: `  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label">हम क्या करते हैं</div>
+        <h2 class="section-title">व्यापक पेशेवर सेवाएं</h2>
+      </div>
+      <a href="#contact" class="btn-primary" style="white-space:nowrap;"><i class="fas fa-envelope"></i> संपर्क करें</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=320&fit=crop&crop=center" alt="लेखा परीक्षा एवं आश्वासन" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-search-dollar"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>लेखा परीक्षा एवं आश्वासन</h3>
+          <p>सूचीबद्ध, असूचीबद्ध और विदेशी सहायक कंपनियों सहित सभी प्रकार की संस्थाओं के लिए वैधानिक, आंतरिक, कर और समानांतर लेखापरीक्षा सेवाएं उच्च गुणवत्ता मानकों के साथ प्रदान की जाती हैं।</p>
+          <a href="javascript:void(0)" onclick="openService('audit')" class="svc-know-more">और जानें <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?w=600&h=320&fit=crop&crop=center" alt="कराधान" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>कराधान</h3>
+          <p>कॉर्पोरेट कर, व्यक्तिगत आयकर, ट्रांसफर प्राइसिंग, अंतर्राष्ट्रीय कर, GST परामर्श, TDS अनुपालन और घरेलू एवं अंतर्राष्ट्रीय कर मुकदमेबाजी सहायता।</p>
+          <a href="javascript:void(0)" onclick="openService('taxation')" class="svc-know-more">और जानें <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?w=600&h=320&fit=crop&crop=center" alt="FEMA एवं अंतर्राष्ट्रीय" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-globe-asia"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>FEMA एवं अंतर्राष्ट्रीय</h3>
+          <p>FEMA अनुपालन, RBI रिपोर्टिंग, ECB, ODI, FDI परामर्श, विदेशी प्रेषण और वैश्विक स्तर पर कारोबार करने वाली कंपनियों के लिए विदेशी मुद्रा प्रबंधन सेवाएं।</p>
+          <a href="javascript:void(0)" onclick="openService('fema')" class="svc-know-more">और जानें <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=320&fit=crop&crop=center" alt="सूचना प्रणाली लेखापरीक्षा" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-shield-alt"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>IS लेखापरीक्षा (CISA/DISA)</h3>
+          <p>CISA/DISA प्रमाणित टीम द्वारा सूचना प्रणाली लेखापरीक्षा, IT सामान्य नियंत्रण समीक्षा, साइबर सुरक्षा जोखिम मूल्यांकन, ERP लेखापरीक्षा और डेटा गोपनीयता अनुपालन।</p>
+          <a href="javascript:void(0)" onclick="openService('isaudit')" class="svc-know-more">और जानें <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=320&fit=crop&crop=center" alt="वर्चुअल CFO" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-chart-line"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>वर्चुअल CFO</h3>
+          <p>MIS रिपोर्टिंग, नकदी प्रवाह प्रबंधन, बजट निर्माण, निवेशक संबंध, फंड जुटाना और बोर्ड स्तरीय वित्तीय सलाह सहित CFO कार्यों की आउटसोर्सिंग।</p>
+          <a href="javascript:void(0)" onclick="openService('vcfo')" class="svc-know-more">और जानें <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=320&fit=crop&crop=center" alt="व्यावसायिक परामर्श" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-building"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>व्यावसायिक परामर्श</h3>
+          <p>विकासशील व्यवसायों के लिए मूल्यांकन, आंतरिक नियंत्रण, कॉर्पोरेट प्रशासन, ROC/MCA अनुपालन, पुनर्गठन परामर्श और जोखिम प्रबंधन सेवाएं।</p>
+          <a href="javascript:void(0)" onclick="openService('advisory')" class="svc-know-more">और जानें <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>`
+,
+      team:     `  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-label">हमारी टीम</div>
+      <h2 class="section-title">टीम से मिलें</h2>
+      <p class="section-sub" style="margin:0 auto;">हमारे भागीदार और विभाग प्रमुख दशकों की विशेषज्ञता, पेशेवर योग्यता और ग्राहक-केंद्रित दृष्टिकोण के साथ हर मामले को संभालते हैं।</p>
+    </div>
+    <div class="team-dept-section">
+      <div class="team-dept-label">विभाग प्रमुख</div>
+      <div class="team-dept-grid">
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">R</div><div class="dept-photo-note">फ़ोटो जल्द आएगी</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">कंपनी सचिव</div>
+            <h4>Rinkal</h4>
+            <div class="dept-role">प्रमुख - कॉर्पोरेट अनुपालन</div>
+            <div class="dept-quals">कंपनी सचिव</div>
+            <a href="team.html#company-secretary" class="dept-team-link">टीम देखें <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">V</div><div class="dept-photo-note">फ़ोटो जल्द आएगी</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">लेखा परीक्षा एवं आश्वासन</div>
+            <h4>Vedamurthy</h4>
+            <div class="dept-role">प्रमुख - लेखा परीक्षा एवं आश्वासन</div>
+            <div class="dept-quals">लेखा परीक्षा एवं आश्वासन</div>
+            <a href="team.html#audit" class="dept-team-link">टीम देखें <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">R</div><div class="dept-photo-note">फ़ोटो जल्द आएगी</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">परामर्श</div>
+            <h4>Richa</h4>
+            <div class="dept-role">प्रमुख - व्यावसायिक परामर्श</div>
+            <div class="dept-quals">व्यावसायिक परामर्श</div>
+            <a href="team.html#advisory" class="dept-team-link">टीम देखें <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">S·R</div><div class="dept-photo-note">फ़ोटो जल्द आएगी</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">कराधान</div>
+            <h4>Sandeep &amp; Rakesh</h4>
+            <div class="dept-role">प्रमुख - कराधान</div>
+            <div class="dept-quals">कराधान</div>
+            <a href="team.html#taxation" class="dept-team-link">टीम देखें <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">R</div><div class="dept-photo-note">फ़ोटो जल्द आएगी</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">FinOps</div>
+            <h4>Ramya</h4>
+            <div class="dept-role">प्रमुख - FinOps</div>
+            <div class="dept-quals">FinOps</div>
+            <a href="team.html#finops" class="dept-team-link">टीम देखें <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="javascript:void(0)" onclick="openPdkaPage('team.html','Our Team')" class="btn-outline">पूरी टीम देखें <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>`
+,
+      insights: `  <div class="section-inner">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0;">
+      <div>
+        <div class="section-label">ज्ञान केंद्र</div>
+        <h2 class="section-title">विशेषज्ञ दृष्टिकोण एवं अपडेट</h2>
+      </div>
+      <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;">सभी देखें <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="insight-header"></div>
+        <div class="insight-body">
+          <span class="insight-tag">ICAI · अप्रैल 2026</span>
+          <h3>ICAI आचार संहिता 2026: CA फर्मों पर प्रभाव</h3>
+          <p>अप्रैल 2026 से लागू ICAI आचार संहिता के 13वें संस्करण में CA फर्मों के विज्ञापन, वेबसाइट और नेटवर्किंग दिशानिर्देशों में महत्वपूर्ण बदलाव किए गए हैं।</p>
+        </div>
+        <div class="insight-footer">
+          <span class="insight-date">15 अप्रैल 2026</span>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('icai2026')">और पढ़ें <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-header"></div>
+        <div class="insight-body">
+          <span class="insight-tag">ITR · अप्रैल 2026</span>
+          <h3>ITR फाइलिंग FY2025-26: व्यवसायों के लिए अनुपालन चेकलिस्ट</h3>
+          <p>FY2025-26 के लिए सटीक और समय पर ITR फाइलिंग सुनिश्चित करने हेतु प्रमुख तिथियां, अपडेट किए गए ITR फॉर्म और व्यावहारिक अनुपालन चेकलिस्ट।</p>
+        </div>
+        <div class="insight-footer">
+          <span class="insight-date">8 अप्रैल 2026</span>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('itr2026')">और पढ़ें <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-header"></div>
+        <div class="insight-body">
+          <span class="insight-tag">FEMA · जनवरी 2025</span>
+          <h3>FEMA 2025: IT कंपनियों के लिए विदेशी प्रेषण, ODI नियम एवं अनुपालन</h3>
+          <p>विदेशी प्रत्यक्ष निवेश, LRS सीमाएं और विदेशी कारोबार वाली IT/ITES कंपनियों के लिए प्रमुख दायित्वों को कवर करने वाली FEMA अनुपालन मार्गदर्शिका।</p>
+        </div>
+        <div class="insight-footer">
+          <span class="insight-date">20 जनवरी 2025</span>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('fema2025')">और पढ़ें <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>`
+,
+      contact:  `  <div class="section-inner">
+    <div class="section-label">संपर्क करें</div>
+    <h2 class="section-title">मिलकर काम करें</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>किसी विशेषज्ञ से बात करें</h3>
+        <p>हम आमतौर पर एक कार्य दिवस के भीतर जवाब देते हैं। लेखापरीक्षा, कर, FEMA या परामर्श — हमारी टीम हर विषय पर आपकी सहायता के लिए तैयार है।</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-item-text">
+              <strong>फ़ोन</strong>
+              <p><a href="tel:08041219056">080-4121-9056</a> / <a href="tel:08041219057">080-4121-9057</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-item-text">
+              <strong>ईमेल</strong>
+              <a href="mailto:dilip@pdka.in">dilip@pdka.in</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-item-text">
+              <strong>कार्यालय</strong>
+              <a href="https://www.google.com/maps/search/Sampurna+Chambers+No+13+Vasavi+Temple+Street+VV+Puram+Bangalore+560004" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--orange);">FF-5 &amp; FF-6, प्रथम तल, Sampurna Chambers,<br/>No. 13, Vasavi Temple Street, V.V. Puram, बेंगलूरु – 560 004</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-item-text">
+              <strong>कार्यालय समय</strong>
+              <p>सोमवार – शनिवार: सुबह 9:30 – शाम 6:30 (IST)</p>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/company/pdka/" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="javascript:void(0)" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="javascript:void(0)" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3>संदेश भेजें</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>नाम *</label>
+            <input type="text" placeholder="आपका नाम" />
+          </div>
+          <div class="form-group">
+            <label>ईमेल पता *</label>
+            <input type="email" placeholder="आपका ईमेल" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>फ़ोन नंबर</label>
+            <input type="tel" placeholder="+91 98765 43210" />
+          </div>
+          <div class="form-group">
+            <label>कंपनी</label>
+            <input type="text" placeholder="कंपनी का नाम" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>सेवा</label>
+          <select>
+            <option value="">-- सेवा चुनें --</option>
+            <option>लेखा परीक्षा एवं आश्वासन</option>
+            <option>कराधान</option>
+            <option>FEMA एवं अंतर्राष्ट्रीय</option>
+            <option>IS लेखापरीक्षा</option>
+            <option>वर्चुअल CFO</option>
+            <option>व्यावसायिक परामर्श</option>
+            <option>अन्य</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>संदेश *</label>
+          <textarea rows="4" placeholder="अपनी आवश्यकता संक्षेप में बताएं…"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> संदेश भेजें</button>
+      </div>
+    </div>
+  </div>`
+,
+      footer:   `  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo" style="text-decoration:none;">
+          <div class="nav-logo-text">
+            <strong style="font-size:16px;">पी. दिलीप कुमार एंड एसोसिएट्स</strong>
+            <span>चार्टर्ड अकाउंटेंट फर्म, बेंगलूरु</span>
+          </div>
+        </a>
+        <p>1998 में स्थापित। गुणवत्ता, सत्यनिष्ठा और ICAI मानकों के प्रति समर्पित पेशेवर CA फर्म।</p>
+        <a href="javascript:void(0)" onclick="openPdkaPage('client-portal.html','Client Portal')" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--orange);color:white;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;"><i class="fas fa-user-circle"></i> क्लाइंट पोर्टल</a>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:20px;">
+          <svg height="52" viewBox="0 0 80 52" xmlns="http://www.w3.org/2000/svg" style="opacity:0.85;">
+            <rect x="1" y="1" width="78" height="50" rx="4" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+            <text x="40" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#e8600a">CA</text>
+            <text x="40" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="rgba(255,255,255,0.7)" letter-spacing="0.5">INDIA</text>
+            <text x="40" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.5" fill="rgba(255,255,255,0.45)" letter-spacing="0.3">ICAI MEMBER FIRM</text>
+          </svg>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">ICAI सदस्य फर्म<br/>बेंगलूरु, भारत</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>सेवाएं</h4>
+        <ul>
+          <li><a href="#services">लेखा परीक्षा एवं आश्वासन</a></li>
+          <li><a href="#services">कराधान</a></li>
+          <li><a href="#services">FEMA एवं अंतर्राष्ट्रीय</a></li>
+          <li><a href="#services">IS लेखापरीक्षा (CISA/DISA)</a></li>
+          <li><a href="#services">वर्चुअल CFO</a></li>
+          <li><a href="#services">व्यावसायिक परामर्श</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>कंपनी</h4>
+        <ul>
+          <li><a href="#about">हमारे बारे में</a></li>
+          <li><a href="#team">टीम</a></li>
+          <li><a href="#insights">अंतर्दृष्टि</a></li>
+          <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">करियर</a></li>
+          <li><a href="#contact">संपर्क</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>संसाधन</h4>
+        <ul>
+          <li><a href="https://www.icai.org" target="_blank">ICAI पोर्टल</a></li>
+          <li><a href="https://www.incometax.gov.in" target="_blank">आयकर विभाग</a></li>
+          <li><a href="https://www.gst.gov.in" target="_blank">GST पोर्टल</a></li>
+          <li><a href="https://www.mca.gov.in" target="_blank">MCA पोर्टल</a></li>
+          <li><a href="https://www.tdscpc.gov.in" target="_blank">TRACES पोर्टल</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 पी. दिलीप कुमार एंड एसोसिएट्स. सर्वाधिकार सुरक्षित.</p>
+      <div class="footer-bottom-links">
+        <a href="javascript:void(0)" onclick="openPdkaPage('privacy-policy.html','Privacy Policy')">गोपनीयता नीति</a>
+        <a href="javascript:void(0)" onclick="openPdkaPage('terms-conditions.html','Terms &amp; Conditions')">नियम एवं शर्तें</a>
+        <a href="javascript:void(0)">ICAI पंजीकरण</a>
+      </div>
+    </div>
+  </div>`
+,
+      industries: `  <div class="section-inner">
+    <div class="section-label" style="color:rgba(232,96,10,0.9);">हम किसकी सेवा करते हैं</div>
+    <h2 class="section-title">हमारी विशेषज्ञता के क्षेत्र</h2>
+    <p class="section-sub">प्रत्येक क्षेत्र में गहन विशेषज्ञता के माध्यम से हम केवल अनुपालन नहीं, बल्कि संदर्भानुसार सलाह प्रदान करते हैं।</p>
+    <div class="industries-grid">
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=320&fit=crop" alt="IT एवं ITES" loading="lazy" />
+        <div class="industry-overlay"><i class="fas fa-laptop-code"></i><h4>IT एवं ITES</h4></div>
+      </div>
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=320&fit=crop" alt="खुदरा एवं ई-कॉमर्स" loading="lazy" />
+        <div class="industry-overlay"><i class="fas fa-store"></i><h4>खुदरा एवं ई-कॉमर्स</h4></div>
+      </div>
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400&h=320&fit=crop" alt="विनिर्माण" loading="lazy" />
+        <div class="industry-overlay"><i class="fas fa-industry"></i><h4>विनिर्माण</h4></div>
+      </div>
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=320&fit=crop" alt="स्टार्टअप" loading="lazy" />
+        <div class="industry-overlay"><i class="fas fa-rocket"></i><h4>स्टार्टअप एवं D2C</h4></div>
+      </div>
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&h=320&fit=crop" alt="आतिथ्य" loading="lazy" />
+        <div class="industry-overlay"><i class="fas fa-hotel"></i><h4>आतिथ्य</h4></div>
+      </div>
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&h=320&fit=crop" alt="स्वास्थ्य सेवा" loading="lazy" />
+        <div class="industry-overlay"><i class="fas fa-heartbeat"></i><h4>स्वास्थ्य सेवा</h4></div>
+      </div>
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=320&fit=crop" alt="FinOps" loading="lazy" />
+        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h4>FinOps</h4></div>
+      </div>
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=320&fit=crop" alt="बहुराष्ट्रीय कंपनियां" loading="lazy" />
+        <div class="industry-overlay"><i class="fas fa-globe"></i><h4>बहुराष्ट्रीय कंपनियां</h4></div>
+      </div>
+    </div>
+  </div>`
+,
+      nav:      `  <ul class="nav-links">
+    <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)">होम</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaPage('about.html','About')">हमारे बारे में</a></li>
+    <li><a href="#founder">संस्थापक</a></li>
+    <li><a href="#services">सेवाएं</a></li>
+    <li><a href="#team">टीम</a></li>
+    <li><a href="#insights">अंतर्दृष्टि</a></li>
+    <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">करियर</a></li>
+    <li><a href="#contact">संपर्क</a></li>
   </ul>`
+    }
     }
   };
 
@@ -3310,9 +3764,9 @@ function closeSvcIfOutside(e) {
     if (window._heroWords) window._heroWords = heroWords[lang];
     // Get Started button
     var ctaBtn = document.querySelector('.nav-cta');
-    if (ctaBtn) ctaBtn.textContent = lang === 'ja' ? '始める' : 'Get Started';
+    if (ctaBtn) ctaBtn.textContent = lang === 'ja' ? '始める' : (lang === 'hi' ? 'शुरू करें' : 'Get Started');
     // Update dropdown
-    document.getElementById('langLabel').textContent = lang === 'ja' ? 'JP' : 'EN';
+    document.getElementById('langLabel').textContent = lang === 'ja' ? 'JP' : (lang === 'hi' ? 'HI' : 'EN');
     document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.remove('active'); });
     var opt = document.getElementById('opt-' + lang);
     if (opt) opt.classList.add('active');

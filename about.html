@@ -936,7 +936,43 @@
     <div class="value-card"><h4>守秘義務</h4></div>
     <div class="value-card"><h4>個別対応サービス</h4></div>
   </div>
-`
+`,
+    hi: {
+      hero:  `
+  <div class="label">फर्म के बारे में</div>
+  <img src="logo-1x.png" srcset="logo-1x.png 1x, logo-2x.png 2x, logo-3x.png 3x" width="351" height="91" alt="पी. दिलीप कुमार एंड एसोसिएट्स" style="max-width:min(351px,88vw);height:auto;display:block;margin:0 auto 8px;image-rendering:crisp-edges;" />
+  <p>मूल्यों, गुणवत्ता नीति और ICAI मानकों के प्रति समर्पित एक पेशेवर CA फर्म — 1998 में बेंगलूरु में स्थापित।</p>`,
+      stats: `
+  <div class="stat-cell"><strong>28+</strong><span>वर्षों का अनुभव</span></div>
+  <div class="stat-cell"><strong>9</strong><span>देशों में सेवा</span></div>
+  <div class="stat-cell"><strong>60+</strong><span>कर्मचारी</span></div>
+  <div class="stat-cell"><strong>1998</strong><span>बेंगलूरु में स्थापित</span></div>`,
+      body:  `
+  <div class="section-label">हम कौन हैं</div>
+  <h2>फर्म के बारे में</h2>
+  <p>PDKA एक तेज़ी से बढ़ती पेशेवर चार्टर्ड अकाउंटेंट फर्म है जो अपने मूल्यों, गुणवत्ता नीति और ICAI मानकों के प्रति प्रतिबद्ध है। अट्ठाईस वर्षों के अभ्यास में, फर्म ने भारत और विदेश के चुनिंदा ग्राहकों को विविध सेवाएं प्रदान करके अपनी एक विशेष पहचान बनाई है।</p>
+  <p>भारत की IT राजधानी बेंगलूरु में स्थित, फर्म ने विशेष रूप से IT एवं ITES उद्योग और भारतीय खुदरा क्षेत्र के लिए एकीकृत, एंड-टू-एंड सेवाएं प्रदान करके अपना नाम बनाया है।</p>
+  <p>फर्म भारत, अमेरिका, ऑस्ट्रेलिया, दुबई, ब्रिटेन, आयरलैंड, सिंगापुर, जापान और इटली के ग्राहकों की सेवा करती है।</p>
+
+  <div class="countries-strip">
+    <span class="country-tag">🇮🇳 भारत</span>
+    <span class="country-tag">🇺🇸 अमेरिका</span>
+    <span class="country-tag">🇦🇺 ऑस्ट्रेलिया</span>
+    <span class="country-tag">🇦🇪 दुबई</span>
+    <span class="country-tag">🇬🇧 ब्रिटेन</span>
+    <span class="country-tag">🇮🇪 आयरलैंड</span>
+    <span class="country-tag">🇸🇬 सिंगापुर</span>
+    <span class="country-tag">🇯🇵 जापान</span>
+    <span class="country-tag">🇮🇹 इटली</span>
+  </div>
+
+  <div class="section-label" style="margin-top:48px;">हमारे मूल्य</div>
+  <div class="values-grid">
+    <div class="value-card"><h4>विश्वास एवं सत्यनिष्ठा</h4></div>
+    <div class="value-card"><h4>पेशेवर नैतिकता</h4></div>
+    <div class="value-card"><h4>गोपनीयता</h4></div>
+    <div class="value-card"><h4>व्यक्तिगत सेवा</h4></div>
+  </div>`
     }
   };
 
@@ -948,8 +984,8 @@
     });
     // Also update nav CTA
     var cta = document.querySelector('.nav-cta');
-    if (cta) cta.textContent = lang==='ja' ? '始める' : 'Get Started';
-    document.getElementById('aboutLangLabel').textContent = lang==='ja' ? 'JP' : 'EN';
+    if (cta) cta.textContent = lang==='ja' ? '始める' : (lang==='hi' ? 'शुरू करें' : 'Get Started');
+    document.getElementById('aboutLangLabel').textContent = lang==='ja' ? 'JP' : (lang==='hi' ? 'HI' : 'EN');
     document.getElementById('aboutLangMenu').style.display = 'none';
     document.documentElement.lang = lang;
     try { localStorage.setItem('pdka-lang', lang); } catch(e){}
