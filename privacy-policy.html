@@ -453,11 +453,13 @@
     document.documentElement.lang = (lang === 'ja') ? 'ja' : 'en';
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  // Script is at bottom of body — DOM elements already exist, call directly
+  (function() {
     var lang = localStorage.getItem('pdka-lang') || 'en';
     if (lang === 'ja') setLang('ja');
-  });
+  })();
 
+  // Also respond to live language changes from parent window
   window.addEventListener('storage', function(e) {
     if (e.key === 'pdka-lang') setLang(e.newValue || 'en');
   });
