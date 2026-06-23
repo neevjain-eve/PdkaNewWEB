@@ -85,6 +85,7 @@
 </head>
 <body>
 
+<script>if(window.self!==window.top){document.write('<style>nav,.nav-mobile,.nav-toggle,.lang-dropdown,.theme-toggle{display:none!important}body,html{padding-top:0!important;margin-top:0!important}</style>');}</script>
 <nav>
   <a href="pdka-website.html" class="nav-logo">
     <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" />
@@ -238,16 +239,7 @@
   var inIframe = (window.self !== window.top);
   if (!inIframe) return;
 
-  // Hide this page's own nav — parent nav handles navigation
-  document.addEventListener('DOMContentLoaded', function() {
-    var nav = document.querySelector('nav');
-    if (nav) { nav.style.display = 'none'; }
-    // Remove top padding that was meant for the fixed nav
-    document.body.style.paddingTop = '0';
-    document.body.style.marginTop = '0';
-    var firstSection = document.querySelector('.page-hero, .about-page-hero, section, .portal-hero, .insights-hero, .team-hero');
-    if (firstSection) firstSection.style.paddingTop = '32px';
-  });
+  // Nav hidden via inline script before first render
 
   var pageTitles = {
     'about.html':'About', 'careers.html':'Careers',
