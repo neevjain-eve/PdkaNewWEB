@@ -103,7 +103,7 @@
 </nav>
 
 <div class="hero-band">
-  <div style="max-width:1100px;margin:0 auto;">
+  <div id="pp-hero" style="max-width:1100px;margin:0 auto;">
     <div class="label">Legal</div>
     <h1>Privacy Policy</h1>
     <p class="meta">Last updated: March 2025 &nbsp;·&nbsp; P. Dilip Kumar &amp; Associates</p>
@@ -113,7 +113,7 @@
 <main>
   <!-- TOC -->
   <aside>
-    <div class="toc-box">
+    <div class="toc-box" id="pp-toc">
       <h4>Contents</h4>
       <ol>
         <li><a href="#s1">Introduction</a></li>
@@ -133,7 +133,7 @@
   </aside>
 
   <!-- CONTENT -->
-  <div class="legal-card">
+  <div class="legal-card" id="pp-body">
 
     <div class="legal-section" id="s1">
       <h2><span class="sec-num">1</span> Introduction</h2>
@@ -225,7 +225,7 @@
 </main>
 
 <!-- CONTACT STRIP -->
-<div class="contact-strip">
+<div class="contact-strip" id="pp-contact">
   <h3>Questions about this policy?</h3>
   <p>Reach out to us directly — we're happy to clarify.</p>
   <div class="contact-strip-links">
@@ -236,7 +236,7 @@
 </div>
 
 <footer>
-  <p>© 2026 P. Dilip Kumar &amp; Associates &nbsp;·&nbsp;
+  <p id="pp-footer">© 2026 P. Dilip Kumar &amp; Associates &nbsp;·&nbsp;
     <a href="pdka-website.html">Home</a>
     <a href="terms-conditions.html">Terms &amp; Conditions</a>
     <a href="pdka-website.html#contact">Contact</a>
@@ -316,6 +316,151 @@
       }
     }
   }, true); // capture phase — fires before any inline onclick
+})();
+</script>
+
+
+<script id="pdka-pp-i18n">
+(function(){
+  var EN = {
+    hero: `<div class="label">Legal</div><h1>Privacy Policy</h1><p class="meta">Last updated: March 2025 &nbsp;&middot;&nbsp; P. Dilip Kumar &amp; Associates</p>`,
+    toc: `<h4>Contents</h4><ol>
+      <li><a href="#s1">Introduction</a></li>
+      <li><a href="#s2">Information We Collect</a></li>
+      <li><a href="#s3">How We Use Your Information</a></li>
+      <li><a href="#s4">Confidentiality</a></li>
+      <li><a href="#s5">Sharing of Information</a></li>
+      <li><a href="#s6">Data Security</a></li>
+      <li><a href="#s7">Data Retention</a></li>
+      <li><a href="#s8">Your Rights</a></li>
+      <li><a href="#s9">Cookies</a></li>
+      <li><a href="#s10">Third-Party Links</a></li>
+      <li><a href="#s11">Governing Law</a></li>
+      <li><a href="#s12">Changes to This Policy</a></li>
+    </ol>`,
+    body: null, // keep as-is for EN
+    contact: `<h3>Questions about this policy?</h3><p>Reach out to us directly &mdash; we're happy to clarify.</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="pdka-website.html#contact"><i class="fas fa-arrow-right"></i> Contact Page</a></div>`,
+    footer: `&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="pdka-website.html">Home</a><a href="terms-conditions.html">Terms &amp; Conditions</a><a href="pdka-website.html#contact">Contact</a>`
+  };
+
+  var JA = {
+    hero: `<div class="label">法的情報</div><h1>プライバシーポリシー</h1><p class="meta">最終更新：2025年3月 &nbsp;&middot;&nbsp; P. Dilip Kumar &amp; Associates</p>`,
+    toc: `<h4>目次</h4><ol>
+      <li><a href="#s1">はじめに</a></li>
+      <li><a href="#s2">収集する情報</a></li>
+      <li><a href="#s3">情報の利用方法</a></li>
+      <li><a href="#s4">守秘義務</a></li>
+      <li><a href="#s5">情報の共有</a></li>
+      <li><a href="#s6">データセキュリティ</a></li>
+      <li><a href="#s7">データ保持期間</a></li>
+      <li><a href="#s8">お客様の権利</a></li>
+      <li><a href="#s9">クッキー</a></li>
+      <li><a href="#s10">外部リンク</a></li>
+      <li><a href="#s11">準拠法</a></li>
+      <li><a href="#s12">ポリシーの変更</a></li>
+    </ol>`,
+    body: `
+    <div class="legal-section" id="s1">
+      <h2><span class="sec-num">1</span> はじめに</h2>
+      <p>P. Dilip Kumar &amp; Associates（「PDKA」「当社」）は、本ウェブサイトをご利用いただく皆様のプライバシー保護に努めております。本プライバシーポリシーは、お客様がウェブサイトをご利用になる際、または専門サービスへのお問い合わせをいただく際に収集・利用・保護する情報についてご説明するものです。</p>
+    </div>
+    <div class="legal-section" id="s2">
+      <h2><span class="sec-num">2</span> 収集する情報</h2>
+      <p>お客様がお問い合わせまたは本ウェブサイトをご利用の際に、以下の情報を収集する場合があります：</p>
+      <ul>
+        <li>氏名および連絡先情報（メールアドレス、電話番号）</li>
+        <li>会社名または組織名</li>
+        <li>サービスのお問い合わせ内容</li>
+        <li>お問い合わせフォームを通じて送信されたメッセージ</li>
+        <li>ブラウザの種類やIPアドレスなどの技術的情報（自動収集）</li>
+      </ul>
+    </div>
+    <div class="legal-section" id="s3">
+      <h2><span class="sec-num">3</span> 情報の利用方法</h2>
+      <p>収集した情報は、以下の目的にのみ使用します：</p>
+      <ul>
+        <li>専門的なお問い合わせへの対応</li>
+        <li>合意に基づく専門サービスの提供</li>
+        <li>インド法およびICAIガイドラインに基づく法的・規制上の義務の遵守</li>
+        <li>本ウェブサイトの機能性とユーザビリティの向上</li>
+      </ul>
+      <p>お客様の明示的な同意なく、マーケティング目的で情報を利用することはありません。</p>
+    </div>
+    <div class="legal-section" id="s4">
+      <h2><span class="sec-num">4</span> クライアント情報の守秘義務</h2>
+      <p>専門業務に関連して受領したすべてのクライアント情報は、インド勅許会計士協会（ICAI）の倫理規程に従い、厳格に機密として取り扱われます。法律により開示が求められる場合、またはクライアントの事前書面による同意がある場合を除き、第三者に開示することはありません。</p>
+    </div>
+    <div class="legal-section" id="s5">
+      <h2><span class="sec-num">5</span> 情報の共有</h2>
+      <p>お客様の個人情報を第三者に販売、取引、または譲渡することはありません。情報の共有は、以下の限定的な状況においてのみ行われます：</p>
+      <ul>
+        <li>裁判所、規制当局、または法定機関から要求された場合</li>
+        <li>お客様の明示的な事前書面による同意がある場合</li>
+        <li>守秘義務を負う専門アドバイザーへの開示</li>
+      </ul>
+    </div>
+    <div class="legal-section" id="s6">
+      <h2><span class="sec-num">6</span> データセキュリティ</h2>
+      <p>当社は、お客様から提供された情報を不正アクセス、改ざん、開示から保護するため、合理的な技術的・組織的措置を講じています。ただし、インターネットを通じた情報送信には完全な安全保障はなく、絶対的なセキュリティを保証することはできません。</p>
+    </div>
+    <div class="legal-section" id="s7">
+      <h2><span class="sec-num">7</span> データ保持期間</h2>
+      <p>個人情報は、収集目的を達成するために必要な期間、または適用法が求める期間のみ保持します。クライアントの業務記録は、ICAIの要件および適用される法定期間に従い保持されます。</p>
+    </div>
+    <div class="legal-section" id="s8">
+      <h2><span class="sec-num">8</span> お客様の権利</h2>
+      <p>お客様には以下の権利があります：</p>
+      <ul>
+        <li>当社が保有するお客様の個人情報へのアクセス</li>
+        <li>不正確な情報の訂正の請求</li>
+        <li>法的保持義務の範囲内での情報削除の請求</li>
+        <li>情報の任意的使用に対する同意の撤回</li>
+      </ul>
+      <p>これらの権利を行使される場合は、<a href="mailto:dilip@pdka.in" style="color:var(--orange);font-weight:500;">dilip@pdka.in</a> までご連絡ください。</p>
+    </div>
+    <div class="legal-section" id="s9">
+      <h2><span class="sec-num">9</span> クッキー</h2>
+      <p>本ウェブサイトでは、閲覧体験を向上させるためにクッキーを使用する場合があります。クッキーはお客様のデバイスに保存される小さなファイルです。ブラウザの設定からクッキーを管理または無効にすることができます。クッキーを無効にすると、ウェブサイトの一部の機能に影響が生じる場合があります。</p>
+    </div>
+    <div class="legal-section" id="s10">
+      <h2><span class="sec-num">10</span> 外部リンク</h2>
+      <p>本ウェブサイトには、第三者の商業サイトへのリンクは含まれていません。外部リンクが存在する場合、それらは情報提供のみを目的としており、PDKAは外部サイトのプライバシー慣行に対して責任を負いません。</p>
+    </div>
+    <div class="legal-section" id="s11">
+      <h2><span class="sec-num">11</span> 準拠法</h2>
+      <p>本プライバシーポリシーは、情報技術法（2000年）およびその関連規則を含むインドの法律に準拠します。紛争が生じた場合は、カルナータカ州バンガロールの裁判所の管轄に服するものとします。</p>
+    </div>
+    <div class="legal-section" id="s12">
+      <h2><span class="sec-num">12</span> ポリシーの変更</h2>
+      <p>当社は、本プライバシーポリシーを随時更新する権利を留保します。変更は、改訂された「最終更新」日とともに本ページに掲載されます。変更後も本ウェブサイトを引き続きご利用いただくことで、更新されたポリシーへの同意とみなされます。</p>
+    </div>`,
+    contact: `<h3>本ポリシーについてご不明な点は？</h3><p>お気軽に直接お問い合わせください。</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="pdka-website.html#contact"><i class="fas fa-arrow-right"></i> お問い合わせページ</a></div>`,
+    footer: `&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="pdka-website.html">ホーム</a><a href="terms-conditions.html">利用規約</a><a href="pdka-website.html#contact">お問い合わせ</a>`
+  };
+
+  function setLang(lang) {
+    var d = (lang === 'ja') ? JA : EN;
+    var hero = document.getElementById('pp-hero');
+    var toc  = document.getElementById('pp-toc');
+    var body = document.getElementById('pp-body');
+    var con  = document.getElementById('pp-contact');
+    var foot = document.getElementById('pp-footer');
+    if (hero) hero.innerHTML = d.hero;
+    if (toc)  toc.innerHTML  = d.toc;
+    if (body && d.body) body.innerHTML = d.body;
+    if (con)  con.innerHTML  = d.contact;
+    if (foot) foot.innerHTML = d.footer;
+    document.documentElement.lang = (lang === 'ja') ? 'ja' : 'en';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var lang = localStorage.getItem('pdka-lang') || 'en';
+    if (lang === 'ja') setLang('ja');
+  });
+
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'pdka-lang') setLang(e.newValue || 'en');
+  });
 })();
 </script>
 

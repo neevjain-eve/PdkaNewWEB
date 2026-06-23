@@ -95,7 +95,7 @@
 </nav>
 
 <div class="hero-band">
-  <div style="max-width:1100px;margin:0 auto;">
+  <div id="tc-hero" style="max-width:1100px;margin:0 auto;">
     <div class="label">Legal</div>
     <h1>Terms &amp; Conditions</h1>
     <p class="meta">Last updated: March 2025 &nbsp;·&nbsp; P. Dilip Kumar &amp; Associates</p>
@@ -104,7 +104,7 @@
 
 <main>
   <aside>
-    <div class="toc-box">
+    <div class="toc-box" id="tc-toc">
       <h4>Contents</h4>
       <ol>
         <li><a href="#s1">Acceptance of Terms</a></li>
@@ -123,7 +123,7 @@
     </div>
   </aside>
 
-  <div class="legal-card">
+  <div class="legal-card" id="tc-body">
 
     <div class="legal-section" id="s1">
       <h2><span class="sec-num">1</span> Acceptance of Terms</h2>
@@ -194,7 +194,7 @@
   </div>
 </main>
 
-<div class="contact-strip">
+<div class="contact-strip" id="tc-contact">
   <h3>Questions about these terms?</h3>
   <p>Contact us directly for any clarifications regarding our terms of engagement.</p>
   <div class="contact-strip-links">
@@ -205,7 +205,7 @@
 </div>
 
 <footer>
-  <p>© 2026 P. Dilip Kumar &amp; Associates &nbsp;·&nbsp;
+  <p id="tc-footer">© 2026 P. Dilip Kumar &amp; Associates &nbsp;·&nbsp;
     <a href="pdka-website.html">Home</a>
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="pdka-website.html#contact">Contact</a>
@@ -285,6 +285,131 @@
       }
     }
   }, true); // capture phase — fires before any inline onclick
+})();
+</script>
+
+
+<script id="pdka-tc-i18n">
+(function(){
+  var EN = {
+    hero: `<div class="label">Legal</div><h1>Terms &amp; Conditions</h1><p class="meta">Last updated: March 2025 &nbsp;&middot;&nbsp; P. Dilip Kumar &amp; Associates</p>`,
+    toc: `<h4>Contents</h4><ol>
+      <li><a href="#s1">Acceptance of Terms</a></li>
+      <li><a href="#s2">Nature of Information</a></li>
+      <li><a href="#s3">Services</a></li>
+      <li><a href="#s4">Client Responsibilities</a></li>
+      <li><a href="#s5">Engagement Terms</a></li>
+      <li><a href="#s6">Confidentiality</a></li>
+      <li><a href="#s7">Limitation of Liability</a></li>
+      <li><a href="#s8">Intellectual Property</a></li>
+      <li><a href="#s9">Termination of Engagement</a></li>
+      <li><a href="#s10">Governing Law</a></li>
+      <li><a href="#s11">Website Usage</a></li>
+      <li><a href="#s12">Changes to Terms</a></li>
+    </ol>`,
+    body: null,
+    contact: `<h3>Questions about these terms?</h3><p>Contact us directly for any clarifications regarding our terms of engagement.</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="pdka-website.html#contact"><i class="fas fa-arrow-right"></i> Contact Page</a></div>`,
+    footer: `&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="pdka-website.html">Home</a><a href="privacy-policy.html">Privacy Policy</a><a href="pdka-website.html#contact">Contact</a>`
+  };
+
+  var JA = {
+    hero: `<div class="label">法的情報</div><h1>利用規約</h1><p class="meta">最終更新：2025年3月 &nbsp;&middot;&nbsp; P. Dilip Kumar &amp; Associates</p>`,
+    toc: `<h4>目次</h4><ol>
+      <li><a href="#s1">規約への同意</a></li>
+      <li><a href="#s2">情報の性質</a></li>
+      <li><a href="#s3">提供サービス</a></li>
+      <li><a href="#s4">クライアントの責任</a></li>
+      <li><a href="#s5">業務契約条件</a></li>
+      <li><a href="#s6">守秘義務</a></li>
+      <li><a href="#s7">責任の制限</a></li>
+      <li><a href="#s8">知的財産</a></li>
+      <li><a href="#s9">業務契約の終了</a></li>
+      <li><a href="#s10">準拠法</a></li>
+      <li><a href="#s11">ウェブサイトの利用</a></li>
+      <li><a href="#s12">規約の変更</a></li>
+    </ol>`,
+    body: `
+    <div class="legal-section" id="s1">
+      <h2><span class="sec-num">1</span> 規約への同意</h2>
+      <p>P. Dilip Kumar &amp; Associates（PDKA）のウェブサイトにアクセスまたはご利用いただくことで、お客様は本利用規約に拘束されることに同意したものとみなされます。同意いただけない場合は、本ウェブサイトのご利用をお控えください。</p>
+    </div>
+    <div class="legal-section" id="s2">
+      <h2><span class="sec-num">2</span> 情報の性質</h2>
+      <p>本ウェブサイトのコンテンツは一般的な情報提供のみを目的としており、専門的なアドバイスを構成するものではありません。本ウェブサイトのみによって専門家・クライアント関係が成立することはありません。専門的なアドバイスをご希望の場合は、直接事務所までお問い合わせください。</p>
+    </div>
+    <div class="legal-section" id="s3">
+      <h2><span class="sec-num">3</span> 提供サービス</h2>
+      <p>PDKAは、インド勅許会計士協会（ICAI）のガイドラインおよび基準に従い、監査・保証、税務顧問、バーチャルCFO、ビジネスアドバイザリー、コンプライアンス・規制対応、リスク管理などの専門サービスを提供しています。すべてのサービスは個別の業務契約条件に従います。</p>
+    </div>
+    <div class="legal-section" id="s4">
+      <h2><span class="sec-num">4</span> クライアントの責任</h2>
+      <p>PDKAとの業務に際し、クライアントは以下に同意するものとします：</p>
+      <ul>
+        <li>業務に関連する正確、完全かつタイムリーな情報の提供</li>
+        <li>適用されるすべての法律および規制の遵守</li>
+        <li>受領した専門的アドバイスの機密保持</li>
+        <li>個別の業務委託書に定められた条件の遵守</li>
+      </ul>
+    </div>
+    <div class="legal-section" id="s5">
+      <h2><span class="sec-num">5</span> 業務契約条件</h2>
+      <p>業務範囲およびその他の条件を含む業務契約条件は、専門業務の開始前に合意される個別の業務委託書に定められます。</p>
+    </div>
+    <div class="legal-section" id="s6">
+      <h2><span class="sec-num">6</span> 守秘義務</h2>
+      <p>PDKAは、ICAIの倫理基準に従い、すべてのクライアント情報について厳格な守秘義務を維持します。開示は、法律・規制当局により要求される場合、またはクライアントの事前書面による同意がある場合に限り行われます。</p>
+    </div>
+    <div class="legal-section" id="s7">
+      <h2><span class="sec-num">7</span> 責任の制限</h2>
+      <p>専門業務に関連する当事務所の責任は、当該業務について受領した専門報酬の範囲に限定されます。PDKAは、間接的、結果的、または付随的な損失について責任を負いません。</p>
+    </div>
+    <div class="legal-section" id="s8">
+      <h2><span class="sec-num">8</span> 知的財産</h2>
+      <p>PDKAが作成したすべての報告書、文書、資料は当事務所の知的財産として帰属します。クライアントには内部使用のみを目的とした非独占的ライセンスが付与されます。書面による同意なしに複製または配布することは認められません。</p>
+    </div>
+    <div class="legal-section" id="s9">
+      <h2><span class="sec-num">9</span> 業務契約の終了</h2>
+      <p>いずれの当事者も書面による通知により業務契約を終了することができます。終了時には、未払いの専門報酬をすべて精算していただく必要があります。当事務所は、未払い報酬が清算されるまで成果物を保留する権利を留保します。</p>
+    </div>
+    <div class="legal-section" id="s10">
+      <h2><span class="sec-num">10</span> 準拠法</h2>
+      <p>本規約は、インドの法律およびICAIの規則に準拠します。紛争が生じた場合は、カルナータカ州バンガロールの裁判所の専属管轄に服するものとします。</p>
+    </div>
+    <div class="legal-section" id="s11">
+      <h2><span class="sec-num">11</span> ウェブサイトの利用</h2>
+      <p>本ウェブサイトは、ICAIのガイドラインに従い、当事務所が提供する専門サービスに関する情報を提供することのみを目的として運営されています。ウェブサイトコンテンツの無断使用、複製または改変は禁止されています。</p>
+    </div>
+    <div class="legal-section" id="s12">
+      <h2><span class="sec-num">12</span> 規約の変更</h2>
+      <p>PDKAは、本規約をいつでも更新する権利を留保します。変更後も本ウェブサイトを継続してご利用いただくことで、改訂された規約への同意とみなされます。</p>
+    </div>`,
+    contact: `<h3>利用規約についてご不明な点は？</h3><p>業務契約条件に関するご不明な点は、直接お問い合わせください。</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="pdka-website.html#contact"><i class="fas fa-arrow-right"></i> お問い合わせページ</a></div>`,
+    footer: `&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="pdka-website.html">ホーム</a><a href="privacy-policy.html">プライバシーポリシー</a><a href="pdka-website.html#contact">お問い合わせ</a>`
+  };
+
+  function setLang(lang) {
+    var d = (lang === 'ja') ? JA : EN;
+    var hero = document.getElementById('tc-hero');
+    var toc  = document.getElementById('tc-toc');
+    var body = document.getElementById('tc-body');
+    var con  = document.getElementById('tc-contact');
+    var foot = document.getElementById('tc-footer');
+    if (hero) hero.innerHTML = d.hero;
+    if (toc)  toc.innerHTML  = d.toc;
+    if (body && d.body) body.innerHTML = d.body;
+    if (con)  con.innerHTML  = d.contact;
+    if (foot) foot.innerHTML = d.footer;
+    document.documentElement.lang = (lang === 'ja') ? 'ja' : 'en';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var lang = localStorage.getItem('pdka-lang') || 'en';
+    if (lang === 'ja') setLang('ja');
+  });
+
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'pdka-lang') setLang(e.newValue || 'en');
+  });
 })();
 </script>
 
