@@ -879,6 +879,7 @@
 
 <!-- HERO (sticky — about slides over it) -->
 <section id="home">
+  <!-- Full-bleed background image -->
   <div class="hero-bg">
     <img
       src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&h=1000&fit=crop&crop=center"
@@ -887,29 +888,14 @@
     />
     <div class="hero-bg-overlay"></div>
   </div>
+
+  <!-- Canvas animation -->
   <canvas id="hero-canvas"></canvas>
+
+  <!-- Main content -->
   <div class="hero-content-wrap">
     <div class="hero-content">
-      <div class="hero-badge" id="hero-badge">
-        <i class="fas fa-certificate"></i> ICAI Registered Firm &bull; Since 1998
-      </div>
-      <h1 class="hero-title">
-        <span id="hero-static">Empowering<br/>Businesses with<br/></span><span id="hero-word"></span>
-      </h1>
-      <p class="hero-desc" id="hero-desc">
-        Chartered Accountants serving clients across India and 9 countries &mdash; expert in Audit, Taxation, FEMA, IS Audit, Virtual CFO &amp; Advisory.
-      </p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary" id="hero-cta1"><i class="fas fa-arrow-right"></i> Get Started</a>
-        <a href="#services" class="btn-outline" id="hero-cta2"><i class="fas fa-th-large"></i> Our Services</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><span class="hero-stat-num">28+</span><span class="hero-stat-label" id="hstat1">Years</span></div>
-        <div class="hero-stat-div"></div>
-        <div class="hero-stat"><span class="hero-stat-num">9</span><span class="hero-stat-label" id="hstat2">Countries</span></div>
-        <div class="hero-stat-div"></div>
-        <div class="hero-stat"><span class="hero-stat-num">500+</span><span class="hero-stat-label" id="hstat3">Clients</span></div>
-      </div>
+      <h1 class="hero-title" data-i18n="hero-title">Empowering<br/>Businesses with<br/><span id="hero-word"></span></h1>
     </div>
   </div>
 </section>
@@ -3199,76 +3185,10 @@ function closeSvcIfOutside(e) {
     if (opt) opt.classList.add('active');
     document.getElementById('langMenu').classList.remove('open');
     document.documentElement.lang = lang;
-    updateHero(lang);
     // Store preference
     try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
   };
 
-
-
-  // Hero word animation
-  (function() {
-    var enWords = ['Clarity', 'Confidence', 'Compliance', 'Excellence', 'Growth'];
-    var jaWords = ['明瞭性', '信頼', 'コンプライアンス', '卓越性', '成長'];
-    var widx = 0;
-    var wel = null;
-
-    function typeWord(word, cb) {
-      wel.textContent = '';
-      var i = 0;
-      var t = setInterval(function() {
-        wel.textContent += word[i++];
-        if (i >= word.length) { clearInterval(t); setTimeout(cb, 1600); }
-      }, 80);
-    }
-    function eraseWord(cb) {
-      var t = setInterval(function() {
-        if (!wel.textContent.length) { clearInterval(t); cb(); return; }
-        wel.textContent = wel.textContent.slice(0, -1);
-      }, 50);
-    }
-    function cycle() {
-      var words = (window.pdkaLang === 'ja') ? jaWords : enWords;
-      typeWord(words[widx % words.length], function() {
-        eraseWord(function() { widx++; cycle(); });
-      });
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      wel = document.getElementById('hero-word');
-      if (wel) setTimeout(cycle, 400);
-    });
-  })();
-
-  // Hero text translation
-  function updateHero(lang) {
-    var staticEl = document.getElementById('hero-static');
-    var descEl   = document.getElementById('hero-desc');
-    var badgeEl  = document.getElementById('hero-badge');
-    var cta1     = document.getElementById('hero-cta1');
-    var cta2     = document.getElementById('hero-cta2');
-    var s1 = document.getElementById('hstat1');
-    var s2 = document.getElementById('hstat2');
-    var s3 = document.getElementById('hstat3');
-    if (lang === 'ja') {
-      if (staticEl) staticEl.innerHTML = 'ビジネスを<br/>力強く支える<br/>';
-      if (descEl)   descEl.textContent = '監査・税務・FEMA・IS監査・バーチャルCFOおよびアドバイザリーの専門家として、インド全土および世界9カ国のクライアントにサービスを提供する公認会計士事務所です。';
-      if (badgeEl)  badgeEl.innerHTML = '<i class="fas fa-certificate"></i> ICAI登録事務所 &bull; 1998年創業';
-      if (cta1)     cta1.innerHTML = '<i class="fas fa-arrow-right"></i> 始める';
-      if (cta2)     cta2.innerHTML = '<i class="fas fa-th-large"></i> サービス一覧';
-      if (s1) s1.textContent = '年';
-      if (s2) s2.textContent = 'カ国';
-      if (s3) s3.textContent = 'クライアント';
-    } else {
-      if (staticEl) staticEl.innerHTML = 'Empowering<br/>Businesses with<br/>';
-      if (descEl)   descEl.innerHTML = 'Chartered Accountants serving clients across India and 9 countries &mdash; expert in Audit, Taxation, FEMA, IS Audit, Virtual CFO &amp; Advisory.';
-      if (badgeEl)  badgeEl.innerHTML = '<i class="fas fa-certificate"></i> ICAI Registered Firm &bull; Since 1998';
-      if (cta1)     cta1.innerHTML = '<i class="fas fa-arrow-right"></i> Get Started';
-      if (cta2)     cta2.innerHTML = '<i class="fas fa-th-large"></i> Our Services';
-      if (s1) s1.textContent = 'Years';
-      if (s2) s2.textContent = 'Countries';
-      if (s3) s3.textContent = 'Clients';
-    }
-  }
 
   window.toggleLangMenu = function(e) {
     e.stopPropagation();
