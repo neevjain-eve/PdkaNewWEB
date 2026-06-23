@@ -248,6 +248,17 @@
     <a href="pdka-website.html#contact" class="nav-cta">Get Started</a>
     <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
   </div>
+
+  <div class="lang-dropdown" id="carLangDropdown" style="position:relative;margin-left:12px;">
+    <button onclick="toggleCarLang(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1px solid rgba(255,255,255,0.35);color:white;border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;">
+      <i class="fas fa-globe"></i><span id="carLangLabel">EN</span>
+      <i class="fas fa-chevron-down" style="font-size:9px;"></i>
+    </button>
+    <ul id="carLangMenu" style="display:none;position:absolute;right:0;top:110%;background:white;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.15);list-style:none;padding:6px;margin:0;min-width:110px;z-index:9999;">
+      <li><button onclick="setCarLang('en')" id="copt-en" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;font-weight:700;">English</button></li>
+      <li><button onclick="setCarLang('ja')" id="copt-ja" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;">日本語</button></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- MOBILE NAV DRAWER -->
@@ -271,7 +282,7 @@
   <div class="page-hero-content">
     <div class="page-hero-label">Join Our Team</div>
     <h1 class="page-hero-title">Careers at PDKA</h1>
-    <p class="page-hero-sub">Build your career with one of Bangalore's most respected CA firms. We invest in people who are passionate about excellence.</p>
+    <p class="page-hero-sub"><span data-i18n-car="heroSub">Build your career with one of Bangalore's most respected CA firms. We invest in people who are passionate about excellence.</span></p>
   </div>
 </div>
 
@@ -286,8 +297,8 @@
     </div>
 
     <!-- Open Roles -->
-    <div class="careers-section-label">Open Positions</div>
-    <h2 class="careers-section-title">Current Openings</h2>
+    <div class="careers-section-label"><span data-i18n-car="openLabel">Open Positions</span></div>
+    <h2 class="careers-section-title"><span data-i18n-car="openTitle">Current Openings</span></h2>
 
     <div class="careers-grid">
 
@@ -460,5 +471,127 @@
     }
   })();
 </script>
+
+<script id="pdka-careers-i18n">
+(function(){
+  var sections = {
+    en: {
+      heroTitle: 'Join Our Team',
+      heroSub: 'Build a rewarding career at one of Bangalore\'s leading Chartered Accountancy firms.',
+      whyLabel: 'Why Join Us',
+      whyTitle: 'Build Your Career at PDKA',
+      whyDesc: 'We offer a collaborative, learning-driven environment where professionals grow through real-world client exposure across India and internationally. Our culture values precision, integrity, and continuous development.',
+      w1title: 'Mentorship & Growth',
+      w1desc: 'Learn directly from experienced FCAs, CISAs, and specialists across audit, tax, advisory, and technology.',
+      w2title: 'Diverse Exposure',
+      w2desc: 'Work on engagements spanning 9 countries — international tax, FEMA, IS audit, and Fortune-class clients.',
+      w3title: 'Flexible Work Culture',
+      w3desc: 'We respect work-life balance. Flexible hours, hybrid options for senior roles, and supportive team dynamics.',
+      w4title: 'Structured Progression',
+      w4desc: 'Clear promotion pathways from Article Assistant to Manager, with regular performance reviews and merit-based increments.',
+      openLabel: 'Open Positions',
+      openTitle: 'Current Openings',
+      openDesc: 'We\'re hiring talented professionals across all disciplines. If you don\'t see your role below, send your CV to careers@pdka.in.',
+      applyBtn: 'Apply Now',
+      ctaTitle: 'Don\'t see your role?',
+      ctaDesc: 'We\'re always looking for talented individuals. Send your CV and a brief introduction to our HR team.',
+      ctaBtn: '<i class="fas fa-paper-plane"></i> Send Your CV',
+      job1title: 'Article Assistant (CA Articleship)',
+      job1loc: 'Bangalore, India',
+      job1type: 'Full-time · On-site',
+      job1desc: 'Gain hands-on experience across audit, taxation, and advisory under the guidance of senior partners. ICAI-registered articleship with structured training.',
+      job1req1: 'Cleared CA Foundation / IPCC', job1req2: 'Strong analytical skills', job1req3: 'Good communication in English', job1req4: 'Immediate joiners preferred',
+      job2title: 'Audit Manager',
+      job2loc: 'Bangalore, India',
+      job2type: 'Full-time · On-site',
+      job2desc: 'Lead statutory and internal audit engagements for mid-size to large corporates. Manage client relationships and review team deliverables.',
+      job2req1: 'CA Final (passed)', job2req2: '3+ years post-qualification experience', job2req3: 'Team leadership experience', job2req4: 'Proficiency in Tally / SAP preferred',
+      job3title: 'IS Auditor (CISA / DISA)',
+      job3loc: 'Bangalore, India',
+      job3type: 'Full-time · On-site',
+      job3desc: 'Conduct information systems audits, IT general control reviews, and cybersecurity risk assessments for IT/ITES and financial sector clients.',
+      job3req1: 'CISA or DISA certified', job3req2: '2+ years IS audit experience', job3req3: 'Knowledge of ERP systems (SAP/Oracle)', job3req4: 'Report writing proficiency',
+      job4title: 'Tax Associate – GST & Direct Tax',
+      job4loc: 'Bangalore, India',
+      job4type: 'Full-time · On-site',
+      job4desc: 'Handle GST compliance, direct tax filings, TDS returns, and client advisory. Support senior managers in tax litigation and planning.',
+      job4req1: 'CA Inter / Semi-qualified CA', job4req2: '1-2 years tax experience', job4req3: 'Knowledge of GST portal and ITR filing', job4req4: 'Proactive and detail-oriented'
+    },
+    ja: {
+      heroTitle: 'チームに加わろう',
+      heroSub: 'バンガロールを代表する公認会計士事務所で、充実したキャリアを築きましょう。',
+      whyLabel: '入社理由',
+      whyTitle: 'PDKAでキャリアを築く',
+      whyDesc: '私どもは、インド国内および海外のクライアントに対する実践的な業務を通じて、プロフェッショナルが成長できる協調的で学習重視の環境を提供しています。精度、誠実さ、継続的な成長を大切にする文化があります。',
+      w1title: 'メンターシップと成長',
+      w1desc: '監査、税務、アドバイザリー、テクノロジー分野の経験豊富なFCA・CISA・専門家から直接学ぶことができます。',
+      w2title: '多様な業務経験',
+      w2desc: '9カ国にまたがる案件に携わり、国際税務、FEMA、情報システム監査、Fortune級クライアントを経験できます。',
+      w3title: '柔軟な職場文化',
+      w3desc: 'ワークライフバランスを尊重しています。シニアポジションにはフレックスタイムやハイブリッド勤務オプションがあります。',
+      w4title: '体系的なキャリアアップ',
+      w4desc: 'アシスタントからマネージャーまで明確なキャリアパスがあり、定期的なパフォーマンスレビューと実績に基づく昇給があります。',
+      openLabel: '募集ポジション',
+      openTitle: '現在の求人',
+      openDesc: '全分野で優秀なプロフェッショナルを募集しています。ご希望のポジションが見当たらない場合は、careers@pdka.in までご連絡ください。',
+      applyBtn: '応募する',
+      ctaTitle: '希望するポジションがない場合は？',
+      ctaDesc: '常に優秀な人材を求めています。CVと簡単な自己紹介をHRチームまでお送りください。',
+      ctaBtn: '<i class="fas fa-paper-plane"></i> CVを送る',
+      job1title: 'アーティクルアシスタント（CA実習生）',
+      job1loc: 'バンガロール、インド',
+      job1type: 'フルタイム・対面',
+      job1desc: 'シニアパートナーの指導のもと、監査、税務、アドバイザリーにわたる実践的な経験を積みます。ICAI登録の構造化されたトレーニングプログラムです。',
+      job1req1: 'CA Foundation / IPCC合格', job1req2: '強い分析力', job1req3: '英語コミュニケーション能力', job1req4: '即戦力歓迎',
+      job2title: '監査マネージャー',
+      job2loc: 'バンガロール、インド',
+      job2type: 'フルタイム・対面',
+      job2desc: '中堅〜大手企業の法定監査・内部監査を主導します。クライアント関係の管理とチームの成果物のレビューを担当します。',
+      job2req1: 'CA Final合格', job2req2: '資格取得後3年以上の経験', job2req3: 'チームリーダー経験', job2req4: 'Tally / SAP知識歓迎',
+      job3title: 'ISオーディター（CISA / DISA）',
+      job3loc: 'バンガロール、インド',
+      job3type: 'フルタイム・対面',
+      job3desc: 'IT/ITESおよび金融機関クライアント向けに、情報システム監査、ITジェネラルコントロールレビュー、サイバーセキュリティリスク評価を実施します。',
+      job3req1: 'CISAまたはDISA資格保有', job3req2: 'ISオーディット経験2年以上', job3req3: 'ERPシステム（SAP/Oracle）知識', job3req4: 'レポート作成能力',
+      job4title: '税務アソシエイト – GST・直接税',
+      job4loc: 'バンガロール、インド',
+      job4type: 'フルタイム・対面',
+      job4desc: 'GSTコンプライアンス、直接税申告、TDS申告、クライアントアドバイザリーを担当します。シニアマネージャーの税務訴訟・プランニングをサポートします。',
+      job4req1: 'CA Inter / 準CA資格', job4req2: '税務経験1〜2年', job4req3: 'GSTポータルおよびITR申告の知識', job4req4: '積極性と高い注意力'
+    }
+  };
+
+  window.setCarLang = function(lang) {
+    var t = sections[lang];
+    document.querySelectorAll('[data-i18n-car]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-car');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.getElementById('carLangLabel').textContent = lang === 'ja' ? 'JP' : 'EN';
+    document.getElementById('carLangMenu').style.display = 'none';
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('pdka-lang', lang); } catch(e){}
+  };
+
+  window.toggleCarLang = function(e) {
+    e.stopPropagation();
+    var m = document.getElementById('carLangMenu');
+    m.style.display = m.style.display === 'none' ? 'block' : 'none';
+  };
+
+  document.addEventListener('click', function() {
+    var m = document.getElementById('carLangMenu');
+    if (m) m.style.display = 'none';
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      var saved = localStorage.getItem('pdka-lang');
+      if (saved && saved !== 'en') setCarLang(saved);
+    } catch(e){}
+  });
+})();
+</script>
+
 </body>
 </html>

@@ -773,6 +773,17 @@
   <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
   <a href="pdka-website.html#contact" class="nav-cta">Get Started</a>
   <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+
+  <div class="lang-dropdown" id="langDropdown" style="position:relative;margin-left:12px;">
+    <button class="lang-btn" onclick="toggleAboutLang(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1px solid rgba(255,255,255,0.35);color:white;border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;">
+      <i class="fas fa-globe"></i><span id="aboutLangLabel">EN</span>
+      <i class="fas fa-chevron-down" style="font-size:9px;"></i>
+    </button>
+    <ul id="aboutLangMenu" style="display:none;position:absolute;right:0;top:110%;background:white;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.15);list-style:none;padding:6px;margin:0;min-width:110px;z-index:9999;">
+      <li><button onclick="setAboutLang('en')" id="aopt-en" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;font-weight:600;">English</button></li>
+      <li><button onclick="setAboutLang('ja')" id="aopt-ja" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;">日本語</button></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- HERO BAND -->
@@ -842,5 +853,101 @@
     }
   })();
 </script>
+
+<script id="pdka-about-i18n">
+(function(){
+  var T = {
+    en: {
+      heroTitle: 'About Us',
+      heroSub: 'Established 1998 &bull; Bangalore, India',
+      aboutLabel: 'About the Firm',
+      aboutSub: 'Years of Professional Services',
+      aboutDesc: 'PDKA is a Chartered Accountancy firm based in Bangalore, India, serving clients across India and in 9 countries including the USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy.',
+      pill1: 'FCA Leadership', pill2: 'CISA &bull; IS Audit', pill3: 'DISA Certified', pill4: '9 Countries',
+      missionLabel: 'Our Mission',
+      missionTitle: 'Why PDKA',
+      missionDesc: 'We combine deep technical expertise with personal service, treating every client engagement as a long-term partnership. Our team brings decades of experience across industries, jurisdictions, and disciplines.',
+      valTitle1: 'Technical Excellence', valDesc1: 'CISA/DISA-certified IS auditors alongside FCAs with sector-deep expertise in IT/ITES, manufacturing, and services.',
+      valTitle2: 'Client-First Service', valDesc2: "We respond within 24 hours and assign a dedicated manager for each engagement — you'll always know who to call.",
+      valTitle3: 'Global Reach', valDesc3: 'Serving clients across 9 countries with fluency in cross-border taxation, FEMA, transfer pricing, and international reporting.',
+      valTitle4: 'Integrity & Compliance', valDesc4: 'Fully compliant with ICAI regulations, registered under ICAI, and committed to the highest ethical and professional standards.',
+      teamLabel: 'Leadership',
+      teamTitle: 'Meet Our Founder',
+      founderName: 'Dilip Kumar P.',
+      founderRole: 'Founder &amp; Managing Partner',
+      founderFirm: 'P. Dilip Kumar &amp; Associates, Bangalore',
+      founderBio: 'Dilip Kumar P. is the founding partner of P. Dilip Kumar &amp; Associates. A Fellow Chartered Accountant (FCA) with CISA and DISA certifications, he has deep expertise in Information Systems Audit, taxation for IT/ITES companies, FEMA, and Virtual CFO services. He serves clients across India and in 9 countries including the USA, UK, Australia, Dubai, and Singapore.',
+      bookMeeting: '<i class="fas fa-calendar-check"></i> Book a Meeting',
+      credEmail: 'dilip@pdka.in',
+      ctaTitle: 'Ready to Work Together?',
+      ctaDesc: "Whether you're a startup scaling rapidly or an established business seeking expert compliance support, we're here to help. Reach out today.",
+      ctaBtn1: '<i class="fas fa-envelope"></i> Get In Touch',
+      ctaBtn2: '<i class="fas fa-phone"></i> Call Us Now'
+    },
+    ja: {
+      heroTitle: '会社概要',
+      heroSub: '1998年設立 &bull; インド・バンガロール',
+      aboutLabel: '事務所について',
+      aboutSub: '年の専門サービス',
+      aboutDesc: 'PDKAはバンガロールを拠点とする公認会計士事務所で、インド全土および米国、英国、オーストラリア、ドバイ、シンガポール、アイルランド、日本、イタリアの9カ国のクライアントにサービスを提供しています。',
+      pill1: 'FCAリーダーシップ', pill2: 'CISA・ISオーディット', pill3: 'DISA認定', pill4: '9カ国',
+      missionLabel: '私たちのミッション',
+      missionTitle: 'なぜPDKAを選ぶのか',
+      missionDesc: '私どもは深い専門知識とパーソナルなサービスを組み合わせ、すべてのクライアントとの関係を長期的なパートナーシップとして大切にしています。チームは業界・法域・専門分野にわたる数十年の経験を有しています。',
+      valTitle1: '技術的卓越性', valDesc1: 'CISA/DISA認定のISオーディターとFCAが、IT/ITES、製造業、サービス業において深い専門知識を提供します。',
+      valTitle2: 'クライアント第一', valDesc2: '24時間以内に回答し、各案件に専任マネージャーを配置します。いつでも担当者に直接連絡が取れる体制です。',
+      valTitle3: 'グローバルなリーチ', valDesc3: '9カ国のクライアントに、国際税務、FEMA、移転価格、国際報告に精通したサービスを提供しています。',
+      valTitle4: '誠実さとコンプライアンス', valDesc4: 'ICAI規程に完全準拠し、ICAI登録事務所として最高水準の倫理・専門基準を遵守しています。',
+      teamLabel: 'リーダーシップ',
+      teamTitle: '創業者のご紹介',
+      founderName: 'ディリップ・クマール P.',
+      founderRole: '創業者・マネージングパートナー',
+      founderFirm: 'P. ディリップ・クマール &amp; アソシエイツ、バンガロール',
+      founderBio: 'ディリップ・クマール P.は、P. ディリップ・クマール &amp; アソシエイツの創業パートナーです。CISA・DISA資格を有するフェロー公認会計士（FCA）として、情報システム監査、IT/ITES業界の税務、FEMA、バーチャルCFOサービスに豊富な実績を持ち、インド国内および米国、英国、オーストラリア、ドバイ、シンガポールを含む9カ国のクライアントにサービスを提供しています。',
+      bookMeeting: '<i class="fas fa-calendar-check"></i> ミーティングを予約する',
+      credEmail: 'dilip@pdka.in',
+      ctaTitle: '一緒に働きましょう',
+      ctaDesc: '急成長中のスタートアップから、専門的なコンプライアンスサポートを必要とする確立した企業まで、どのようなご要望にもお応えします。今すぐご連絡ください。',
+      ctaBtn1: '<i class="fas fa-envelope"></i> お問い合わせ',
+      ctaBtn2: '<i class="fas fa-phone"></i> お電話はこちら'
+    }
+  };
+
+  window.setAboutLang = function(lang) {
+    var t = T[lang];
+    // Update all data-i18n-about elements
+    document.querySelectorAll('[data-i18n-about]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-about');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.getElementById('aboutLangLabel').textContent = lang === 'ja' ? 'JP' : 'EN';
+    document.querySelectorAll('#aboutLangMenu button').forEach(function(b){ b.style.fontWeight = ''; });
+    var btn = document.getElementById('aopt-' + lang);
+    if (btn) btn.style.fontWeight = '700';
+    document.getElementById('aboutLangMenu').style.display = 'none';
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('pdka-lang', lang); } catch(e){}
+  };
+
+  window.toggleAboutLang = function(e) {
+    e.stopPropagation();
+    var m = document.getElementById('aboutLangMenu');
+    m.style.display = m.style.display === 'none' ? 'block' : 'none';
+  };
+
+  document.addEventListener('click', function() {
+    var m = document.getElementById('aboutLangMenu');
+    if (m) m.style.display = 'none';
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      var saved = localStorage.getItem('pdka-lang');
+      if (saved && saved !== 'en') setAboutLang(saved);
+    } catch(e){}
+  });
+})();
+</script>
+
 </body>
 </html>      

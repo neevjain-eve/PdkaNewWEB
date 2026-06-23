@@ -2261,79 +2261,942 @@ function closeSvcIfOutside(e) {
 
 </script>
 
-<script>
-/* ===== Language System ===== */
-var i18n = {
-  en: {
-    'nav-home':'Home','nav-about':'About','nav-founder':'Founder',
-    'nav-services':'Services','nav-team':'Team','nav-insights':'Insights',
-    'nav-careers':'Careers','nav-contact':'Contact','nav-cta':'Get Started',
-    'hero-title':'Empowering<br/>Businesses with<br/>',
-    'svc-label':'What We Do','svc-title':'Comprehensive Professional Services',
-    'team-label':'Our People','team-title':'Meet the Team',
-    'ins-label':'Knowledge Hub','ins-title':'Expert Insights &amp; Updates',
-    'ins-all':'View All <i class="fas fa-arrow-right"></i>',
-    'con-label':'Get In Touch','con-title':"Let's Work Together",'con-sub':'Talk to Our Experts',
-    'form-name':'Full name','form-email':'you@company.com',
-    'form-phone':'+91 98765 43210','form-company':'Your company',
-    'form-msg':'Briefly describe your requirement...',
-    'footer-copy':'© 2026 P. Dilip Kumar'
-  },
-  ja: {
-    'nav-home':'ホーム','nav-about':'会社概要',
-    'nav-founder':'創業者','nav-services':'サービス',
-    'nav-team':'チーム','nav-insights':'インサイト',
-    'nav-careers':'游用情報','nav-contact':'お問い合わせ',
-    'nav-cta':'始める',
-    'hero-title':'ビジネスを<br/>力強く支える<br/>',
-    'svc-label':'サービス内容',
-    'svc-title':'総合的な専門サービス',
-    'team-label':'私たちのチーム',
-    'team-title':'チームのご紹介',
-    'ins-label':'ナレッジハブ',
-    'ins-title':'専門家の見解・最新情報',
-    'ins-all':'すべて見る <i class="fas fa-arrow-right"></i>',
-    'con-label':'お問い合わせ',
-    'con-title':'一緒に働きましょう',
-    'con-sub':'専門家に相談する',
-    'form-name':'お名前','form-email':'メールアドレス',
-    'form-phone':'電話番号','form-company':'会社名',
-    'form-msg':'要件を簡単にご記入ください…',
-    'footer-copy':'© 2026 P. ディリップ・クマール'
-  }
-};
 
-var currentLang = 'en';
 
-function setLang(lang) {
-  currentLang = lang;
-  var data = i18n[lang];
-  document.querySelectorAll('[data-i18n]').forEach(function(el) {
-    var k = el.getAttribute('data-i18n');
-    if (data[k] !== undefined) el.innerHTML = data[k];
+
+<script id="pdka-i18n">
+(function() {
+  var sections = {
+    en: {
+      about:    `
+  <div class="about-bg-img">
+    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1800&h=1200&fit=crop&crop=center" alt="Professional CA firm" loading="lazy" />
+  </div>
+  <div class="about-overlay"></div>
+  <div class="about-center">
+    <div class="about-label">About the Firm</div>
+            <img src="logo-1x.png" srcset="logo-1x.png 1x, logo-2x.png 2x, logo-3x.png 3x" width="351" height="91" alt="P. Dilip Kumar &amp; Associates" class="about-logo" />
+    <div class="about-stat-wrap" id="aboutStatWrap">
+      <div class="about-stat-num-row">
+        <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
+      </div>
+      <div class="about-stat-line" id="aboutStatLine"></div>
+    </div>
+    <div class="about-sub">Years of Professional Services</div>
+    <p class="about-desc">PDKA is a professional CA firm based in Bangalore, serving clients across India and 9 countries — USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy.</p>
+    <div class="about-pills">
+      <span class="about-pill">FCA Leadership</span>
+      <span class="about-pill">CISA · IS Audit</span>
+      <span class="about-pill">DISA Certified</span>
+      <span class="about-pill">9 Countries</span>
+    </div>
+  </div>
+`,
+      founder:  `
+  <div class="section-inner">
+    <div class="section-label">Leadership</div>
+    <h2 class="section-title">Meet Our Founder</h2>
+    <div class="founder-grid" style="margin-top:28px;">
+      <div class="founder-photo-wrap">
+        <div class="founder-photo" style="border-radius:20px;overflow:hidden;max-width:380px;aspect-ratio:3/4;position:relative;box-shadow:0 20px 60px rgba(13,27,62,0.18);">
+          <img src="p-dilip-kumar-ca.jpg" alt="Founder — Dilip Kumar P., FCA CISA DISA" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
+        </div>
+      </div>
+      <div class="founder-content">
+        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--navy);margin-bottom:6px;">Dilip Kumar P.</h3>
+        <p style="font-size:15px;color:var(--orange);font-weight:600;margin-bottom:4px;">Founder &amp; Managing Partner</p>
+        <p style="font-size:13px;color:var(--text-light);">P. Dilip Kumar &amp; Associates, Bangalore</p>
+        <div class="founder-creds">
+          <span class="founder-cred">FCA</span>
+          <span class="founder-cred">CISA</span>
+          <span class="founder-cred">DISA</span>
+          <span class="founder-cred">ICAI Registered</span>
+          <span class="founder-cred">28+ Years Experience</span>
+        </div>
+        <p class="founder-bio">Dilip Kumar P. is the founding partner of P. Dilip Kumar &amp; Associates. A Fellow Chartered Accountant (FCA) holding CISA and DISA qualifications, he has extensive experience in Information Systems Audit, IT/ITES sector taxation, FEMA, and Virtual CFO services — serving clients across India and 9 countries including USA, UK, Australia, Dubai and Singapore.</p>
+        <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+          <a href="#contact" class="btn-primary"><i class="fas fa-calendar-check"></i> Schedule a Meeting</a>
+          <a href="mailto:dilip@pdka.in" class="btn-outline founder-email-btn"><i class="fas fa-envelope"></i> dilip@pdka.in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+`,
+      services: `
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label" data-i18n="svc-label">What We Do</div>
+        <h2 class="section-title" data-i18n="svc-title">Comprehensive Professional Services</h2>
+      </div>
+      <a href="#contact" class="btn-primary" style="white-space:nowrap;"><i class="fas fa-envelope"></i> Contact Us</a>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=320&fit=crop&crop=center" alt="Audit & Assurance" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-search-dollar"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>Audit &amp; Assurance</h3>
+          <p>Statutory audit, internal audit, tax audit, and concurrent audit services with rigorous quality standards for all entity types — listed, unlisted, and foreign subsidiaries.</p>
+          <a href="javascript:void(0)" onclick="openService('audit')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?w=600&h=320&fit=crop&crop=center" alt="Taxation" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>Taxation</h3>
+          <p>Corporate tax, personal tax, transfer pricing, international taxation, GST advisory, TDS compliance, and tax litigation support across India and cross-border.</p>
+          <a href="javascript:void(0)" onclick="openService('taxation')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?w=600&h=320&fit=crop&crop=center" alt="FEMA & International" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-globe-asia"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>FEMA &amp; International</h3>
+          <p>FEMA compliance, RBI reporting, ECB, ODI, FDI advisory, overseas remittances, and foreign exchange management for companies operating globally.</p>
+          <a href="javascript:void(0)" onclick="openService('fema')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=320&fit=crop&crop=center" alt="IS Audit CISA DISA" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-shield-alt"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>IS Audit (CISA/DISA)</h3>
+          <p>Information Systems Audit, IT General Controls review, cybersecurity risk assessments, ERP audit, and data privacy compliance — CISA &amp; DISA certified team.</p>
+          <a href="javascript:void(0)" onclick="openService('isaudit')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=320&fit=crop&crop=center" alt="Virtual CFO" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-chart-line"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>Virtual CFO</h3>
+          <p>Outsourced CFO services — MIS reporting, cash flow management, budgeting, investor relations, fundraising support, and board-level financial advisory.</p>
+          <a href="javascript:void(0)" onclick="openService('vcfo')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=320&fit=crop&crop=center" alt="Business Advisory" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-building"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>Business Advisory</h3>
+          <p>Business valuations, internal controls, corporate governance, ROC &amp; MCA compliance, restructuring advisory, and risk management for growing businesses.</p>
+          <a href="javascript:void(0)" onclick="openService('advisory')" class="svc-know-more">Know More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+`,
+      team:     `
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-label" data-i18n="team-label">Our People</div>
+      <h2 class="section-title" data-i18n="team-title">Meet the Team</h2>
+      <p class="section-sub" style="margin:0 auto;">Our partners and department leads bring decades of specialised experience, professional certifications, and a client-first approach to every engagement.</p>
+    </div>
+
+    <!-- DEPARTMENT LEADS -->
+    <div class="team-dept-section">
+      <div class="team-dept-label">Department Leads</div>
+      <div class="team-dept-grid">
+
+        <div class="dept-card">
+          <div class="dept-photo">
+            <div style="text-align:center">
+              <div class="dept-initials">R</div>
+              <div class="dept-photo-note">Photo to be updated</div>
+            </div>
+          </div>
+          <div class="dept-info">
+            <div class="dept-tag">Company Secretary</div>
+            <h4>Rinkal</h4>
+            <div class="dept-role">Head — Corporate Compliance</div>
+            <div class="dept-quals">Company Secretary</div>
+            <a href="team.html#company-secretary" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-photo">
+            <div style="text-align:center">
+              <div class="dept-initials">V</div>
+              <div class="dept-photo-note">Photo to be updated</div>
+            </div>
+          </div>
+          <div class="dept-info">
+            <div class="dept-tag">Audit &amp; Assurance</div>
+            <h4>Vedamurthy</h4>
+            <div class="dept-role">Head — Audit &amp; Assurance</div>
+            <div class="dept-quals">Audit &amp; Assurance</div>
+            <a href="team.html#audit" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-photo">
+            <div style="text-align:center">
+              <div class="dept-initials">R</div>
+              <div class="dept-photo-note">Photo to be updated</div>
+            </div>
+          </div>
+          <div class="dept-info">
+            <div class="dept-tag">Advisory</div>
+            <h4>Richa</h4>
+            <div class="dept-role">Head — Business Advisory</div>
+            <div class="dept-quals">Business Advisory</div>
+            <a href="team.html#advisory" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-photo">
+            <div style="text-align:center">
+              <div class="dept-initials">S·R</div>
+              <div class="dept-photo-note">Photo to be updated</div>
+            </div>
+          </div>
+          <div class="dept-info">
+            <div class="dept-tag">Taxation</div>
+            <h4>Sandeep &amp; Rakesh</h4>
+            <div class="dept-role">Head — Direct &amp; Indirect Tax</div>
+            <div class="dept-quals">Taxation</div>
+            <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-photo">
+            <div style="text-align:center">
+              <div class="dept-initials">R</div>
+              <div class="dept-photo-note">Photo to be updated</div>
+            </div>
+          </div>
+          <div class="dept-info">
+            <div class="dept-tag">FinOps</div>
+            <h4>Ramya</h4>
+            <div class="dept-role">Head — FinOps &amp; Digital Finance</div>
+            <div class="dept-quals">CPA · MBA · 8 Yrs Exp</div>
+            <a href="team.html#finops" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+`,
+      insights: `
+  <div class="section-inner">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0;">
+      <div>
+        <div class="section-label" data-i18n="ins-label">Knowledge Hub</div>
+        <h2 class="section-title" data-i18n="ins-title">Expert Insights &amp; Updates</h2>
+      </div>
+      <a href="insights.html" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="ins-all">View All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="insight-header"></div>
+        <div class="insight-body">
+          <span class="insight-tag">ICAI · Apr 2026</span>
+          <h3>ICAI Code of Ethics 2026: What Changed for CA Firms</h3>
+          <p>The 13th Edition of the ICAI Code of Ethics effective April 2026 brings significant changes to advertising, website, and networking guidelines for CA firms.</p>
+        </div>
+        <div class="insight-footer">
+          <span class="insight-date">Apr 15, 2026</span>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('icai2026')">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-header"></div>
+        <div class="insight-body">
+          <span class="insight-tag">ITR · Apr 2026</span>
+          <h3>ITR Filing FY 2025-26: Compliance Checklist for Businesses</h3>
+          <p>Key deadlines, updated ITR forms, and a practical compliance checklist to ensure accurate and timely ITR filing for FY 2025-26.</p>
+        </div>
+        <div class="insight-footer">
+          <span class="insight-date">Apr 8, 2026</span>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('itr2026')">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-header"></div>
+        <div class="insight-body">
+          <span class="insight-tag">FEMA · Jan 2025</span>
+          <h3>FEMA 2025: Foreign Remittances, ODI Rules &amp; Compliance for IT Companies</h3>
+          <p>Updated FEMA compliance guide covering overseas direct investment, LRS limits, and key obligations for IT &amp; ITES companies with foreign operations.</p>
+        </div>
+        <div class="insight-footer">
+          <span class="insight-date">Jan 20, 2025</span>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('fema2025')">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+`,
+      contact:  `
+  <div class="section-inner">
+    <div class="section-label" data-i18n="con-label">Get In Touch</div>
+    <h2 class="section-title" data-i18n="con-title">Let's Work Together</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3 data-i18n="con-sub">Talk to Our Experts</h3>
+        <p>We typically respond within one business day. Whether you need audit, tax, FEMA, or advisory support — our team is ready to help.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-item-text">
+              <strong>Phone</strong>
+              <p><a href="tel:08041219056">080-4121-9056</a> / <a href="tel:08041219057">080-4121-9057</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <a href="mailto:dilip@pdka.in">dilip@pdka.in</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-item-text">
+              <strong>Office</strong>
+              <a href="https://www.google.com/maps/search/Sampurna+Chambers+No+13+Vasavi+Temple+Street+VV+Puram+Bangalore+560004" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--orange);">Unit FF-5 &amp; FF-6, First Floor, Sampurna Chambers,<br/>No. 13, Vasavi Temple Street, V.V. Puram, Bangalore – 560 004</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-item-text">
+              <strong>Working Hours</strong>
+              <p>Mon – Sat: 9:30 AM – 6:30 PM IST</p>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/company/pdka/" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="javascript:void(0)" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="javascript:void(0)" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3>Send Us a Message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" data-i18n-ph="form-name" placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" data-i18n-ph="form-email" placeholder="you@company.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" data-i18n-ph="form-phone" placeholder="+91 98765 43210" />
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" data-i18n-ph="form-company" placeholder="Your company" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Audit &amp; Assurance</option>
+            <option>Taxation (Income Tax / GST)</option>
+            <option>FEMA &amp; International</option>
+            <option>IS Audit (CISA/DISA)</option>
+            <option>Virtual CFO</option>
+            <option>Business Advisory</option>
+            <option>DPDPA Compliance</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea data-i18n-ph="form-msg" placeholder="Briefly describe your requirement..."></textarea>
+        </div>
+        <button class="form-submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        <p class="form-note">🔒 Your information is confidential and will not be shared.</p>
+      </div>
+    </div>
+  </div>
+`,
+      footer:   `
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo" style="text-decoration:none;">
+          <div class="nav-logo-text">
+            <strong style="font-size:16px;">P. Dilip Kumar &amp; Associates</strong>
+            <span>Chartered Accountants · Bangalore</span>
+          </div>
+        </a>
+        <p>A professional firm of Chartered Accountants committed to quality, integrity, and ICAI standards since 1998.</p>
+        <a href="client-portal.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--orange);color:white;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#f47820'" onmouseout="this.style.background='var(--orange)'"><i class="fas fa-user-circle"></i> Client Portal</a>
+        <!-- ICAI Logo -->
+        <div style="display:flex;align-items:center;gap:14px;margin-top:20px;">
+          <svg height="52" viewBox="0 0 80 52" xmlns="http://www.w3.org/2000/svg" aria-label="ICAI — Institute of Chartered Accountants of India" style="opacity:0.85;">
+            <rect x="1" y="1" width="78" height="50" rx="4" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+            <text x="40" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#e8600a">CA</text>
+            <text x="40" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="rgba(255,255,255,0.7)" letter-spacing="0.5">INDIA</text>
+            <text x="40" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.5" fill="rgba(255,255,255,0.45)" letter-spacing="0.3">ICAI MEMBER FIRM</text>
+          </svg>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">ICAI Member Firm<br/>Bangalore, India</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Audit &amp; Assurance</a></li>
+          <li><a href="#services">Taxation</a></li>
+          <li><a href="#services">FEMA &amp; International</a></li>
+          <li><a href="#services">IS Audit (CISA/DISA)</a></li>
+          <li><a href="#services">Virtual CFO</a></li>
+          <li><a href="#services">Business Advisory</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#insights">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://www.icai.org" target="_blank">ICAI Portal</a></li>
+          <li><a href="https://www.incometax.gov.in" target="_blank">Income Tax India</a></li>
+          <li><a href="https://www.gst.gov.in" target="_blank">GST Portal</a></li>
+          <li><a href="https://www.mca.gov.in" target="_blank">MCA Portal</a></li>
+          <li><a href="https://www.tdscpc.gov.in" target="_blank">TRACES Portal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer-copy">© 2026 P. Dilip Kumar &amp; Associates. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+        <a href="javascript:void(0)" title="Registered with the Institute of Chartered Accountants of India">ICAI Registered</a>
+      </div>
+    </div>
+  </div>
+`,
+      nav:      `  <ul class="nav-links">
+    <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)">Home</a></li>
+    <li><a href="about.html" target="_blank" rel="noopener">About</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>`
+    },
+    ja: {
+      about:    `
+  <div class="about-bg-img">
+    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1800&h=1200&fit=crop&crop=center" alt="プロフェッショナルな公認会計士事務所" loading="lazy" />
+  </div>
+  <div class="about-overlay"></div>
+  <div class="about-center">
+    <div class="about-label">事務所について</div>
+    <img src="logo-1x.png" srcset="logo-1x.png 1x, logo-2x.png 2x, logo-3x.png 3x" width="351" height="91" alt="P. ディリップ・クマール &amp; アソシエイツ" class="about-logo" />
+    <div class="about-stat-wrap" id="aboutStatWrap">
+      <div class="about-stat-num-row">
+        <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
+      </div>
+      <div class="about-stat-line" id="aboutStatLine"></div>
+    </div>
+    <div class="about-sub">年の専門サービス</div>
+    <p class="about-desc">PDKAはバンガロールを拠点とする公認会計士事務所で、インド全土および米国、英国、オーストラリア、ドバイ、シンガポール、アイルランド、日本、イタリアの9カ国のクライアントにサービスを提供しています。</p>
+    <div class="about-pills">
+      <span class="about-pill">FCAリーダーシップ</span>
+      <span class="about-pill">CISA・ISオーディット</span>
+      <span class="about-pill">DISA認定</span>
+      <span class="about-pill">9カ国</span>
+    </div>
+  </div>
+`,
+      founder:  `
+  <div class="section-inner">
+    <div class="section-label">リーダーシップ</div>
+    <h2 class="section-title">創業者のご紹介</h2>
+    <div class="founder-grid" style="margin-top:28px;">
+      <div class="founder-photo-wrap">
+        <div class="founder-photo" style="border-radius:20px;overflow:hidden;max-width:380px;aspect-ratio:3/4;position:relative;box-shadow:0 20px 60px rgba(13,27,62,0.18);">
+          <img src="p-dilip-kumar-ca.jpg" alt="創業者 — ディリップ・クマール P.、FCA CISA DISA" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
+        </div>
+      </div>
+      <div class="founder-content">
+        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--navy);margin-bottom:6px;">ディリップ・クマール P.</h3>
+        <p style="font-size:15px;color:var(--orange);font-weight:600;margin-bottom:4px;">創業者・マネージングパートナー</p>
+        <p style="font-size:13px;color:var(--text-light);">P. ディリップ・クマール &amp; アソシエイツ、バンガロール</p>
+        <div class="founder-creds">
+          <span class="founder-cred">FCA</span>
+          <span class="founder-cred">CISA</span>
+          <span class="founder-cred">DISA</span>
+          <span class="founder-cred">ICAI 登録会員</span>
+          <span class="founder-cred">28年以上の経験</span>
+        </div>
+        <p class="founder-bio">ディリップ・クマール P.は、P. ディリップ・クマール &amp; アソシエイツの創業パートナーです。CISA・DISA資格を有するフェロー公認会計士（FCA）として、情報システム監査、IT/ITES業界の税務、外国為替管理法（FEMA）、バーチャルCFOサービスに豊富な実績を持ち、インド国内および米国、英国、オーストラリア、ドバイ、シンガポールを含む9カ国のクライアントにサービスを提供しています。</p>
+        <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+          <a href="#contact" class="btn-primary"><i class="fas fa-calendar-check"></i> ミーティングを予約する</a>
+          <a href="mailto:dilip@pdka.in" class="btn-outline founder-email-btn"><i class="fas fa-envelope"></i> dilip@pdka.in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+`,
+      services: `
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label">サービス内容</div>
+        <h2 class="section-title">総合的な専門サービス</h2>
+      </div>
+      <a href="#contact" class="btn-primary" style="white-space:nowrap;"><i class="fas fa-envelope"></i> お問い合わせ</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=320&fit=crop&crop=center" alt="監査・保証" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-search-dollar"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>監査・保証</h3>
+          <p>上場企業、非上場企業、外国子会社を含むすべての企業形態に対して、法定監査、内部監査、税務監査、並行監査サービスを厳格な品質基準のもとで提供します。</p>
+          <a href="javascript:void(0)" onclick="openService('audit')" class="svc-know-more">詳しく見る <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?w=600&h=320&fit=crop&crop=center" alt="税務" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>税務</h3>
+          <p>法人税、個人所得税、移転価格、国際税務、GSTアドバイザリー、TDSコンプライアンス、インド国内および国際税務訴訟サポートを提供します。</p>
+          <a href="javascript:void(0)" onclick="openService('taxation')" class="svc-know-more">詳しく見る <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?w=600&h=320&fit=crop&crop=center" alt="FEMA・国際業務" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-globe-asia"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>FEMA・国際業務</h3>
+          <p>FEMA（外国為替管理法）コンプライアンス、RBI報告、ECB、ODI、FDIアドバイザリー、海外送金、グローバルに事業を展開する企業向けの外国為替管理サービスを提供します。</p>
+          <a href="javascript:void(0)" onclick="openService('fema')" class="svc-know-more">詳しく見る <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=320&fit=crop&crop=center" alt="情報システム監査" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-shield-alt"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>情報システム監査（CISA/DISA）</h3>
+          <p>CISA・DISA認定チームによる情報システム監査、ITジェネラルコントロールレビュー、サイバーセキュリティリスク評価、ERP監査、データプライバシーコンプライアンスを提供します。</p>
+          <a href="javascript:void(0)" onclick="openService('isaudit')" class="svc-know-more">詳しく見る <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=320&fit=crop&crop=center" alt="バーチャルCFO" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-chart-line"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>バーチャルCFO</h3>
+          <p>MISレポーティング、キャッシュフロー管理、予算策定、投資家関係、資金調達サポート、取締役会レベルの財務アドバイザリーなど、CFO業務のアウトソーシングサービスを提供します。</p>
+          <a href="javascript:void(0)" onclick="openService('vcfo')" class="svc-know-more">詳しく見る <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=320&fit=crop&crop=center" alt="ビジネスアドバイザリー" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-img-icon"><i class="fas fa-building"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>ビジネスアドバイザリー</h3>
+          <p>成長企業向けに、企業価値評価、内部統制、コーポレートガバナンス、ROC・MCAコンプライアンス、組織再編アドバイザリー、リスクマネジメントサービスを提供します。</p>
+          <a href="javascript:void(0)" onclick="openService('advisory')" class="svc-know-more">詳しく見る <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+`,
+      team:     `
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-label">私たちのチーム</div>
+      <h2 class="section-title">チームのご紹介</h2>
+      <p class="section-sub" style="margin:0 auto;">弊事務所のパートナーおよび部門責任者は、数十年の専門知識、プロフェッショナル資格、クライアント第一主義を持ってあらゆる案件に取り組んでいます。</p>
+    </div>
+    <div class="team-dept-section">
+      <div class="team-dept-label">部門責任者</div>
+      <div class="team-dept-grid">
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">R</div><div class="dept-photo-note">写真は更新予定</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">会社秘書役</div>
+            <h4>Rinkal</h4>
+            <div class="dept-role">コーポレートコンプライアンス部門長</div>
+            <div class="dept-quals">会社秘書役</div>
+            <a href="team.html#company-secretary" class="dept-team-link">チームを見る <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">V</div><div class="dept-photo-note">写真は更新予定</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">監査・保証</div>
+            <h4>Vedamurthy</h4>
+            <div class="dept-role">監査・保証部門長</div>
+            <div class="dept-quals">監査・保証</div>
+            <a href="team.html#audit" class="dept-team-link">チームを見る <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">R</div><div class="dept-photo-note">写真は更新予定</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">アドバイザリー</div>
+            <h4>Richa</h4>
+            <div class="dept-role">ビジネスアドバイザリー部門長</div>
+            <div class="dept-quals">ビジネスアドバイザリー</div>
+            <a href="team.html#advisory" class="dept-team-link">チームを見る <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">S·R</div><div class="dept-photo-note">写真は更新予定</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">税務</div>
+            <h4>Sandeep &amp; Rakesh</h4>
+            <div class="dept-role">税務部門長</div>
+            <div class="dept-quals">税務</div>
+            <a href="team.html#taxation" class="dept-team-link">チームを見る <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="dept-card">
+          <div class="dept-photo"><div style="text-align:center"><div class="dept-initials">R</div><div class="dept-photo-note">写真は更新予定</div></div></div>
+          <div class="dept-info">
+            <div class="dept-tag">FinOps</div>
+            <h4>Ramya</h4>
+            <div class="dept-role">FinOps部門長</div>
+            <div class="dept-quals">FinOps</div>
+            <a href="team.html#finops" class="dept-team-link">チームを見る <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="team.html" class="btn-outline">全チームを見る <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+`,
+      insights: `
+  <div class="section-inner">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0;">
+      <div>
+        <div class="section-label">ナレッジハブ</div>
+        <h2 class="section-title">専門家の見解・最新情報</h2>
+      </div>
+      <a href="insights.html" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;">すべて見る <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="insight-header"></div>
+        <div class="insight-body">
+          <span class="insight-tag">ICAI · 2026年4月</span>
+          <h3>ICAI倫理規程2026：CA事務所への変更点</h3>
+          <p>2026年4月施行のICAI倫理規程第13版により、CA事務所の広告、ウェブサイト、ネットワーキングガイドラインに重要な変更が加えられました。</p>
+        </div>
+        <div class="insight-footer">
+          <span class="insight-date">2026年4月15日</span>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('icai2026')">続きを読む <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-header"></div>
+        <div class="insight-body">
+          <span class="insight-tag">ITR · 2026年4月</span>
+          <h3>ITR申告 FY2025-26：企業向けコンプライアンスチェックリスト</h3>
+          <p>FY2025-26の正確・適時なITR申告を確実にするための主要期限、更新されたITRフォーム、実践的なコンプライアンスチェックリストをご紹介します。</p>
+        </div>
+        <div class="insight-footer">
+          <span class="insight-date">2026年4月8日</span>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('itr2026')">続きを読む <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-header"></div>
+        <div class="insight-body">
+          <span class="insight-tag">FEMA · 2025年1月</span>
+          <h3>FEMA 2025：IT企業向け海外送金・ODIルール・コンプライアンス</h3>
+          <p>海外直接投資、LRS上限額、外国事業を持つIT・ITES企業向けの主要義務を網羅したFEMAコンプライアンスガイド更新版。</p>
+        </div>
+        <div class="insight-footer">
+          <span class="insight-date">2025年1月20日</span>
+          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('fema2025')">続きを読む <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+`,
+      contact:  `
+  <div class="section-inner">
+    <div class="section-label">お問い合わせ</div>
+    <h2 class="section-title">一緒に働きましょう</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>専門家に相談する</h3>
+        <p>通常1営業日以内にご返信いたします。監査、税務、FEMA、アドバイザリーサポートなど、どのようなご相談も私どものチームが対応いたします。</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-item-text">
+              <strong>電話</strong>
+              <p><a href="tel:08041219056">080-4121-9056</a> / <a href="tel:08041219057">080-4121-9057</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-item-text">
+              <strong>メール</strong>
+              <a href="mailto:dilip@pdka.in">dilip@pdka.in</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-item-text">
+              <strong>事務所</strong>
+              <a href="https://www.google.com/maps/search/Sampurna+Chambers+No+13+Vasavi+Temple+Street+VV+Puram+Bangalore+560004" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--orange);">FF-5 &amp; FF-6号室、1階、Sampurna Chambers、<br/>No. 13、Vasavi Temple Street、V.V. Puram、バンガロール – 560 004</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-item-text">
+              <strong>営業時間</strong>
+              <p>月〜土：午前9:30〜午後6:30（インド標準時）</p>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/company/pdka/" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="javascript:void(0)" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="javascript:void(0)" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3>メッセージを送る</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>お名前 *</label>
+            <input type="text" placeholder="お名前" />
+          </div>
+          <div class="form-group">
+            <label>メールアドレス *</label>
+            <input type="email" placeholder="メールアドレス" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>電話番号</label>
+            <input type="tel" placeholder="+91 98765 43210" />
+          </div>
+          <div class="form-group">
+            <label>会社名</label>
+            <input type="text" placeholder="会社名" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>サービス</label>
+          <select>
+            <option value="">-- サービスを選択 --</option>
+            <option>監査・保証</option>
+            <option>税務</option>
+            <option>FEMA・国際業務</option>
+            <option>情報システム監査</option>
+            <option>バーチャルCFO</option>
+            <option>ビジネスアドバイザリー</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>メッセージ *</label>
+          <textarea rows="4" placeholder="要件を簡単にご記入ください…"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> 送信する</button>
+      </div>
+    </div>
+  </div>
+`,
+      footer:   `
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo" style="text-decoration:none;">
+          <div class="nav-logo-text">
+            <strong style="font-size:16px;">P. ディリップ・クマール &amp; アソシエイツ</strong>
+            <span>公認会計士事務所・バンガロール</span>
+          </div>
+        </a>
+        <p>1998年創業。品質、誠実さ、ICAIの規程を遵守するプロフェッショナルな公認会計士事務所です。</p>
+        <a href="client-portal.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--orange);color:white;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;"><i class="fas fa-user-circle"></i> クライアントポータル</a>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:20px;">
+          <svg height="52" viewBox="0 0 80 52" xmlns="http://www.w3.org/2000/svg" style="opacity:0.85;">
+            <rect x="1" y="1" width="78" height="50" rx="4" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+            <text x="40" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#e8600a">CA</text>
+            <text x="40" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="rgba(255,255,255,0.7)" letter-spacing="0.5">INDIA</text>
+            <text x="40" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.5" fill="rgba(255,255,255,0.45)" letter-spacing="0.3">ICAI MEMBER FIRM</text>
+          </svg>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">ICAI加盟会員事務所<br/>バンガロール、インド</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="#services">監査・保証</a></li>
+          <li><a href="#services">税務</a></li>
+          <li><a href="#services">FEMA・国際業務</a></li>
+          <li><a href="#services">情報システム監査（CISA/DISA）</a></li>
+          <li><a href="#services">バーチャルCFO</a></li>
+          <li><a href="#services">ビジネスアドバイザリー</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="#about">会社概要</a></li>
+          <li><a href="#team">チーム</a></li>
+          <li><a href="#insights">インサイト</a></li>
+          <li><a href="careers.html">採用情報</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>リソース</h4>
+        <ul>
+          <li><a href="https://www.icai.org" target="_blank">ICAIポータル</a></li>
+          <li><a href="https://www.incometax.gov.in" target="_blank">インド所得税局</a></li>
+          <li><a href="https://www.gst.gov.in" target="_blank">GSTポータル</a></li>
+          <li><a href="https://www.mca.gov.in" target="_blank">MCAポータル</a></li>
+          <li><a href="https://www.tdscpc.gov.in" target="_blank">TRACESポータル</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 P. ディリップ・クマール &amp; アソシエイツ. 全著作権所有.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">プライバシーポリシー</a>
+        <a href="terms-conditions.html">利用規約</a>
+        <a href="javascript:void(0)">ICAI登録</a>
+      </div>
+    </div>
+  </div>
+`,
+      nav:      `  <ul class="nav-links">
+    <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)">ホーム</a></li>
+    <li><a href="about.html" target="_blank" rel="noopener">会社概要</a></li>
+    <li><a href="#founder">創業者</a></li>
+    <li><a href="#services">サービス</a></li>
+    <li><a href="#team">チーム</a></li>
+    <li><a href="#insights">インサイト</a></li>
+    <li><a href="careers.html">採用情報</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>`
+    }
+  };
+
+  var heroWords = {
+    en: ['Clarity','Confidence','Compliance','Excellence','Growth'],
+    ja: ['明瞭性','信頼','コンプライアンス','卓越性','成長']
+  };
+
+  window.pdkaLang = 'en';
+
+  window.setLang = function(lang) {
+    window.pdkaLang = lang;
+    var d = sections[lang];
+    var sids = ['about','founder','services','team','insights','contact'];
+    sids.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && d[id]) el.innerHTML = d[id];
+    });
+    // Footer
+    var footer = document.querySelector('footer');
+    if (footer && d.footer) footer.innerHTML = d.footer;
+    // Nav links
+    var navLinks = document.querySelector('.nav-links');
+    if (navLinks && d.nav) {
+      var tmp = document.createElement('div');
+      tmp.innerHTML = d.nav;
+      var newUl = tmp.querySelector('ul');
+      if (newUl) navLinks.innerHTML = newUl.innerHTML;
+    }
+    // Hero words
+    if (window._heroWords) window._heroWords = heroWords[lang];
+    // Get Started button
+    var ctaBtn = document.querySelector('.nav-cta');
+    if (ctaBtn) ctaBtn.textContent = lang === 'ja' ? '始める' : 'Get Started';
+    // Update dropdown
+    document.getElementById('langLabel').textContent = lang === 'ja' ? 'JP' : 'EN';
+    document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.remove('active'); });
+    var opt = document.getElementById('opt-' + lang);
+    if (opt) opt.classList.add('active');
+    document.getElementById('langMenu').classList.remove('open');
+    document.documentElement.lang = lang;
+    // Store preference
+    try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
+  };
+
+  // Auto-apply saved language on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      var saved = localStorage.getItem('pdka-lang');
+      if (saved && saved !== 'en') window.setLang(saved);
+    } catch(e) {}
   });
-  document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
-    var k = el.getAttribute('data-i18n-ph');
-    if (data[k] !== undefined) el.placeholder = data[k];
-  });
-  document.getElementById('langLabel').textContent = lang === 'ja' ? 'JP' : 'EN';
-  document.querySelectorAll('.lang-option').forEach(function(b) { b.classList.remove('active'); });
-  var opt = document.getElementById('opt-' + lang);
-  if (opt) opt.classList.add('active');
-  document.getElementById('langMenu').classList.remove('open');
-  document.documentElement.lang = lang;
-}
-
-function toggleLangMenu(e) {
-  e.stopPropagation();
-  document.getElementById('langMenu').classList.toggle('open');
-}
-
-document.addEventListener('click', function() {
-  var m = document.getElementById('langMenu');
-  if (m) m.classList.remove('open');
-});
-/* ===== End Language System ===== */
+})();
 </script>
 
 </body>
