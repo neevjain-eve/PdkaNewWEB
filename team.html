@@ -122,7 +122,7 @@
 </nav>
 
 <div class="hero-band">
-  <div class="hero-inner">
+  <div class="hero-inner" id="team-hero">
     <div class="label">Our People</div>
     <h1>Meet the Full Team</h1>
     <p>P. Dilip Kumar &amp; Associates is powered by a team of qualified professionals across five practice areas. Click a department below to jump to that team.</p>
@@ -132,11 +132,11 @@
 <!-- DEPT NAV -->
 <div class="dept-nav">
   <div class="dept-nav-inner">
-    <a href="#company-secretary" class="dept-nav-pill"><i class="fas fa-file-contract"></i> Company Secretary</a>
-    <a href="#audit" class="dept-nav-pill"><i class="fas fa-search-dollar"></i> Audit &amp; Assurance</a>
-    <a href="#advisory" class="dept-nav-pill"><i class="fas fa-chart-line"></i> Advisory</a>
-    <a href="#taxation" class="dept-nav-pill"><i class="fas fa-file-invoice-dollar"></i> Taxation</a>
-    <a href="#finops" class="dept-nav-pill"><i class="fas fa-coins"></i> FinOps</a>
+    <a href="#company-secretary" class="dept-nav-pill" id="pill-cs"><i class="fas fa-file-contract"></i> Company Secretary</a>
+    <a href="#audit" class="dept-nav-pill" id="pill-audit"><i class="fas fa-search-dollar"></i> Audit &amp; Assurance</a>
+    <a href="#advisory" class="dept-nav-pill" id="pill-advisory"><i class="fas fa-chart-line"></i> Advisory</a>
+    <a href="#taxation" class="dept-nav-pill" id="pill-tax"><i class="fas fa-file-invoice-dollar"></i> Taxation</a>
+    <a href="#finops" class="dept-nav-pill" id="pill-finops"><i class="fas fa-coins"></i> FinOps</a>
   </div>
 </div>
 
@@ -279,7 +279,7 @@
 
 </main>
 
-<footer>
+<footer id="team-footer">
   <p>© 2026 P. Dilip Kumar &amp; Associates &nbsp;·&nbsp;
     <a href="pdka-website.html">Home</a>
     <a href="pdka-website.html#contact">Contact</a>
@@ -319,6 +319,83 @@
 
 
 
+
+<script id="pdka-team-i18n">
+(function(){
+var T = {
+  en: {
+    hero: `<div class="label">Our People</div>
+    <h1>Meet the Full Team</h1>
+    <p>P. Dilip Kumar &amp; Associates is powered by a team of qualified professionals across five practice areas. Click a department below to jump to that team.</p>`,
+    pillCS: `<i class="fas fa-file-contract"></i> Company Secretary`,
+    pillAudit: `<i class="fas fa-search-dollar"></i> Audit &amp; Assurance`,
+    pillAdvisory: `<i class="fas fa-chart-line"></i> Advisory`,
+    pillTax: `<i class="fas fa-file-invoice-dollar"></i> Taxation`,
+    pillFinops: `<i class="fas fa-coins"></i> FinOps`,
+    secCS: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-file-contract"></i> Company Secretary</div><h2>Corporate Compliance Team</h2><p>Handling ROC filings, secretarial compliance, board governance, and statutory registers for companies across industries.</p></div></div><div class="head-card"><div class="head-photo-wrap">PS</div><div class="head-info"><div class="head-badge">Department Head</div><h3>Priya Sharma</h3><div class="role">Head &mdash; Corporate Compliance</div><div class="quals">ACS &middot; B.Com &middot; 10 Yrs Exp</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p></div></div>`,
+    secAudit: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-search-dollar"></i> Audit &amp; Assurance</div><h2>Audit &amp; Assurance Team</h2><p>Statutory audit, internal audit, tax audit, and IS audit engagements carried out under ICAI standards for listed, unlisted, and foreign subsidiaries.</p></div></div><div class="head-card"><div class="head-photo-wrap">KN</div><div class="head-info"><div class="head-badge">Department Head</div><h3>Karthik Nair</h3><div class="role">Head &mdash; Audit &amp; Assurance</div><div class="quals">ACA &middot; DISA &middot; 12 Yrs Exp</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p></div></div>`,
+    secAdvisory: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-chart-line"></i> Advisory</div><h2>Business Advisory Team</h2><p>Business consulting, valuations, internal controls review, and governance advisory for growth-stage and established organisations.</p></div></div><div class="head-card"><div class="head-photo-wrap">MK</div><div class="head-info"><div class="head-badge">Department Head</div><h3>Meera Krishnan</h3><div class="role">Head &mdash; Business Advisory</div><div class="quals">MBA &middot; ACA &middot; 9 Yrs Exp</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p></div></div>`,
+    secTax: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-file-invoice-dollar"></i> Taxation</div><h2>Taxation Team</h2><p>Corporate and personal tax planning, GST advisory, TDS compliance, transfer pricing, and international taxation across India and cross-border jurisdictions.</p></div></div><div class="head-card"><div class="head-photo-wrap">RM</div><div class="head-info"><div class="head-badge">Department Head</div><h3>Rajan Mehta</h3><div class="role">Head &mdash; Direct &amp; Indirect Tax</div><div class="quals">ACA &middot; LLB &middot; 14 Yrs Exp</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p></div></div>`,
+    secFinops: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-coins"></i> FinOps</div><h2>FinOps &amp; Digital Finance Team</h2><p>Virtual CFO services, MIS reporting, financial modelling, and digital finance operations for startups and scaling businesses.</p></div></div><div class="head-card"><div class="head-photo-wrap">AR</div><div class="head-info"><div class="head-badge">Department Head</div><h3>Ananya Reddy</h3><div class="role">Head &mdash; FinOps &amp; Digital Finance</div><div class="quals">CPA &middot; MBA &middot; 8 Yrs Exp</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p></div></div>`,
+    footer: `<p>&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="pdka-website.html">Home</a> <a href="pdka-website.html#contact">Contact</a> <a href="mailto:dilip@pdka.in">dilip@pdka.in</a></p>`
+  },
+  ja: {
+    hero: `<div class="label">ç§ãŸã¡ã®ãƒ¡ãƒ³ãƒãƒ¼</div>
+    <h1>ãƒãƒ¼ãƒ å…¨å“¡ã®ã”ç´¹ä»‹</h1>
+    <p>P. Dilip Kumar &amp; Associatesã¯ã€5ã¤ã®æ¥­å‹™åˆ†é‡Žã«ã‚ãŸã‚‹æœ‰è³‡æ ¼ãƒ—ãƒ­ãƒ•ã‚§ãƒƒã‚·ãƒ§ãƒŠãƒ«ãƒãƒ¼ãƒ ã§é‹å–¶ã•ã‚Œã¦ã„ã¾ã™ã€‚ä¸‹ã®éƒ¨é–€ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦å„ãƒãƒ¼ãƒ ã¸ç§»å‹•ã—ã¦ãã ã•ã„ã€‚</p>`,
+    pillCS: `<i class="fas fa-file-contract"></i> ä¼šç¤¾ç§˜æ›¸å½¹`,
+    pillAudit: `<i class="fas fa-search-dollar"></i> ç›£æŸ»ãƒ»ä¿è¨¼`,
+    pillAdvisory: `<i class="fas fa-chart-line"></i> ã‚¢ãƒ‰ãƒã‚¤ã‚¶ãƒªãƒ¼`,
+    pillTax: `<i class="fas fa-file-invoice-dollar"></i> ç¨Žå‹™`,
+    pillFinops: `<i class="fas fa-coins"></i> è²¡å‹™ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³`,
+    secCS: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-file-contract"></i> ä¼šç¤¾ç§˜æ›¸å½¹</div><h2>ä¼æ¥­ã‚³ãƒ³ãƒ—ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ãƒãƒ¼ãƒ </h2><p>æ¥­ç¨®ã‚’å•ã‚ãšã€ROCç”³å‘Šã€ä¼šç¤¾ç§˜æ›¸å½¹ã‚³ãƒ³ãƒ—ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã€å–ç· å½¹ä¼šã‚¬ãƒãƒŠãƒ³ã‚¹ã€æ³•å®šå¸³ç°¿ã®ç®¡ç†ã‚’æ‹…å½“ã€‚</p></div></div><div class="head-card"><div class="head-photo-wrap">PS</div><div class="head-info"><div class="head-badge">éƒ¨é–€é•·</div><h3>Priya Sharma</h3><div class="role">ä¼æ¥­ã‚³ãƒ³ãƒ—ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹è²¬ä»»è€…</div><div class="quals">ACS &middot; B.Com &middot; çµŒé¨“10å¹´</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>ãƒãƒ¼ãƒ ãƒ¡ãƒ³ãƒãƒ¼ã¯éšæ™‚è¿½åŠ ã•ã‚Œã¾ã™ã€‚è©³ç´°ã¯ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> ã¾ã§ãŠå•ã„åˆã‚ã›ãã ã•ã„ã€‚</p></div></div>`,
+    secAudit: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-search-dollar"></i> ç›£æŸ»ãƒ»ä¿è¨¼</div><h2>ç›£æŸ»ãƒ»ä¿è¨¼ãƒãƒ¼ãƒ </h2><p>ä¸Šå ´ãƒ»éžä¸Šå ´ä¼æ¥­ãŠã‚ˆã³å¤–è³‡ç³»å­ä¼šç¤¾å‘ã‘ã«ã€ICAIåŸºæº–ã«åŸºã¥ãæ³•å®šç›£æŸ»ã€å†…éƒ¨ç›£æŸ»ã€ç¨Žå‹™ç›£æŸ»ã€æƒ…å ±ã‚·ã‚¹ãƒ†ãƒ ç›£æŸ»ã‚’å®Ÿæ–½ã€‚</p></div></div><div class="head-card"><div class="head-photo-wrap">KN</div><div class="head-info"><div class="head-badge">éƒ¨é–€é•·</div><h3>Karthik Nair</h3><div class="role">ç›£æŸ»ãƒ»ä¿è¨¼è²¬ä»»è€…</div><div class="quals">ACA &middot; DISA &middot; çµŒé¨“12å¹´</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>ãƒãƒ¼ãƒ ãƒ¡ãƒ³ãƒãƒ¼ã¯éšæ™‚è¿½åŠ ã•ã‚Œã¾ã™ã€‚è©³ç´°ã¯ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> ã¾ã§ãŠå•ã„åˆã‚ã›ãã ã•ã„ã€‚</p></div></div>`,
+    secAdvisory: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-chart-line"></i> ã‚¢ãƒ‰ãƒã‚¤ã‚¶ãƒªãƒ¼</div><h2>ãƒ“ã‚¸ãƒã‚¹ã‚¢ãƒ‰ãƒã‚¤ã‚¶ãƒªãƒ¼ãƒãƒ¼ãƒ </h2><p>æˆé•·æ®µéšŽãŠã‚ˆã³ç¢ºç«‹ã•ã‚ŒãŸçµ„ç¹”å‘ã‘ã®ãƒ“ã‚¸ãƒã‚¹ã‚³ãƒ³ã‚µãƒ«ãƒ†ã‚£ãƒ³ã‚°ã€ãƒãƒªãƒ¥ã‚¨ãƒ¼ã‚·ãƒ§ãƒ³ã€å†…éƒ¨çµ±åˆ¶ãƒ¬ãƒ“ãƒ¥ãƒ¼ã€ã‚¬ãƒãƒŠãƒ³ã‚¹ã‚¢ãƒ‰ãƒã‚¤ã‚¶ãƒªãƒ¼ã€‚</p></div></div><div class="head-card"><div class="head-photo-wrap">MK</div><div class="head-info"><div class="head-badge">éƒ¨é–€é•·</div><h3>Meera Krishnan</h3><div class="role">ãƒ“ã‚¸ãƒã‚¹ã‚¢ãƒ‰ãƒã‚¤ã‚¶ãƒªãƒ¼è²¬ä»»è€…</div><div class="quals">MBA &middot; ACA &middot; çµŒé¨“9å¹´</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>ãƒãƒ¼ãƒ ãƒ¡ãƒ³ãƒãƒ¼ã¯éšæ™‚è¿½åŠ ã•ã‚Œã¾ã™ã€‚è©³ç´°ã¯ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> ã¾ã§ãŠå•ã„åˆã‚ã›ãã ã•ã„ã€‚</p></div></div>`,
+    secTax: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-file-invoice-dollar"></i> ç¨Žå‹™</div><h2>ç¨Žå‹™ãƒãƒ¼ãƒ </h2><p>æ³•äººãƒ»å€‹äººã®ç¨Žå‹™è¨ˆç”»ã€GSTã‚¢ãƒ‰ãƒã‚¤ã‚¶ãƒªãƒ¼ã€TDSã‚³ãƒ³ãƒ—ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã€ç§»è»¢ä¾¡æ ¼ã€ã‚¤ãƒ³ãƒ‰ãŠã‚ˆã³ã‚¯ãƒ­ã‚¹ãƒœãƒ¼ãƒ€ãƒ¼å›½éš›ç¨Žå‹™ã€‚</p></div></div><div class="head-card"><div class="head-photo-wrap">RM</div><div class="head-info"><div class="head-badge">éƒ¨é–€é•·</div><h3>Rajan Mehta</h3><div class="role">ç›´æŽ¥ç¨Žãƒ»é–“æŽ¥ç¨Žè²¬ä»»è€…</div><div class="quals">ACA &middot; LLB &middot; çµŒé¨“14å¹´</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>ãƒãƒ¼ãƒ ãƒ¡ãƒ³ãƒãƒ¼ã¯éšæ™‚è¿½åŠ ã•ã‚Œã¾ã™ã€‚è©³ç´°ã¯ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> ã¾ã§ãŠå•ã„åˆã‚ã›ãã ã•ã„ã€‚</p></div></div>`,
+    secFinops: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-coins"></i> è²¡å‹™ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³</div><h2>è²¡å‹™ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ»ãƒ‡ã‚¸ã‚¿ãƒ«ãƒ•ã‚¡ã‚¤ãƒŠãƒ³ã‚¹ãƒãƒ¼ãƒ </h2><p>ã‚¹ã‚¿ãƒ¼ãƒˆã‚¢ãƒƒãƒ—ãƒ»æˆé•·ä¼æ¥­å‘ã‘ãƒãƒ¼ãƒãƒ£ãƒ«CFOã‚µãƒ¼ãƒ“ã‚¹ã€MISãƒ¬ãƒãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã€è²¡å‹™ãƒ¢ãƒ‡ãƒªãƒ³ã‚°ã€ãƒ‡ã‚¸ã‚¿ãƒ«ãƒ•ã‚¡ã‚¤ãƒŠãƒ³ã‚¹æ¥­å‹™ã€‚</p></div></div><div class="head-card"><div class="head-photo-wrap">AR</div><div class="head-info"><div class="head-badge">éƒ¨é–€é•·</div><h3>Ananya Reddy</h3><div class="role">è²¡å‹™ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ»ãƒ‡ã‚¸ã‚¿ãƒ«ãƒ•ã‚¡ã‚¤ãƒŠãƒ³ã‚¹è²¬ä»»è€…</div><div class="quals">CPA &middot; MBA &middot; çµŒé¨“8å¹´</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>ãƒãƒ¼ãƒ ãƒ¡ãƒ³ãƒãƒ¼ã¯éšæ™‚è¿½åŠ ã•ã‚Œã¾ã™ã€‚è©³ç´°ã¯ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> ã¾ã§ãŠå•ã„åˆã‚ã›ãã ã•ã„ã€‚</p></div></div>`,
+    footer: `<p>&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="pdka-website.html">ãƒ›ãƒ¼ãƒ </a> <a href="pdka-website.html#contact">ãŠå•ã„åˆã‚ã›</a> <a href="mailto:dilip@pdka.in">dilip@pdka.in</a></p>`
+  },
+  hi: {
+    hero: `<div class="label">à¤¹à¤®à¤¾à¤°à¥‡ à¤²à¥‹à¤—</div>
+    <h1>à¤ªà¥‚à¤°à¥€ à¤Ÿà¥€à¤® à¤¸à¥‡ à¤®à¤¿à¤²à¥‡à¤‚</h1>
+    <p>P. Dilip Kumar &amp; Associates à¤ªà¤¾à¤à¤š à¤ªà¥à¤°à¥ˆà¤•à¥à¤Ÿà¤¿à¤¸ à¤•à¥à¤·à¥‡à¤¤à¥à¤°à¥‹à¤‚ à¤®à¥‡à¤‚ à¤¯à¥‹à¤—à¥à¤¯ à¤ªà¥‡à¤¶à¥‡à¤µà¤°à¥‹à¤‚ à¤•à¥€ à¤Ÿà¥€à¤® à¤¦à¥à¤µà¤¾à¤°à¤¾ à¤¸à¤‚à¤šà¤¾à¤²à¤¿à¤¤ à¤¹à¥ˆà¥¤ à¤¨à¥€à¤šà¥‡ à¤•à¤¿à¤¸à¥€ à¤µà¤¿à¤­à¤¾à¤— à¤ªà¤° à¤•à¥à¤²à¤¿à¤• à¤•à¤°à¤•à¥‡ à¤‰à¤¸ à¤Ÿà¥€à¤® à¤ªà¤° à¤œà¤¾à¤à¤‚à¥¤</p>`,
+    pillCS: `<i class="fas fa-file-contract"></i> à¤•à¤‚à¤ªà¤¨à¥€ à¤¸à¤šà¤¿à¤µ`,
+    pillAudit: `<i class="fas fa-search-dollar"></i> à¤‘à¤¡à¤¿à¤Ÿ à¤”à¤° à¤†à¤¶à¥à¤µà¤¾à¤¸à¤¨`,
+    pillAdvisory: `<i class="fas fa-chart-line"></i> à¤¸à¤²à¤¾à¤¹à¤•à¤¾à¤°à¥€`,
+    pillTax: `<i class="fas fa-file-invoice-dollar"></i> à¤•à¤°à¤¾à¤§à¤¾à¤¨`,
+    pillFinops: `<i class="fas fa-coins"></i> à¤«à¤¿à¤¨à¤‘à¤ªà¥à¤¸`,
+    secCS: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-file-contract"></i> à¤•à¤‚à¤ªà¤¨à¥€ à¤¸à¤šà¤¿à¤µ</div><h2>à¤•à¥‰à¤°à¥à¤ªà¥‹à¤°à¥‡à¤Ÿ à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨ à¤Ÿà¥€à¤®</h2><p>à¤¸à¤­à¥€ à¤‰à¤¦à¥à¤¯à¥‹à¤—à¥‹à¤‚ à¤•à¥€ à¤•à¤‚à¤ªà¤¨à¤¿à¤¯à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ ROC à¤«à¤¾à¤‡à¤²à¤¿à¤‚à¤—, à¤¸à¤šà¤¿à¤µà¥€à¤¯ à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨, à¤¬à¥‹à¤°à¥à¤¡ à¤ªà¥à¤°à¤¶à¤¾à¤¸à¤¨ à¤”à¤° à¤µà¥ˆà¤§à¤¾à¤¨à¤¿à¤• à¤°à¤œà¤¿à¤¸à¥à¤Ÿà¤° à¤¸à¤‚à¤­à¤¾à¤²à¤¨à¤¾à¥¤</p></div></div><div class="head-card"><div class="head-photo-wrap">PS</div><div class="head-info"><div class="head-badge">à¤µà¤¿à¤­à¤¾à¤—à¤¾à¤§à¥à¤¯à¤•à¥à¤·</div><h3>Priya Sharma</h3><div class="role">à¤ªà¥à¤°à¤®à¥à¤– â€” à¤•à¥‰à¤°à¥à¤ªà¥‹à¤°à¥‡à¤Ÿ à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨</div><div class="quals">ACS &middot; B.Com &middot; 10 à¤µà¤°à¥à¤· à¤…à¤¨à¥à¤­à¤µ</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>à¤Ÿà¥€à¤® à¤•à¥‡ à¤¸à¤¦à¤¸à¥à¤¯ à¤¯à¤¹à¤¾à¤ à¤œà¥‹à¤¡à¤¼à¥‡ à¤œà¤¾à¤à¤‚à¤—à¥‡à¥¤ à¤…à¤§à¤¿à¤• à¤œà¤¾à¤¨à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> à¤ªà¤° à¤¸à¤‚à¤ªà¤°à¥à¤• à¤•à¤°à¥‡à¤‚à¥¤</p></div></div>`,
+    secAudit: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-search-dollar"></i> à¤‘à¤¡à¤¿à¤Ÿ à¤”à¤° à¤†à¤¶à¥à¤µà¤¾à¤¸à¤¨</div><h2>à¤‘à¤¡à¤¿à¤Ÿ à¤”à¤° à¤†à¤¶à¥à¤µà¤¾à¤¸à¤¨ à¤Ÿà¥€à¤®</h2><p>à¤¸à¥‚à¤šà¥€à¤¬à¤¦à¥à¤§, à¤…à¤¸à¥‚à¤šà¥€à¤¬à¤¦à¥à¤§ à¤”à¤° à¤µà¤¿à¤¦à¥‡à¤¶à¥€ à¤¸à¤¹à¤¾à¤¯à¤• à¤•à¤‚à¤ªà¤¨à¤¿à¤¯à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ ICAI à¤®à¤¾à¤¨à¤•à¥‹à¤‚ à¤•à¥‡ à¤¤à¤¹à¤¤ à¤µà¥ˆà¤§à¤¾à¤¨à¤¿à¤• à¤‘à¤¡à¤¿à¤Ÿ, à¤†à¤‚à¤¤à¤°à¤¿à¤• à¤‘à¤¡à¤¿à¤Ÿ, à¤•à¤° à¤‘à¤¡à¤¿à¤Ÿ à¤”à¤° IS à¤‘à¤¡à¤¿à¤Ÿà¥¤</p></div></div><div class="head-card"><div class="head-photo-wrap">KN</div><div class="head-info"><div class="head-badge">à¤µà¤¿à¤­à¤¾à¤—à¤¾à¤§à¥à¤¯à¤•à¥à¤·</div><h3>Karthik Nair</h3><div class="role">à¤ªà¥à¤°à¤®à¥à¤– â€” à¤‘à¤¡à¤¿à¤Ÿ à¤”à¤° à¤†à¤¶à¥à¤µà¤¾à¤¸à¤¨</div><div class="quals">ACA &middot; DISA &middot; 12 à¤µà¤°à¥à¤· à¤…à¤¨à¥à¤­à¤µ</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>à¤Ÿà¥€à¤® à¤•à¥‡ à¤¸à¤¦à¤¸à¥à¤¯ à¤¯à¤¹à¤¾à¤ à¤œà¥‹à¤¡à¤¼à¥‡ à¤œà¤¾à¤à¤‚à¤—à¥‡à¥¤ à¤…à¤§à¤¿à¤• à¤œà¤¾à¤¨à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> à¤ªà¤° à¤¸à¤‚à¤ªà¤°à¥à¤• à¤•à¤°à¥‡à¤‚à¥¤</p></div></div>`,
+    secAdvisory: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-chart-line"></i> à¤¸à¤²à¤¾à¤¹à¤•à¤¾à¤°à¥€</div><h2>à¤µà¥à¤¯à¤¾à¤ªà¤¾à¤° à¤¸à¤²à¤¾à¤¹à¤•à¤¾à¤°à¥€ à¤Ÿà¥€à¤®</h2><p>à¤µà¤¿à¤•à¤¾à¤¸-à¤šà¤°à¤£ à¤”à¤° à¤¸à¥à¤¥à¤¾à¤ªà¤¿à¤¤ à¤¸à¤‚à¤—à¤ à¤¨à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤µà¥à¤¯à¤¾à¤ªà¤¾à¤° à¤ªà¤°à¤¾à¤®à¤°à¥à¤¶, à¤®à¥‚à¤²à¥à¤¯à¤¾à¤‚à¤•à¤¨, à¤†à¤‚à¤¤à¤°à¤¿à¤• à¤¨à¤¿à¤¯à¤‚à¤¤à¥à¤°à¤£ à¤¸à¤®à¥€à¤•à¥à¤·à¤¾ à¤”à¤° à¤ªà¥à¤°à¤¶à¤¾à¤¸à¤¨ à¤¸à¤²à¤¾à¤¹à¥¤</p></div></div><div class="head-card"><div class="head-photo-wrap">MK</div><div class="head-info"><div class="head-badge">à¤µà¤¿à¤­à¤¾à¤—à¤¾à¤§à¥à¤¯à¤•à¥à¤·</div><h3>Meera Krishnan</h3><div class="role">à¤ªà¥à¤°à¤®à¥à¤– â€” à¤µà¥à¤¯à¤¾à¤ªà¤¾à¤° à¤¸à¤²à¤¾à¤¹à¤•à¤¾à¤°à¥€</div><div class="quals">MBA &middot; ACA &middot; 9 à¤µà¤°à¥à¤· à¤…à¤¨à¥à¤­à¤µ</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>à¤Ÿà¥€à¤® à¤•à¥‡ à¤¸à¤¦à¤¸à¥à¤¯ à¤¯à¤¹à¤¾à¤ à¤œà¥‹à¤¡à¤¼à¥‡ à¤œà¤¾à¤à¤‚à¤—à¥‡à¥¤ à¤…à¤§à¤¿à¤• à¤œà¤¾à¤¨à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> à¤ªà¤° à¤¸à¤‚à¤ªà¤°à¥à¤• à¤•à¤°à¥‡à¤‚à¥¤</p></div></div>`,
+    secTax: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-file-invoice-dollar"></i> à¤•à¤°à¤¾à¤§à¤¾à¤¨</div><h2>à¤•à¤°à¤¾à¤§à¤¾à¤¨ à¤Ÿà¥€à¤®</h2><p>à¤•à¥‰à¤°à¥à¤ªà¥‹à¤°à¥‡à¤Ÿ à¤”à¤° à¤µà¥à¤¯à¤•à¥à¤¤à¤¿à¤—à¤¤ à¤•à¤° à¤¨à¤¿à¤¯à¥‹à¤œà¤¨, GST à¤¸à¤²à¤¾à¤¹, TDS à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨, à¤¸à¥à¤¥à¤¾à¤¨à¤¾à¤‚à¤¤à¤°à¤£ à¤®à¥‚à¤²à¥à¤¯ à¤¨à¤¿à¤°à¥à¤§à¤¾à¤°à¤£ à¤”à¤° à¤…à¤‚à¤¤à¤°à¥à¤°à¤¾à¤·à¥à¤Ÿà¥à¤°à¥€à¤¯ à¤•à¤°à¤¾à¤§à¤¾à¤¨à¥¤</p></div></div><div class="head-card"><div class="head-photo-wrap">RM</div><div class="head-info"><div class="head-badge">à¤µà¤¿à¤­à¤¾à¤—à¤¾à¤§à¥à¤¯à¤•à¥à¤·</div><h3>Rajan Mehta</h3><div class="role">à¤ªà¥à¤°à¤®à¥à¤– â€” à¤ªà¥à¤°à¤¤à¥à¤¯à¤•à¥à¤· à¤”à¤° à¤…à¤ªà¥à¤°à¤¤à¥à¤¯à¤•à¥à¤· à¤•à¤°</div><div class="quals">ACA &middot; LLB &middot; 14 à¤µà¤°à¥à¤· à¤…à¤¨à¥à¤­à¤µ</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>à¤Ÿà¥€à¤® à¤•à¥‡ à¤¸à¤¦à¤¸à¥à¤¯ à¤¯à¤¹à¤¾à¤ à¤œà¥‹à¤¡à¤¼à¥‡ à¤œà¤¾à¤à¤‚à¤—à¥‡à¥¤ à¤…à¤§à¤¿à¤• à¤œà¤¾à¤¨à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> à¤ªà¤° à¤¸à¤‚à¤ªà¤°à¥à¤• à¤•à¤°à¥‡à¤‚à¥¤</p></div></div>`,
+    secFinops: `<div class="dept-section-header"><div><div class="dept-badge"><i class="fas fa-coins"></i> à¤«à¤¿à¤¨à¤‘à¤ªà¥à¤¸</div><h2>à¤«à¤¿à¤¨à¤‘à¤ªà¥à¤¸ à¤”à¤° à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤«à¤¾à¤‡à¤¨à¥‡à¤‚à¤¸ à¤Ÿà¥€à¤®</h2><p>à¤¸à¥à¤Ÿà¤¾à¤°à¥à¤Ÿà¤…à¤ª à¤”à¤° à¤µà¤¿à¤•à¤¾à¤¸à¤¶à¥€à¤² à¤µà¥à¤¯à¤µà¤¸à¤¾à¤¯à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤µà¤°à¥à¤šà¥à¤…à¤² CFO à¤¸à¥‡à¤µà¤¾à¤à¤‚, MIS à¤°à¤¿à¤ªà¥‹à¤°à¥à¤Ÿà¤¿à¤‚à¤—, à¤µà¤¿à¤¤à¥à¤¤à¥€à¤¯ à¤®à¥‰à¤¡à¤²à¤¿à¤‚à¤— à¤”à¤° à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤µà¤¿à¤¤à¥à¤¤ à¤¸à¤‚à¤šà¤¾à¤²à¤¨à¥¤</p></div></div><div class="head-card"><div class="head-photo-wrap">AR</div><div class="head-info"><div class="head-badge">à¤µà¤¿à¤­à¤¾à¤—à¤¾à¤§à¥à¤¯à¤•à¥à¤·</div><h3>Ananya Reddy</h3><div class="role">à¤ªà¥à¤°à¤®à¥à¤– â€” à¤«à¤¿à¤¨à¤‘à¤ªà¥à¤¸ à¤”à¤° à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤«à¤¾à¤‡à¤¨à¥‡à¤‚à¤¸</div><div class="quals">CPA &middot; MBA &middot; 8 à¤µà¤°à¥à¤· à¤…à¤¨à¥à¤­à¤µ</div></div></div><hr class="dept-divider"><div class="team-grid"><div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-users"></i><p>à¤Ÿà¥€à¤® à¤•à¥‡ à¤¸à¤¦à¤¸à¥à¤¯ à¤¯à¤¹à¤¾à¤ à¤œà¥‹à¤¡à¤¼à¥‡ à¤œà¤¾à¤à¤‚à¤—à¥‡à¥¤ à¤…à¤§à¤¿à¤• à¤œà¤¾à¤¨à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> à¤ªà¤° à¤¸à¤‚à¤ªà¤°à¥à¤• à¤•à¤°à¥‡à¤‚à¥¤</p></div></div>`,
+    footer: `<p>&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="pdka-website.html">à¤¹à¥‹à¤®</a> <a href="pdka-website.html#contact">à¤¸à¤‚à¤ªà¤°à¥à¤•</a> <a href="mailto:dilip@pdka.in">dilip@pdka.in</a></p>`
+  }
+};
+
+function setTeamLang(lang) {
+  var d = T[lang] || T.en;
+  document.getElementById('team-hero').innerHTML = d.hero;
+  document.getElementById('pill-cs').innerHTML = d.pillCS;
+  document.getElementById('pill-audit').innerHTML = d.pillAudit;
+  document.getElementById('pill-advisory').innerHTML = d.pillAdvisory;
+  document.getElementById('pill-tax').innerHTML = d.pillTax;
+  document.getElementById('pill-finops').innerHTML = d.pillFinops;
+  document.getElementById('company-secretary').innerHTML = d.secCS;
+  document.getElementById('audit').innerHTML = d.secAudit;
+  document.getElementById('advisory').innerHTML = d.secAdvisory;
+  document.getElementById('taxation').innerHTML = d.secTax;
+  document.getElementById('finops').innerHTML = d.secFinops;
+  document.getElementById('team-footer').innerHTML = d.footer;
+}
+
+var saved = localStorage.getItem('pdka-lang') || 'en';
+setTeamLang(saved);
+window.addEventListener('storage', function(e) {
+  if (e.key === 'pdka-lang') setTeamLang(e.newValue || 'en');
+});
+})();
+</script>
 
 <script id="pdka-iframe-nav">
 (function() {

@@ -369,6 +369,114 @@
 
 
 
+<script id="pdka-portal-i18n">
+(function(){
+var T = {
+  en: {
+    tabSignin: `<i class="fas fa-sign-in-alt"></i> Sign In`,
+    tabSignup: `<i class="fas fa-user-plus"></i> Sign Up`,
+    panelSignin: `<div class="form-heading">Welcome back</div>
+      <div class="form-sub">Sign in to access your client documents and updates.</div>
+      <div class="success-banner" id="signinSuccess"><i class="fas fa-check-circle"></i>&nbsp; Signed in successfully! Redirecting&hellip;</div>
+      <div class="error-banner" id="signinError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signinErrorMsg"></span></div>
+      <div class="field"><label>Email Address</label><div class="input-wrap"><i class="fas fa-envelope field-icon"></i><input type="email" id="signinEmail" placeholder="you@example.com" autocomplete="email" /></div></div>
+      <div class="field"><label>Password</label><div class="input-wrap"><i class="fas fa-lock field-icon"></i><input type="password" id="signinPassword" placeholder="Enter your password" autocomplete="current-password" style="padding-right:40px;" /><button class="pwd-toggle" type="button" onclick="togglePwd('signinPassword',this)"><i class="fas fa-eye"></i></button></div></div>
+      <a href="#" class="forgot-link" onclick="showForgot(event)">Forgot password?</a>
+      <button class="btn-submit" onclick="handleSignin()"><i class="fas fa-sign-in-alt"></i> Sign In to Portal</button>
+      <div class="divider"><span>or continue with</span></div>
+      <button class="btn-sso" onclick="ssoNotice()"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" /> Sign in with Google</button>
+      <div class="switch-note">Don't have an account? <a onclick="switchTab('signup')">Sign Up</a></div>`,
+    panelSignup: `<div class="form-heading">Create your account</div>
+      <div class="form-sub">Register to receive documents, filings and updates from PDKA.</div>
+      <div class="success-banner" id="signupSuccess"><i class="fas fa-check-circle"></i>&nbsp; Account request submitted! We'll activate it within 1 business day.</div>
+      <div class="error-banner" id="signupError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signupErrorMsg"></span></div>
+      <div class="field-row"><div class="field"><label>First Name</label><div class="input-wrap"><i class="fas fa-user field-icon"></i><input type="text" id="signupFirst" placeholder="First name" /></div></div><div class="field"><label>Last Name</label><div class="input-wrap"><i class="fas fa-user field-icon"></i><input type="text" id="signupLast" placeholder="Last name" /></div></div></div>
+      <div class="field"><label>Company / Organisation</label><div class="input-wrap"><i class="fas fa-building field-icon"></i><input type="text" id="signupCompany" placeholder="Your company name" /></div></div>
+      <div class="field"><label>Email Address</label><div class="input-wrap"><i class="fas fa-envelope field-icon"></i><input type="email" id="signupEmail" placeholder="you@company.com" /></div></div>
+      <div class="field"><label>Mobile Number</label><div class="input-wrap"><i class="fas fa-phone field-icon"></i><input type="tel" id="signupPhone" placeholder="+91 98XXX XXXXX" /></div></div>
+      <div class="field"><label>Create Password</label><div class="input-wrap"><i class="fas fa-lock field-icon"></i><input type="password" id="signupPassword" placeholder="Min. 8 characters" style="padding-right:40px;" oninput="checkStrength(this.value)" /><button class="pwd-toggle" type="button" onclick="togglePwd('signupPassword',this)"><i class="fas fa-eye"></i></button></div><div class="pwd-strength" id="pwdStrength" style="display:none;"><div class="pwd-strength-bar"><span id="s1"></span><span id="s2"></span><span id="s3"></span><span id="s4"></span></div><div class="pwd-strength-label" id="pwdLabel"></div></div></div>
+      <div class="check-field"><input type="checkbox" id="agreeTerms" /><label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I consent to PDKA contacting me regarding my account.</label></div>
+      <button class="btn-submit" onclick="handleSignup()"><i class="fas fa-user-plus"></i> Create Account</button>
+      <div class="switch-note">Already have an account? <a onclick="switchTab('signin')">Sign In</a></div>`
+  },
+  ja: {
+    tabSignin: `<i class="fas fa-sign-in-alt"></i> ã‚µã‚¤ãƒ³ã‚¤ãƒ³`,
+    tabSignup: `<i class="fas fa-user-plus"></i> ã‚µã‚¤ãƒ³ã‚¢ãƒƒãƒ—`,
+    panelSignin: `<div class="form-heading">ãŠã‹ãˆã‚Šãªã•ã„</div>
+      <div class="form-sub">ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒãƒ¼ã‚¿ãƒ«ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã«ã¯ã‚µã‚¤ãƒ³ã‚¤ãƒ³ã—ã¦ãã ã•ã„ã€‚</div>
+      <div class="success-banner" id="signinSuccess"><i class="fas fa-check-circle"></i>&nbsp; ã‚µã‚¤ãƒ³ã‚¤ãƒ³ã—ã¾ã—ãŸï¼ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆä¸­&hellip;</div>
+      <div class="error-banner" id="signinError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signinErrorMsg"></span></div>
+      <div class="field"><label>ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹</label><div class="input-wrap"><i class="fas fa-envelope field-icon"></i><input type="email" id="signinEmail" placeholder="you@example.com" autocomplete="email" /></div></div>
+      <div class="field"><label>ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰</label><div class="input-wrap"><i class="fas fa-lock field-icon"></i><input type="password" id="signinPassword" placeholder="ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å…¥åŠ›" autocomplete="current-password" style="padding-right:40px;" /><button class="pwd-toggle" type="button" onclick="togglePwd('signinPassword',this)"><i class="fas fa-eye"></i></button></div></div>
+      <a href="#" class="forgot-link" onclick="showForgot(event)">ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ãŠå¿˜ã‚Œã§ã™ã‹ï¼Ÿ</a>
+      <button class="btn-submit" onclick="handleSignin()"><i class="fas fa-sign-in-alt"></i> ãƒãƒ¼ã‚¿ãƒ«ã«ã‚µã‚¤ãƒ³ã‚¤ãƒ³</button>
+      <div class="divider"><span>ã¾ãŸã¯æ¬¡ã§ç¶šè¡Œ</span></div>
+      <button class="btn-sso" onclick="ssoNotice()"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" /> Googleã§ã‚µã‚¤ãƒ³ã‚¤ãƒ³</button>
+      <div class="switch-note">ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ãŠæŒã¡ã§ãªã„æ–¹ã¯ <a onclick="switchTab('signup')">ã‚µã‚¤ãƒ³ã‚¢ãƒƒãƒ—</a></div>`,
+    panelSignup: `<div class="form-heading">ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ä½œæˆ</div>
+      <div class="form-sub">PDKAã‹ã‚‰ã®æ›¸é¡žãƒ»ç”³å‘Šãƒ»æœ€æ–°æƒ…å ±ã‚’å—ã‘å–ã‚‹ã«ã¯ç™»éŒ²ã—ã¦ãã ã•ã„ã€‚</div>
+      <div class="success-banner" id="signupSuccess"><i class="fas fa-check-circle"></i>&nbsp; ã‚¢ã‚«ã‚¦ãƒ³ãƒˆç”³è«‹ã‚’å—ã‘ä»˜ã‘ã¾ã—ãŸï¼1å–¶æ¥­æ—¥ä»¥å†…ã«æœ‰åŠ¹åŒ–ã—ã¾ã™ã€‚</div>
+      <div class="error-banner" id="signupError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signupErrorMsg"></span></div>
+      <div class="field-row"><div class="field"><label>å</label><div class="input-wrap"><i class="fas fa-user field-icon"></i><input type="text" id="signupFirst" placeholder="å" /></div></div><div class="field"><label>å§“</label><div class="input-wrap"><i class="fas fa-user field-icon"></i><input type="text" id="signupLast" placeholder="å§“" /></div></div></div>
+      <div class="field"><label>ä¼šç¤¾ãƒ»çµ„ç¹”å</label><div class="input-wrap"><i class="fas fa-building field-icon"></i><input type="text" id="signupCompany" placeholder="ä¼šç¤¾å" /></div></div>
+      <div class="field"><label>ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹</label><div class="input-wrap"><i class="fas fa-envelope field-icon"></i><input type="email" id="signupEmail" placeholder="you@company.com" /></div></div>
+      <div class="field"><label>æºå¸¯é›»è©±ç•ªå·</label><div class="input-wrap"><i class="fas fa-phone field-icon"></i><input type="tel" id="signupPhone" placeholder="+91 98XXX XXXXX" /></div></div>
+      <div class="field"><label>ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ä½œæˆ</label><div class="input-wrap"><i class="fas fa-lock field-icon"></i><input type="password" id="signupPassword" placeholder="8æ–‡å­—ä»¥ä¸Š" style="padding-right:40px;" oninput="checkStrength(this.value)" /><button class="pwd-toggle" type="button" onclick="togglePwd('signupPassword',this)"><i class="fas fa-eye"></i></button></div><div class="pwd-strength" id="pwdStrength" style="display:none;"><div class="pwd-strength-bar"><span id="s1"></span><span id="s2"></span><span id="s3"></span><span id="s4"></span></div><div class="pwd-strength-label" id="pwdLabel"></div></div></div>
+      <div class="check-field"><input type="checkbox" id="agreeTerms" /><label for="agreeTerms"><a href="#">åˆ©ç”¨è¦ç´„</a>ãŠã‚ˆã³<a href="#">ãƒ—ãƒ©ã‚¤ãƒã‚·ãƒ¼ãƒãƒªã‚·ãƒ¼</a>ã«åŒæ„ã—ã¾ã™ã€‚PDKAãŒç§ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã«é–¢ã—ã¦é€£çµ¡ã™ã‚‹ã“ã¨ã«åŒæ„ã—ã¾ã™ã€‚</label></div>
+      <button class="btn-submit" onclick="handleSignup()"><i class="fas fa-user-plus"></i> ã‚¢ã‚«ã‚¦ãƒ³ãƒˆä½œæˆ</button>
+      <div class="switch-note">ã™ã§ã«ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ãŠæŒã¡ã®æ–¹ã¯ <a onclick="switchTab('signin')">ã‚µã‚¤ãƒ³ã‚¤ãƒ³</a></div>`
+  },
+  hi: {
+    tabSignin: `<i class="fas fa-sign-in-alt"></i> à¤¸à¤¾à¤‡à¤¨ à¤‡à¤¨`,
+    tabSignup: `<i class="fas fa-user-plus"></i> à¤¸à¤¾à¤‡à¤¨ à¤…à¤ª`,
+    panelSignin: `<div class="form-heading">à¤¸à¥à¤µà¤¾à¤—à¤¤ à¤¹à¥ˆ</div>
+      <div class="form-sub">à¤…à¤ªà¤¨à¥‡ à¤•à¥à¤²à¤¾à¤‡à¤‚à¤Ÿ à¤¦à¤¸à¥à¤¤à¤¾à¤µà¥‡à¤œà¤¼à¥‹à¤‚ à¤”à¤° à¤…à¤ªà¤¡à¥‡à¤Ÿ à¤¤à¤• à¤ªà¤¹à¥à¤à¤šà¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ à¤¸à¤¾à¤‡à¤¨ à¤‡à¤¨ à¤•à¤°à¥‡à¤‚à¥¤</div>
+      <div class="success-banner" id="signinSuccess"><i class="fas fa-check-circle"></i>&nbsp; à¤¸à¤«à¤²à¤¤à¤¾à¤ªà¥‚à¤°à¥à¤µà¤• à¤¸à¤¾à¤‡à¤¨ à¤‡à¤¨! à¤°à¥€à¤¡à¤¾à¤¯à¤°à¥‡à¤•à¥à¤Ÿ à¤¹à¥‹ à¤°à¤¹à¤¾ à¤¹à¥ˆ&hellip;</div>
+      <div class="error-banner" id="signinError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signinErrorMsg"></span></div>
+      <div class="field"><label>à¤ˆà¤®à¥‡à¤² à¤ªà¤¤à¤¾</label><div class="input-wrap"><i class="fas fa-envelope field-icon"></i><input type="email" id="signinEmail" placeholder="you@example.com" autocomplete="email" /></div></div>
+      <div class="field"><label>à¤ªà¤¾à¤¸à¤µà¤°à¥à¤¡</label><div class="input-wrap"><i class="fas fa-lock field-icon"></i><input type="password" id="signinPassword" placeholder="à¤ªà¤¾à¤¸à¤µà¤°à¥à¤¡ à¤¦à¤°à¥à¤œ à¤•à¤°à¥‡à¤‚" autocomplete="current-password" style="padding-right:40px;" /><button class="pwd-toggle" type="button" onclick="togglePwd('signinPassword',this)"><i class="fas fa-eye"></i></button></div></div>
+      <a href="#" class="forgot-link" onclick="showForgot(event)">à¤ªà¤¾à¤¸à¤µà¤°à¥à¤¡ à¤­à¥‚à¤² à¤—à¤?</a>
+      <button class="btn-submit" onclick="handleSignin()"><i class="fas fa-sign-in-alt"></i> à¤ªà¥‹à¤°à¥à¤Ÿà¤² à¤®à¥‡à¤‚ à¤¸à¤¾à¤‡à¤¨ à¤‡à¤¨ à¤•à¤°à¥‡à¤‚</button>
+      <div class="divider"><span>à¤¯à¤¾ à¤œà¤¾à¤°à¥€ à¤°à¤–à¥‡à¤‚</span></div>
+      <button class="btn-sso" onclick="ssoNotice()"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" /> Google à¤¸à¥‡ à¤¸à¤¾à¤‡à¤¨ à¤‡à¤¨ à¤•à¤°à¥‡à¤‚</button>
+      <div class="switch-note">à¤–à¤¾à¤¤à¤¾ à¤¨à¤¹à¥€à¤‚ à¤¹à¥ˆ? <a onclick="switchTab('signup')">à¤¸à¤¾à¤‡à¤¨ à¤…à¤ª à¤•à¤°à¥‡à¤‚</a></div>`,
+    panelSignup: `<div class="form-heading">à¤…à¤ªà¤¨à¤¾ à¤–à¤¾à¤¤à¤¾ à¤¬à¤¨à¤¾à¤à¤‚</div>
+      <div class="form-sub">PDKA à¤¸à¥‡ à¤¦à¤¸à¥à¤¤à¤¾à¤µà¥‡à¤œà¤¼, à¤«à¤¾à¤‡à¤²à¤¿à¤‚à¤— à¤”à¤° à¤…à¤ªà¤¡à¥‡à¤Ÿ à¤ªà¥à¤°à¤¾à¤ªà¥à¤¤ à¤•à¤°à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ à¤ªà¤‚à¤œà¥€à¤•à¤°à¤£ à¤•à¤°à¥‡à¤‚à¥¤</div>
+      <div class="success-banner" id="signupSuccess"><i class="fas fa-check-circle"></i>&nbsp; à¤–à¤¾à¤¤à¤¾ à¤…à¤¨à¥à¤°à¥‹à¤§ à¤¸à¤¬à¤®à¤¿à¤Ÿ à¤¹à¥à¤†! à¤¹à¤® 1 à¤•à¤¾à¤°à¥à¤¯à¤¦à¤¿à¤µà¤¸ à¤®à¥‡à¤‚ à¤¸à¤•à¥à¤°à¤¿à¤¯ à¤•à¤°à¥‡à¤‚à¤—à¥‡à¥¤</div>
+      <div class="error-banner" id="signupError"><i class="fas fa-exclamation-circle"></i>&nbsp; <span id="signupErrorMsg"></span></div>
+      <div class="field-row"><div class="field"><label>à¤ªà¤¹à¤²à¤¾ à¤¨à¤¾à¤®</label><div class="input-wrap"><i class="fas fa-user field-icon"></i><input type="text" id="signupFirst" placeholder="à¤ªà¤¹à¤²à¤¾ à¤¨à¤¾à¤®" /></div></div><div class="field"><label>à¤…à¤‚à¤¤à¤¿à¤® à¤¨à¤¾à¤®</label><div class="input-wrap"><i class="fas fa-user field-icon"></i><input type="text" id="signupLast" placeholder="à¤…à¤‚à¤¤à¤¿à¤® à¤¨à¤¾à¤®" /></div></div></div>
+      <div class="field"><label>à¤•à¤‚à¤ªà¤¨à¥€ / à¤¸à¤‚à¤—à¤ à¤¨</label><div class="input-wrap"><i class="fas fa-building field-icon"></i><input type="text" id="signupCompany" placeholder="à¤†à¤ªà¤•à¥€ à¤•à¤‚à¤ªà¤¨à¥€ à¤•à¤¾ à¤¨à¤¾à¤®" /></div></div>
+      <div class="field"><label>à¤ˆà¤®à¥‡à¤² à¤ªà¤¤à¤¾</label><div class="input-wrap"><i class="fas fa-envelope field-icon"></i><input type="email" id="signupEmail" placeholder="you@company.com" /></div></div>
+      <div class="field"><label>à¤®à¥‹à¤¬à¤¾à¤‡à¤² à¤¨à¤‚à¤¬à¤°</label><div class="input-wrap"><i class="fas fa-phone field-icon"></i><input type="tel" id="signupPhone" placeholder="+91 98XXX XXXXX" /></div></div>
+      <div class="field"><label>à¤ªà¤¾à¤¸à¤µà¤°à¥à¤¡ à¤¬à¤¨à¤¾à¤à¤‚</label><div class="input-wrap"><i class="fas fa-lock field-icon"></i><input type="password" id="signupPassword" placeholder="à¤¨à¥à¤¯à¥‚à¤¨à¤¤à¤® 8 à¤…à¤•à¥à¤·à¤°" style="padding-right:40px;" oninput="checkStrength(this.value)" /><button class="pwd-toggle" type="button" onclick="togglePwd('signupPassword',this)"><i class="fas fa-eye"></i></button></div><div class="pwd-strength" id="pwdStrength" style="display:none;"><div class="pwd-strength-bar"><span id="s1"></span><span id="s2"></span><span id="s3"></span><span id="s4"></span></div><div class="pwd-strength-label" id="pwdLabel"></div></div></div>
+      <div class="check-field"><input type="checkbox" id="agreeTerms" /><label for="agreeTerms">à¤®à¥ˆà¤‚ <a href="#">à¤¸à¥‡à¤µà¤¾ à¤•à¥€ à¤¶à¤°à¥à¤¤à¥‹à¤‚</a> à¤”à¤° <a href="#">à¤—à¥‹à¤ªà¤¨à¥€à¤¯à¤¤à¤¾ à¤¨à¥€à¤¤à¤¿</a> à¤¸à¥‡ à¤¸à¤¹à¤®à¤¤ à¤¹à¥‚à¤‚à¥¤ à¤®à¥ˆà¤‚ PDKA à¤•à¥‹ à¤®à¥‡à¤°à¥‡ à¤–à¤¾à¤¤à¥‡ à¤•à¥‡ à¤¬à¤¾à¤°à¥‡ à¤®à¥‡à¤‚ à¤¸à¤‚à¤ªà¤°à¥à¤• à¤•à¤°à¤¨à¥‡ à¤•à¥€ à¤…à¤¨à¥à¤®à¤¤à¤¿ à¤¦à¥‡à¤¤à¤¾/à¤¦à¥‡à¤¤à¥€ à¤¹à¥‚à¤‚à¥¤</label></div>
+      <button class="btn-submit" onclick="handleSignup()"><i class="fas fa-user-plus"></i> à¤–à¤¾à¤¤à¤¾ à¤¬à¤¨à¤¾à¤à¤‚</button>
+      <div class="switch-note">à¤ªà¤¹à¤²à¥‡ à¤¸à¥‡ à¤–à¤¾à¤¤à¤¾ à¤¹à¥ˆ? <a onclick="switchTab('signin')">à¤¸à¤¾à¤‡à¤¨ à¤‡à¤¨ à¤•à¤°à¥‡à¤‚</a></div>`
+  }
+};
+
+function setPortalLang(lang) {
+  var d = T[lang] || T.en;
+  document.getElementById('tabSignin').innerHTML = d.tabSignin;
+  document.getElementById('tabSignup').innerHTML = d.tabSignup;
+  var si = document.getElementById('panelSignin');
+  var su = document.getElementById('panelSignup');
+  var siActive = si.classList.contains('active');
+  var suActive = su.classList.contains('active');
+  si.innerHTML = d.panelSignin;
+  su.innerHTML = d.panelSignup;
+  if (siActive) si.classList.add('active');
+  if (suActive) su.classList.add('active');
+}
+
+var saved = localStorage.getItem('pdka-lang') || 'en';
+setPortalLang(saved);
+window.addEventListener('storage', function(e) {
+  if (e.key === 'pdka-lang') setPortalLang(e.newValue || 'en');
+});
+})();
+</script>
+
 <script id="pdka-iframe-nav">
 (function() {
   var inIframe = (window.self !== window.top);

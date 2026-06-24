@@ -258,7 +258,7 @@
     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1800&h=600&fit=crop&crop=top" alt="Insights" loading="lazy" />
   </div>
   <div class="page-hero-overlay"></div>
-  <div class="page-hero-content">
+  <div class="page-hero-content" id="ins-hero">
     <div class="page-hero-label">Knowledge Hub</div>
     <h1 class="page-hero-title">Expert Insights &amp; Updates</h1>
     <p class="page-hero-sub">Regulatory updates, compliance guides, and expert commentary from the PDKA team.</p>
@@ -270,7 +270,7 @@
   <div class="insights-inner">
 
     <!-- Filter Bar -->
-    <div class="filter-bar">
+    <div class="filter-bar" id="ins-filter">
       <button class="filter-btn active" onclick="filterArticles('all', this)">All</button>
       <button class="filter-btn" onclick="filterArticles('ICAI', this)">ICAI</button>
       <button class="filter-btn" onclick="filterArticles('ITR', this)">Taxation</button>
@@ -418,7 +418,7 @@
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer id="ins-footer">
   <p>© 2026 P. Dilip Kumar &amp; Associates · Chartered Accountants · Bangalore &nbsp;|&nbsp; <a href="pdka-website.html#contact">Contact Us</a></p>
 </footer>
 
@@ -884,6 +884,398 @@
 
 
 
+
+<script id="pdka-insights-i18n">
+(function(){
+var T = {
+  en: {
+    hero: `<div class="page-hero-label">Knowledge Hub</div>
+    <h1 class="page-hero-title">Expert Insights &amp; Updates</h1>
+    <p class="page-hero-sub">Regulatory updates, compliance guides, and expert commentary from the PDKA team.</p>`,
+    filter: `<button class="filter-btn active" onclick="filterArticles('all', this)">All</button>
+      <button class="filter-btn" onclick="filterArticles('ICAI', this)">ICAI</button>
+      <button class="filter-btn" onclick="filterArticles('ITR', this)">Taxation</button>
+      <button class="filter-btn" onclick="filterArticles('FEMA', this)">FEMA</button>
+      <button class="filter-btn" onclick="filterArticles('GST', this)">GST</button>
+      <button class="filter-btn" onclick="filterArticles('COMPANY', this)">Company Law</button>
+      <button class="filter-btn" onclick="filterArticles('DPDPA', this)">DPDPA</button>
+      <button class="filter-btn" onclick="filterArticles('CFO', this)">Virtual CFO</button>`,
+    grid: `<div class="article-card" data-category="ICAI">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ICAI &middot; Apr 2026</span>
+          <h3>ICAI Code of Ethics 2026: What Changed for CA Firms</h3>
+          <p>The 13th Edition of the ICAI Code of Ethics effective April 2026 brings significant changes to advertising, website, and networking guidelines for CA firms.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 15, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('icai2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ITR &middot; Apr 2026</span>
+          <h3>ITR Filing FY 2025-26: Compliance Checklist for Businesses</h3>
+          <p>Key deadlines, updated ITR forms, and a practical compliance checklist to ensure accurate and timely ITR filing for FY 2025-26.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 8, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('itr2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="FEMA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">FEMA &middot; Jan 2025</span>
+          <h3>FEMA 2025: Foreign Remittances, ODI Rules &amp; Compliance for IT Companies</h3>
+          <p>Updated FEMA compliance guide covering overseas direct investment, LRS limits, and key obligations for IT &amp; ITES companies with foreign operations.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 20, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('fema2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST &middot; Mar 2026</span>
+          <h3>GSTR-9 &amp; GSTR-9C FY 2025-26: Filing Guide &amp; Common Errors</h3>
+          <p>A practical guide to filing the GST Annual Return and Reconciliation Statement, covering common reconciliation pitfalls and how to avoid notices from the GST department.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Mar 10, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('gst2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="COMPANY">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Company Law &middot; Feb 2026</span>
+          <h3>Companies Act Amendments 2025: Key Changes for Private Limited Companies</h3>
+          <p>MCA's 2025 amendments to the Companies Act introduce revised thresholds for small companies, new CSR reporting formats, and tightened related-party transaction disclosures.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Feb 18, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('companylaw2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Transfer Pricing &middot; Jan 2026</span>
+          <h3>Transfer Pricing Documentation: What Indian Companies Must Prepare for FY 2025-26</h3>
+          <p>With CBDT tightening TP scrutiny, Indian companies in international transactions must maintain robust Master File and Local File documentation or face steep penalties.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 12, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('tp2026')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="DPDPA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">DPDPA &middot; Dec 2025</span>
+          <h3>DPDPA 2023: A Practical Compliance Roadmap for Businesses</h3>
+          <p>India's Digital Personal Data Protection Act enforcement begins May 2027. Here is a step-by-step readiness roadmap â€” from data mapping to consent management and breach response protocols.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Dec 5, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('dpdpa2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="CFO">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Virtual CFO &middot; Nov 2025</span>
+          <h3>When Does a Startup Need a Virtual CFO? 7 Signs to Watch For</h3>
+          <p>As startups scale from &#8377;5 Cr to &#8377;25 Cr revenue, financial complexity grows faster than the team. Here are the clear signals that it is time to engage a Virtual CFO.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Nov 22, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('vcfo2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST &middot; Oct 2025</span>
+          <h3>GST on IT Services: Place of Supply, Export Benefits &amp; ITC Optimisation</h3>
+          <p>IT and software companies often leave significant GST refunds on the table. This guide covers export of services, place of supply rules, and how to maximise ITC for tech businesses.</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Oct 8, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('gstit2025')">Read More <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>`,
+    footer: `<p>&copy; 2026 P. Dilip Kumar &amp; Associates &middot; Chartered Accountants &middot; Bangalore &nbsp;|&nbsp; <a href="pdka-website.html#contact">Contact Us</a></p>`
+  },
+  ja: {
+    hero: `<div class="page-hero-label">ãƒŠãƒ¬ãƒƒã‚¸ãƒãƒ–</div>
+    <h1 class="page-hero-title">å°‚é–€å®¶ã‚¤ãƒ³ã‚µã‚¤ãƒˆ &amp; æœ€æ–°æƒ…å ±</h1>
+    <p class="page-hero-sub">Pdkaãƒãƒ¼ãƒ ã«ã‚ˆã‚‹Jaè¦åˆ¶ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆã€ã‚³ãƒ³ãƒ—ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã‚¬ã‚¤ãƒ‰ã€å°‚é–€å®¶è§£èª¬ã€‚</p>`,
+    filter: `<button class="filter-btn active" onclick="filterArticles('all', this)">ã™ã¹ã¦</button>
+      <button class="filter-btn" onclick="filterArticles('ICAI', this)">ICAI</button>
+      <button class="filter-btn" onclick="filterArticles('ITR', this)">ç¨Žå‹™</button>
+      <button class="filter-btn" onclick="filterArticles('FEMA', this)">FEMA</button>
+      <button class="filter-btn" onclick="filterArticles('GST', this)">GST</button>
+      <button class="filter-btn" onclick="filterArticles('COMPANY', this)">ä¼šç¤¾æ³•</button>
+      <button class="filter-btn" onclick="filterArticles('DPDPA', this)">DPDPA</button>
+      <button class="filter-btn" onclick="filterArticles('CFO', this)">ãƒãƒ¼ãƒãƒ£ãƒ«CFO</button>`,
+    grid: `<div class="article-card" data-category="ICAI">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ICAI &middot; Apr 2026</span>
+          <h3>ICAIå€«ç†è¦ç¨‹2026ï¼šCAäº‹å‹™æ‰€ã¸ã®å¤‰æ›´ç‚¹</h3>
+          <p>2026å¹´4æœˆæ–½è¡Œã®ICAIå€«ç†è¦ç¨‹ç¬¬13ç‰ˆã€‚åºƒå‘Šãƒ»ã‚¦ã‚§ãƒ–ã‚µã‚¤ãƒˆãƒ»ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚­ãƒ³ã‚°ã‚¬ã‚¤ãƒ‰ãƒ©ã‚¤ãƒ³ã«é‡è¦ãªå¤‰æ›´ãŒã‚ã‚Šã¾ã™ã€‚</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 15, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('icai2026')">è©³ã—ãè¦‹ã‚‹ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ITR &middot; Apr 2026</span>
+          <h3>ç¢ºå®šç”³å‘Š2025-26å¹´åº¦ï¼šä¼æ¥­ã‚³ãƒ³ãƒ—ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ãƒã‚§ãƒƒã‚¯ãƒªã‚¹ãƒˆ</h3>
+          <p>æ­£ç¢ºã‹ã¤æœŸé™å†…ã®ç”³å‘Šã‚’ç¢ºä¿ã™ã‚‹ãŸã‚ã®ä¸»è¦ãªæœŸé™ã€æ”¹è¨‚ã•ã‚ŒãŸç”³å‘Šæ›¸ã€å®Ÿå‹™ãƒã‚§ãƒƒã‚¯ãƒªã‚¹ãƒˆã€‚</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 8, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('itr2026')">è©³ã—ãè¦‹ã‚‹ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="FEMA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">FEMA &middot; Jan 2025</span>
+          <h3>FEMA 2025ï¼šæµ·å¤–é€é‡‘ãƒ»ODIãƒ«ãƒ¼ãƒ«ãƒ»ITä¼æ¥­ã®ã‚³ãƒ³ãƒ—ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹</h3>
+          <p>æµ·å¤–ç›´æŽ¥æŠ•è³‡ãƒ»LRSä¸Šé™ãƒ»IT/ITESä¼æ¥­ã®ä¸»è¦éµå®ˆç¾©å‹™ã«é–¢ã™ã‚‹æœ€æ–°FEMAã‚³ãƒ³ãƒ—ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã‚¬ã‚¤ãƒ‰ã€‚</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 20, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('fema2025')">è©³ã—ãè¦‹ã‚‹ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST &middot; Mar 2026</span>
+          <h3>GSTR-9 &amp; GSTR-9C 2025-26å¹´åº¦ï¼šç”³å‘Šã‚¬ã‚¤ãƒ‰ã¨ä¸€èˆ¬çš„ã‚¨ãƒ©ãƒ¼</h3>
+          <p>GSTå¹´æ¬¡ç”³å‘Šæ›¸ã¨ç…§åˆæ˜Žç´°æ›¸ã®ç”³å‘Šæ‰‹é †ã€ã‚ˆãã‚ã‚‹ç…§åˆã‚¨ãƒ©ãƒ¼ã¨GSTéƒ¨é–€ã‹ã‚‰ã®é€šçŸ¥å›žé¿ç­–ã€‚</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Mar 10, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('gst2026')">è©³ã—ãè¦‹ã‚‹ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="COMPANY">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Company Law &middot; Feb 2026</span>
+          <h3>ä¼šç¤¾æ³•æ”¹æ­£2025ï¼šæ ªå¼ä¼šç¤¾ã¸ã®ä¸»è¦ãªå¤‰æ›´ç‚¹</h3>
+          <p>MCAã®2025å¹´æ”¹æ­£ã§å°è¦æ¨¡ä¼æ¥­åŸºæº–ã®è¦‹ç›´ã—ã€CSRå ±å‘Šã®æ–°æ›¸å¼ã€é–¢é€£å½“äº‹è€…å–å¼•é–‹ç¤ºã®å¼·åŒ–ã€‚</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Feb 18, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('companylaw2025')">è©³ã—ãè¦‹ã‚‹ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Transfer Pricing &middot; Jan 2026</span>
+          <h3>ç§»è»¢ä¾¡æ ¼æ–‡æ›¸ï¼š2025-26å¹´åº¦ã«å¿…è¦ãªæº–å‚™</h3>
+          <p>CBDTãŒç§»è»¢ä¾¡æ ¼èª¿æŸ»ã‚’å¼·åŒ–ã€‚å›½éš›å–å¼•ã‚’è¡Œã†ã‚¤ãƒ³ãƒ‰ä¼æ¥­ã¯ãƒžã‚¹ã‚¿ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ãƒ­ãƒ¼ã‚«ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã®æ•´å‚™ãŒå¿…è¦ã§ã™ã€‚</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 12, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('tp2026')">è©³ã—ãè¦‹ã‚‹ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="DPDPA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">DPDPA &middot; Dec 2025</span>
+          <h3>DPDPA 2023ï¼šä¼æ¥­å‘ã‘å®Ÿè·µçš„ã‚³ãƒ³ãƒ—ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ãƒ­ãƒ¼ãƒ‰ãƒžãƒƒãƒ—</h3>
+          <p>ã‚¤ãƒ³ãƒ‰ã®å€‹äººãƒ‡ãƒ¼ã‚¿ä¿è­·æ³•ã®æ–½è¡Œã¯2027å¹´5æœˆé–‹å§‹ã€‚ãƒ‡ãƒ¼ã‚¿ãƒžãƒƒãƒ”ãƒ³ã‚°ã‹ã‚‰åŒæ„ç®¡ç†ãƒ»ä¾µå®³å¯¾å¿œã¾ã§æ®µéšŽçš„ãªæº–å‚™ãƒ­ãƒ¼ãƒ‰ãƒžãƒƒãƒ—ã€‚</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Dec 5, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('dpdpa2025')">è©³ã—ãè¦‹ã‚‹ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="CFO">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Virtual CFO &middot; Nov 2025</span>
+          <h3>ã‚¹ã‚¿ãƒ¼ãƒˆã‚¢ãƒƒãƒ—ã«ãƒãƒ¼ãƒãƒ£ãƒ«CFOãŒå¿…è¦ãª7ã¤ã®ã‚µã‚¤ãƒ³</h3>
+          <p>å£²ä¸ŠãŒ5ã€œ25å„„å††è¦æ¨¡ã«æ‹¡å¤§ã™ã‚‹ã¨è²¡å‹™ã®è¤‡é›‘ã•ãŒæ€¥å¢—ã€‚ãƒãƒ¼ãƒãƒ£ãƒ«CFOãŒå¿…è¦ãªã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’ç¤ºã™æ˜Žç¢ºãªã‚·ã‚°ãƒŠãƒ«ã€‚</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Nov 22, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('vcfo2025')">è©³ã—ãè¦‹ã‚‹ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST &middot; Oct 2025</span>
+          <h3>ITã‚µãƒ¼ãƒ“ã‚¹ã®GSTï¼šä¾›çµ¦å ´æ‰€ãƒ»è¼¸å‡ºç‰¹å…¸ãƒ»ITCæœ€é©åŒ–</h3>
+          <p>ITãŠã‚ˆã³ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ä¼šç¤¾ã¯GSTé‚„ä»˜ã‚’å–ã‚Šé€ƒãŒã™ã“ã¨ãŒå¤šã„ã€‚ITãƒ“ã‚¸ãƒã‚¹å‘ã‘ã‚µãƒ¼ãƒ“ã‚¹è¼¸å‡ºãƒ»ä¾›çµ¦å ´æ‰€ãƒ«ãƒ¼ãƒ«ãƒ»ITCæœ€å¤§åŒ–ã‚¬ã‚¤ãƒ‰ã€‚</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Oct 8, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('gstit2025')">è©³ã—ãè¦‹ã‚‹ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>`,
+    footer: `<p>&copy; 2026 P. Dilip Kumar &amp; Associates &middot; å…¬èªä¼šè¨ˆå£« &middot; ãƒãƒ³ã‚¬ãƒ­ãƒ¼ãƒ« &nbsp;|&nbsp; <a href="pdka-website.html#contact">ãŠå•ã„åˆã‚ã›</a></p>`
+  },
+  hi: {
+    hero: `<div class="page-hero-label">à¤œà¥à¤žà¤¾à¤¨ à¤•à¥‡à¤‚à¤¦à¥à¤°</div>
+    <h1 class="page-hero-title">à¤µà¤¿à¤¶à¥‡à¤·à¤œà¥à¤ž à¤œà¤¾à¤¨à¤•à¤¾à¤°à¥€ à¤”à¤° à¤…à¤ªà¤¡à¥‡à¤Ÿ</h1>
+    <p class="page-hero-sub">PDKA à¤Ÿà¥€à¤® à¤¸à¥‡ à¤¨à¤¿à¤¯à¤¾à¤®à¤• à¤…à¤ªà¤¡à¥‡à¤Ÿ, à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨ à¤—à¤¾à¤‡à¤¡ à¤”à¤° à¤µà¤¿à¤¶à¥‡à¤·à¤œà¥à¤ž à¤Ÿà¤¿à¤ªà¥à¤ªà¤£à¥€à¥¤</p>`,
+    filter: `<button class="filter-btn active" onclick="filterArticles('all', this)">à¤¸à¤­à¥€</button>
+      <button class="filter-btn" onclick="filterArticles('ICAI', this)">ICAI</button>
+      <button class="filter-btn" onclick="filterArticles('ITR', this)">à¤•à¤°à¤¾à¤§à¤¾à¤¨</button>
+      <button class="filter-btn" onclick="filterArticles('FEMA', this)">FEMA</button>
+      <button class="filter-btn" onclick="filterArticles('GST', this)">GST</button>
+      <button class="filter-btn" onclick="filterArticles('COMPANY', this)">à¤•à¤‚à¤ªà¤¨à¥€ à¤•à¤¾à¤¨à¥‚à¤¨</button>
+      <button class="filter-btn" onclick="filterArticles('DPDPA', this)">DPDPA</button>
+      <button class="filter-btn" onclick="filterArticles('CFO', this)">à¤µà¤°à¥à¤šà¥à¤…à¤² CFO</button>`,
+    grid: `<div class="article-card" data-category="ICAI">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ICAI &middot; Apr 2026</span>
+          <h3>ICAI à¤†à¤šà¤¾à¤° à¤¸à¤‚à¤¹à¤¿à¤¤à¤¾ 2026: CA à¤«à¤°à¥à¤®à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤•à¥à¤¯à¤¾ à¤¬à¤¦à¤²à¤¾</h3>
+          <p>à¤…à¤ªà¥à¤°à¥ˆà¤² 2026 à¤¸à¥‡ à¤ªà¥à¤°à¤­à¤¾à¤µà¥€ ICAI à¤†à¤šà¤¾à¤° à¤¸à¤‚à¤¹à¤¿à¤¤à¤¾ à¤•à¤¾ 13à¤µà¤¾à¤‚ à¤¸à¤‚à¤¸à¥à¤•à¤°à¤£ â€” à¤µà¤¿à¤œà¥à¤žà¤¾à¤ªà¤¨, à¤µà¥‡à¤¬à¤¸à¤¾à¤‡à¤Ÿ à¤”à¤° à¤¨à¥‡à¤Ÿà¤µà¤°à¥à¤•à¤¿à¤‚à¤— à¤¦à¤¿à¤¶à¤¾à¤¨à¤¿à¤°à¥à¤¦à¥‡à¤¶à¥‹à¤‚ à¤®à¥‡à¤‚ à¤®à¤¹à¤¤à¥à¤µà¤ªà¥‚à¤°à¥à¤£ à¤¬à¤¦à¤²à¤¾à¤µà¥¤</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 15, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('icai2026')">à¤”à¤° à¤ªà¤¢à¤¼à¥‡à¤‚ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">ITR &middot; Apr 2026</span>
+          <h3>ITR à¤«à¤¾à¤‡à¤²à¤¿à¤‚à¤— FY 2025-26: à¤µà¥à¤¯à¤µà¤¸à¤¾à¤¯à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨ à¤šà¥‡à¤•à¤²à¤¿à¤¸à¥à¤Ÿ</h3>
+          <p>à¤¸à¤Ÿà¥€à¤• à¤”à¤° à¤¸à¤®à¤¯ à¤ªà¤° ITR à¤«à¤¾à¤‡à¤²à¤¿à¤‚à¤— à¤¸à¥à¤¨à¤¿à¤¶à¥à¤šà¤¿à¤¤ à¤•à¤°à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ à¤ªà¥à¤°à¤®à¥à¤– à¤¤à¤¿à¤¥à¤¿à¤¯à¤¾à¤‚, à¤…à¤ªà¤¡à¥‡à¤Ÿà¥‡à¤¡ ITR à¤«à¥‰à¤°à¥à¤® à¤”à¤° à¤µà¥à¤¯à¤¾à¤µà¤¹à¤¾à¤°à¤¿à¤• à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨ à¤šà¥‡à¤•à¤²à¤¿à¤¸à¥à¤Ÿà¥¤</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Apr 8, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('itr2026')">à¤”à¤° à¤ªà¤¢à¤¼à¥‡à¤‚ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="FEMA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">FEMA &middot; Jan 2025</span>
+          <h3>FEMA 2025: à¤µà¤¿à¤¦à¥‡à¤¶à¥€ à¤ªà¥à¤°à¥‡à¤·à¤£, ODI à¤¨à¤¿à¤¯à¤® à¤”à¤° IT à¤•à¤‚à¤ªà¤¨à¤¿à¤¯à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨</h3>
+          <p>à¤µà¤¿à¤¦à¥‡à¤¶à¥€ à¤ªà¥à¤°à¤¤à¥à¤¯à¤•à¥à¤· à¤¨à¤¿à¤µà¥‡à¤¶, LRS à¤¸à¥€à¤®à¤¾à¤à¤‚ à¤”à¤° IT/ITES à¤•à¤‚à¤ªà¤¨à¤¿à¤¯à¥‹à¤‚ à¤•à¥€ à¤ªà¥à¤°à¤®à¥à¤– à¤¬à¤¾à¤§à¥à¤¯à¤¤à¤¾à¤“à¤‚ à¤ªà¤° à¤…à¤ªà¤¡à¥‡à¤Ÿà¥‡à¤¡ FEMA à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨ à¤—à¤¾à¤‡à¤¡à¥¤</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 20, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('fema2025')">à¤”à¤° à¤ªà¤¢à¤¼à¥‡à¤‚ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST &middot; Mar 2026</span>
+          <h3>GSTR-9 à¤”à¤° GSTR-9C FY 2025-26: à¤«à¤¾à¤‡à¤²à¤¿à¤‚à¤— à¤—à¤¾à¤‡à¤¡ à¤”à¤° à¤¸à¤¾à¤®à¤¾à¤¨à¥à¤¯ à¤¤à¥à¤°à¥à¤Ÿà¤¿à¤¯à¤¾à¤‚</h3>
+          <p>GST à¤µà¤¾à¤°à¥à¤·à¤¿à¤• à¤°à¤¿à¤Ÿà¤°à¥à¤¨ à¤”à¤° à¤¸à¥à¤²à¤¹ à¤µà¤¿à¤µà¤°à¤£ à¤¦à¤¾à¤–à¤¿à¤² à¤•à¤°à¤¨à¥‡ à¤•à¥€ à¤µà¥à¤¯à¤¾à¤µà¤¹à¤¾à¤°à¤¿à¤• à¤—à¤¾à¤‡à¤¡, à¤¸à¤¾à¤®à¤¾à¤¨à¥à¤¯ à¤¤à¥à¤°à¥à¤Ÿà¤¿à¤¯à¥‹à¤‚ à¤”à¤° GST à¤¨à¥‹à¤Ÿà¤¿à¤¸ à¤¸à¥‡ à¤¬à¤šà¤¨à¥‡ à¤•à¥‡ à¤‰à¤ªà¤¾à¤¯à¥¤</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Mar 10, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('gst2026')">à¤”à¤° à¤ªà¤¢à¤¼à¥‡à¤‚ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="COMPANY">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Company Law &middot; Feb 2026</span>
+          <h3>à¤•à¤‚à¤ªà¤¨à¥€ à¤…à¤§à¤¿à¤¨à¤¿à¤¯à¤® à¤¸à¤‚à¤¶à¥‹à¤§à¤¨ 2025: à¤ªà¥à¤°à¤¾à¤‡à¤µà¥‡à¤Ÿ à¤²à¤¿à¤®à¤¿à¤Ÿà¥‡à¤¡ à¤•à¤‚à¤ªà¤¨à¤¿à¤¯à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤ªà¥à¤°à¤®à¥à¤– à¤¬à¤¦à¤²à¤¾à¤µ</h3>
+          <p>MCA à¤•à¥‡ 2025 à¤¸à¤‚à¤¶à¥‹à¤§à¤¨ à¤®à¥‡à¤‚ à¤›à¥‹à¤Ÿà¥€ à¤•à¤‚à¤ªà¤¨à¤¿à¤¯à¥‹à¤‚ à¤•à¥€ à¤¸à¤‚à¤¶à¥‹à¤§à¤¿à¤¤ à¤¸à¥€à¤®à¤¾à¤à¤‚, CSR à¤°à¤¿à¤ªà¥‹à¤°à¥à¤Ÿà¤¿à¤‚à¤— à¤•à¥‡ à¤¨à¤ à¤ªà¥à¤°à¤¾à¤°à¥‚à¤ª à¤”à¤° à¤¸à¤‚à¤¬à¤‚à¤§à¤¿à¤¤ à¤ªà¤•à¥à¤· à¤²à¥‡à¤¨à¤¦à¥‡à¤¨ à¤ªà¥à¤°à¤•à¤Ÿà¥€à¤•à¤°à¤£ à¤•à¥€ à¤¸à¤–à¥à¤¤à¥€à¥¤</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Feb 18, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('companylaw2025')">à¤”à¤° à¤ªà¤¢à¤¼à¥‡à¤‚ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="ITR">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Transfer Pricing &middot; Jan 2026</span>
+          <h3>à¤¸à¥à¤¥à¤¾à¤¨à¤¾à¤‚à¤¤à¤°à¤£ à¤®à¥‚à¤²à¥à¤¯ à¤¨à¤¿à¤°à¥à¤§à¤¾à¤°à¤£ à¤¦à¤¸à¥à¤¤à¤¾à¤µà¥‡à¤œ: FY 2025-26 à¤•à¥‡ à¤²à¤¿à¤ à¤•à¥à¤¯à¤¾ à¤¤à¥ˆà¤¯à¤¾à¤° à¤•à¤°à¥‡à¤‚</h3>
+          <p>CBDT à¤¦à¥à¤µà¤¾à¤°à¤¾ TP à¤œà¤¾à¤‚à¤š à¤•à¤¡à¤¼à¥€ à¤¹à¥‹à¤¨à¥‡ à¤•à¥‡ à¤¸à¤¾à¤¥, à¤…à¤‚à¤¤à¤°à¥à¤°à¤¾à¤·à¥à¤Ÿà¥à¤°à¥€à¤¯ à¤²à¥‡à¤¨à¤¦à¥‡à¤¨ à¤®à¥‡à¤‚ à¤¶à¤¾à¤®à¤¿à¤² à¤­à¤¾à¤°à¤¤à¥€à¤¯ à¤•à¤‚à¤ªà¤¨à¤¿à¤¯à¥‹à¤‚ à¤•à¥‹ à¤®à¤¾à¤¸à¥à¤Ÿà¤° à¤«à¤¾à¤‡à¤² à¤”à¤° à¤²à¥‹à¤•à¤² à¤«à¤¾à¤‡à¤² à¤¤à¥ˆà¤¯à¤¾à¤° à¤°à¤–à¤¨à¥€ à¤¹à¥‹à¤—à¥€à¥¤</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Jan 12, 2026</span>
+          <button class="article-read-btn" onclick="openArticle('tp2026')">à¤”à¤° à¤ªà¤¢à¤¼à¥‡à¤‚ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="DPDPA">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">DPDPA &middot; Dec 2025</span>
+          <h3>DPDPA 2023: à¤µà¥à¤¯à¤µà¤¸à¤¾à¤¯à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤µà¥à¤¯à¤¾à¤µà¤¹à¤¾à¤°à¤¿à¤• à¤…à¤¨à¥à¤ªà¤¾à¤²à¤¨ à¤°à¥‹à¤¡à¤®à¥ˆà¤ª</h3>
+          <p>à¤­à¤¾à¤°à¤¤ à¤•à¤¾ à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤µà¥à¤¯à¤•à¥à¤¤à¤¿à¤—à¤¤ à¤¡à¥‡à¤Ÿà¤¾ à¤¸à¤‚à¤°à¤•à¥à¤·à¤£ à¤…à¤§à¤¿à¤¨à¤¿à¤¯à¤® à¤®à¤ˆ 2027 à¤¸à¥‡ à¤²à¤¾à¤—à¥‚ à¤¹à¥‹à¤—à¤¾à¥¤ à¤¡à¥‡à¤Ÿà¤¾ à¤®à¥ˆà¤ªà¤¿à¤‚à¤— à¤¸à¥‡ à¤¸à¤¹à¤®à¤¤à¤¿ à¤ªà¥à¤°à¤¬à¤‚à¤§à¤¨ à¤”à¤° à¤‰à¤²à¥à¤²à¤‚à¤˜à¤¨ à¤ªà¥à¤°à¤¤à¤¿à¤•à¥à¤°à¤¿à¤¯à¤¾ à¤¤à¤• à¤šà¤°à¤£-à¤¦à¤°-à¤šà¤°à¤£ à¤¤à¥ˆà¤¯à¤¾à¤°à¥€à¥¤</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Dec 5, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('dpdpa2025')">à¤”à¤° à¤ªà¤¢à¤¼à¥‡à¤‚ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="CFO">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">Virtual CFO &middot; Nov 2025</span>
+          <h3>à¤¸à¥à¤Ÿà¤¾à¤°à¥à¤Ÿà¤…à¤ª à¤•à¥‹ à¤µà¤°à¥à¤šà¥à¤…à¤² CFO à¤•à¥€ à¤•à¤¬ à¤œà¤°à¥‚à¤°à¤¤ à¤¹à¥‹à¤¤à¥€ à¤¹à¥ˆ? 7 à¤¸à¤‚à¤•à¥‡à¤¤</h3>
+          <p>à¤œà¤¬ à¤¸à¥à¤Ÿà¤¾à¤°à¥à¤Ÿà¤…à¤ª â‚¹5-25 à¤•à¤°à¥‹à¤¡à¤¼ à¤°à¤¾à¤œà¤¸à¥à¤µ à¤ªà¤° à¤ªà¤¹à¥à¤‚à¤šà¤¤à¥‡ à¤¹à¥ˆà¤‚, à¤¤à¥‹ à¤µà¤¿à¤¤à¥à¤¤à¥€à¤¯ à¤œà¤Ÿà¤¿à¤²à¤¤à¤¾ à¤¤à¥‡à¤œà¥€ à¤¸à¥‡ à¤¬à¤¢à¤¼à¤¤à¥€ à¤¹à¥ˆà¥¤ à¤µà¤°à¥à¤šà¥à¤…à¤² CFO à¤•à¥€ à¤œà¤°à¥‚à¤°à¤¤ à¤•à¤¾ à¤¸à¤‚à¤•à¥‡à¤¤ à¤¦à¥‡à¤¨à¥‡ à¤µà¤¾à¤²à¥‡ à¤¸à¥à¤ªà¤·à¥à¤Ÿ à¤¸à¤‚à¤•à¥‡à¤¤à¥¤</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Nov 22, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('vcfo2025')">à¤”à¤° à¤ªà¤¢à¤¼à¥‡à¤‚ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="article-card" data-category="GST">
+        <div class="article-card-header"></div>
+        <div class="article-card-body">
+          <span class="article-tag">GST &middot; Oct 2025</span>
+          <h3>IT à¤¸à¥‡à¤µà¤¾à¤“à¤‚ à¤ªà¤° GST: à¤†à¤ªà¥‚à¤°à¥à¤¤à¤¿ à¤•à¤¾ à¤¸à¥à¤¥à¤¾à¤¨, à¤¨à¤¿à¤°à¥à¤¯à¤¾à¤¤ à¤²à¤¾à¤­ à¤”à¤° ITC à¤…à¤¨à¥à¤•à¥‚à¤²à¤¨</h3>
+          <p>IT à¤”à¤° à¤¸à¥‰à¤«à¥à¤Ÿà¤µà¥‡à¤¯à¤° à¤•à¤‚à¤ªà¤¨à¤¿à¤¯à¤¾à¤‚ à¤…à¤•à¥à¤¸à¤° à¤®à¤¹à¤¤à¥à¤µà¤ªà¥‚à¤°à¥à¤£ GST à¤°à¤¿à¤«à¤‚à¤¡ à¤šà¥‚à¤• à¤œà¤¾à¤¤à¥€ à¤¹à¥ˆà¤‚à¥¤ IT à¤µà¥à¤¯à¤µà¤¸à¤¾à¤¯à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤¸à¥‡à¤µà¤¾ à¤¨à¤¿à¤°à¥à¤¯à¤¾à¤¤, à¤†à¤ªà¥‚à¤°à¥à¤¤à¤¿ à¤¸à¥à¤¥à¤¾à¤¨ à¤¨à¤¿à¤¯à¤® à¤”à¤° ITC à¤…à¤§à¤¿à¤•à¤¤à¤®à¤•à¤°à¤£ à¤—à¤¾à¤‡à¤¡à¥¤</p>
+        </div>
+        <div class="article-card-footer">
+          <span class="article-date">Oct 8, 2025</span>
+          <button class="article-read-btn" onclick="openArticle('gstit2025')">à¤”à¤° à¤ªà¤¢à¤¼à¥‡à¤‚ <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>`,
+    footer: `<p>&copy; 2026 P. Dilip Kumar &amp; Associates &middot; à¤šà¤¾à¤°à¥à¤Ÿà¤°à¥à¤¡ à¤…à¤•à¤¾à¤‰à¤‚à¤Ÿà¥‡à¤‚à¤Ÿ &middot; à¤¬à¥ˆà¤‚à¤—à¤²à¥‹à¤° &nbsp;|&nbsp; <a href="pdka-website.html#contact">à¤¸à¤‚à¤ªà¤°à¥à¤• à¤•à¤°à¥‡à¤‚</a></p>`
+  }
+};
+
+function setInsightsLang(lang) {
+  var d = T[lang] || T.en;
+  document.getElementById('ins-hero').innerHTML = d.hero;
+  document.getElementById('ins-filter').innerHTML = d.filter;
+  document.getElementById('articlesGrid').innerHTML = d.grid;
+  document.getElementById('ins-footer').innerHTML = d.footer;
+  // Reset card visibility after grid swap
+  document.querySelectorAll('.article-card').forEach(function(c) { c.style.display = ''; });
+  // Close any open article
+  var full = document.getElementById('articleFull');
+  if (full) full.classList.remove('open');
+}
+
+var saved = localStorage.getItem('pdka-lang') || 'en';
+setInsightsLang(saved);
+window.addEventListener('storage', function(e) {
+  if (e.key === 'pdka-lang') setInsightsLang(e.newValue || 'en');
+});
+})();
+</script>
 
 <script id="pdka-iframe-nav">
 (function() {
