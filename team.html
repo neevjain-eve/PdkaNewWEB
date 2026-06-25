@@ -122,13 +122,55 @@
 </head>
 <body>
 
-<script>if(window.self!==window.top){document.write('<style>nav,.nav-mobile,.nav-toggle,.lang-dropdown,.theme-toggle{display:none!important}body,html{padding-top:0!important;margin-top:0!important}</style>');}</script>
+<script>if(window.self!==window.top){document.write('<style>nav,.nav-mobile,.nav-toggle,.lang-dropdown,.theme-toggle{display:none!important}body,html{padding-top:0!important;margin-top:0!important}
+    /* ── Language Dropdown ── */
+    .lang-dropdown { position: relative; }
+    .lang-btn {
+      display: flex; align-items: center; gap: 5px; background: none;
+      border: 1.5px solid var(--orange, #e8600a); color: var(--orange, #e8600a);
+      padding: 5px 11px; border-radius: 6px; cursor: pointer;
+      font-size: 13px; font-weight: 700; transition: background 0.18s, color 0.18s; white-space: nowrap;
+    }
+    .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; }
+    .lang-menu {
+      display: none; position: absolute; top: calc(100% + 6px); right: 0;
+      background: #fff; border: 1px solid #e5e5e5;
+      border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      list-style: none; padding: 6px; margin: 0; min-width: 130px; z-index: 9999;
+    }
+    .lang-menu.open { display: block; }
+    .lang-option {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 9px 12px; border-radius: 6px; cursor: pointer;
+      font-size: 14px; color: #1a1a1a; transition: background 0.15s;
+    }
+    .lang-option:hover { background: #f5f5f5; }
+    .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
+    [data-theme="dark"] .lang-btn { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.35); }
+    [data-theme="dark"] .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; }
+    [data-theme="dark"] .lang-menu { background: #1a2f5e; border-color: rgba(255,255,255,0.12); }
+    [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.85); }
+    [data-theme="dark"] .lang-option:hover { background: rgba(232,96,10,0.2); color: #fff; }
+    [data-theme="dark"] .lang-option.active { color: var(--orange, #e8600a); }
+  </style>');}</script>
 <nav>
   <a href="pdka-website.html" class="nav-logo">
     <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" />
   </a>
   <a href="pdka-website.html#team" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Website</a>
-  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+  <div class="lang-dropdown" id="teamLangDropdown">
+    <button class="lang-btn" onclick="toggleTeamLang(event)" aria-label="Language">
+      <i class="fas fa-globe"></i>
+      <span id="teamLangLabel">EN</span>
+      <i class="fas fa-chevron-down" style="font-size:10px;"></i>
+    </button>
+    <ul class="lang-menu" id="teamLangMenu">
+      <li><button onclick="setTeamLang('en')" class="lang-option active" id="topt-en">English</button></li>
+      <li><button onclick="setTeamLang('ja')" class="lang-option" id="topt-ja">日本語</button></li>
+      <li><button onclick="setTeamLang('hi')" class="lang-option" id="topt-hi">हिन्दी</button></li>
+    </ul>
+  </div>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
 </nav>
 
 <div class="hero-band">
@@ -384,5 +426,64 @@
 })();
 </script>
 
+
+<script id="pdka-team-i18n">
+(function(){
+  var T = {
+    en: {
+      heroLabel: 'Our People',
+      heroTitle: 'Meet the Full Team',
+      heroSub: 'P. Dilip Kumar &amp; Associates is powered by a team of qualified professionals across five practice areas. Click a department below to explore.',
+      backBtn: 'Back to Website',
+      cta: 'Get Started'
+    },
+    ja: {
+      heroLabel: '私たちのチーム',
+      heroTitle: 'チーム全員をご紹介',
+      heroSub: 'P.ディリップ・クマール&amp;アソシエイツは、5つの専門分野にわたる資格を持つプロフェッショナルで構成されています。',
+      backBtn: 'ウェブサイトに戻る',
+      cta: '始める'
+    },
+    hi: {
+      heroLabel: 'हमारे लोग',
+      heroTitle: 'पूरी टीम से मिलें',
+      heroSub: 'पी. दिलीप कुमार एंड एसोसिएट्स पाँच प्रैक्टिस क्षेत्रों में योग्य पेशेवरों की एक टीम द्वारा संचालित है।',
+      backBtn: 'वेबसाइट पर वापस जाएं',
+      cta: 'शुरू करें'
+    }
+  };
+
+  window.setTeamLang = function(lang) {
+    var t = T[lang];
+    var lb = document.querySelector('.label'); if (lb) lb.innerHTML = t.heroLabel;
+    var h1 = document.querySelector('.hero-band h1'); if (h1) h1.innerHTML = t.heroTitle;
+    var hs = document.querySelector('.hero-band p'); if (hs) hs.innerHTML = t.heroSub;
+    var bk = document.querySelector('.nav-back'); if (bk) bk.innerHTML = '<i class="fas fa-arrow-left"></i> ' + t.backBtn;
+    var ct = document.querySelector('.nav-cta'); if (ct) ct.textContent = t.cta;
+    document.getElementById('teamLangLabel').textContent = lang==='ja'?'JP':lang==='hi'?'HI':'EN';
+    document.querySelectorAll('#teamLangMenu .lang-option').forEach(function(b){b.classList.remove('active');});
+    var opt = document.getElementById('topt-'+lang); if (opt) opt.classList.add('active');
+    document.getElementById('teamLangMenu').classList.remove('open');
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
+  };
+
+  window.toggleTeamLang = function(e) {
+    e.stopPropagation();
+    document.getElementById('teamLangMenu').classList.toggle('open');
+  };
+  document.addEventListener('click', function() {
+    var m = document.getElementById('teamLangMenu');
+    if (m) m.classList.remove('open');
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      var saved = localStorage.getItem('pdka-lang');
+      if (saved && saved !== 'en') window.setTeamLang(saved);
+    } catch(e) {}
+  });
+})();
+</script>
 </body>
 </html>
