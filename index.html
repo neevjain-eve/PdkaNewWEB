@@ -4088,6 +4088,21 @@ function closeSvcIfOutside(e) {
 
 
   // ── Page overlay navigation ──
+  // Wire iframe onload once — sends language every time a page loads in the overlay
+  (function() {
+    var frame = document.getElementById('pdka-page-frame');
+    if (frame) {
+      frame.addEventListener('load', function() {
+        try {
+          var lang = window.pdkaLang || localStorage.getItem('pdka-lang');
+          if (lang && lang !== 'en' && frame.contentWindow) {
+            frame.contentWindow.postMessage({ type: 'pdka-set-lang', lang: lang }, '*');
+          }
+        } catch(e) {}
+      });
+    }
+  })();
+
   window.openPdkaPage = function(url, title) {
     var overlay = document.getElementById('pdka-page-overlay');
     var frame   = document.getElementById('pdka-page-frame');
