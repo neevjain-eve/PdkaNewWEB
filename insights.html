@@ -3008,5 +3008,31 @@
   });
 })();
 </script>
+
+<script>
+// Auto-apply saved language (works whether DOMContentLoaded has fired or not)
+(function() {
+  function _applyLang() {
+    try {
+      var s = localStorage.getItem('pdka-lang');
+      if (!s || s === 'en') return;
+      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
+      if (fn) fn(s);
+    } catch(e) {}
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _applyLang);
+  } else {
+    _applyLang();
+  }
+  // Also respond if parent changes language while this page is open in the iframe
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'pdka-set-lang') {
+      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
+      if (fn) fn(e.data.lang);
+    }
+  });
+})();
+</script>
 </body>
 </html>
