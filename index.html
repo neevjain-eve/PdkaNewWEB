@@ -4070,8 +4070,12 @@ function closeSvcIfOutside(e) {
     // Push language to open iframe (if About/Careers/etc. is currently open)
     try {
       var frame = document.getElementById('pdka-page-frame');
-      if (frame && frame.contentWindow) {
-        frame.contentWindow.postMessage({ type: 'pdka-set-lang', lang: lang }, '*');
+      if (frame && frame.contentWindow && frame.src && frame.src !== '') {
+        var iw = frame.contentWindow;
+        var fn = iw.setAboutLang || iw.setCarLang || iw.setTeamLang ||
+                 iw.setInsLang || iw.setPdkaLang;
+        if (fn) fn.call(iw, lang);
+        else iw.postMessage({ type: 'pdka-set-lang', lang: lang }, '*');
       }
     } catch(e) {}
   };
@@ -4094,9 +4098,18 @@ function closeSvcIfOutside(e) {
     if (frame) {
       frame.addEventListener('load', function() {
         try {
-          var lang = window.pdkaLang || localStorage.getItem('pdka-lang');
-          if (lang && lang !== 'en' && frame.contentWindow) {
-            frame.contentWindow.postMessage({ type: 'pdka-set-lang', lang: lang }, '*');
+          var lang = window.pdkaLang || localStorage.getItem('pdka-lang') || 'en';
+          if (lang !== 'en' && frame.contentWindow) {
+            var iw = frame.contentWindow;
+            // Direct same-origin call (most reliable)
+            var fn = iw.setAboutLang || iw.setCarLang || iw.setTeamLang ||
+                     iw.setInsLang || iw.setPdkaLang;
+            if (fn) {
+              fn.call(iw, lang);
+            } else {
+              // Fallback: postMessage if function not ready yet (shouldn't happen)
+              iw.postMessage({ type: 'pdka-set-lang', lang: lang }, '*');
+            }
           }
         } catch(e) {}
       });
