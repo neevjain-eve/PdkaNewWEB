@@ -3046,13 +3046,18 @@
 
   window.setInsLang = function(lang) {
     var t = T[lang];
+    if (!t) return;
     var sl = document.querySelector('.section-label'); if (sl) sl.textContent = t.label;
     var st = document.querySelector('.section-title'); if (st) st.innerHTML = t.title;
     var ct = document.querySelector('.nav-cta'); if (ct) ct.textContent = t.cta;
-    document.getElementById('insLangLabel').textContent = lang==='ja'?'JP':lang==='hi'?'HI':'EN';
-    document.querySelectorAll('#insLangMenu .lang-option').forEach(function(b){b.classList.remove('active');});
-    var opt = document.getElementById('iopt-'+lang); if (opt) opt.classList.add('active');
-    document.getElementById('insLangMenu').classList.remove('open');
+    var lbl = document.getElementById('insLangLabel') || document.getElementById('langLabel');
+    if (lbl) lbl.textContent = lang==='ja'?'JP':lang==='hi'?'HI':'EN';
+    ['en','ja','hi'].forEach(function(l) {
+      var b = document.getElementById('iopt-'+l) || document.getElementById('opt-'+l);
+      if (b) b.classList.toggle('active', l === lang);
+    });
+    var m = document.getElementById('insLangMenu') || document.getElementById('langMenu');
+    if (m) { m.classList.remove('open'); m.style.display = 'none'; }
     document.documentElement.lang = lang;
     try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
   };
