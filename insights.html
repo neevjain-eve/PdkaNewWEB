@@ -280,16 +280,16 @@
     <li><a href="pdka-website.html#contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
-    <div class="lang-dropdown" id="insLangDropdown">
-      <button class="lang-btn" onclick="toggleInsLang(event)" aria-label="Language">
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-btn" onclick="toggleLangMenu(event)" aria-label="Language">
         <i class="fas fa-globe"></i>
-        <span id="insLangLabel">EN</span>
+        <span id="langLabel">EN</span>
         <i class="fas fa-chevron-down" style="font-size:10px;"></i>
       </button>
-      <ul class="lang-menu" id="insLangMenu">
-        <li><button onclick="setInsLang('en')" class="lang-option active" id="iopt-en">English</button></li>
-        <li><button onclick="setInsLang('ja')" class="lang-option" id="iopt-ja">日本語</button></li>
-        <li><button onclick="setInsLang('hi')" class="lang-option" id="iopt-hi">हिन्दी</button></li>
+      <ul class="lang-menu" id="langMenu">
+        <li><button onclick="setLang('en')" class="lang-option active" id="opt-en">English</button></li>
+        <li><button onclick="setLang('ja')" class="lang-option" id="opt-ja">&#x65E5;&#x672C;&#x8A9E;</button></li>
+        <li><button onclick="setLang('hi')" class="lang-option" id="opt-hi">&#x939;&#x93F;&#x928;&#x094D;&#x926;&#x940;</button></li>
       </ul>
     </div>
         <button class="theme-toggle" onclick="toggleTheme()">
@@ -3044,5 +3044,34 @@
         }
     });
 </script>
+<script>
+  function toggleLangMenu(event) {
+    event.stopPropagation();
+    var menu = document.getElementById('langMenu');
+    if (!menu) return;
+    var isOpen = menu.style.display === 'block';
+    menu.style.display = isOpen ? 'none' : 'block';
+  }
+  function setLang(lang) {
+    var fn = window.setAboutLang || window.setCareersLang || window.setInsLang || window.setTeamLang;
+    if (fn) fn(lang);
+    var label = document.getElementById('langLabel');
+    if (label) label.textContent = lang === 'ja' ? 'JP' : lang === 'hi' ? 'HI' : 'EN';
+    ['en','ja','hi'].forEach(function(l) {
+      var btn = document.getElementById('opt-' + l);
+      if (btn) btn.classList.toggle('active', l === lang);
+    });
+    var menu = document.getElementById('langMenu');
+    if (menu) menu.style.display = 'none';
+    try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
+  }
+  document.addEventListener('click', function() {
+    var menu = document.getElementById('langMenu');
+    if (menu) menu.style.display = 'none';
+  });
+  (function() {
+    try { var lg = localStorage.getItem('pdka-lang'); if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
+  })();
+  </script>
 </body>
 </html>
