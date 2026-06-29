@@ -268,7 +268,7 @@
   </div>
 
   <div class="lang-dropdown" id="carLangDropdown" style="position:relative;margin-left:12px;">
-    <button onclick="toggleCarLang(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1px solid rgba(255,255,255,0.35);color:white;border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;">
+    <button onclick="toggleCarLang(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1.5px solid var(--orange,#e8600a);color:var(--orange,#e8600a);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;">
       <i class="fas fa-globe"></i><span id="carLangLabel">EN</span>
       <i class="fas fa-chevron-down" style="font-size:9px;"></i>
     </button>
@@ -840,6 +840,8 @@
     }
   });
 })();
+  window.toggleCarLangMenu = window.toggleCarLang;
+
 </script>
 
 

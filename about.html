@@ -794,7 +794,7 @@
   <button class="nav-toggle"><i class="fas fa-bars"></i></button>
 
   <div class="lang-dropdown" id="langDropdown" style="position:relative;margin-left:12px;">
-    <button class="lang-btn" onclick="toggleAboutLang(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1px solid rgba(255,255,255,0.35);color:white;border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;">
+    <button class="lang-btn" onclick="toggleAboutLang(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1.5px solid var(--orange,#e8600a);color:var(--orange,#e8600a);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;">
       <i class="fas fa-globe"></i><span id="aboutLangLabel">EN</span>
       <i class="fas fa-chevron-down" style="font-size:9px;"></i>
     </button>
@@ -1055,6 +1055,8 @@
     }
   });
 })();
+  window.toggleAboutLangMenu = window.toggleAboutLang;
+
 </script>
 
 
