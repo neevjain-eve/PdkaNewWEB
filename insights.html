@@ -3040,15 +3040,15 @@
 (function(){
   var T = {
     en: { label:'Knowledge Hub', title:'Expert Insights &amp; Updates', cta:'Get Started', back:'Back' },
-    ja: { label:'ナレッジハブ', title:'専門家のインサイトと最新情報', cta:'始める', back:'戻る' },
-    hi: { label:'ज्ञान केंद्र', title:'विशेषज्ञ अंतर्दृष्टि एवं अपडेट', cta:'शुरू करें', back:'वापस' }
+    ja: { label:'ナレッジハブ', title:'専門家の洞对とアップデート', cta:'始める', back:'戻る' },
+    hi: { label:'ज्ञान केंद्र', title:'विशेषज्ञ अंतर्दृष्टि और अपडेट', cta:'शुरू करें', back:'वापस' }
   };
 
   window.setInsLang = function(lang) {
     var t = T[lang];
     if (!t) return;
-    var sl = document.querySelector('.section-label'); if (sl) sl.textContent = t.label;
-    var st = document.querySelector('.section-title'); if (st) st.innerHTML = t.title;
+    var sl = document.querySelector('.page-hero-label'); if (sl) sl.textContent = t.label;
+    var st = document.querySelector('.page-hero-title'); if (st) st.innerHTML = t.title;
     var ct = document.querySelector('.nav-cta'); if (ct) ct.textContent = t.cta;
     var lbl = document.getElementById('insLangLabel') || document.getElementById('langLabel');
     if (lbl) lbl.textContent = lang==='ja'?'JP':lang==='hi'?'HI':'EN';
