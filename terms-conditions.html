@@ -27,7 +27,9 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--grey-light); min-height: 100vh; display: flex; flex-direction: column; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    nav { position: fixed; top: 0; transition: transform 0.3s ease; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-hidden { transform: translateY(-100%); }
+
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo img { height: 40px; width: auto; display: block; }
     .nav-back { display: flex; align-items: center; gap: 8px; color: var(--orange); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
@@ -161,11 +163,23 @@
     .lang-option.active { color: var(--orange, #e8600a) !important; }
   </style>');}</script>
 <nav>
-  <a href="pdka-website.html" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" />
   </a>
-  <a href="pdka-website.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Website</a>
-  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+  <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Website</a>
+  <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-btn" onclick="toggleLangMenu(event)" aria-label="Language">
+        <i class="fas fa-globe"></i>
+        <span id="langLabel">EN</span>
+        <i class="fas fa-chevron-down" style="font-size:10px;"></i>
+      </button>
+      <ul class="lang-menu" id="langMenu">
+        <li><button onclick="setLang('en');var _l=document.getElementById('langLabel');if(_l)_l.textContent='EN';" class="lang-option active" id="opt-en">English</button></li>
+        <li><button onclick="setLang('ja');var _l=document.getElementById('langLabel');if(_l)_l.textContent='JP';" class="lang-option" id="opt-ja">&#x65E5;&#x672C;&#x8A9E;</button></li>
+        <li><button onclick="setLang('hi');var _l=document.getElementById('langLabel');if(_l)_l.textContent='HI';" class="lang-option" id="opt-hi">&#x939;&#x93F;&#x928;&#x094D;&#x926;&#x940;</button></li>
+      </ul>
+    </div>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
 </nav>
 
 <div class="hero-band">
@@ -274,15 +288,15 @@
   <div class="contact-strip-links">
     <a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a>
     <a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a>
-    <a href="pdka-website.html#contact"><i class="fas fa-arrow-right"></i> Contact Page</a>
+    <a href="index.html#contact"><i class="fas fa-arrow-right"></i> Contact Page</a>
   </div>
 </div>
 
 <footer>
   <p id="tc-footer">© 2026 P. Dilip Kumar &amp; Associates &nbsp;·&nbsp;
-    <a href="pdka-website.html">Home</a>
+    <a href="index.html">Home</a>
     <a href="privacy-policy.html">Privacy Policy</a>
-    <a href="pdka-website.html#contact">Contact</a>
+    <a href="index.html#contact">Contact</a>
   </p>
 </footer>
 
@@ -382,8 +396,8 @@
       <li><a href="#s12">Changes to Terms</a></li>
     </ol>`,
     body: null,
-    contact: `<h3>Questions about these terms?</h3><p>Contact us directly for any clarifications regarding our terms of engagement.</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="pdka-website.html#contact"><i class="fas fa-arrow-right"></i> Contact Page</a></div>`,
-    footer: `&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="pdka-website.html">Home</a><a href="privacy-policy.html">Privacy Policy</a><a href="pdka-website.html#contact">Contact</a>`
+    contact: `<h3>Questions about these terms?</h3><p>Contact us directly for any clarifications regarding our terms of engagement.</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="index.html#contact"><i class="fas fa-arrow-right"></i> Contact Page</a></div>`,
+    footer: `&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="index.html">Home</a><a href="privacy-policy.html">Privacy Policy</a><a href="index.html#contact">Contact</a>`
   };
 
   var JA = {
@@ -457,8 +471,8 @@
       <h2><span class="sec-num">12</span> 規約の変更</h2>
       <p>PDKAは、本規約をいつでも更新する権利を留保します。変更後も本ウェブサイトを継続してご利用いただくことで、改訂された規約への同意とみなされます。</p>
     </div>`,
-    contact: `<h3>利用規約についてご不明な点は？</h3><p>業務契約条件に関するご不明な点は、直接お問い合わせください。</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="pdka-website.html#contact"><i class="fas fa-arrow-right"></i> お問い合わせページ</a></div>`,
-    footer: `&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="pdka-website.html">ホーム</a><a href="privacy-policy.html">プライバシーポリシー</a><a href="pdka-website.html#contact">お問い合わせ</a>`
+    contact: `<h3>利用規約についてご不明な点は？</h3><p>業務契約条件に関するご不明な点は、直接お問い合わせください。</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="index.html#contact"><i class="fas fa-arrow-right"></i> お問い合わせページ</a></div>`,
+    footer: `&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="index.html">ホーム</a><a href="privacy-policy.html">プライバシーポリシー</a><a href="index.html#contact">お問い合わせ</a>`
   };
 ,
     HI = {
@@ -532,8 +546,8 @@
       <h2><span class="sec-num">12</span> शर्तों में बदलाव</h2>
       <p>PDKA इन शर्तों को किसी भी समय अपडेट करने का अधिकार सुरक्षित रखता है। वेबसाइट का निरंतर उपयोग संशोधित शर्तों की स्वीकृति मानी जाएगी।</p>
     </div>`,
-    contact: `<h3>इन शर्तों के बारे में प्रश्न हैं?</h3><p>हमारी कार्य अनुबंध शर्तों के बारे में किसी भी स्पष्टीकरण के लिए सीधे हमसे संपर्क करें।</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="pdka-website.html#contact"><i class="fas fa-arrow-right"></i> संपर्क पृष्ठ</a></div>`,
-    footer: `&copy; 2026 पी. दिलीप कुमार एंड एसोसिएट्स &nbsp;&middot;&nbsp; <a href="pdka-website.html">होम</a><a href="privacy-policy.html">गोपनीयता नीति</a><a href="pdka-website.html#contact">संपर्क</a>`
+    contact: `<h3>इन शर्तों के बारे में प्रश्न हैं?</h3><p>हमारी कार्य अनुबंध शर्तों के बारे में किसी भी स्पष्टीकरण के लिए सीधे हमसे संपर्क करें।</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="index.html#contact"><i class="fas fa-arrow-right"></i> संपर्क पृष्ठ</a></div>`,
+    footer: `&copy; 2026 पी. दिलीप कुमार एंड एसोसिएट्स &nbsp;&middot;&nbsp; <a href="index.html">होम</a><a href="privacy-policy.html">गोपनीयता नीति</a><a href="index.html#contact">संपर्क</a>`
   };
 
   function setLang(lang) {
@@ -596,5 +610,18 @@
     if (menu) menu.style.display = 'none';
   });
   </script>
-</body>
+
+<script>
+  (function() {
+    var nav = document.querySelector("nav");
+    if (!nav) return;
+    var lastY = 0;
+    window.addEventListener("scroll", function() {
+      var y = window.scrollY;
+      if (y > lastY && y > 80) { nav.classList.add("nav-hidden"); }
+      else { nav.classList.remove("nav-hidden"); }
+      lastY = y;
+    }, { passive: true });
+  })();
+</script></body>
 </html>

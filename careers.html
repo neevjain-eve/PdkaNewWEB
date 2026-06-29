@@ -40,11 +40,13 @@
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed; top: 0; transition: transform 0.3s ease; left: 0; right: 0; z-index: 1000;
       background: rgba(13,27,62,0.97); backdrop-filter: blur(12px);
       padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+    .nav-hidden { transform: translateY(-100%); }
+
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .nav-logo-text { color: white; }
     .nav-logo-text strong { display: block; font-size: 15px; font-weight: 700; }
@@ -314,22 +316,22 @@
     .lang-option.active { color: var(--orange, #e8600a) !important; }
   </style>');}</script>
 <nav>
-  <a href="pdka-website.html" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" style="height:40px;width:auto;display:block;" />
   </a>
   <ul class="nav-links">
-    <li><a href="pdka-website.html#home">Home</a></li>
-    <li><a href="pdka-website.html#about">About</a></li>
-    <li><a href="pdka-website.html#founder">Founder</a></li>
-    <li><a href="pdka-website.html#services">Services</a></li>
-    <li><a href="pdka-website.html#team">Team</a></li>
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#founder">Founder</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#team">Team</a></li>
     <li><a href="insights.html">Insights</a></li>
     <li><a href="careers.html" class="active">Careers</a></li>
-    <li><a href="pdka-website.html#contact">Contact</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
     <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
-    <a href="pdka-website.html#contact" class="nav-cta">Get Started</a>
+    <a href="index.html#contact" class="nav-cta">Get Started</a>
     <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
   </div>
 
@@ -349,14 +351,14 @@
 
 <!-- MOBILE NAV DRAWER -->
 <ul class="nav-mobile" id="mobileNav">
-  <li><a href="pdka-website.html#home">Home</a></li>
-  <li><a href="pdka-website.html#about">About</a></li>
-  <li><a href="pdka-website.html#founder">Founder</a></li>
-  <li><a href="pdka-website.html#services">Services</a></li>
-  <li><a href="pdka-website.html#team">Team</a></li>
+  <li><a href="index.html#home">Home</a></li>
+  <li><a href="index.html#about">About</a></li>
+  <li><a href="index.html#founder">Founder</a></li>
+  <li><a href="index.html#services">Services</a></li>
+  <li><a href="index.html#team">Team</a></li>
   <li><a href="insights.html">Insights</a></li>
   <li><a href="careers.html" class="active">Careers</a></li>
-  <li><a href="pdka-website.html#contact">Contact</a></li>
+  <li><a href="index.html#contact">Contact</a></li>
 </ul>
 
 <!-- PAGE HERO -->
@@ -474,7 +476,7 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="pdka-website.html" class="nav-logo" style="text-decoration:none;">
+        <a href="index.html" class="nav-logo" style="text-decoration:none;">
           <div class="nav-logo-text">
             <strong style="font-size:16px;">P. Dilip Kumar &amp; Associates</strong>
             <span>Chartered Accountants · Bangalore</span>
@@ -485,21 +487,21 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="pdka-website.html#services">Audit &amp; Assurance</a></li>
-          <li><a href="pdka-website.html#services">Taxation</a></li>
-          <li><a href="pdka-website.html#services">FEMA &amp; International</a></li>
-          <li><a href="pdka-website.html#services">IS Audit (CISA/DISA)</a></li>
-          <li><a href="pdka-website.html#services">Virtual CFO</a></li>
+          <li><a href="index.html#services">Audit &amp; Assurance</a></li>
+          <li><a href="index.html#services">Taxation</a></li>
+          <li><a href="index.html#services">FEMA &amp; International</a></li>
+          <li><a href="index.html#services">IS Audit (CISA/DISA)</a></li>
+          <li><a href="index.html#services">Virtual CFO</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="pdka-website.html#about">About Us</a></li>
-          <li><a href="pdka-website.html#team">Our Team</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#team">Our Team</a></li>
           <li><a href="insights.html">Insights</a></li>
           <li><a href="careers.html">Careers</a></li>
-          <li><a href="pdka-website.html#contact">Contact Us</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -982,5 +984,18 @@
     try { var lg = localStorage.getItem('pdka-lang'); if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
   })();
   </script>
-</body>
+
+<script>
+  (function() {
+    var nav = document.querySelector("nav");
+    if (!nav) return;
+    var lastY = 0;
+    window.addEventListener("scroll", function() {
+      var y = window.scrollY;
+      if (y > lastY && y > 80) { nav.classList.add("nav-hidden"); }
+      else { nav.classList.remove("nav-hidden"); }
+      lastY = y;
+    }, { passive: true });
+  })();
+</script></body>
 </html>

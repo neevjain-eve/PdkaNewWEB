@@ -42,11 +42,13 @@
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed; top: 0; transition: transform 0.3s ease; left: 0; right: 0; z-index: 1000;
       background: rgba(13,27,62,0.97); backdrop-filter: blur(12px);
       padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+    .nav-hidden { transform: translateY(-100%); }
+
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .nav-logo-icon {
       width: 42px; height: 42px; background: var(--orange); border-radius: 8px;
@@ -741,7 +743,17 @@
     .lang-option { color: rgba(255,255,255,0.92) !important; } [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.92) !important; }
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
-  </style>
+  
+    .nav-mobile {
+      display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
+      background: rgba(13,27,62,0.98); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 5% 24px; flex-direction: column; gap: 0; list-style: none;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile li { list-style: none; }
+    .nav-mobile a { display: block; padding: 12px 0; color: var(--orange, #e8600a); font-size: 15px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-mobile a:hover, .nav-mobile a.active { color: white; font-weight: 700; }
+</style>
   <style>
     .about-page-hero {
       background: var(--navy);
@@ -875,22 +887,22 @@
     .lang-option.active { color: var(--orange, #e8600a) !important; }
   </style>');}</script>
 <nav>
-  <a href="pdka-website.html" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" style="height:40px;width:auto;display:block;" />
   </a>
   <ul class="nav-links">
-    <li><a href="pdka-website.html#home">Home</a></li>
+    <li><a href="index.html#home">Home</a></li>
     <li><a href="about.html" class="active">About</a></li>
-    <li><a href="pdka-website.html#founder">Founder</a></li>
-    <li><a href="pdka-website.html#services">Services</a></li>
-    <li><a href="pdka-website.html#team">Team</a></li>
+    <li><a href="index.html#founder">Founder</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#team">Team</a></li>
     <li><a href="insights.html">Insights</a></li>
     <li><a href="careers.html">Careers</a></li>
-    <li><a href="pdka-website.html#contact">Contact</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
   </ul>
-  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
-  <a href="pdka-website.html#contact" class="nav-cta">Get Started</a>
-  <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
+  <a href="index.html#contact" class="nav-cta">Get Started</a>
+  <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
 
   <div class="lang-dropdown" id="langDropdown">
       <button class="lang-btn" onclick="toggleLangMenu(event)" aria-label="Language">
@@ -905,6 +917,16 @@
       </ul>
     </div>
 </nav>
+<ul class="nav-mobile" id="mobileNav">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="about.html" class="active">About</a></li>
+  <li><a href="index.html#founder">Founder</a></li>
+  <li><a href="index.html#services">Services</a></li>
+  <li><a href="team.html">Team</a></li>
+  <li><a href="insights.html">Insights</a></li>
+  <li><a href="careers.html">Careers</a></li>
+  <li><a href="index.html#contact">Contact</a></li>
+</ul>
 
 <!-- HERO BAND -->
 <div class="about-page-hero" id="abt-hero">
@@ -1227,5 +1249,35 @@
     try { var lg = localStorage.getItem('pdka-lang'); if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
   })();
   </script>
-</body>
+
+<script>
+  function toggleMobileNav() {
+    var nav = document.getElementById("mobileNav");
+    var btn = document.getElementById("navToggle");
+    if (!nav) return;
+    nav.classList.toggle("open");
+    if (btn) btn.innerHTML = nav.classList.contains("open") ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+  }
+  document.addEventListener("click", function(e) {
+    var nav = document.getElementById("mobileNav");
+    var btn = document.getElementById("navToggle");
+    if (nav && nav.classList.contains("open") && !nav.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+      nav.classList.remove("open");
+      if (btn) btn.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+  });
+</script>
+<script>
+  (function() {
+    var nav = document.querySelector("nav");
+    if (!nav) return;
+    var lastY = 0;
+    window.addEventListener("scroll", function() {
+      var y = window.scrollY;
+      if (y > lastY && y > 80) { nav.classList.add("nav-hidden"); }
+      else { nav.classList.remove("nav-hidden"); }
+      lastY = y;
+    }, { passive: true });
+  })();
+</script></body>
 </html>      
