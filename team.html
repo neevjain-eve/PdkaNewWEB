@@ -148,7 +148,7 @@
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
     /* Dark nav override for sub-pages */
     .lang-menu { background: #1a2f5e !important; border-color: rgba(255,255,255,0.15) !important; }
-    .lang-option { color: rgba(255,255,255,0.9) !important; }
+    .lang-option { color: rgba(255,255,255,0.92) !important; } [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.92) !important; }
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
   </style>
@@ -179,7 +179,7 @@
     }
     .lang-option:hover { background: #f5f5f5; }
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
-    [data-theme="dark"] .lang-btn { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.35); }
+    [data-theme="dark"] .lang-btn { color: var(--orange, #e8600a); border-color: var(--orange, #e8600a); }
     [data-theme="dark"] .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; }
     [data-theme="dark"] .lang-menu { background: #1a2f5e; border-color: rgba(255,255,255,0.12); }
     [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.85); }
@@ -215,7 +215,7 @@
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
     /* Dark nav override for sub-pages */
     .lang-menu { background: #1a2f5e !important; border-color: rgba(255,255,255,0.15) !important; }
-    .lang-option { color: rgba(255,255,255,0.9) !important; }
+    .lang-option { color: rgba(255,255,255,0.92) !important; } [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.92) !important; }
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
   </style>');}</script>
@@ -231,9 +231,9 @@
         <i class="fas fa-chevron-down" style="font-size:10px;"></i>
       </button>
       <ul class="lang-menu" id="langMenu">
-        <li><button onclick="setLang('en')" class="lang-option active" id="opt-en">English</button></li>
-        <li><button onclick="setLang('ja')" class="lang-option" id="opt-ja">&#x65E5;&#x672C;&#x8A9E;</button></li>
-        <li><button onclick="setLang('hi')" class="lang-option" id="opt-hi">&#x939;&#x93F;&#x928;&#x094D;&#x926;&#x940;</button></li>
+        <li><button onclick="setLang('en');var _l=document.getElementById('langLabel');if(_l)_l.textContent='EN';" class="lang-option active" id="opt-en">English</button></li>
+        <li><button onclick="setLang('ja');var _l=document.getElementById('langLabel');if(_l)_l.textContent='JP';" class="lang-option" id="opt-ja">&#x65E5;&#x672C;&#x8A9E;</button></li>
+        <li><button onclick="setLang('hi');var _l=document.getElementById('langLabel');if(_l)_l.textContent='HI';" class="lang-option" id="opt-hi">&#x939;&#x93F;&#x928;&#x094D;&#x926;&#x940;</button></li>
       </ul>
     </div>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
