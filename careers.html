@@ -853,15 +853,18 @@
   window.setCarLang = function(lang) {
     var heroEl = document.getElementById('car-hero-content');
     var mainEl = document.getElementById('car-inner');
-    if (heroEl && T[lang].hero) heroEl.innerHTML = T[lang].hero;
-    if (mainEl && T[lang].main) mainEl.innerHTML = T[lang].main;
+    if (heroEl && T[lang] && T[lang].hero) heroEl.innerHTML = T[lang].hero;
+    if (mainEl && T[lang] && T[lang].main) mainEl.innerHTML = T[lang].main;
     var cta = document.querySelector('.nav-cta');
     if (cta) cta.textContent = lang==='ja' ? '始める' : (lang==='hi' ? 'शुरू करें' : 'Get Started');
-    document.getElementById('carLangLabel').textContent = lang==='ja' ? 'JP' : (lang==='hi' ? 'HI' : 'EN');
-    document.getElementById('carLangMenu').classList.remove('open');
+    var lbl = document.getElementById('carLangLabel') || document.getElementById('langLabel');
+    if (lbl) lbl.textContent = lang==='ja' ? 'JP' : (lang==='hi' ? 'HI' : 'EN');
+    var m = document.getElementById('carLangMenu') || document.getElementById('langMenu');
+    if (m) { m.classList.remove('open'); m.style.display = 'none'; }
     document.documentElement.lang = lang;
     try { localStorage.setItem('pdka-lang', lang); } catch(e){}
   };
+  window.setCareersLang = window.setCarLang;
 
   window.toggleCarLang = function(e) {
     e.stopPropagation();
