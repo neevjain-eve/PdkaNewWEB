@@ -701,7 +701,7 @@
 
     /* Theme toggle button */
     .theme-toggle {
-      background: none; border: 1.5px solid rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.55);
       color: white; border-radius: 20px; padding: 5px 12px;
       cursor: pointer; font-size: 14px; display: flex; align-items: center;
       gap: 6px; transition: all 0.2s; white-space: nowrap;
@@ -789,7 +789,7 @@
     <li><a href="careers.html">Careers</a></li>
     <li><a href="pdka-website.html#contact">Contact</a></li>
   </ul>
-  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
   <a href="pdka-website.html#contact" class="nav-cta">Get Started</a>
   <button class="nav-toggle"><i class="fas fa-bars"></i></button>
 
@@ -852,24 +852,29 @@
 
 <script>
   function toggleTheme() {
-    const html = document.documentElement;
-    const btn  = document.getElementById('themeToggle');
+    var html = document.documentElement;
+    var icon = document.getElementById('themeIcon');
+    var label = document.getElementById('themeLabel');
     if (html.getAttribute('data-theme') === 'dark') {
       html.removeAttribute('data-theme');
-      btn.textContent = '🌙 Dark';
+      if (icon) icon.className = 'fas fa-moon';
+      if (label) label.textContent = 'Dark';
       localStorage.setItem('pdka-theme', 'light');
     } else {
       html.setAttribute('data-theme', 'dark');
-      btn.textContent = '☀️ Light';
+      if (icon) icon.className = 'fas fa-sun';
+      if (label) label.textContent = 'Light';
       localStorage.setItem('pdka-theme', 'dark');
     }
   }
   (function() {
-    const saved = localStorage.getItem('pdka-theme');
-    const btn = document.getElementById('themeToggle');
+    var saved = localStorage.getItem('pdka-theme');
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
-      if (btn) btn.textContent = '☀️ Light';
+      var icon = document.getElementById('themeIcon');
+      var label = document.getElementById('themeLabel');
+      if (icon) icon.className = 'fas fa-sun';
+      if (label) label.textContent = 'Light';
     }
   })();
 </script>
