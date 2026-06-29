@@ -474,6 +474,7 @@
     contact: `<h3>利用規約についてご不明な点は？</h3><p>業務契約条件に関するご不明な点は、直接お問い合わせください。</p><div class="contact-strip-links"><a href="tel:+918041219056"><i class="fas fa-phone"></i> 080-4121-9056</a><a href="mailto:dilip@pdka.in"><i class="fas fa-envelope"></i> dilip@pdka.in</a><a href="index.html#contact"><i class="fas fa-arrow-right"></i> お問い合わせページ</a></div>`,
     footer: `&copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; <a href="index.html">ホーム</a><a href="privacy-policy.html">プライバシーポリシー</a><a href="index.html#contact">お問い合わせ</a>`
   };
+  var HI = EN; // fallback to English for Hindi
 ,
     HI = {
     hero: `<div class="label">कानूनी</div><h1>नियम एवं शर्तें</h1><p class="meta">अंतिम अपडेट: मार्च 2025 &nbsp;&middot;&nbsp; पी. दिलीप कुमार एंड एसोसिएट्स</p>`,
@@ -563,6 +564,10 @@
     if (con)  con.innerHTML  = d.contact;
     if (foot) foot.innerHTML = d.footer;
     document.documentElement.lang = (lang === 'ja') ? 'ja' : (lang === 'hi' ? 'hi' : 'en');
+      var _lbl = document.getElementById('langLabel'); if(_lbl) _lbl.textContent = lang==='ja'?'JP':lang==='hi'?'HI':'EN';
+    var _m = document.getElementById('langMenu'); if(_m) _m.style.display='none';
+    ['en','ja','hi'].forEach(function(l){var b=document.getElementById('opt-'+l);if(b)b.classList.toggle('active',l===lang);});
+    try{localStorage.setItem('pdka-lang',lang);}catch(e){}
   }
 
   // Script is at bottom of body — DOM elements already exist, call directly
@@ -586,30 +591,7 @@
     });
 </script>
 
-<script>
-  function toggleLangMenu(event) {
-    event.stopPropagation();
-    var menu = document.getElementById('langMenu');
-    if (!menu) return;
-    var isOpen = menu.style.display === 'block';
-    menu.style.display = isOpen ? 'none' : 'block';
-  }
-  function setLang(lang) {
-    var label = document.getElementById('langLabel');
-    if (label) label.textContent = lang === 'ja' ? 'JP' : lang === 'hi' ? 'HI' : 'EN';
-    ['en','ja','hi'].forEach(function(l) {
-      var btn = document.getElementById('opt-' + l);
-      if (btn) btn.classList.toggle('active', l === lang);
-    });
-    var menu = document.getElementById('langMenu');
-    if (menu) menu.style.display = 'none';
-    try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
-  }
-  document.addEventListener('click', function() {
-    var menu = document.getElementById('langMenu');
-    if (menu) menu.style.display = 'none';
-  });
-  </script>
+
 
 <script>
   (function() {
