@@ -72,7 +72,7 @@
     }
     .nav-cta:hover { background: var(--orange-light) !important; }
     .theme-toggle {
-      background: #0d1b3e; border: 1.5px solid rgba(255,255,255,0.18);
+      background: #0d1b3e; border: 1.5px solid rgba(255,255,255,0.55);
       color: white; border-radius: 24px; padding: 7px 16px;
       cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center;
       gap: 7px; transition: all 0.2s; white-space: nowrap; letter-spacing: 0.2px;
@@ -3011,38 +3011,6 @@
 
 </script>
 
-<script>
-// Auto-apply saved language (works whether DOMContentLoaded has fired or not)
-(function() {
-  function _applyLang() {
-    try {
-      var s = localStorage.getItem('pdka-lang');
-      if (!s || s === 'en') return;
-      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
-      if (fn) fn(s);
-    } catch(e) {}
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', _applyLang);
-  } else {
-    _applyLang();
-  }
-  // Also respond if parent changes language while this page is open in the iframe
-  window.addEventListener('message', function(e) {
-    if (e.data && e.data.type === 'pdka-set-lang') {
-      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
-      if (fn) fn(e.data.lang);
-    }
-  });
-})();
 
-    // Auto-apply saved language on load
-    document.addEventListener('DOMContentLoaded', function() {
-        var savedLang = localStorage.getItem('pdka-lang');
-        if (savedLang && typeof setAboutLang === 'function') {
-            setAboutLang(savedLang);
-        }
-    });
-</script>
 </body>
 </html>
