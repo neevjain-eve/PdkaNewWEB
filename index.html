@@ -775,7 +775,7 @@
     }
     .theme-toggle i { font-size: 14px; }
     .theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
-    [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
+    [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.55); color: rgba(255,255,255,0.9); }
   
     /* ── 28+ STAT COUNTER ── */
     .about-logo {
@@ -865,7 +865,7 @@
 
     
     /* ── Lang dropdown dark mode ── */
-    [data-theme="dark"] .lang-btn { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.35); }
+    [data-theme="dark"] .lang-btn { color: var(--orange, #e8600a); border-color: var(--orange, #e8600a); }
     [data-theme="dark"] .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; border-color: var(--orange, #e8600a); }
     [data-theme="dark"] .lang-menu { background: #1a2f5e; border-color: rgba(255,255,255,0.12); }
     [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.85); }
@@ -2136,7 +2136,28 @@
 
 
   // ── DARK / LIGHT THEME TOGGLE ──
-  function toggleTheme() {
+      // LANGUAGE DROPDOWN TOGGLE
+    function toggleLangMenu(event) {
+        event.stopPropagation();
+        const menu     = document.getElementById('langMenu');
+        const dropdown = document.getElementById('langDropdown');
+        if (!menu) return;
+        const isOpen = menu.style.display === 'block';
+        menu.style.display = isOpen ? 'none' : 'block';
+        if (dropdown) dropdown.classList.toggle('open', !isOpen);
+    }
+
+    // Close lang menu when clicking outside
+    document.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('langDropdown');
+        if (dropdown && !dropdown.contains(e.target)) {
+            const menu = document.getElementById('langMenu');
+            if (menu) menu.style.display = 'none';
+            if (dropdown) dropdown.classList.remove('open');
+        }
+    });
+
+function toggleTheme() {
     const html  = document.documentElement;
     const icon  = document.getElementById('themeIcon');
     const label = document.getElementById('themeLabel');

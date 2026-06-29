@@ -1112,6 +1112,14 @@
     }
   }, true); // capture phase — fires before any inline onclick
 })();
+
+    // Auto-apply saved language on load
+    document.addEventListener('DOMContentLoaded', function() {
+        var savedLang = localStorage.getItem('pdka-lang');
+        if (savedLang && typeof setAboutLang === 'function') {
+            setAboutLang(savedLang);
+        }
+    });
 </script>
 
 </body>

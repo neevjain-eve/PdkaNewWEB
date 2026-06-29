@@ -569,6 +569,14 @@
     if (e.key === 'pdka-lang') setLang(e.newValue || 'en');
   });
 })();
+
+    // Auto-apply saved language on load
+    document.addEventListener('DOMContentLoaded', function() {
+        var savedLang = localStorage.getItem('pdka-lang');
+        if (savedLang && typeof setLang === 'function') {
+            setLang(savedLang);
+        }
+    });
 </script>
 
 </body>
