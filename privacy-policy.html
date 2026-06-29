@@ -28,7 +28,7 @@
     body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--grey-light); min-height: 100vh; display: flex; flex-direction: column; }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(13,27,62,0.97); backdrop-filter: blur(12px); padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo img { height: 40px; width: auto; display: block; }
     .nav-back { display: flex; align-items: center; gap: 8px; color: var(--orange); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
@@ -99,41 +99,17 @@
       .toc-box { position: static; }
       .legal-card { padding: 28px 20px; }
     }
-    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: white; }
-    .nav-mobile { display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999; background: rgba(13,27,62,0.98); padding: 16px 5% 24px; flex-direction: column; gap: 0; }
-    .nav-mobile.open { display: flex; }
-    .nav-mobile li { list-style: none; }
-    .nav-mobile a { display: block; padding: 12px 0; color: rgba(255,255,255,0.7); font-size: 15px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .nav-mobile a:hover { color: white; }
-    .nav-toggle { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
-    @media (max-width: 768px) { .nav-links { display: none !important; } .nav-toggle { display: block; } }
   </style>
 </head>
 <body>
 
 <script>if(window.self!==window.top){document.write('<style>nav,.nav-mobile,.nav-toggle,.lang-dropdown,.theme-toggle{display:none!important}body,html{padding-top:0!important;margin-top:0!important}</style>');}</script>
-<script>if(window.self!==window.top){document.write('<style>nav,.nav-mobile,.nav-toggle,.theme-toggle{display:none!important}body,html{padding-top:0!important;margin-top:0!important}</style>');}</script>
 <nav>
   <a href="pdka-website.html" class="nav-logo">
-    <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" style="height:40px;width:auto;display:block;" />
+    <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" />
   </a>
-  <ul class="nav-links">
-    <li><a href="pdka-website.html#home">Home</a></li>
-    <li><a href="pdka-website.html#about">About</a></li>
-    <li><a href="pdka-website.html#founder">Founder</a></li>
-    <li><a href="pdka-website.html#services">Services</a></li>
-    <li><a href="pdka-website.html#team">Team</a></li>
-    <li><a href="insights.html">Insights</a></li>
-    <li><a href="careers.html">Careers</a></li>
-    <li><a href="pdka-website.html#contact">Contact</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
-    <a href="pdka-website.html#contact" class="nav-cta">Get Started</a>
-    <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
-  </div>
+  <a href="pdka-website.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Website</a>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
 </nav>
 
 <div class="hero-band">
@@ -585,7 +561,7 @@
   // Script is at bottom of body — DOM elements already exist, call directly
   (function() {
     var lang = localStorage.getItem('pdka-lang') || 'en';
-    if (lang === 'ja' || lang === 'hi') setLang(lang);
+    if (lang === 'ja') setLang('ja');
   })();
 
   // Also respond to live language changes from parent window
@@ -593,6 +569,14 @@
     if (e.key === 'pdka-lang') setLang(e.newValue || 'en');
   });
 })();
+
+    // Auto-apply saved language on load
+    document.addEventListener('DOMContentLoaded', function() {
+        var savedLang = localStorage.getItem('pdka-lang');
+        if (savedLang && typeof setLang === 'function') {
+            setLang(savedLang);
+        }
+    });
 </script>
 
 </body>

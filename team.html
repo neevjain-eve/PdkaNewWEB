@@ -28,7 +28,7 @@
     body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--grey-light); min-height: 100vh; display: flex; flex-direction: column; }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(13,27,62,0.97); backdrop-filter: blur(12px); padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo img { height: 40px; width: auto; display: block; }
     .nav-back { display: flex; align-items: center; gap: 8px; color: var(--orange); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
@@ -153,37 +153,24 @@
     [data-theme="dark"] .lang-option:hover { background: rgba(232,96,10,0.2); color: #fff; }
     [data-theme="dark"] .lang-option.active { color: var(--orange, #e8600a); }
   </style>');}</script>
-<script>if(window.self!==window.top){document.write('<style>nav,.nav-mobile,.nav-toggle,.lang-dropdown,.theme-toggle{display:none!important}body,html{padding-top:0!important;margin-top:0!important}</style>');}</script>
 <nav>
   <a href="pdka-website.html" class="nav-logo">
-    <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" style="height:40px;width:auto;display:block;" />
+    <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" />
   </a>
-  <ul class="nav-links">
-    <li><a href="pdka-website.html#home">Home</a></li>
-    <li><a href="pdka-website.html#about">About</a></li>
-    <li><a href="pdka-website.html#founder">Founder</a></li>
-    <li><a href="pdka-website.html#services">Services</a></li>
-    <li><a href="pdka-website.html#team" class="active">Team</a></li>
-    <li><a href="insights.html">Insights</a></li>
-    <li><a href="careers.html">Careers</a></li>
-    <li><a href="pdka-website.html#contact">Contact</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
-    <a href="pdka-website.html#contact" class="nav-cta">Get Started</a>
-    <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
-  </div>
-  <div class="lang-dropdown" id="teamLangDropdown" style="position:relative;margin-left:12px;">
-    <button onclick="toggleTeamLang(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1.5px solid var(--orange,#e8600a);color:var(--orange,#e8600a);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;">
-      <i class="fas fa-globe"></i><span id="teamLangLabel">EN</span>
-      <i class="fas fa-chevron-down" style="font-size:9px;"></i>
+  <a href="pdka-website.html#team" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Website</a>
+  <div class="lang-dropdown" id="teamLangDropdown">
+    <button class="lang-btn" onclick="toggleTeamLang(event)" aria-label="Language">
+      <i class="fas fa-globe"></i>
+      <span id="teamLangLabel">EN</span>
+      <i class="fas fa-chevron-down" style="font-size:10px;"></i>
     </button>
-    <ul id="teamLangMenu" style="display:none;position:absolute;right:0;top:110%;background:white;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.15);list-style:none;padding:6px;margin:0;min-width:110px;z-index:9999;">
-      <li><button onclick="setTeamLang('en')" id="topt-en" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;font-weight:700;">English</button></li>
-      <li><button onclick="setTeamLang('ja')" id="topt-ja" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;">日本語</button></li>
-      <li><button onclick="setTeamLang('hi')" id="topt-hi" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;">हिंदी</button></li>
+    <ul class="lang-menu" id="teamLangMenu">
+      <li><button onclick="setTeamLang('en')" class="lang-option active" id="topt-en">English</button></li>
+      <li><button onclick="setTeamLang('ja')" class="lang-option" id="topt-ja">日本語</button></li>
+      <li><button onclick="setTeamLang('hi')" class="lang-option" id="topt-hi">हिन्दी</button></li>
     </ul>
   </div>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
 </nav>
 
 <div class="hero-band">
@@ -379,14 +366,7 @@
     const saved = localStorage.getItem('pdka-theme');
     const btn = document.getElementById('themeToggle');
     if (saved === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); if (btn) btn.textContent = '☀️ Light'; }
-  
-  // Respond when parent page changes language
-  window.addEventListener('storage', function(e) {
-    if (e.key === 'pdka-lang' && e.newValue) {
-      try { window.setTeamLang(e.newValue); } catch(ex) {}
-    }
-  });
-})();
+  })();
 </script>
 
 
@@ -508,6 +488,38 @@
 
 </script>
 
+<script>
+// Auto-apply saved language (works whether DOMContentLoaded has fired or not)
+(function() {
+  function _applyLang() {
+    try {
+      var s = localStorage.getItem('pdka-lang');
+      if (!s || s === 'en') return;
+      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
+      if (fn) fn(s);
+    } catch(e) {}
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _applyLang);
+  } else {
+    _applyLang();
+  }
+  // Also respond if parent changes language while this page is open in the iframe
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'pdka-set-lang') {
+      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
+      if (fn) fn(e.data.lang);
+    }
+  });
+})();
 
+    // Auto-apply saved language on load
+    document.addEventListener('DOMContentLoaded', function() {
+        var savedLang = localStorage.getItem('pdka-lang');
+        if (savedLang && typeof setAboutLang === 'function') {
+            setAboutLang(savedLang);
+        }
+    });
+</script>
 </body>
 </html>
