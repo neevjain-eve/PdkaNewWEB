@@ -4383,7 +4383,7 @@ function closeSvcIfOutside(e) {
     document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.remove('active'); });
     var opt = document.getElementById('opt-' + lang);
     if (opt) opt.classList.add('active');
-    document.getElementById('langMenu').classList.remove('open');
+    var _m=document.getElementById('langMenu'); if(_m) _m.style.display='none';
     document.documentElement.lang = lang;
     // Store preference
     try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
