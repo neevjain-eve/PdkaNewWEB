@@ -48,6 +48,7 @@
       background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08);
       padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease;
     }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .nav-logo-icon {
@@ -66,6 +67,7 @@
       font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s;
     }
     .nav-cta:hover { background: var(--orange-light); }
+    .nav-hidden { transform: translateY(-100%); }
     .nav-toggle { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
 
     /* ── HERO (sticky — about slides over it) ── */
@@ -622,7 +624,8 @@
       .founder-photo { max-width: 100%; }
     }
     @media (max-width: 768px) {
-      nav { padding: 0 4%; }
+      nav { padding: 0 4%;   transition: transform 0.3s ease;
+    }
       .nav-links, .nav-cta { display: none; }
       .nav-toggle { display: block; }
       .services-grid, .team-grid, .insights-grid, .careers-grid { grid-template-columns: 1fr; }
@@ -768,7 +771,7 @@
 
     /* Theme toggle button */
     .theme-toggle {
-      background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.55);
+      background: #0d1b3e; border: 1.5px solid rgba(255,255,255,0.18);
       color: white; border-radius: 24px; padding: 7px 16px;
       cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center;
       gap: 7px; transition: all 0.2s; white-space: nowrap; letter-spacing: 0.2px;
@@ -4276,5 +4279,17 @@ window.servicesI18n = {
   }
 };
 </script>
+  <script>
+  (function(){
+    var nav = document.querySelector('nav');
+    var lastY = 0;
+    window.addEventListener('scroll', function(){
+      var y = window.scrollY;
+      if(y > lastY && y > 80) { nav.classList.add('nav-hidden'); }
+      else { nav.classList.remove('nav-hidden'); }
+      lastY = y;
+    }, { passive: true });
+  })();
+  </script>
 </body>
 </html>
