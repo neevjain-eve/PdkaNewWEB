@@ -4401,13 +4401,10 @@ function closeSvcIfOutside(e) {
   };
 
 
-  window.toggleLangMenu = function(e) {
-    e.stopPropagation();
-    document.getElementById('langMenu').classList.toggle('open');
-  };
+  // toggleLangMenu handled by original function (uses style.display)
   document.addEventListener('click', function() {
     var m = document.getElementById('langMenu');
-    if (m) m.classList.remove('open');
+    if (m) m.style.display = 'none';
   });
 
 
