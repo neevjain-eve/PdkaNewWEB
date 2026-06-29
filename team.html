@@ -118,6 +118,39 @@
       .team-grid { grid-template-columns: repeat(2, 1fr); }
       .head-card { flex-direction: column; }
     }
+  
+    .lang-dropdown { position: relative; }
+    .lang-btn {
+      display: flex; align-items: center; gap: 5px;
+      background: none;
+      border: 1.5px solid var(--orange, #e8600a);
+      color: var(--orange, #e8600a);
+      padding: 5px 11px; border-radius: 6px;
+      cursor: pointer; font-size: 13px; font-weight: 700;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; }
+    .lang-menu {
+      display: none; position: absolute; top: calc(100% + 6px); right: 0;
+      background: var(--bg, #fff); border: 1px solid var(--border, #e5e5e5);
+      border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      list-style: none; padding: 6px; margin: 0; min-width: 130px; z-index: 9999;
+    }
+    .lang-menu.open { display: block; }
+    .lang-option {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 9px 12px; border-radius: 6px; cursor: pointer;
+      font-size: 14px; color: var(--text, #1a1a1a);
+      transition: background 0.15s;
+    }
+    .lang-option:hover { background: var(--surface, #f5f5f5); }
+    .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
+    /* Dark nav override for sub-pages */
+    .lang-menu { background: #1a2f5e !important; border-color: rgba(255,255,255,0.15) !important; }
+    .lang-option { color: rgba(255,255,255,0.9) !important; }
+    .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
+    .lang-option.active { color: var(--orange, #e8600a) !important; }
   </style>
 </head>
 <body>
@@ -152,6 +185,39 @@
     [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.85); }
     [data-theme="dark"] .lang-option:hover { background: rgba(232,96,10,0.2); color: #fff; }
     [data-theme="dark"] .lang-option.active { color: var(--orange, #e8600a); }
+  
+    .lang-dropdown { position: relative; }
+    .lang-btn {
+      display: flex; align-items: center; gap: 5px;
+      background: none;
+      border: 1.5px solid var(--orange, #e8600a);
+      color: var(--orange, #e8600a);
+      padding: 5px 11px; border-radius: 6px;
+      cursor: pointer; font-size: 13px; font-weight: 700;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; }
+    .lang-menu {
+      display: none; position: absolute; top: calc(100% + 6px); right: 0;
+      background: var(--bg, #fff); border: 1px solid var(--border, #e5e5e5);
+      border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      list-style: none; padding: 6px; margin: 0; min-width: 130px; z-index: 9999;
+    }
+    .lang-menu.open { display: block; }
+    .lang-option {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 9px 12px; border-radius: 6px; cursor: pointer;
+      font-size: 14px; color: var(--text, #1a1a1a);
+      transition: background 0.15s;
+    }
+    .lang-option:hover { background: var(--surface, #f5f5f5); }
+    .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
+    /* Dark nav override for sub-pages */
+    .lang-menu { background: #1a2f5e !important; border-color: rgba(255,255,255,0.15) !important; }
+    .lang-option { color: rgba(255,255,255,0.9) !important; }
+    .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
+    .lang-option.active { color: var(--orange, #e8600a) !important; }
   </style>');}</script>
 <nav>
   <a href="pdka-website.html" class="nav-logo">
