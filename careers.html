@@ -275,6 +275,7 @@
     <ul id="carLangMenu" style="display:none;position:absolute;right:0;top:110%;background:white;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.15);list-style:none;padding:6px;margin:0;min-width:110px;z-index:9999;">
       <li><button onclick="setCarLang('en')" id="copt-en" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;font-weight:700;">English</button></li>
       <li><button onclick="setCarLang('ja')" id="copt-ja" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;">日本語</button></li>
+      <li><button onclick="setCarLang('hi')" id="copt-hi" style="width:100%;padding:7px 12px;background:none;border:none;cursor:pointer;font-size:13px;text-align:left;border-radius:5px;color:#0d1b3e;">हिंदी</button></li>
     </ul>
   </div>
 </nav>
@@ -680,7 +681,8 @@
         </div>
       </div>
     </div>
-`,
+`
+    },
     hi: {
       hero: `
     <div class="page-hero-label">हमारी टीम में शामिल हों</div>
@@ -812,37 +814,17 @@
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply);
     else apply();
   })();
-})();
-</script>
 
-
-<script>
-// Auto-apply saved language (works whether DOMContentLoaded has fired or not)
-(function() {
-  function _applyLang() {
-    try {
-      var s = localStorage.getItem('pdka-lang');
-      if (!s || s === 'en') return;
-      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
-      if (fn) fn(s);
-    } catch(e) {}
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', _applyLang);
-  } else {
-    _applyLang();
-  }
-  // Also respond if parent changes language while this page is open in the iframe
-  window.addEventListener('message', function(e) {
-    if (e.data && e.data.type === 'pdka-set-lang') {
-      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
-      if (fn) fn(e.data.lang);
+  // Respond when parent page changes language
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'pdka-lang' && e.newValue) {
+      try { window.setCarLang(e.newValue); } catch(ex) {}
     }
   });
 })();
-  window.toggleCarLangMenu = window.toggleCarLang;
-
 </script>
+
+
 
 
 
@@ -899,14 +881,6 @@
     }
   }, true); // capture phase — fires before any inline onclick
 })();
-
-    // Auto-apply saved language on load
-    document.addEventListener('DOMContentLoaded', function() {
-        var savedLang = localStorage.getItem('pdka-lang');
-        if (savedLang && typeof setAboutLang === 'function') {
-            setAboutLang(savedLang);
-        }
-    });
 </script>
 
 </body>

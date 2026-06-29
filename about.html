@@ -954,7 +954,8 @@
     <div class="value-card"><h4>守秘義務</h4></div>
     <div class="value-card"><h4>個別対応サービス</h4></div>
   </div>
-`,
+`
+    },
     hi: {
       hero:  `
   <div class="label">फर्म के बारे में</div>
@@ -1027,37 +1028,17 @@
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply);
     else apply();
   })();
-})();
-</script>
 
-
-<script>
-// Auto-apply saved language (works whether DOMContentLoaded has fired or not)
-(function() {
-  function _applyLang() {
-    try {
-      var s = localStorage.getItem('pdka-lang');
-      if (!s || s === 'en') return;
-      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
-      if (fn) fn(s);
-    } catch(e) {}
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', _applyLang);
-  } else {
-    _applyLang();
-  }
-  // Also respond if parent changes language while this page is open in the iframe
-  window.addEventListener('message', function(e) {
-    if (e.data && e.data.type === 'pdka-set-lang') {
-      var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
-      if (fn) fn(e.data.lang);
+  // Respond when parent page changes language
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'pdka-lang' && e.newValue) {
+      try { window.setAboutLang(e.newValue); } catch(ex) {}
     }
   });
 })();
-  window.toggleAboutLangMenu = window.toggleAboutLang;
-
 </script>
+
+
 
 
 
@@ -1114,14 +1095,6 @@
     }
   }, true); // capture phase — fires before any inline onclick
 })();
-
-    // Auto-apply saved language on load
-    document.addEventListener('DOMContentLoaded', function() {
-        var savedLang = localStorage.getItem('pdka-lang');
-        if (savedLang && typeof setAboutLang === 'function') {
-            setAboutLang(savedLang);
-        }
-    });
 </script>
 
 </body>
