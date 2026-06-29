@@ -881,7 +881,7 @@
 
   (function _carAutoLang(){
     function apply(){
-      try{ var lg=localStorage.getItem('pdka-lang'); if(lg&&lg!=='en') window.setCarLang(lg); }catch(e){}
+      try{ var lg='en'; if(lg&&lg!=='en') window.setCarLang(lg); }catch(e){}
     }
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply);
     else apply();
@@ -981,7 +981,7 @@
     if (menu) menu.style.display = 'none';
   });
   (function() {
-    try { var lg = localStorage.getItem('pdka-lang'); if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
+    try { var lg = 'en'; if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
   })();
   </script>
 

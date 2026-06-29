@@ -643,7 +643,7 @@
 
   // Script is at bottom of body — DOM elements already exist, call directly
   (function() {
-    var lang = localStorage.getItem('pdka-lang') || 'en';
+    var lang = 'en' || 'en';
     if (lang === 'ja') setLang('ja');
   })();
 
@@ -655,7 +655,7 @@
 
     // Auto-apply saved language on load
     document.addEventListener('DOMContentLoaded', function() {
-        var savedLang = localStorage.getItem('pdka-lang');
+        var savedLang = 'en';
         if (savedLang && typeof setLang === 'function') {
             setLang(savedLang);
         }

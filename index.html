@@ -4415,7 +4415,7 @@ function closeSvcIfOutside(e) {
     if (frame) {
       frame.addEventListener('load', function() {
         try {
-          var lang = window.pdkaLang || localStorage.getItem('pdka-lang') || 'en';
+          var lang = window.pdkaLang || 'en' || 'en';
           if (lang !== 'en' && frame.contentWindow) {
             var iw = frame.contentWindow;
             // Direct same-origin call (most reliable)
@@ -4466,7 +4466,7 @@ function closeSvcIfOutside(e) {
   // Auto-apply saved language on page load
   document.addEventListener('DOMContentLoaded', function() {
     try {
-      var saved = localStorage.getItem('pdka-lang');
+      var saved = 'en';
       if (saved && saved !== 'en') window.setLang(saved);
     } catch(e) {}
   });

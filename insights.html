@@ -3073,7 +3073,7 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     try {
-      var saved = localStorage.getItem('pdka-lang');
+      var saved = 'en';
       if (saved && saved !== 'en') window.setInsLang(saved);
     } catch(e) {}
   });
@@ -3087,7 +3087,7 @@
 (function() {
   function _applyLang() {
     try {
-      var s = localStorage.getItem('pdka-lang');
+      var s = 'en';
       if (!s || s === 'en') return;
       var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
       if (fn) fn(s);
@@ -3109,7 +3109,7 @@
 
     // Auto-apply saved language on load
     document.addEventListener('DOMContentLoaded', function() {
-        var savedLang = localStorage.getItem('pdka-lang');
+        var savedLang = 'en';
         if (savedLang && typeof setAboutLang === 'function') {
             setAboutLang(savedLang);
         }
@@ -3141,7 +3141,7 @@
     if (menu) menu.style.display = 'none';
   });
   (function() {
-    try { var lg = localStorage.getItem('pdka-lang'); if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
+    try { var lg = 'en'; if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
   })();
   </script>
 </body>
