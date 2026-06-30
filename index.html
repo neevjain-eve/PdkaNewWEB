@@ -860,8 +860,13 @@
       from { transform: translateX(100%); opacity: 0; }
       to   { transform: translateX(0);    opacity: 1; }
     }
+    @keyframes slideOutRight {
+      from { transform: translateX(0);    opacity: 1; }
+      to   { transform: translateX(100%); opacity: 0; }
+    }
     #pdka-page-overlay { display:none; }
     #pdka-page-overlay.open { display:flex !important; }
+    #pdka-page-overlay iframe { transition: opacity 0.15s ease; }
 
     
     .ov-nav-link {
@@ -4684,23 +4689,40 @@ function closeSvcIfOutside(e) {
     var overlay = document.getElementById('pdka-page-overlay');
     var frame   = document.getElementById('pdka-page-frame');
     var label   = document.getElementById('pdka-page-title');
-    frame.src = url;
     if (label) label.textContent = title || '';
-    // Reset slideInRight so it replays every open
-    overlay.style.animation = 'none';
-    overlay.offsetHeight;
-    overlay.style.animation = 'slideInRight 0.28s cubic-bezier(.4,0,.2,1)';
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    history.pushState({pdkaPage: url}, title, '#page');
+
+    if (overlay.classList.contains('open')) {
+      // Already open: fade iframe, swap page, fade back in
+      frame.style.opacity = '0';
+      setTimeout(function() {
+        frame.src = url;
+        frame.onload = function() { frame.style.opacity = '1'; };
+      }, 150);
+    } else {
+      // Fresh open: slide in from right
+      frame.src = url;
+      frame.style.opacity = '1';
+      overlay.style.animation = 'none';
+      overlay.offsetHeight;
+      overlay.style.animation = 'slideInRight 0.3s cubic-bezier(.25,.46,.45,.94)';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      history.pushState({pdkaPage: url}, title, '#page');
+    }
   };
 
   window.closePdkaPage = function() {
     var overlay = document.getElementById('pdka-page-overlay');
     var frame   = document.getElementById('pdka-page-frame');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    frame.src = '';
+    overlay.style.animation = 'none';
+    overlay.offsetHeight;
+    overlay.style.animation = 'slideOutRight 0.25s cubic-bezier(.55,0,1,.45) forwards';
+    setTimeout(function() {
+      overlay.classList.remove('open');
+      overlay.style.animation = '';
+      document.body.style.overflow = '';
+      frame.src = '';
+    }, 250);
     if (history.state && history.state.pdkaPage) history.back();
   };
 
