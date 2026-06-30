@@ -879,7 +879,79 @@
     [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.85); }
     [data-theme="dark"] .lang-option:hover { background: rgba(232,96,10,0.2); color: #fff; }
     [data-theme="dark"] .lang-option.active { color: var(--orange, #e8600a); }
-  </style>
+  
+    /* ── DPDPA MODAL ── */
+    #dpdpaModal {
+      display:none; position:fixed; inset:0; z-index:9100;
+      background:rgba(5,10,25,0.78); backdrop-filter:blur(6px);
+      align-items:flex-start; justify-content:center;
+      padding:40px 20px; overflow-y:auto;
+    }
+    #dpdpaModal.open { display:flex; }
+    .dpdpa-modal-box {
+      background:#fff; border-radius:16px; max-width:860px; width:100%;
+      box-shadow:0 24px 80px rgba(13,27,62,0.22); overflow:hidden;
+      animation:fadeUp 0.3s cubic-bezier(.22,.68,0,1.2);
+    }
+    .dpdpa-modal-header {
+      background:linear-gradient(135deg,#0d1b3e 0%,#1a2a5e 100%);
+      padding:32px 36px 28px; position:relative;
+    }
+    .dpdpa-modal-header h2 {
+      font-family:'Playfair Display',serif; font-size:26px; color:#fff; margin-bottom:8px;
+    }
+    .dpdpa-modal-header p { color:rgba(255,255,255,0.72); font-size:14px; margin:0; }
+    .dpdpa-modal-close {
+      position:absolute; top:20px; right:24px; background:rgba(255,255,255,0.12);
+      border:none; color:#fff; width:36px; height:36px; border-radius:50%;
+      cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s;
+    }
+    .dpdpa-modal-close:hover { background:rgba(255,255,255,0.22); }
+    .dpdpa-modal-body { padding:32px 36px; }
+    .dpdpa-section-title {
+      font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px;
+      color:#e8600a; margin:28px 0 12px; display:flex; align-items:center; gap:8px;
+    }
+    .dpdpa-section-title:first-child { margin-top:0; }
+    .dpdpa-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:4px; }
+    @media(max-width:600px){ .dpdpa-grid { grid-template-columns:1fr; } }
+    .dpdpa-card {
+      border:1px solid #e8eaf0; border-radius:10px; padding:14px 16px;
+      background:#f9fafb;
+    }
+    .dpdpa-card h4 { font-size:13px; font-weight:700; color:#0d1b3e; margin-bottom:5px; }
+    .dpdpa-card p { font-size:13px; color:#374151; line-height:1.6; margin:0; }
+    .dpdpa-provision-list { list-style:none; padding:0; margin:0; }
+    .dpdpa-provision-list li {
+      padding:10px 0; border-bottom:1px solid #f0f0f0; font-size:14px;
+      color:#374151; display:flex; gap:10px; align-items:flex-start; line-height:1.55;
+    }
+    .dpdpa-provision-list li:last-child { border-bottom:none; }
+    .dpdpa-provision-list li i { color:#e8600a; font-size:13px; margin-top:2px; flex-shrink:0; }
+    .dpdpa-penalty-row {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:10px 14px; border-radius:8px; margin-bottom:8px; font-size:13px;
+    }
+    .dpdpa-penalty-row.high { background:#fff1ee; border-left:3px solid #e8600a; }
+    .dpdpa-penalty-row.mid  { background:#fff8ee; border-left:3px solid #f59e0b; }
+    .dpdpa-penalty-row.low  { background:#f0fdf4; border-left:3px solid #16a34a; }
+    .dpdpa-penalty-amt { font-weight:700; font-size:14px; white-space:nowrap; }
+    .dpdpa-penalty-row.high .dpdpa-penalty-amt { color:#e8600a; }
+    .dpdpa-penalty-row.mid  .dpdpa-penalty-amt { color:#d97706; }
+    .dpdpa-penalty-row.low  .dpdpa-penalty-amt { color:#16a34a; }
+    .dpdpa-timeline { position:relative; padding-left:24px; }
+    .dpdpa-timeline::before { content:''; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:#e8eaf0; }
+    .dpdpa-tl-item { position:relative; margin-bottom:16px; }
+    .dpdpa-tl-item::before { content:''; position:absolute; left:-21px; top:5px; width:10px; height:10px; border-radius:50%; background:#e8600a; border:2px solid #fff; box-shadow:0 0 0 2px #e8600a; }
+    .dpdpa-tl-item:last-child { margin-bottom:0; }
+    .dpdpa-tl-date { font-size:11px; font-weight:700; color:#e8600a; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:2px; }
+    .dpdpa-tl-text { font-size:13px; color:#374151; }
+    .dpdpa-modal-footer {
+      background:#f5f6fa; border-top:1px solid #e8eaf0;
+      padding:20px 36px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    }
+    .dpdpa-modal-footer p { font-size:13px; color:#6b7280; margin:0; }</style>
 
 <script type="application/ld+json">
 {
@@ -1688,7 +1760,10 @@
         <span class="dpdpa-chip">Data Principal Rights</span>
         <span class="dpdpa-chip">₹250 Cr Penalty Risk</span>
       </div>
-      <a href="#contact" class="btn-primary" style="display:inline-flex;">Get DPDPA Ready <i class="fas fa-arrow-right"></i></a>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="#contact" class="btn-primary" style="display:inline-flex;">Get DPDPA Ready <i class="fas fa-arrow-right"></i></a>
+        <button onclick="openDpdpaModal()" style="display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:8px;border:2px solid rgba(232,96,10,0.6);background:transparent;color:#f47820;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(232,96,10,0.15)'" onmouseout="this.style.background='transparent'">Learn More <i class="fas fa-book-open"></i></button>
+      </div>
     </div>
     <div class="countdown-card">
       <div class="countdown-label">Time to Full Enforcement</div>
@@ -1705,6 +1780,93 @@
   </div>
 </div>
 
+<!-- DPDPA LEARN MORE MODAL -->
+<div id="dpdpaModal" onclick="closeDpdpaIfOutside(event)">
+  <div class="dpdpa-modal-box">
+    <div class="dpdpa-modal-header">
+      <button class="dpdpa-modal-close" onclick="closeDpdpaModal()"><i class="fas fa-times"></i></button>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,96,10,0.2);border:1px solid rgba(232,96,10,0.4);color:#f47820;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">
+        <span style="width:7px;height:7px;background:#e8600a;border-radius:50%;animation:pulse 1.5s infinite;display:inline-block;"></span>
+        Digital Personal Data Protection Act, 2023
+      </div>
+      <h2>India's DPDPA — Complete Guide</h2>
+      <p>Everything you need to know about compliance, rights, penalties, and the enforcement timeline.</p>
+    </div>
+    <div class="dpdpa-modal-body">
+
+      <!-- Overview -->
+      <div class="dpdpa-section-title"><i class="fas fa-file-alt"></i> Overview</div>
+      <p style="font-size:14px;color:#374151;line-height:1.7;margin-bottom:16px;">
+        The Digital Personal Data Protection Act, 2023 (DPDPA) was enacted on <strong>11 August 2023</strong> and received Presidential assent the same day. It is India's first comprehensive data protection law, governing the processing of <em>digital personal data</em> of individuals (Data Principals) by organisations (Data Fiduciaries). Full enforcement rules are expected to be notified by <strong>13 May 2027</strong>.
+      </p>
+      <div class="dpdpa-grid">
+        <div class="dpdpa-card">
+          <h4><i class="fas fa-gavel" style="color:#e8600a;margin-right:6px;"></i> Applicability</h4>
+          <p>Applies to all entities processing digital personal data within India, and to processing outside India if goods/services are offered to persons in India.</p>
+        </div>
+        <div class="dpdpa-card">
+          <h4><i class="fas fa-ban" style="color:#e8600a;margin-right:6px;"></i> Exemptions</h4>
+          <p>Personal/domestic use, journalistic/research purposes, State processing for national security, publicly available data, and data processed outside India by Indian entities.</p>
+        </div>
+      </div>
+
+      <!-- Key Provisions -->
+      <div class="dpdpa-section-title"><i class="fas fa-list-check"></i> Key Provisions</div>
+      <ul class="dpdpa-provision-list">
+        <li><i class="fas fa-check-circle"></i><span><strong>Lawful Basis (Sec 4–5):</strong> Personal data may only be processed for a lawful purpose — either with free, informed, specific, and unconditional <em>consent</em>, or for certain <em>legitimate uses</em> (employment, medical emergency, legal obligation, public interest).</span></li>
+        <li><i class="fas fa-check-circle"></i><span><strong>Consent Management (Sec 6–8):</strong> Consent must be granular, purpose-specific, and withdrawable at any time as easily as it was given. Consent Managers (registered intermediaries) may manage consent on behalf of Data Principals.</span></li>
+        <li><i class="fas fa-check-circle"></i><span><strong>Notice Requirements (Sec 5):</strong> Data Fiduciaries must provide a clear notice describing the personal data collected, purpose, and the Data Principal's rights before or at the time of collecting data.</span></li>
+        <li><i class="fas fa-check-circle"></i><span><strong>Purpose Limitation:</strong> Data can only be processed for the purpose for which it was collected. Once the purpose is fulfilled, data must be erased unless retention is legally mandated.</span></li>
+        <li><i class="fas fa-check-circle"></i><span><strong>Data Localisation:</strong> Certain data may be restricted from cross-border transfers. The government may notify countries/territories to which data transfer is permitted or restricted.</span></li>
+        <li><i class="fas fa-check-circle"></i><span><strong>Security Safeguards (Sec 8):</strong> Data Fiduciaries must implement reasonable technical and organisational measures to prevent personal data breaches.</span></li>
+        <li><i class="fas fa-check-circle"></i><span><strong>Breach Notification (Sec 8):</strong> In the event of a breach, the Data Fiduciary must notify the <em>Data Protection Board of India (DPBI)</em> and each affected Data Principal promptly (likely within 72 hours under draft rules).</span></li>
+        <li><i class="fas fa-check-circle"></i><span><strong>Children's Data (Sec 9):</strong> Processing data of children (under 18) requires verifiable parental consent. Processing detrimental to children or for tracking/targeting is prohibited.</span></li>
+        <li><i class="fas fa-check-circle"></i><span><strong>Significant Data Fiduciaries (Sec 10):</strong> The government may designate certain entities as SDFs based on volume of data, sensitivity, risk to national security, etc. SDFs have additional obligations including appointing a Data Protection Officer (DPO) based in India, conducting Data Protection Impact Assessments (DPIAs), and periodic audits.</span></li>
+      </ul>
+
+      <!-- Data Principal Rights -->
+      <div class="dpdpa-section-title"><i class="fas fa-user-shield"></i> Data Principal Rights (Sec 11–16)</div>
+      <div class="dpdpa-grid">
+        <div class="dpdpa-card"><h4>Right to Information</h4><p>Access a summary of personal data being processed and the identity of all Data Fiduciaries and processors handling it.</p></div>
+        <div class="dpdpa-card"><h4>Right to Correction & Erasure</h4><p>Request correction of inaccurate/incomplete data and erasure of data no longer needed for the stated purpose.</p></div>
+        <div class="dpdpa-card"><h4>Right to Grievance Redressal</h4><p>Register complaints with the Data Fiduciary first; escalate to the Data Protection Board if unresolved.</p></div>
+        <div class="dpdpa-card"><h4>Right to Nominate</h4><p>Nominate an individual who can exercise rights on behalf of the Data Principal in case of death or incapacity.</p></div>
+      </div>
+
+      <!-- Penalties -->
+      <div class="dpdpa-section-title"><i class="fas fa-exclamation-triangle"></i> Penalties (Schedule — Sec 33)</div>
+      <div class="dpdpa-penalty-row high"><span>Personal data breach due to inadequate security safeguards</span><span class="dpdpa-penalty-amt">Up to ₹250 Cr</span></div>
+      <div class="dpdpa-penalty-row high"><span>Failure to notify Data Protection Board and affected individuals of a breach</span><span class="dpdpa-penalty-amt">Up to ₹200 Cr</span></div>
+      <div class="dpdpa-penalty-row mid"><span>Non-compliance with Significant Data Fiduciary obligations</span><span class="dpdpa-penalty-amt">Up to ₹150 Cr</span></div>
+      <div class="dpdpa-penalty-row mid"><span>Violation of children's data processing obligations</span><span class="dpdpa-penalty-amt">Up to ₹200 Cr</span></div>
+      <div class="dpdpa-penalty-row low"><span>Non-compliance with other provisions of the Act or rules</span><span class="dpdpa-penalty-amt">Up to ₹50 Cr</span></div>
+      <div class="dpdpa-penalty-row low"><span>Failure to comply with Data Protection Board direction/order</span><span class="dpdpa-penalty-amt">Up to ₹10,000</span></div>
+
+      <!-- Timeline -->
+      <div class="dpdpa-section-title"><i class="fas fa-calendar-alt"></i> Enforcement Timeline</div>
+      <div class="dpdpa-timeline">
+        <div class="dpdpa-tl-item"><div class="dpdpa-tl-date">Aug 2023</div><div class="dpdpa-tl-text">DPDPA enacted — received Presidential assent on 11 August 2023.</div></div>
+        <div class="dpdpa-tl-item"><div class="dpdpa-tl-date">Jan 2025</div><div class="dpdpa-tl-text">Draft DPDP Rules published by MeitY for public consultation.</div></div>
+        <div class="dpdpa-tl-item"><div class="dpdpa-tl-date">2025–2026</div><div class="dpdpa-tl-text">Final rules expected to be notified; Data Protection Board of India constituted.</div></div>
+        <div class="dpdpa-tl-item"><div class="dpdpa-tl-date">13 May 2027</div><div class="dpdpa-tl-text"><strong>Full enforcement deadline.</strong> All covered entities must be compliant — data mapping, consent frameworks, breach response, DPO appointments, and DPIAs in place.</div></div>
+      </div>
+
+      <!-- How PDKA Helps -->
+      <div class="dpdpa-section-title"><i class="fas fa-handshake"></i> How PDKA Can Help</div>
+      <div class="dpdpa-grid">
+        <div class="dpdpa-card"><h4>Data Mapping & Gap Analysis</h4><p>Identify all personal data flows, classify data types, and assess your gap against DPDPA obligations.</p></div>
+        <div class="dpdpa-card"><h4>Consent Framework Design</h4><p>Design and implement granular consent mechanisms aligned with the Act's notice and consent requirements.</p></div>
+        <div class="dpdpa-card"><h4>Breach Response Planning</h4><p>Build a 72-hour breach detection, notification, and reporting protocol that satisfies the DPBI.</p></div>
+        <div class="dpdpa-card"><h4>SDF Advisory & DPO Support</h4><p>Assess whether you qualify as a Significant Data Fiduciary and fulfill DPO, DPIA, and audit requirements.</p></div>
+      </div>
+
+    </div>
+    <div class="dpdpa-modal-footer">
+      <p>Source: Digital Personal Data Protection Act, 2023 (No. 22 of 2023) &amp; MeitY Draft Rules 2025</p>
+      <a href="#contact" onclick="closeDpdpaModal()" class="btn-primary" style="display:inline-flex;font-size:14px;padding:11px 22px;">Start Your Compliance Journey <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
@@ -2860,7 +3022,22 @@ function closeSvcIfOutside(e) {
     obs.observe(wrap);
   })();
 
-</script>
+
+  // DPDPA Modal
+  function openDpdpaModal() {
+    document.getElementById('dpdpaModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDpdpaModal() {
+    document.getElementById('dpdpaModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeDpdpaIfOutside(e) {
+    if (e.target === document.getElementById('dpdpaModal')) closeDpdpaModal();
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDpdpaModal();
+  });</script>
 
 
 
