@@ -69,6 +69,7 @@
 
     /* DEPT NAV */
     .dept-nav { background: white; border-bottom: 1px solid var(--grey-mid); padding: 0 5%; position: sticky; top: 72px; z-index: 100; }
+    html.in-iframe .dept-nav { top: 0 !important; }
     .dept-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; scrollbar-width: none; }
     .dept-nav-inner::-webkit-scrollbar { display: none; }
     .dept-nav-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 20px; border: 1.5px solid var(--grey-mid); font-size: 13px; font-weight: 600; color: var(--text-mid); text-decoration: none; white-space: nowrap; transition: all 0.2s; cursor: pointer; background: white; }
@@ -319,10 +320,10 @@
       </div>
     </div>
     <div class="head-card">
-      <div class="head-photo-wrap">KN</div>
+      <div class="head-photo-wrap">V</div>
       <div class="head-info">
         <div class="head-badge">Department Head</div>
-        <h3>Karthik Nair</h3>
+        <h3>Vedamurthy</h3>
         <div class="role">Head — Audit &amp; Assurance</div>
         <div class="quals">ACA · DISA · 12 Yrs Exp</div>
       </div>
@@ -346,10 +347,10 @@
       </div>
     </div>
     <div class="head-card">
-      <div class="head-photo-wrap">MK</div>
+      <div class="head-photo-wrap">R</div>
       <div class="head-info">
         <div class="head-badge">Department Head</div>
-        <h3>Meera Krishnan</h3>
+        <h3>Richa</h3>
         <div class="role">Head — Business Advisory</div>
         <div class="quals">MBA · ACA · 9 Yrs Exp</div>
       </div>
@@ -373,10 +374,10 @@
       </div>
     </div>
     <div class="head-card">
-      <div class="head-photo-wrap">RM</div>
+      <div class="head-photo-wrap">S&amp;R</div>
       <div class="head-info">
         <div class="head-badge">Department Head</div>
-        <h3>Rajan Mehta</h3>
+        <h3>Sandeep &amp; Rakesh</h3>
         <div class="role">Head — Direct &amp; Indirect Tax</div>
         <div class="quals">ACA · LLB · 14 Yrs Exp</div>
       </div>
@@ -400,10 +401,10 @@
       </div>
     </div>
     <div class="head-card">
-      <div class="head-photo-wrap">AR</div>
+      <div class="head-photo-wrap">Ra</div>
       <div class="head-info">
         <div class="head-badge">Department Head</div>
-        <h3>Ananya Reddy</h3>
+        <h3>Ramya</h3>
         <div class="role">Head — FinOps &amp; Digital Finance</div>
         <div class="quals">CPA · MBA · 8 Yrs Exp</div>
       </div>
@@ -568,7 +569,7 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     try {
-      var saved = 'en';
+      var saved = localStorage.getItem('pdka-lang') || 'en';
       if (saved && saved !== 'en') window.setTeamLang(saved);
     } catch(e) {}
   });
@@ -582,7 +583,7 @@
 (function() {
   function _applyLang() {
     try {
-      var s = 'en';
+      var s = localStorage.getItem('pdka-lang') || 'en';
       if (!s || s === 'en') return;
       var fn = window.setAboutLang || window.setCarLang || window.setTeamLang || window.setInsLang || window.setPdkaLang;
       if (fn) fn(s);
