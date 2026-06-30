@@ -784,6 +784,10 @@
     .about-body { max-width: 900px; margin: 0 auto; padding: 64px 5%; }
     .about-body .section-label { margin-bottom: 8px; }
     .about-body h2 { font-size: clamp(24px,3vw,36px); color: var(--navy); margin-bottom: 24px; }
+    [data-theme="dark"] .about-body h2 { color: #ffffff !important; }
+    [data-theme="dark"] .about-body { color: #ffffff !important; }
+    [data-theme="dark"] .about-body * { color: #ffffff !important; }
+    [data-theme="dark"] .about-body .section-label { color: var(--orange) !important; }
     .about-body p { color: var(--text-mid); font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
     [data-theme="dark"] .about-body p,
     [data-theme="dark"] .about-body h2,
@@ -890,6 +894,12 @@
     .lang-option { color: rgba(255,255,255,0.92) !important; } [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.92) !important; }
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
+  
+    /* Force about-body text white in dark mode - final override */
+    [data-theme="dark"] .about-body h2 { color: #ffffff !important; }
+    [data-theme="dark"] .about-body p { color: #ffffff !important; }
+    [data-theme="dark"] .about-body .section-label { color: var(--orange) !important; }
+    [data-theme="dark"] .about-body li { color: #ffffff !important; }
   </style>');}</script>
 <nav>
   <a href="index.html" class="nav-logo">
