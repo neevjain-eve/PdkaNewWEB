@@ -110,6 +110,14 @@
     .member-card .role { font-size: 12px; color: var(--text-mid); margin-bottom: 3px; line-height: 1.4; }
     .member-card .quals { font-size: 11px; color: var(--text-light); font-weight: 600; }
 
+    /* SUB-MANAGER CARD */
+    .sm-card { display: flex; gap: 14px; align-items: flex-start; background: rgba(232,96,10,0.05); border: 1.5px solid rgba(232,96,10,0.25); border-radius: 12px; padding: 14px 18px; margin: 22px 0 10px; }
+    .sm-photo { width: 46px; height: 46px; border-radius: 50%; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: var(--orange); flex-shrink: 0; font-family: 'Playfair Display', serif; }
+    .sm-info h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .sm-info .sm-role { font-size: 11px; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    [data-theme="dark"] .sm-card { background: rgba(232,96,10,0.08) !important; border-color: rgba(232,96,10,0.35) !important; }
+    [data-theme="dark"] .sm-info h4 { color: #f0f4ff !important; }
+
     /* EMPTY STATE */
     .empty-state { text-align: center; padding: 40px 20px; color: var(--text-light); border: 2px dashed var(--grey-mid); border-radius: 12px; }
     .empty-state i { font-size: 28px; color: var(--grey-mid); margin-bottom: 10px; display: block; }
@@ -307,9 +315,12 @@
     </div>
     <hr class="dept-divider">
     <div class="team-grid">
-      <div class="empty-state" style="grid-column: 1/-1;">
-        <i class="fas fa-users"></i>
-        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+      <div class="member-card">
+        <div class="member-photo-wrap">VT</div>
+        <div class="member-info">
+          <h3>Varsha TA</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
       </div>
     </div>
   </div>
@@ -388,9 +399,12 @@
     </div>
     <hr class="dept-divider">
     <div class="team-grid">
-      <div class="empty-state" style="grid-column: 1/-1;">
-        <i class="fas fa-users"></i>
-        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+      <div class="member-card">
+        <div class="member-photo-wrap">SB</div>
+        <div class="member-info">
+          <h3>Shamanth BT</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
       </div>
     </div>
   </div>
@@ -414,12 +428,122 @@
       </div>
     </div>
     <hr class="dept-divider">
-    <div class="team-grid">
-      <div class="empty-state" style="grid-column: 1/-1;">
-        <i class="fas fa-users"></i>
-        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+
+    <!-- Direct team member -->
+    <div class="team-grid" style="margin-bottom:8px;">
+      <div class="member-card">
+        <div class="member-photo-wrap">VK</div>
+        <div class="member-info">
+          <h3>Vijay Kumar DN</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
       </div>
     </div>
+
+    <!-- Senior Manager: Bindu Rao TN -->
+    <div class="sm-card">
+      <div class="sm-photo">BR</div>
+      <div class="sm-info">
+        <h4>Bindu Rao TN</h4>
+        <div class="sm-role">Senior Manager</div>
+      </div>
+    </div>
+    <div class="team-grid">
+      <div class="member-card">
+        <div class="member-photo-wrap">VL</div>
+        <div class="member-info">
+          <h3>Vijetha L</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo-wrap">MJ</div>
+        <div class="member-info">
+          <h3>Mansi G Jain</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Senior Manager: Srikrishna -->
+    <div class="sm-card">
+      <div class="sm-photo">SK</div>
+      <div class="sm-info">
+        <h4>Srikrishna</h4>
+        <div class="sm-role">Senior Manager</div>
+      </div>
+    </div>
+    <div class="team-grid">
+      <div class="member-card">
+        <div class="member-photo-wrap">SK</div>
+        <div class="member-info">
+          <h3>Shivam Kumar</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Senior Manager: Naveen Kumar -->
+    <div class="sm-card">
+      <div class="sm-photo">NK</div>
+      <div class="sm-info">
+        <h4>Naveen Kumar</h4>
+        <div class="sm-role">Senior Manager</div>
+      </div>
+    </div>
+    <div class="team-grid">
+      <div class="member-card">
+        <div class="member-photo-wrap">GS</div>
+        <div class="member-info">
+          <h3>Geetha S</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo-wrap">B</div>
+        <div class="member-info">
+          <h3>Bhavya</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Senior Manager: Manju S -->
+    <div class="sm-card">
+      <div class="sm-photo">MS</div>
+      <div class="sm-info">
+        <h4>Manju S</h4>
+        <div class="sm-role">Senior Manager</div>
+      </div>
+    </div>
+    <div class="team-grid">
+      <div class="member-card">
+        <div class="member-photo-wrap">KU</div>
+        <div class="member-info">
+          <h3>K Umamaheswar</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Senior Manager: Kavyashree S -->
+    <div class="sm-card">
+      <div class="sm-photo">KS</div>
+      <div class="sm-info">
+        <h4>Kavyashree S</h4>
+        <div class="sm-role">Senior Manager</div>
+      </div>
+    </div>
+    <div class="team-grid">
+      <div class="member-card">
+        <div class="member-photo-wrap">RS</div>
+        <div class="member-info">
+          <h3>Rani S</h3>
+          <div class="role">Accounts Executive</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </main>
