@@ -68,8 +68,11 @@
     .hero-band p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 560px; line-height: 1.7; }
 
     /* DEPT NAV */
-    .dept-nav { background: white; border-bottom: 1px solid var(--grey-mid); padding: 0 5%; position: sticky; top: 72px; z-index: 100; }
+    .dept-nav { background: white; border-bottom: 1px solid var(--grey-mid); padding: 0 5%; position: fixed; top: 72px; left: 0; right: 0; width: 100%; z-index: 200; }
+    main { padding-top: 58px; }
+    .dept-section { scroll-margin-top: 135px; }
     html.in-iframe .dept-nav { top: 0 !important; }
+    html.in-iframe .dept-section { scroll-margin-top: 60px; }
     .dept-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; scrollbar-width: none; }
     .dept-nav-inner::-webkit-scrollbar { display: none; }
     .dept-nav-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 20px; border: 1.5px solid var(--grey-mid); font-size: 13px; font-weight: 600; color: var(--text-mid); text-decoration: none; white-space: nowrap; transition: all 0.2s; cursor: pointer; background: white; }
