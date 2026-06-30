@@ -181,7 +181,69 @@
     .nav-mobile li { list-style: none; }
     .nav-mobile a { display: block; padding: 12px 0; color: var(--orange, #e8600a); font-size: 15px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .nav-mobile a:hover, .nav-mobile a.active { color: white; font-weight: 700; }
-</style>
+
+    /* ====== ORG CHART TREE ====== */
+    .org-chart { margin-top: 28px; overflow-x: auto; padding-bottom: 20px; }
+    .org-chart ul {
+      display: flex; justify-content: center; list-style: none;
+      padding: 40px 8px 0; margin: 0; position: relative;
+    }
+    .org-chart ul::before {
+      content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 2px; height: 40px; background: var(--navy-mid);
+    }
+    .org-chart ul::after {
+      content: ""; position: absolute; top: 31px; left: 50%; transform: translateX(-50%);
+      border-left: 6px solid transparent; border-right: 6px solid transparent;
+      border-top: 9px solid var(--navy-mid);
+    }
+    .org-chart li {
+      flex: 1; min-width: 130px; max-width: 190px; display: flex;
+      flex-direction: column; align-items: center;
+      padding: 30px 10px 0; position: relative;
+    }
+    .org-chart li::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--navy-mid);
+    }
+    .org-chart li:first-child::before { left: 50%; }
+    .org-chart li:last-child::before { right: 50%; }
+    .org-chart li:only-child::before { display: none; }
+    .org-chart li::after {
+      content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 2px; height: 30px; background: var(--navy-mid);
+    }
+    .org-member {
+      background: white; border: 1.5px solid var(--grey-mid); border-radius: 12px;
+      padding: 14px 12px; text-align: center; width: 100%; box-sizing: border-box;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .org-member .om-photo {
+      width: 50px; height: 50px; border-radius: 50%; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: var(--orange);
+      font-family: "Playfair Display", serif; margin: 0 auto 8px;
+    }
+    .org-member .om-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .org-member .om-role { font-size: 11px; color: var(--text-light); }
+    .org-sm {
+      background: var(--grey-light); border: 2px solid var(--navy-mid); border-radius: 12px;
+      padding: 14px 12px; text-align: center; width: 100%; box-sizing: border-box;
+    }
+    .org-sm .osm-photo {
+      width: 50px; height: 50px; border-radius: 50%; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: var(--orange);
+      font-family: "Playfair Display", serif; margin: 0 auto 8px;
+    }
+    .org-sm .osm-badge { font-size: 9px; font-weight: 700; color: var(--navy-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+    .org-sm .osm-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .org-sm .osm-role { font-size: 11px; color: var(--text-light); }
+    [data-theme="dark"] .org-member { background: #0b1628; border-color: rgba(255,255,255,0.1); }
+    [data-theme="dark"] .org-sm { background: #0f1f47; border-color: var(--orange); }
+    [data-theme="dark"] .org-member .om-name, [data-theme="dark"] .org-sm .osm-name { color: #f0f4ff; }
+    /* ====== END ORG CHART ====== */
+  </style>
 </head>
 <body>
 
@@ -249,75 +311,7 @@
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
   
-    /* ====== ORG CHART TREE ====== */
-    .org-chart { margin-top: 28px; overflow-x: auto; padding-bottom: 20px; }
-    .org-chart ul {
-      display: flex; justify-content: center; list-style: none;
-      padding: 40px 8px 0; margin: 0; position: relative;
-    }
-    /* Vertical line from parent down to this level horizontal bar */
-    .org-chart ul::before {
-      content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 2px; height: 40px; background: var(--navy-mid);
-    }
-    /* Arrow head pointing down */
-    .org-chart ul::after {
-      content: ""; position: absolute; top: 31px; left: 50%; transform: translateX(-50%);
-      border-left: 6px solid transparent; border-right: 6px solid transparent;
-      border-top: 9px solid var(--navy-mid);
-    }
-    /* Each node */
-    .org-chart li {
-      flex: 1; min-width: 130px; max-width: 200px; display: flex;
-      flex-direction: column; align-items: center;
-      padding: 30px 10px 0; position: relative;
-    }
-    /* Horizontal bar */
-    .org-chart li::before {
-      content: ""; position: absolute; top: 0; left: 0; right: 0;
-      height: 2px; background: var(--navy-mid);
-    }
-    .org-chart li:first-child::before { left: 50%; }
-    .org-chart li:last-child::before { right: 50%; }
-    .org-chart li:only-child::before { display: none; }
-    /* Vertical drop from bar to card */
-    .org-chart li::after {
-      content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 2px; height: 30px; background: var(--navy-mid);
-    }
-    /* Compact member card for tree */
-    .org-member {
-      background: white; border: 1.5px solid var(--grey-mid); border-radius: 12px;
-      padding: 14px 12px; text-align: center; min-width: 120px; max-width: 180px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    }
-    .org-member .om-photo {
-      width: 50px; height: 50px; border-radius: 50%; background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 800; color: var(--orange);
-      font-family: "Playfair Display", serif; margin: 0 auto 8px;
-    }
-    .org-member .om-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
-    .org-member .om-role { font-size: 11px; color: var(--text-light); }
-    /* Compact SM card for tree */
-    .org-sm {
-      background: var(--grey-light); border: 2px solid var(--navy-mid); border-radius: 12px;
-      padding: 14px 12px; text-align: center; min-width: 130px; max-width: 190px;
-    }
-    .org-sm .osm-photo {
-      width: 50px; height: 50px; border-radius: 50%; background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 800; color: var(--orange);
-      font-family: "Playfair Display", serif; margin: 0 auto 8px;
-    }
-    .org-sm .osm-badge { font-size: 9px; font-weight: 700; color: var(--navy-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
-    .org-sm .osm-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
-    .org-sm .osm-role { font-size: 11px; color: var(--text-light); }
-    [data-theme="dark"] .org-member { background: #0b1628; border-color: rgba(255,255,255,0.1); }
-    [data-theme="dark"] .org-sm { background: #0f1f47; border-color: var(--orange); }
-    [data-theme="dark"] .org-member .om-name, [data-theme="dark"] .org-sm .osm-name { color: #f0f4ff; }
-    /* ====== END ORG CHART ====== */
-  </style>');}</script>
+      </style>');}</script>
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" />
