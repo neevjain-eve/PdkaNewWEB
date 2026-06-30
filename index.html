@@ -164,8 +164,6 @@
     #about {
       height: 100vh; padding: 0; overflow: hidden;
       border-radius: 28px 28px 0 0;
-      will-change: border-radius, transform;
-      transition: border-radius 0.06s linear;
     }
     .about-bg-img {
       position: absolute; inset: 0; z-index: 0;
@@ -183,7 +181,7 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center; padding: 32px 24px;
-      opacity: 0; transform: translateY(50px);
+      opacity: 0; transform: translateY(48px);
       will-change: opacity, transform;
     }
     .about-label {
@@ -2850,8 +2848,10 @@ function closeSvcIfOutside(e) {
 
     var obs = new IntersectionObserver(function(entries) {
       if (entries[0].isIntersecting) {
-        startAnim();
-        loopTimer = setInterval(startAnim, 4000);
+        if (!loopTimer) {
+          startAnim();
+          loopTimer = setInterval(startAnim, 4000);
+        }
       } else {
         clearInterval(loopTimer);
         loopTimer = null;
@@ -4451,6 +4451,10 @@ function closeSvcIfOutside(e) {
     var label   = document.getElementById('pdka-page-title');
     frame.src = url;
     if (label) label.textContent = title || '';
+    // Reset slideInRight so it replays every open
+    overlay.style.animation = 'none';
+    overlay.offsetHeight;
+    overlay.style.animation = 'slideInRight 0.28s cubic-bezier(.4,0,.2,1)';
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     history.pushState({pdkaPage: url}, title, '#page');
