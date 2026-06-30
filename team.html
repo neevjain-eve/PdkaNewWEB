@@ -659,14 +659,20 @@
 </script>
 <script>
   (function() {
+    if (window.self !== window.top) return; // skip in iframe
     var nav = document.querySelector("nav");
     if (!nav) return;
-    var lastY = 0;
+    var lastY = 0, ticking = false;
     window.addEventListener("scroll", function() {
-      var y = window.scrollY;
-      if (y > lastY && y > 80) { nav.classList.add("nav-hidden"); }
-      else { nav.classList.remove("nav-hidden"); }
-      lastY = y;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function() {
+        var y = window.scrollY;
+        if (y > lastY && y > 80) { nav.classList.add("nav-hidden"); }
+        else { nav.classList.remove("nav-hidden"); }
+        lastY = y;
+        ticking = false;
+      });
     }, { passive: true });
   })();
 </script></body>
