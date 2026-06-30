@@ -248,6 +248,75 @@
     .lang-option { color: rgba(255,255,255,0.92) !important; } [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.92) !important; }
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
+  
+    /* ====== ORG CHART TREE ====== */
+    .org-chart { margin-top: 28px; overflow-x: auto; padding-bottom: 20px; }
+    .org-chart ul {
+      display: flex; justify-content: center; list-style: none;
+      padding: 40px 8px 0; margin: 0; position: relative;
+    }
+    /* Vertical line from parent down to this level horizontal bar */
+    .org-chart ul::before {
+      content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 2px; height: 40px; background: var(--navy-mid);
+    }
+    /* Arrow head pointing down */
+    .org-chart ul::after {
+      content: ""; position: absolute; top: 31px; left: 50%; transform: translateX(-50%);
+      border-left: 6px solid transparent; border-right: 6px solid transparent;
+      border-top: 9px solid var(--navy-mid);
+    }
+    /* Each node */
+    .org-chart li {
+      flex: 1; min-width: 130px; max-width: 200px; display: flex;
+      flex-direction: column; align-items: center;
+      padding: 30px 10px 0; position: relative;
+    }
+    /* Horizontal bar */
+    .org-chart li::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--navy-mid);
+    }
+    .org-chart li:first-child::before { left: 50%; }
+    .org-chart li:last-child::before { right: 50%; }
+    .org-chart li:only-child::before { display: none; }
+    /* Vertical drop from bar to card */
+    .org-chart li::after {
+      content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 2px; height: 30px; background: var(--navy-mid);
+    }
+    /* Compact member card for tree */
+    .org-member {
+      background: white; border: 1.5px solid var(--grey-mid); border-radius: 12px;
+      padding: 14px 12px; text-align: center; min-width: 120px; max-width: 180px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .org-member .om-photo {
+      width: 50px; height: 50px; border-radius: 50%; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: var(--orange);
+      font-family: "Playfair Display", serif; margin: 0 auto 8px;
+    }
+    .org-member .om-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .org-member .om-role { font-size: 11px; color: var(--text-light); }
+    /* Compact SM card for tree */
+    .org-sm {
+      background: var(--grey-light); border: 2px solid var(--navy-mid); border-radius: 12px;
+      padding: 14px 12px; text-align: center; min-width: 130px; max-width: 190px;
+    }
+    .org-sm .osm-photo {
+      width: 50px; height: 50px; border-radius: 50%; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: var(--orange);
+      font-family: "Playfair Display", serif; margin: 0 auto 8px;
+    }
+    .org-sm .osm-badge { font-size: 9px; font-weight: 700; color: var(--navy-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+    .org-sm .osm-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .org-sm .osm-role { font-size: 11px; color: var(--text-light); }
+    [data-theme="dark"] .org-member { background: #0b1628; border-color: rgba(255,255,255,0.1); }
+    [data-theme="dark"] .org-sm { background: #0f1f47; border-color: var(--orange); }
+    [data-theme="dark"] .org-member .om-name, [data-theme="dark"] .org-sm .osm-name { color: #f0f4ff; }
+    /* ====== END ORG CHART ====== */
   </style>');}</script>
 <nav>
   <a href="index.html" class="nav-logo">
@@ -322,15 +391,16 @@
         <div class="quals">ACS · B.Com · 10 Yrs Exp</div>
       </div>
     </div>
-    <hr class="dept-divider">
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo-wrap">VT</div>
-        <div class="member-info">
-          <h3>Varsha TA</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
+    <div class="org-chart">
+      <ul>
+        <li>
+          <div class="org-member">
+            <div class="om-photo">VT</div>
+            <div class="om-name">Varsha TA</div>
+            <div class="om-role">Accounts Executive</div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -352,7 +422,7 @@
         <div class="quals">ACA · DISA · 12 Yrs Exp</div>
       </div>
     </div>
-    <hr class="dept-divider">
+
     <div class="team-grid">
       <div class="empty-state" style="grid-column: 1/-1;">
         <i class="fas fa-users"></i>
@@ -379,7 +449,7 @@
         <div class="quals">MBA · ACA · 9 Yrs Exp</div>
       </div>
     </div>
-    <hr class="dept-divider">
+
     <div class="team-grid">
       <div class="empty-state" style="grid-column: 1/-1;">
         <i class="fas fa-users"></i>
@@ -406,15 +476,16 @@
         <div class="quals">ACA Â· LLB Â· 14 Yrs Exp</div>
       </div>
     </div>
-    <hr class="dept-divider">
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo-wrap">SB</div>
-        <div class="member-info">
-          <h3>Shamanth BT</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
+    <div class="org-chart">
+      <ul>
+        <li>
+          <div class="org-member">
+            <div class="om-photo">SB</div>
+            <div class="om-name">Shamanth BT</div>
+            <div class="om-role">Accounts Executive</div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -436,14 +507,19 @@
         <div class="quals">ACA Â· GST Specialist</div>
       </div>
     </div>
-    <hr class="dept-divider">
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo-wrap">SB</div>
-        <div class="member-info">
-          <h3>Shamanth BT</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
+
+        <div class="org-chart">
+      <ul>
+        <li>
+          <div class="org-member">
+            <div class="om-photo">SB</div>
+            <div class="om-name">Shamanth BT</div>
+            <div class="om-role">Accounts Executive</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
       </div>
     </div>
   </div>
@@ -463,133 +539,79 @@
         <div class="head-badge">Department Head</div>
         <h3>Ramya R</h3>
         <div class="role">Head — FinOps</div>
-        <div class="quals">CPA · MBA · 8 Yrs Exp</div>
-      </div>
+    <div class="org-chart">
+      <!-- Vijay Kumar DN -->
+      <ul>
+        <li>
+          <div class="org-member">
+            <div class="om-photo">VK</div>
+            <div class="om-name">Vijay Kumar DN</div>
+            <div class="om-role">Accounts Executive</div>
+          </div>
+          <!-- 5 Senior Managers -->
+          <ul>
+            <li>
+              <div class="org-sm">
+                <div class="osm-photo">BR</div>
+                <div class="osm-badge">Senior Manager</div>
+                <div class="osm-name">Bindu Rao TN</div>
+                <div class="osm-role">FinOps</div>
+              </div>
+              <ul>
+                <li><div class="org-member"><div class="om-photo">VL</div><div class="om-name">Vijetha L</div><div class="om-role">Accounts Executive</div></div></li>
+                <li><div class="org-member"><div class="om-photo">MJ</div><div class="om-name">Mansi G Jain</div><div class="om-role">Accounts Executive</div></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="org-sm">
+                <div class="osm-photo">SK</div>
+                <div class="osm-badge">Senior Manager</div>
+                <div class="osm-name">Srikrishna</div>
+                <div class="osm-role">FinOps</div>
+              </div>
+              <ul>
+                <li><div class="org-member"><div class="om-photo">SK</div><div class="om-name">Shivam Kumar</div><div class="om-role">Accounts Executive</div></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="org-sm">
+                <div class="osm-photo">NK</div>
+                <div class="osm-badge">Senior Manager</div>
+                <div class="osm-name">Naveen Kumar</div>
+                <div class="osm-role">FinOps</div>
+              </div>
+              <ul>
+                <li><div class="org-member"><div class="om-photo">GS</div><div class="om-name">Geetha S</div><div class="om-role">Accounts Executive</div></div></li>
+                <li><div class="org-member"><div class="om-photo">B</div><div class="om-name">Bhavya</div><div class="om-role">Accounts Executive</div></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="org-sm">
+                <div class="osm-photo">MS</div>
+                <div class="osm-badge">Senior Manager</div>
+                <div class="osm-name">Manju S</div>
+                <div class="osm-role">FinOps</div>
+              </div>
+              <ul>
+                <li><div class="org-member"><div class="om-photo">KU</div><div class="om-name">K Umamaheswar</div><div class="om-role">Accounts Executive</div></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="org-sm">
+                <div class="osm-photo">KS</div>
+                <div class="osm-badge">Senior Manager</div>
+                <div class="osm-name">Kavyashree S</div>
+                <div class="osm-role">FinOps</div>
+              </div>
+              <ul>
+                <li><div class="org-member"><div class="om-photo">RS</div><div class="om-name">Rani S</div><div class="om-role">Accounts Executive</div></div></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
-    <hr class="dept-divider">
-
-    <!-- Direct team member -->
-    <div class="team-grid" style="margin-bottom:8px;">
-      <div class="member-card">
-        <div class="member-photo-wrap">VK</div>
-        <div class="member-info">
-          <h3>Vijay Kumar DN</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Senior Manager: Bindu Rao TN -->
-    <div class="sm-card">
-      <div class="sm-photo">BR</div>
-      <div class="sm-info">
-        <div class="sm-badge">Senior Manager</div>
-        <h4>Bindu Rao TN</h4>
-        <div class="sm-role">FinOps</div>
-      </div>
-    </div>
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo-wrap">VL</div>
-        <div class="member-info">
-          <h3>Vijetha L</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
-      <div class="member-card">
-        <div class="member-photo-wrap">MJ</div>
-        <div class="member-info">
-          <h3>Mansi G Jain</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Senior Manager: Srikrishna -->
-    <div class="sm-card">
-      <div class="sm-photo">SK</div>
-      <div class="sm-info">
-        <div class="sm-badge">Senior Manager</div>
-        <h4>Srikrishna</h4>
-        <div class="sm-role">FinOps</div>
-      </div>
-    </div>
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo-wrap">SK</div>
-        <div class="member-info">
-          <h3>Shivam Kumar</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Senior Manager: Naveen Kumar -->
-    <div class="sm-card">
-      <div class="sm-photo">NK</div>
-      <div class="sm-info">
-        <div class="sm-badge">Senior Manager</div>
-        <h4>Naveen Kumar</h4>
-        <div class="sm-role">FinOps</div>
-      </div>
-    </div>
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo-wrap">GS</div>
-        <div class="member-info">
-          <h3>Geetha S</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
-      <div class="member-card">
-        <div class="member-photo-wrap">B</div>
-        <div class="member-info">
-          <h3>Bhavya</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Senior Manager: Manju S -->
-    <div class="sm-card">
-      <div class="sm-photo">MS</div>
-      <div class="sm-info">
-        <div class="sm-badge">Senior Manager</div>
-        <h4>Manju S</h4>
-        <div class="sm-role">FinOps</div>
-      </div>
-    </div>
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo-wrap">KU</div>
-        <div class="member-info">
-          <h3>K Umamaheswar</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Senior Manager: Kavyashree S -->
-    <div class="sm-card">
-      <div class="sm-photo">KS</div>
-      <div class="sm-info">
-        <div class="sm-badge">Senior Manager</div>
-        <h4>Kavyashree S</h4>
-        <div class="sm-role">FinOps</div>
-      </div>
-    </div>
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo-wrap">RS</div>
-        <div class="member-info">
-          <h3>Rani S</h3>
-          <div class="role">Accounts Executive</div>
-        </div>
-      </div>
-    </div>
-
   </div>
-
 
   <!-- ADMINISTRATION -->
   <div class="dept-section" id="administration">
