@@ -559,10 +559,10 @@
     var hs = document.querySelector('.hero-band p'); if (hs) hs.innerHTML = t.heroSub;
     var bk = document.querySelector('.nav-back'); if (bk) bk.innerHTML = '<i class="fas fa-arrow-left"></i> ' + t.backBtn;
     var ct = document.querySelector('.nav-cta'); if (ct) ct.textContent = t.cta;
-    document.getElementById('teamLangLabel').textContent = lang==='ja'?'JP':lang==='hi'?'HI':'EN';
-    document.querySelectorAll('#teamLangMenu .lang-option').forEach(function(b){b.classList.remove('active');});
-    var opt = document.getElementById('topt-'+lang); if (opt) opt.classList.add('active');
-    document.getElementById('teamLangMenu').classList.remove('open');
+    var _ll = document.getElementById('langLabel'); if (_ll) _ll.textContent = lang==='ja'?'JP':lang==='hi'?'HI':'EN';
+    document.querySelectorAll('#langMenu .lang-option').forEach(function(b){b.classList.remove('active');});
+    var opt = document.getElementById('opt-'+lang); if (opt) opt.classList.add('active');
+    var _lm = document.getElementById('langMenu'); if (_lm) _lm.style.display = 'none';
     // Update dept-nav pills
     if (t.pills) {
       var pills = document.querySelectorAll('.dept-nav-pill');
@@ -633,10 +633,7 @@
 
     // Auto-apply saved language on load
     document.addEventListener('DOMContentLoaded', function() {
-        var savedLang = 'en';
-        if (savedLang && typeof setAboutLang === 'function') {
-            setAboutLang(savedLang);
-        }
+        try { var s = localStorage.getItem('pdka-lang') || 'en'; if (s !== 'en' && window.setTeamLang) setTeamLang(s); } catch(e) {}
     });
 </script>
 <script>
@@ -665,7 +662,7 @@
     if (menu) menu.style.display = 'none';
   });
   (function() {
-    try { var lg = 'en'; if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
+    try { var lg = localStorage.getItem('pdka-lang') || 'en'; if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
   })();
   </script>
 
