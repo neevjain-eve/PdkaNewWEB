@@ -110,13 +110,17 @@
     .member-card .role { font-size: 12px; color: var(--text-mid); margin-bottom: 3px; line-height: 1.4; }
     .member-card .quals { font-size: 11px; color: var(--text-light); font-weight: 600; }
 
-    /* SUB-MANAGER CARD */
-    .sm-card { display: flex; gap: 14px; align-items: flex-start; background: rgba(232,96,10,0.05); border: 1.5px solid rgba(232,96,10,0.25); border-radius: 12px; padding: 14px 18px; margin: 22px 0 10px; }
-    .sm-photo { width: 46px; height: 46px; border-radius: 50%; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: var(--orange); flex-shrink: 0; font-family: 'Playfair Display', serif; }
-    .sm-info h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
-    .sm-info .sm-role { font-size: 11px; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-    [data-theme="dark"] .sm-card { background: rgba(232,96,10,0.08) !important; border-color: rgba(232,96,10,0.35) !important; }
+    /* SENIOR MANAGER CARD — matches head-card style */
+    .sm-card { display: flex; gap: 20px; align-items: flex-start; background: var(--grey-light); border: 2px solid var(--navy-mid); border-radius: 14px; padding: 20px 24px; margin: 22px 0 10px; }
+    .sm-photo { width: 64px; height: 64px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: var(--orange); flex-shrink: 0; font-family: 'Playfair Display', serif; overflow: hidden; }
+    .sm-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .sm-badge { font-size: 10px; font-weight: 700; color: var(--navy-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .sm-info h4 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .sm-info .sm-role { font-size: 13px; color: var(--text-mid); }
+    [data-theme="dark"] .sm-card { background: #0b1628 !important; border-color: rgba(255,255,255,0.2) !important; }
     [data-theme="dark"] .sm-info h4 { color: #f0f4ff !important; }
+    [data-theme="dark"] .sm-info .sm-role { color: #fff !important; }
+    [data-theme="dark"] .sm-badge { color: rgba(180,200,255,0.75) !important; }
 
     /* EMPTY STATE */
     .empty-state { text-align: center; padding: 40px 20px; color: var(--text-light); border: 2px dashed var(--grey-mid); border-radius: 12px; }
@@ -444,8 +448,9 @@
     <div class="sm-card">
       <div class="sm-photo">BR</div>
       <div class="sm-info">
+        <div class="sm-badge">Senior Manager</div>
         <h4>Bindu Rao TN</h4>
-        <div class="sm-role">Senior Manager</div>
+        <div class="sm-role">FinOps</div>
       </div>
     </div>
     <div class="team-grid">
@@ -469,8 +474,9 @@
     <div class="sm-card">
       <div class="sm-photo">SK</div>
       <div class="sm-info">
+        <div class="sm-badge">Senior Manager</div>
         <h4>Srikrishna</h4>
-        <div class="sm-role">Senior Manager</div>
+        <div class="sm-role">FinOps</div>
       </div>
     </div>
     <div class="team-grid">
@@ -487,8 +493,9 @@
     <div class="sm-card">
       <div class="sm-photo">NK</div>
       <div class="sm-info">
+        <div class="sm-badge">Senior Manager</div>
         <h4>Naveen Kumar</h4>
-        <div class="sm-role">Senior Manager</div>
+        <div class="sm-role">FinOps</div>
       </div>
     </div>
     <div class="team-grid">
@@ -512,8 +519,9 @@
     <div class="sm-card">
       <div class="sm-photo">MS</div>
       <div class="sm-info">
+        <div class="sm-badge">Senior Manager</div>
         <h4>Manju S</h4>
-        <div class="sm-role">Senior Manager</div>
+        <div class="sm-role">FinOps</div>
       </div>
     </div>
     <div class="team-grid">
@@ -530,8 +538,9 @@
     <div class="sm-card">
       <div class="sm-photo">KS</div>
       <div class="sm-info">
+        <div class="sm-badge">Senior Manager</div>
         <h4>Kavyashree S</h4>
-        <div class="sm-role">Senior Manager</div>
+        <div class="sm-role">FinOps</div>
       </div>
     </div>
     <div class="team-grid">
