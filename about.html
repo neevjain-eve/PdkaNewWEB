@@ -782,13 +782,15 @@
     .stat-cell strong { display: block; font-size: clamp(28px,4vw,44px); font-weight: 800; line-height: 1; }
     .stat-cell span { font-size: 13px; opacity: 0.88; margin-top: 6px; display: block; }
     .about-body { max-width: 900px; margin: 0 auto; padding: 64px 5%; }
+    :root .about-body h2, body:not([data-theme="dark"]) .about-body h2 { color: var(--navy); }
+    :root .about-body p, body:not([data-theme="dark"]) .about-body p { color: var(--text-mid); }
     .about-body .section-label { margin-bottom: 8px; }
-    .about-body h2 { font-size: clamp(24px,3vw,36px); color: var(--navy); margin-bottom: 24px; }
+    .about-body h2 { font-size: clamp(24px,3vw,36px); margin-bottom: 24px; }
     [data-theme="dark"] .about-body h2 { color: #ffffff !important; }
     [data-theme="dark"] .about-body { color: #ffffff !important; }
     [data-theme="dark"] .about-body * { color: #ffffff !important; }
     [data-theme="dark"] .about-body .section-label { color: var(--orange) !important; }
-    .about-body p { color: var(--text-mid); font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
+    .about-body p { font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
     [data-theme="dark"] .about-body p,
     [data-theme="dark"] .about-body h2,
     [data-theme="dark"] .about-body .section-label,
