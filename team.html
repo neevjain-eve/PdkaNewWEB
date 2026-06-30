@@ -276,11 +276,11 @@
 <!-- DEPT NAV -->
 <div class="dept-nav">
   <div class="dept-nav-inner">
-    <a href="#company-secretary" class="dept-nav-pill"><i class="fas fa-file-contract"></i> Company Secretary</a>
-    <a href="#audit" class="dept-nav-pill"><i class="fas fa-search-dollar"></i> Audit &amp; Assurance</a>
-    <a href="#advisory" class="dept-nav-pill"><i class="fas fa-chart-line"></i> Advisory</a>
-    <a href="#taxation" class="dept-nav-pill"><i class="fas fa-file-invoice-dollar"></i> Taxation</a>
-    <a href="#finops" class="dept-nav-pill"><i class="fas fa-coins"></i> FinOps</a>
+    <a href="#company-secretary" class="dept-nav-pill" data-en="Company Secretary" data-ja="会社秘書役" data-hi="कंपनी सचिव"><i class="fas fa-file-contract"></i><span class="pill-text"> Company Secretary</span></a>
+    <a href="#audit" class="dept-nav-pill" data-en="Audit &amp; Assurance" data-ja="監査・保証" data-hi="ऑडिट और आश्वासन"><i class="fas fa-search-dollar"></i><span class="pill-text"> Audit &amp; Assurance</span></a>
+    <a href="#advisory" class="dept-nav-pill" data-en="Advisory" data-ja="アドバイザリー" data-hi="सलाहकार"><i class="fas fa-chart-line"></i><span class="pill-text"> Advisory</span></a>
+    <a href="#taxation" class="dept-nav-pill" data-en="Taxation" data-ja="税務" data-hi="कराधान"><i class="fas fa-file-invoice-dollar"></i><span class="pill-text"> Taxation</span></a>
+    <a href="#finops" class="dept-nav-pill" data-en="FinOps" data-ja="FinOps" data-hi="FinOps"><i class="fas fa-coins"></i><span class="pill-text"> FinOps</span></a>
   </div>
 </div>
 
@@ -563,16 +563,11 @@
     document.querySelectorAll('#langMenu .lang-option').forEach(function(b){b.classList.remove('active');});
     var opt = document.getElementById('opt-'+lang); if (opt) opt.classList.add('active');
     var _lm = document.getElementById('langMenu'); if (_lm) _lm.style.display = 'none';
-    // Update dept-nav pills
-    if (t.pills) {
-      var pills = document.querySelectorAll('.dept-nav-pill');
-      pills.forEach(function(p, i) {
-        var icon = p.querySelector('i');
-        p.innerHTML = '';
-        if (icon) p.appendChild(icon);
-        p.appendChild(document.createTextNode(' ' + t.pills[i]));
-      });
-    }
+    // Update dept-nav pills via data-* attributes
+    document.querySelectorAll('.dept-nav-pill').forEach(function(p) {
+      var span = p.querySelector('.pill-text');
+      if (span) span.textContent = ' ' + (p.getAttribute('data-' + lang) || p.getAttribute('data-en') || span.textContent.trim());
+    });
     // Update dept section badges
     if (t.badges) {
       var badges = document.querySelectorAll('.dept-badge-label');
