@@ -68,7 +68,8 @@
     .hero-band p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 560px; line-height: 1.7; }
 
     /* DEPT NAV */
-    .dept-nav { background: white; border-bottom: 1px solid var(--grey-mid); padding: 0 5%; position: fixed; top: 72px; left: 0; right: 0; width: 100%; z-index: 200; }
+    .dept-nav { background: white; border-bottom: 1px solid var(--grey-mid); padding: 0 5%; position: fixed; top: 72px; left: 0; right: 0; width: 100%; z-index: 200; transition: top 0.3s ease; }
+    nav.nav-hidden ~ .dept-nav { top: 0; }
     main { padding-top: 58px; }
     .dept-section { scroll-margin-top: 135px; }
     html.in-iframe .dept-nav { top: 0 !important; }
