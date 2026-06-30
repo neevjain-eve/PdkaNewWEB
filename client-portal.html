@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -196,7 +196,7 @@
         </div>
       </div>
       <a href="#" class="forgot-link" onclick="showForgot(event)">Forgot password?</a>
-      <button class="btn-submit" onclick="handleSignin()"><i class="fas fa-sign-in-alt"></i> Sign In to Portal</button>
+      <button id="signinBtn" class="btn-submit" onclick="handleSignin()"><i class="fas fa-sign-in-alt"></i> Sign In to Portal</button>
       <div class="divider"><span>or continue with</span></div>
       <button class="btn-sso" onclick="ssoNotice()">
         <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
@@ -264,7 +264,7 @@
         <input type="checkbox" id="agreeTerms" />
         <label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I consent to PDKA contacting me regarding my account.</label>
       </div>
-      <button class="btn-submit" onclick="handleSignup()"><i class="fas fa-user-plus"></i> Create Account</button>
+      <button id="signupBtn" class="btn-submit" onclick="handleSignup()"><i class="fas fa-user-plus"></i> Create Account</button>
       <div class="switch-note">Already have an account? <a onclick="switchTab('signin')">Sign In</a></div>
     </div>
 
@@ -282,7 +282,7 @@
     </div>
     <div style="display:flex;gap:10px;">
       <button onclick="closeForgot()" style="flex:1;padding:11px;border:1.5px solid #e8eaf0;border-radius:9px;background:none;font-size:14px;font-weight:600;cursor:pointer;color:#374151;font-family:inherit;">Cancel</button>
-      <button onclick="submitForgot()" style="flex:1;padding:11px;background:#e8600a;border:none;border-radius:9px;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">Send Link</button>
+      <button id="forgotBtn" onclick="submitForgot()" style="flex:1;padding:11px;background:#e8600a;border:none;border-radius:9px;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">Send Link</button>
     </div>
     <div id="forgotMsg" style="display:none;margin-top:12px;font-size:13px;color:#065f46;background:rgba(16,185,129,0.1);border-radius:8px;padding:10px 12px;"></div>
   </div>
@@ -324,50 +324,100 @@
     el.textContent = lbl[sc-1]||''; el.style.color = clr[sc-1]||'#9ca3af';
   }
 
-  function handleSignin() {
-    const email=document.getElementById('signinEmail').value.trim();
-    const pwd=document.getElementById('signinPassword').value;
-    document.getElementById('signinError').classList.remove('show');
-    document.getElementById('signinSuccess').classList.remove('show');
-    if (!email||!pwd) { showErr('signinErrorMsg','signinError','Please enter your email and password.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('signinErrorMsg','signinError','Please enter a valid email address.'); return; }
-    document.getElementById('signinSuccess').classList.add('show');
+    const API = 'portal-api.php';
+
+  function apiPost(payload) {
+    return fetch(API, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }).then(r => r.json());
   }
 
-  function handleSignup() {
-    const first=document.getElementById('signupFirst').value.trim();
-    const last=document.getElementById('signupLast').value.trim();
-    const email=document.getElementById('signupEmail').value.trim();
-    const pwd=document.getElementById('signupPassword').value;
-    const agreed=document.getElementById('agreeTerms').checked;
-    document.getElementById('signupError').classList.remove('show');
-    document.getElementById('signupSuccess').classList.remove('show');
-    if (!first||!last||!email||!pwd) { showErr('signupErrorMsg','signupError','Please fill in all required fields.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('signupErrorMsg','signupError','Please enter a valid email address.'); return; }
-    if (pwd.length<8) { showErr('signupErrorMsg','signupError','Password must be at least 8 characters.'); return; }
-    if (!agreed) { showErr('signupErrorMsg','signupError','Please agree to the Terms of Service to continue.'); return; }
-    document.getElementById('signupSuccess').classList.add('show');
-    ['signupFirst','signupLast','signupCompany','signupEmail','signupPhone','signupPassword'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('agreeTerms').checked=false;
-    document.getElementById('pwdStrength').style.display='none';
+  function setBtn(id, loading, text) {
+    const b = document.getElementById(id);
+    if (!b) return;
+    b.disabled = loading;
+    b.textContent = loading ? 'Please wait…' : text;
   }
 
   function showErr(msgId, bannerId, txt) {
-    document.getElementById(msgId).textContent=txt;
+    document.getElementById(msgId).textContent = txt;
     document.getElementById(bannerId).classList.add('show');
   }
 
-  function ssoNotice() { alert('Google Sign-In will be enabled once the portal backend is connected. Please use email sign-in for now.'); }
+  function handleSignin() {
+    const email = document.getElementById('signinEmail').value.trim();
+    const pwd   = document.getElementById('signinPassword').value;
+    ['signinError','signinSuccess'].forEach(id => document.getElementById(id).classList.remove('show'));
+    if (!email || !pwd) { showErr('signinErrorMsg','signinError','Please enter your email and password.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('signinErrorMsg','signinError','Please enter a valid email address.'); return; }
 
-  function showForgot(e) { e.preventDefault(); document.getElementById('forgotOverlay').style.display='flex'; }
-  function closeForgot() { document.getElementById('forgotOverlay').style.display='none'; document.getElementById('forgotMsg').style.display='none'; document.getElementById('forgotEmail').value=''; }
+    setBtn('signinBtn', true, 'Sign In');
+    apiPost({ action: 'login', email, password: pwd })
+      .then(res => {
+        if (res.success) {
+          document.getElementById('signinSuccess').classList.add('show');
+          setTimeout(() => { window.location.href = 'client-dashboard.html'; }, 1200);
+        } else {
+          showErr('signinErrorMsg', 'signinError', res.message || 'Login failed.');
+        }
+      })
+      .catch(() => showErr('signinErrorMsg', 'signinError', 'Connection error. Please try again.'))
+      .finally(() => setBtn('signinBtn', false, 'Sign In'));
+  }
+
+  function handleSignup() {
+    const first   = document.getElementById('signupFirst').value.trim();
+    const last    = document.getElementById('signupLast').value.trim();
+    const company = document.getElementById('signupCompany').value.trim();
+    const email   = document.getElementById('signupEmail').value.trim();
+    const phone   = document.getElementById('signupPhone').value.trim();
+    const pwd     = document.getElementById('signupPassword').value;
+    const agreed  = document.getElementById('agreeTerms').checked;
+    ['signupError','signupSuccess'].forEach(id => document.getElementById(id).classList.remove('show'));
+    if (!first||!last||!email||!pwd) { showErr('signupErrorMsg','signupError','Please fill in all required fields.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('signupErrorMsg','signupError','Please enter a valid email address.'); return; }
+    if (pwd.length < 8) { showErr('signupErrorMsg','signupError','Password must be at least 8 characters.'); return; }
+    if (!agreed) { showErr('signupErrorMsg','signupError','Please agree to the Terms of Service to continue.'); return; }
+
+    setBtn('signupBtn', true, 'Create Account');
+    apiPost({ action: 'signup', first_name: first, last_name: last, company, email, phone, password: pwd })
+      .then(res => {
+        if (res.success) {
+          document.getElementById('signupSuccess').classList.add('show');
+          ['signupFirst','signupLast','signupCompany','signupEmail','signupPhone','signupPassword'].forEach(id => document.getElementById(id).value = '');
+          document.getElementById('agreeTerms').checked = false;
+          document.getElementById('pwdStrength').style.display = 'none';
+        } else {
+          showErr('signupErrorMsg', 'signupError', res.message || 'Registration failed.');
+        }
+      })
+      .catch(() => showErr('signupErrorMsg', 'signupError', 'Connection error. Please try again.'))
+      .finally(() => setBtn('signupBtn', false, 'Create Account'));
+  }
+
+  function ssoNotice() { alert('Google Sign-In will be available soon. Please use email sign-in for now.'); }
+
+  function showForgot(e) { e.preventDefault(); document.getElementById('forgotOverlay').style.display = 'flex'; }
+  function closeForgot() {
+    document.getElementById('forgotOverlay').style.display = 'none';
+    document.getElementById('forgotMsg').style.display = 'none';
+    document.getElementById('forgotEmail').value = '';
+  }
   function submitForgot() {
-    const email=document.getElementById('forgotEmail').value.trim();
+    const email = document.getElementById('forgotEmail').value.trim();
     if (!email) return;
-    const msg=document.getElementById('forgotMsg');
-    msg.textContent='Reset link sent to '+email+'. Please check your inbox.';
-    msg.style.display='block';
-    setTimeout(closeForgot,3000);
+    const msg = document.getElementById('forgotMsg');
+    setBtn('forgotBtn', true, 'Send Reset Link');
+    apiPost({ action: 'forgot', email })
+      .then(res => {
+        msg.textContent = res.message || 'If that email is registered, a reset link has been sent.';
+        msg.style.display = 'block';
+        setTimeout(closeForgot, 3500);
+      })
+      .catch(() => { msg.textContent = 'Connection error. Please try again.'; msg.style.display = 'block'; })
+      .finally(() => setBtn('forgotBtn', false, 'Send Reset Link'));
   }
 
   document.addEventListener('keydown',function(e){
