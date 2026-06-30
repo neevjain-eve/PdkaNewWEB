@@ -184,133 +184,130 @@
 
     /* ====== ORG CHART TREE ====== */
     .org-chart {
-      margin-top: 32px;
+      margin-top: 24px;
       overflow-x: auto;
-      padding: 0 8px 24px;
+      padding: 0 0 24px;
+      width: calc(100% + 80px);
+      margin-left: -40px;
     }
-    /* Root ul â€” centers the single root node */
     .org-chart > ul {
       display: flex;
       justify-content: center;
       list-style: none;
       padding: 0;
       margin: 0;
+      min-width: max-content;
     }
-    /* Every nested ul = row of children */
     .org-chart ul ul {
       display: flex;
       justify-content: center;
       list-style: none;
-      padding: 32px 8px 0;
+      padding: 36px 4px 0;
       margin: 0;
       position: relative;
     }
-    /* Horizontal bar connecting siblings */
-    .org-chart ul ul::before {
+    /* Parent-to-bar vertical line */
+    .org-chart li > ul::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 2px; height: 36px;
+      background: #b0bcd8;
+    }
+    /* Horizontal bar across siblings */
+    .org-chart ul ul::after {
       content: "";
       position: absolute;
       top: 0;
-      left: calc(50% / var(--siblings, 1));
-      right: calc(50% / var(--siblings, 1));
+      left: 0; right: 0;
       height: 2px;
-      background: #c5cfe8;
+      background: #b0bcd8;
     }
-    /* Vertical drop from parent to horizontal bar */
     .org-chart li {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 6px;
+      padding: 0 8px;
       position: relative;
-      min-width: 110px;
-      max-width: 160px;
+      min-width: 120px;
+      max-width: 180px;
     }
-    /* Top connector for each li (horizontal segment) */
+    /* Horizontal seg of each li */
     .org-chart ul ul > li::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 2px;
-      background: #c5cfe8;
+      background: #b0bcd8;
     }
     .org-chart ul ul > li:first-child::before { left: 50%; }
     .org-chart ul ul > li:last-child::before  { right: 50%; }
     .org-chart ul ul > li:only-child::before  { display: none; }
-    /* Vertical line from the bar down to the card */
+    /* Vertical drop to card */
     .org-chart ul ul > li::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: 50%;
+      top: 0; left: 50%;
       transform: translateX(-50%);
-      width: 2px;
-      height: 24px;
-      background: #c5cfe8;
+      width: 2px; height: 28px;
+      background: #b0bcd8;
     }
-    /* Vertical line from parent card down to children bar */
-    .org-chart li > ul::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 32px;
-      background: #c5cfe8;
-      z-index: 0;
-    }
-    /* CARDS */
-    .org-member {
-      background: #ffffff;
-      border: 1.5px solid #dde3f0;
-      border-radius: 10px;
-      padding: 10px 10px 8px;
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-      box-shadow: 0 1px 6px rgba(13,27,62,0.07);
-      position: relative;
-      z-index: 1;
-    }
-    .org-member .om-photo {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 800; color: var(--orange);
-      font-family: "Playfair Display", serif;
-      margin: 0 auto 6px;
-    }
-    .org-member .om-name { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 2px; line-height: 1.3; }
-    .org-member .om-role { font-size: 10px; color: var(--text-light); }
+    /* MANAGER card */
     .org-sm {
-      background: var(--grey-light);
+      background: #f0f4ff;
       border: 2px solid var(--navy-mid);
       border-radius: 10px;
-      padding: 10px 10px 8px;
+      padding: 10px 8px 8px;
       text-align: center;
       width: 100%;
       box-sizing: border-box;
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
     .org-sm .osm-photo {
-      width: 40px; height: 40px; border-radius: 50%;
+      width: 52px; height: 68px;
+      border-radius: 6px;
       background: var(--navy);
       display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 800; color: var(--orange);
+      font-size: 13px; font-weight: 800; color: var(--orange);
       font-family: "Playfair Display", serif;
       margin: 0 auto 6px;
+      overflow: hidden;
     }
-    .org-sm .osm-badge  { font-size: 8px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
-    .org-sm .osm-name   { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 1px; line-height: 1.3; }
-    .org-sm .osm-role   { font-size: 10px; color: var(--text-light); }
+    .org-sm .osm-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .org-sm .osm-badge  { font-size: 8px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 3px; }
+    .org-sm .osm-name   { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 2px; line-height: 1.3; }
+    .org-sm .osm-role   { font-size: 10px; color: var(--text-light); font-style: italic; }
+    /* EXEC card */
+    .org-member {
+      background: #ffffff;
+      border: 1.5px solid #d0d8ee;
+      border-radius: 10px;
+      padding: 10px 8px 8px;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 1px 5px rgba(13,27,62,0.06);
+      position: relative; z-index: 1;
+    }
+    .org-member .om-photo {
+      width: 52px; height: 68px;
+      border-radius: 6px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: var(--orange);
+      font-family: "Playfair Display", serif;
+      margin: 0 auto 6px;
+      overflow: hidden;
+    }
+    .org-member .om-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .org-member .om-name { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 2px; line-height: 1.3; }
+    .org-member .om-role { font-size: 10px; color: var(--text-light); font-style: italic; }
     /* Dark mode */
-    [data-theme="dark"] .org-member { background: #0b1628; border-color: rgba(255,255,255,0.12); }
     [data-theme="dark"] .org-sm     { background: #0f1f47; border-color: var(--orange); }
-    [data-theme="dark"] .org-member .om-name, [data-theme="dark"] .org-sm .osm-name { color: #f0f4ff; }
-    [data-theme="dark"] .org-chart ul ul::before,
+    [data-theme="dark"] .org-member { background: #0b1628; border-color: rgba(255,255,255,0.12); }
+    [data-theme="dark"] .org-sm .osm-name, [data-theme="dark"] .org-member .om-name { color: #f0f4ff; }
+    [data-theme="dark"] .org-chart ul ul::after,
     [data-theme="dark"] .org-chart ul ul > li::before,
     [data-theme="dark"] .org-chart ul ul > li::after,
     [data-theme="dark"] .org-chart li > ul::before { background: #3a4f7a; }
@@ -610,73 +607,73 @@
         <li>
           <div class="org-sm">
             <div class="osm-photo">Ra</div>
-            <div class="osm-badge">Head</div>
+            <div class="osm-badge">FinOps</div>
             <div class="osm-name">Ramya R</div>
-            <div class="osm-role">Head â€“ FinOps</div>
+            <div class="osm-role">Head</div>
           </div>
           <ul>
             <li>
               <div class="org-sm">
                 <div class="osm-photo">BR</div>
-                <div class="osm-badge">Sr. Manager</div>
+                <div class="osm-badge">FinOps</div>
                 <div class="osm-name">Bindu Rao TN</div>
-                <div class="osm-role">FinOps</div>
+                <div class="osm-role">Sr. Manager</div>
               </div>
               <ul>
-                <li><div class="org-member"><div class="om-photo">VL</div><div class="om-name">Vijetha L</div><div class="om-role">Exec</div></div></li>
-                <li><div class="org-member"><div class="om-photo">MJ</div><div class="om-name">Mansi G Jain</div><div class="om-role">Exec</div></div></li>
+                <li><div class="org-member"><div class="om-photo">VL</div><div class="om-name">Vijetha L</div><div class="om-role">FinOps</div></div></li>
+                <li><div class="org-member"><div class="om-photo">MJ</div><div class="om-name">Mansi G Jain</div><div class="om-role">FinOps</div></div></li>
               </ul>
             </li>
             <li>
               <div class="org-sm">
                 <div class="osm-photo">SK</div>
-                <div class="osm-badge">Sr. Manager</div>
+                <div class="osm-badge">FinOps</div>
                 <div class="osm-name">Srikrishna</div>
-                <div class="osm-role">FinOps</div>
+                <div class="osm-role">Sr. Manager</div>
               </div>
               <ul>
-                <li><div class="org-member"><div class="om-photo">SK</div><div class="om-name">Shivam Kumar</div><div class="om-role">Exec</div></div></li>
+                <li><div class="org-member"><div class="om-photo">SK</div><div class="om-name">Shivam Kumar</div><div class="om-role">FinOps</div></div></li>
               </ul>
             </li>
             <li>
               <div class="org-sm">
                 <div class="osm-photo">NK</div>
-                <div class="osm-badge">Sr. Manager</div>
+                <div class="osm-badge">FinOps</div>
                 <div class="osm-name">Naveen Kumar</div>
-                <div class="osm-role">FinOps</div>
+                <div class="osm-role">Sr. Manager</div>
               </div>
               <ul>
-                <li><div class="org-member"><div class="om-photo">GS</div><div class="om-name">Geetha S</div><div class="om-role">Exec</div></div></li>
-                <li><div class="org-member"><div class="om-photo">B</div><div class="om-name">Bhavya</div><div class="om-role">Exec</div></div></li>
+                <li><div class="org-member"><div class="om-photo">GS</div><div class="om-name">Geetha S</div><div class="om-role">FinOps</div></div></li>
+                <li><div class="org-member"><div class="om-photo">B</div><div class="om-name">Bhavya</div><div class="om-role">FinOps</div></div></li>
               </ul>
             </li>
             <li>
               <div class="org-sm">
                 <div class="osm-photo">MS</div>
-                <div class="osm-badge">Sr. Manager</div>
+                <div class="osm-badge">FinOps</div>
                 <div class="osm-name">Manju S</div>
-                <div class="osm-role">FinOps</div>
+                <div class="osm-role">Sr. Manager</div>
               </div>
               <ul>
-                <li><div class="org-member"><div class="om-photo">KU</div><div class="om-name">K Umamaheswar</div><div class="om-role">Exec</div></div></li>
+                <li><div class="org-member"><div class="om-photo">KU</div><div class="om-name">K Umamaheswar</div><div class="om-role">FinOps</div></div></li>
               </ul>
             </li>
             <li>
               <div class="org-sm">
                 <div class="osm-photo">KS</div>
-                <div class="osm-badge">Sr. Manager</div>
+                <div class="osm-badge">FinOps</div>
                 <div class="osm-name">Kavyashree S</div>
-                <div class="osm-role">FinOps</div>
+                <div class="osm-role">Sr. Manager</div>
               </div>
               <ul>
-                <li><div class="org-member"><div class="om-photo">RS</div><div class="om-name">Rani S</div><div class="om-role">Exec</div></div></li>
+                <li><div class="org-member"><div class="om-photo">RS</div><div class="om-name">Rani S</div><div class="om-role">FinOps</div></div></li>
               </ul>
             </li>
             <li>
               <div class="org-member">
                 <div class="om-photo">VK</div>
                 <div class="om-name">Vijay Kumar DN</div>
-                <div class="om-role">Accounts Executive</div>
+                <div class="om-role">FinOps</div>
               </div>
             </li>
           </ul>
