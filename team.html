@@ -287,7 +287,7 @@
   <div class="dept-section" id="company-secretary">
     <div class="dept-section-header">
       <div>
-        <div class="dept-badge"><i class="fas fa-file-contract"></i> Company Secretary</div>
+        <div class="dept-badge"><i class="fas fa-file-contract"></i> <span class="dept-badge-label">Company Secretary</span></div>
         <h2>Corporate Compliance Team</h2>
         <p>Handling ROC filings, secretarial compliance, board governance, and statutory registers for companies across industries.</p>
       </div>
@@ -314,7 +314,7 @@
   <div class="dept-section" id="audit">
     <div class="dept-section-header">
       <div>
-        <div class="dept-badge"><i class="fas fa-search-dollar"></i> Audit &amp; Assurance</div>
+        <div class="dept-badge"><i class="fas fa-search-dollar"></i> <span class="dept-badge-label">Audit &amp; Assurance</span></div>
         <h2>Audit &amp; Assurance Team</h2>
         <p>Statutory audit, internal audit, tax audit, and IS audit engagements carried out under ICAI standards for listed, unlisted, and foreign subsidiaries.</p>
       </div>
@@ -341,7 +341,7 @@
   <div class="dept-section" id="advisory">
     <div class="dept-section-header">
       <div>
-        <div class="dept-badge"><i class="fas fa-chart-line"></i> Advisory</div>
+        <div class="dept-badge"><i class="fas fa-chart-line"></i> <span class="dept-badge-label">Advisory</span></div>
         <h2>Business Advisory Team</h2>
         <p>Business consulting, valuations, internal controls review, and governance advisory for growth-stage and established organisations.</p>
       </div>
@@ -368,7 +368,7 @@
   <div class="dept-section" id="taxation">
     <div class="dept-section-header">
       <div>
-        <div class="dept-badge"><i class="fas fa-file-invoice-dollar"></i> Taxation</div>
+        <div class="dept-badge"><i class="fas fa-file-invoice-dollar"></i> <span class="dept-badge-label">Taxation</span></div>
         <h2>Taxation Team</h2>
         <p>Corporate and personal tax planning, GST advisory, TDS compliance, transfer pricing, and international taxation across India and cross-border jurisdictions.</p>
       </div>
@@ -395,7 +395,7 @@
   <div class="dept-section" id="finops">
     <div class="dept-section-header">
       <div>
-        <div class="dept-badge"><i class="fas fa-coins"></i> FinOps</div>
+        <div class="dept-badge"><i class="fas fa-coins"></i> <span class="dept-badge-label">FinOps</span></div>
         <h2>FinOps &amp; Digital Finance Team</h2>
         <p>Virtual CFO services, MIS reporting, financial modelling, and digital finance operations for startups and scaling businesses.</p>
       </div>
@@ -526,6 +526,8 @@
       heroSub: 'P. Dilip Kumar &amp; Associates is powered by a team of qualified professionals across five practice areas. Click a department below to explore.',
       backBtn: 'Back to Website',
       cta: 'Get Started'
+    ,
+      pills: ['Company Secretary','Audit &amp; Assurance','Advisory','Taxation','FinOps'], badges: ['Company Secretary','Audit &amp; Assurance','Advisory','Taxation','FinOps'], deptHead: 'Department Head'
     },
     ja: {
       heroLabel: '私たちのチーム',
@@ -533,6 +535,8 @@
       heroSub: 'P.ディリップ・クマール&amp;アソシエイツは、5つの専門分野にわたる資格を持つプロフェッショナルで構成されています。',
       backBtn: 'ウェブサイトに戻る',
       cta: '始める'
+    ,
+      pills: ['会社秘書役','監査・保証','アドバイザリー','税務','FinOps'], badges: ['会社秘書役','監査・保証','アドバイザリー','税務','FinOps'], deptHead: '部門長'
     },
     hi: {
       heroLabel: 'हमारे लोग',
@@ -540,6 +544,8 @@
       heroSub: 'पी. दिलीप कुमार एंड एसोसिएट्स पाँच प्रैक्टिस क्षेत्रों में योग्य पेशेवरों की एक टीम द्वारा संचालित है।',
       backBtn: 'वेबसाइट पर वापस जाएं',
       cta: 'शुरू करें'
+    ,
+      pills: ['कंपनी सचिव','ऑडिट और आश्वासन','सलाहकार','कराधान','FinOps'], badges: ['कंपनी सचिव','ऑडिट और आश्वासन','सलाहकार','कराधान','FinOps'], deptHead: 'विभाग प्रमुख'
     }
   };
 
@@ -554,6 +560,25 @@
     document.querySelectorAll('#teamLangMenu .lang-option').forEach(function(b){b.classList.remove('active');});
     var opt = document.getElementById('topt-'+lang); if (opt) opt.classList.add('active');
     document.getElementById('teamLangMenu').classList.remove('open');
+    // Update dept-nav pills
+    if (t.pills) {
+      var pills = document.querySelectorAll('.dept-nav-pill');
+      pills.forEach(function(p, i) {
+        var icon = p.querySelector('i');
+        p.innerHTML = '';
+        if (icon) p.appendChild(icon);
+        p.appendChild(document.createTextNode(' ' + t.pills[i]));
+      });
+    }
+    // Update dept section badges
+    if (t.badges) {
+      var badges = document.querySelectorAll('.dept-badge-label');
+      badges.forEach(function(b, i) { if (t.badges[i]) b.textContent = t.badges[i]; });
+    }
+    // Update dept head labels
+    if (t.deptHead) {
+      document.querySelectorAll('.head-badge').forEach(function(h) { h.textContent = t.deptHead; });
+    }
     document.documentElement.lang = lang;
     try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
   };
