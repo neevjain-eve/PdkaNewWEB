@@ -4639,15 +4639,11 @@ function closeSvcIfOutside(e) {
     document.documentElement.lang = lang;
     // Store preference
     try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
-    // Push language to open iframe (if About/Careers/etc. is currently open)
+    // Push language to open iframe — always use postMessage (works cross-origin for file://)
     try {
       var frame = document.getElementById('pdka-page-frame');
-      if (frame && frame.contentWindow && frame.src && frame.src !== '') {
-        var iw = frame.contentWindow;
-        var fn = iw.setAboutLang || iw.setCarLang || iw.setTeamLang ||
-                 iw.setInsLang || iw.setPdkaLang;
-        if (fn) fn.call(iw, lang);
-        else iw.postMessage({ type: 'pdka-set-lang', lang: lang }, '*');
+      if (frame && frame.src && frame.src !== '') {
+        frame.contentWindow.postMessage({ type: 'pdka-set-lang', lang: lang }, '*');
       }
     } catch(e) {}
   };
