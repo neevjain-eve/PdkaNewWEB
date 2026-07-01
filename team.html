@@ -74,14 +74,14 @@
     .dept-section { }
     html.in-iframe .dept-nav { top: 0 !important; }
     html.in-iframe 
-    .dept-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; scrollbar-width: none; }
+    .dept-nav-inner { max-width: 100%; margin: 0 auto; display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; scrollbar-width: none; }
     .dept-nav-inner::-webkit-scrollbar { display: none; }
     .dept-nav-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 20px; border: 1.5px solid var(--grey-mid); font-size: 13px; font-weight: 600; color: var(--text-mid); text-decoration: none; white-space: nowrap; transition: all 0.2s; cursor: pointer; background: white; }
     .dept-nav-pill:hover, .dept-nav-pill.active { background: var(--orange); color: white; border-color: var(--orange); }
     [data-theme="dark"] .dept-nav { background: #0b1628 !important; border-color: rgba(255,255,255,0.08) !important; }
 
     /* MAIN */
-    main { flex: 1; max-width: 1200px; margin: 0 auto; padding: 52px 5% 80px; width: 100%; }
+    main { flex: 1; max-width: 100%; margin: 0; padding: 52px 2% 80px; width: 100%; }
 
     /* DEPARTMENT SECTION */
     .dept-section { display: none; background: white; border: 1.5px solid var(--grey-mid); border-radius: 20px; padding: 40px; margin-bottom: 40px; }
@@ -184,22 +184,18 @@
 
     /* ====== ORG CHART TREE ====== */
     .org-chart {
-      /* Break out of all parent width constraints â€” use full viewport */
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
+      width: calc(100% + 4%);   /* bleed past dept-section padding */
+      margin-left: -2%;
       box-sizing: border-box;
-      padding: 40px 32px 48px;
+      padding: 40px 3% 48px;
       margin-top: 8px;
       border-top: 1.5px solid var(--grey-mid);
       background: #f5f6fb;
       border-radius: 0 0 20px 20px;
-      /* NO overflow â€” fits on screen without scroll */
       overflow: visible;
     }
 
-    /* â”€â”€ ROOT ROW: 6 managers spread evenly across full width â”€â”€ */
+    /* 6 managers spread across full width */
     .org-chart > ul.org-root {
       display: flex;
       justify-content: space-evenly;
@@ -210,7 +206,7 @@
       width: 100%;
     }
 
-    /* â”€â”€ CHILD ROWS â”€â”€ */
+    /* Child rows */
     .org-chart ul ul {
       display: flex;
       justify-content: center;
@@ -222,7 +218,7 @@
       width: 100%;
     }
 
-    /* Vertical line: parent card down to horizontal bar */
+    /* Vertical line from card down to horizontal bar */
     .org-chart li > ul::before {
       content: "";
       position: absolute;
@@ -232,7 +228,7 @@
       background: #bcc8e0;
     }
 
-    /* Horizontal bar across child siblings */
+    /* Horizontal bar across siblings */
     .org-chart ul ul::after {
       content: "";
       position: absolute;
@@ -241,18 +237,17 @@
       background: #bcc8e0;
     }
 
-    /* â”€â”€ LI: flex so cards shrink/grow to fill space â”€â”€ */
     .org-chart li {
       display: flex;
       flex-direction: column;
       align-items: center;
       position: relative;
       flex: 1;
-      min-width: 0;      /* allow shrinking â€” no forced scroll */
-      padding: 0 8px;
+      min-width: 0;
+      padding: 0 10px;
     }
 
-    /* Root-level: no top connectors */
+    /* Root li: no connectors */
     .org-chart > ul.org-root > li::before,
     .org-chart > ul.org-root > li::after { display: none; }
 
@@ -278,7 +273,7 @@
       background: #bcc8e0;
     }
 
-    /* â”€â”€ MANAGER CARD â”€â”€ */
+    /* MANAGER card */
     .org-sm {
       background: #fff;
       border: 2px solid var(--navy-mid);
@@ -290,7 +285,6 @@
       position: relative; z-index: 1;
       box-shadow: 0 2px 12px rgba(13,27,62,0.09);
     }
-    /* Passport photo slot â€” manager (portrait 3:4 ratio) */
     .org-sm .osm-photo {
       width: 60px; height: 78px;
       border-radius: 8px;
@@ -298,15 +292,14 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 15px; font-weight: 800; color: var(--orange);
       font-family: "Playfair Display", serif;
-      margin: 0 auto 10px;
-      overflow: hidden;
+      margin: 0 auto 10px; overflow: hidden;
     }
     .org-sm .osm-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .org-sm .osm-badge { font-size: 8px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.9px; margin-bottom: 4px; }
-    .org-sm .osm-name  { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 2px; line-height: 1.3; }
-    .org-sm .osm-role  { font-size: 10px; color: var(--text-light); }
+    .org-sm .osm-name  { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; line-height: 1.3; }
+    .org-sm .osm-role  { font-size: 11px; color: var(--text-light); }
 
-    /* â”€â”€ EXEC CARD â”€â”€ */
+    /* EXEC card */
     .org-member {
       background: #fff;
       border: 1.5px solid #cdd6ec;
@@ -318,7 +311,6 @@
       box-shadow: 0 1px 8px rgba(13,27,62,0.07);
       position: relative; z-index: 1;
     }
-    /* Passport photo slot â€” exec */
     .org-member .om-photo {
       width: 52px; height: 68px;
       border-radius: 7px;
@@ -326,11 +318,10 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 13px; font-weight: 800; color: var(--orange);
       font-family: "Playfair Display", serif;
-      margin: 0 auto 8px;
-      overflow: hidden;
+      margin: 0 auto 8px; overflow: hidden;
     }
     .org-member .om-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .org-member .om-name { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 2px; line-height: 1.3; }
+    .org-member .om-name { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 2px; line-height: 1.3; }
     .org-member .om-role { font-size: 10px; color: var(--text-light); }
 
     /* Dark mode */
