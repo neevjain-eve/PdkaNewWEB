@@ -78,13 +78,40 @@
       display: flex; flex-direction: column;
     }
     .hero-bg { position: absolute; inset: 0; z-index: 0; }
-    .hero-bg img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;
-    }
-    .hero-bg-overlay {
+    .hero-bg-slide {
       position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 40%;
+      opacity: 0;
+      transition: opacity 1.8s ease-in-out;
+    }
+    .hero-bg-slide.active { opacity: 1; }
+    .hero-bg-overlay {
+      position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(105deg, rgba(10,18,40,0.88) 0%, rgba(10,18,40,0.72) 45%, rgba(10,18,40,0.35) 100%);
     }
+    /* Progress bar for screensaver */
+    .hero-progress {
+      position: absolute; bottom: 0; left: 0; height: 3px;
+      background: rgba(232,96,10,0.8); z-index: 10;
+      animation: heroProgress 60s linear infinite;
+      transform-origin: left;
+    }
+    @keyframes heroProgress {
+      from { width: 0%; }
+      to   { width: 100%; }
+    }
+    /* Slide counter dots */
+    .hero-dots {
+      position: absolute; bottom: 20px; right: 24px; z-index: 10;
+      display: flex; gap: 6px; align-items: center;
+    }
+    .hero-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.35); transition: all 0.3s;
+      cursor: pointer; border: none; padding: 0;
+    }
+    .hero-dot.active { background: #e8600a; transform: scale(1.4); }
     #hero-canvas {
       position: absolute; inset: 0; width: 100%; height: 100%;
       pointer-events: none; z-index: 1; opacity: 0.45;
@@ -1328,13 +1355,38 @@
 <!-- HERO (sticky — about slides over it) -->
 <section id="home">
   <!-- Full-bleed background image -->
-  <div class="hero-bg">
-    <img
+  <div class="hero-bg" id="heroBg">
+    <!-- Screensaver slides — 6 images cycling every 60s -->
+    <img class="hero-bg-slide active" id="slide-0"
       src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&h=1000&fit=crop&crop=center"
-      alt="Financial charts and data"
-      loading="eager"
-    />
+      alt="City skyscrapers" loading="eager" />
+    <img class="hero-bg-slide" id="slide-1"
+      src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1800&h=1000&fit=crop&crop=center"
+      alt="Financial planning" loading="lazy" />
+    <img class="hero-bg-slide" id="slide-2"
+      src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1800&h=1000&fit=crop&crop=center"
+      alt="Business meeting" loading="lazy" />
+    <img class="hero-bg-slide" id="slide-3"
+      src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1800&h=1000&fit=crop&crop=center"
+      alt="Professional" loading="lazy" />
+    <img class="hero-bg-slide" id="slide-4"
+      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1800&h=1000&fit=crop&crop=center"
+      alt="Finance charts" loading="lazy" />
+    <img class="hero-bg-slide" id="slide-5"
+      src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=1800&h=1000&fit=crop&crop=center"
+      alt="Office at night" loading="lazy" />
     <div class="hero-bg-overlay"></div>
+    <!-- Progress bar -->
+    <div class="hero-progress" id="heroProgress"></div>
+    <!-- Dots -->
+    <div class="hero-dots" id="heroDots">
+      <button class="hero-dot active" onclick="goSlide(0)"></button>
+      <button class="hero-dot" onclick="goSlide(1)"></button>
+      <button class="hero-dot" onclick="goSlide(2)"></button>
+      <button class="hero-dot" onclick="goSlide(3)"></button>
+      <button class="hero-dot" onclick="goSlide(4)"></button>
+      <button class="hero-dot" onclick="goSlide(5)"></button>
+    </div>
   </div>
 
   <!-- Canvas animation -->
@@ -2868,7 +2920,8 @@ const services = {
         <p>Need strategic business advisory support?</p>
         <a href="#contact" class="btn-primary" onclick="closeService()">Talk to Our Advisory Team <i class="fas fa-arrow-right"></i></a>
       </div>`
-  },
+  }
+,
   startup: {
     tag: 'Startup Advisory',
     title: 'Startup Advisory Services',
@@ -5109,6 +5162,42 @@ window.servicesI18n = {
       lastY = y;
     }, { passive: true });
   })();
+  </script>
+
+  <script>
+    // ── Hero screensaver — changes every 60 seconds ──
+    (function() {
+      const TOTAL = 6;
+      const INTERVAL = 60000; // 60 seconds
+      let current = 0;
+      let timer = null;
+
+      function goSlide(n) {
+        // Remove active from current
+        document.getElementById('slide-' + current).classList.remove('active');
+        document.querySelectorAll('.hero-dot')[current].classList.remove('active');
+        // Set new
+        current = (n + TOTAL) % TOTAL;
+        document.getElementById('slide-' + current).classList.add('active');
+        document.querySelectorAll('.hero-dot')[current].classList.add('active');
+        // Restart progress bar
+        const bar = document.getElementById('heroProgress');
+        if (bar) {
+          bar.style.animation = 'none';
+          bar.offsetHeight; // reflow
+          bar.style.animation = 'heroProgress 60s linear forwards';
+        }
+        // Restart timer
+        clearInterval(timer);
+        timer = setInterval(() => goSlide(current + 1), INTERVAL);
+      }
+
+      // Make goSlide global for dot onclick
+      window.goSlide = goSlide;
+
+      // Start
+      timer = setInterval(() => goSlide(current + 1), INTERVAL);
+    })();
   </script>
 </body>
 </html>
