@@ -751,7 +751,55 @@
     .nav-mobile li { list-style: none; }
     .nav-mobile a { display: block; padding: 12px 0; color: var(--orange, #e8600a); font-size: 15px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .nav-mobile a:hover, .nav-mobile a.active { color: white; font-weight: 700; }
-</style>
+
+    /* ── Shine sweep on primary buttons (hover only) ── */
+    @keyframes shineSweep {
+      0%   { transform: translateX(-100%) skewX(-15deg); }
+      100% { transform: translateX(250%) skewX(-15deg); }
+    }
+    .btn-primary,
+    .nav-cta,
+    .form-submit,
+    .career-apply,
+    button[type="submit"],
+    .btn-submit,
+    .cta-btn,
+    a.btn,
+    .apply-btn {
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .btn-primary::after,
+    .nav-cta::after,
+    .form-submit::after,
+    .career-apply::after,
+    button[type="submit"]::after,
+    .btn-submit::after,
+    .cta-btn::after,
+    a.btn::after,
+    .apply-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
+      transform: translateX(-100%) skewX(-15deg);
+      pointer-events: none;
+    }
+    .btn-primary:hover::after,
+    .nav-cta:hover::after,
+    .form-submit:hover::after,
+    .career-apply:hover::after,
+    button[type="submit"]:hover::after,
+    .btn-submit:hover::after,
+    .cta-btn:hover::after,
+    a.btn:hover::after,
+    .apply-btn:hover::after {
+      animation: shineSweep 0.6s ease forwards;
+    }
+
+  </style>
   <style>
     .about-page-hero { background: var(--navy); padding: 120px 5% 64px; text-align: center; }
     .about-page-hero .label { color: var(--orange); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
