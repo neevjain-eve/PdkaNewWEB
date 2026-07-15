@@ -750,56 +750,7 @@
     .nav-mobile.open { display: flex; }
     .nav-mobile li { list-style: none; }
     .nav-mobile a { display: block; padding: 12px 0; color: var(--orange, #e8600a); font-size: 15px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .nav-mobile a:hover, .nav-mobile a.active { color: white; font-weight: 700; }
-
-    
-    /* ── Shine sweep — hover only ── */
-    @keyframes shineSweep {
-      0%   { left: -60%; }
-      100% { left: 130%; }
-    }
-    .btn-primary,
-    .nav-cta,
-    .form-submit,
-    .career-apply,
-    .article-read-btn,
-    .article-cta-bar,
-    button[type="submit"] {
-      position: relative !important;
-      overflow: hidden !important;
-      isolation: isolate !important;
-    }
-    .btn-primary::after,
-    .nav-cta::after,
-    .form-submit::after,
-    .career-apply::after,
-    .article-read-btn::after,
-    .article-cta-bar::after,
-    button[type="submit"]::after {
-      content: '' !important;
-      position: absolute !important;
-      top: -10% !important;
-      left: -60% !important;
-      width: 45% !important;
-      height: 120% !important;
-      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.5) 50%, transparent 80%) !important;
-      transform: skewX(-15deg) !important;
-      pointer-events: none !important;
-      opacity: 0 !important;
-      z-index: 2 !important;
-    }
-    .btn-primary:hover::after,
-    .nav-cta:hover::after,
-    .form-submit:hover::after,
-    .career-apply:hover::after,
-    .article-read-btn:hover::after,
-    .article-cta-bar:hover::after,
-    button[type="submit"]:hover::after {
-      opacity: 1 !important;
-      animation: shineSweep 0.55s ease-in-out forwards !important;
-    }
-
-  </style>
+    .nav-mobile a:hover, .nav-mobile a.active { color: white; font-weight: 700; }</style>
   <style>
     .about-page-hero { background: var(--navy); padding: 120px 5% 64px; text-align: center; }
     .about-page-hero .label { color: var(--orange); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
@@ -829,6 +780,50 @@
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
   </style>
+<style>
+/* Shine sweep — injected last to win specificity */
+@keyframes shineSweep {
+  0%   { left: -60%; }
+  100% { left: 130%; }
+}
+.btn-primary,
+.nav-cta,
+.form-submit,
+.career-apply,
+.article-read-btn,
+button[type="submit"] {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+.btn-primary::after,
+.nav-cta::after,
+.form-submit::after,
+.career-apply::after,
+.article-read-btn::after,
+button[type="submit"]::after {
+  content: '' !important;
+  position: absolute !important;
+  top: -10% !important;
+  left: -60% !important;
+  width: 45% !important;
+  height: 120% !important;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.5) 50%, transparent 80%) !important;
+  transform: skewX(-15deg) !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  z-index: 9 !important;
+}
+.btn-primary:hover::after,
+.nav-cta:hover::after,
+.form-submit:hover::after,
+.career-apply:hover::after,
+.article-read-btn:hover::after,
+button[type="submit"]:hover::after {
+  opacity: 1 !important;
+  animation: shineSweep 0.55s ease-in-out forwards !important;
+}
+</style>
 </head>
 <body>
 
