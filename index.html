@@ -139,6 +139,37 @@
     .hero-title span:not(#hero-word) { color: var(--orange-light); }
     .hero-desc { color: rgba(255,255,255,0.75); font-size: 14px; line-height: 1.65; margin-bottom: 22px; max-width: 500px; }
     .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    /* ── Shine sweep animation ── */
+    @keyframes shineSweep {
+      0%   { transform: translateX(-100%) skewX(-15deg); }
+      100% { transform: translateX(250%) skewX(-15deg); }
+    }
+    .btn-primary,
+    .nav-cta,
+    .form-submit,
+    .career-apply {
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .btn-primary::after,
+    .nav-cta::after,
+    .form-submit::after,
+    .career-apply::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
+      transform: translateX(-100%) skewX(-15deg);
+      animation: shineSweep 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    /* Stagger delay for nav-cta and others so they don't all shine at once */
+    .nav-cta::after        { animation-delay: 0.5s; }
+    .form-submit::after    { animation-delay: 1s; }
+    .career-apply::after   { animation-delay: 1.5s; }
+
     .btn-primary {
       background: var(--orange); color: white; padding: 10px 22px; border-radius: 4px;
       font-weight: 700; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 7px;
