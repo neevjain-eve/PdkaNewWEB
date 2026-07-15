@@ -271,51 +271,51 @@
   
     [data-theme="dark"] p, [data-theme="dark"] .section-sub, [data-theme="dark"] .section-label, [data-theme="dark"] li { color: #ffffff !important; }
   
-    /* ── Shine sweep on primary buttons (hover only) ── */
+    
+    /* ── Shine sweep — hover only ── */
     @keyframes shineSweep {
-      0%   { transform: translateX(-100%) skewX(-15deg); }
-      100% { transform: translateX(250%) skewX(-15deg); }
+      0%   { left: -60%; }
+      100% { left: 130%; }
     }
     .btn-primary,
     .nav-cta,
     .form-submit,
     .career-apply,
-    button[type="submit"],
-    .btn-submit,
-    .cta-btn,
-    a.btn,
-    .apply-btn {
+    .article-read-btn,
+    .article-cta-bar,
+    button[type="submit"] {
       position: relative !important;
       overflow: hidden !important;
+      isolation: isolate !important;
     }
     .btn-primary::after,
     .nav-cta::after,
     .form-submit::after,
     .career-apply::after,
-    button[type="submit"]::after,
-    .btn-submit::after,
-    .cta-btn::after,
-    a.btn::after,
-    .apply-btn::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
-      transform: translateX(-100%) skewX(-15deg);
-      pointer-events: none;
+    .article-read-btn::after,
+    .article-cta-bar::after,
+    button[type="submit"]::after {
+      content: '' !important;
+      position: absolute !important;
+      top: -10% !important;
+      left: -60% !important;
+      width: 45% !important;
+      height: 120% !important;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.5) 50%, transparent 80%) !important;
+      transform: skewX(-15deg) !important;
+      pointer-events: none !important;
+      opacity: 0 !important;
+      z-index: 2 !important;
     }
     .btn-primary:hover::after,
     .nav-cta:hover::after,
     .form-submit:hover::after,
     .career-apply:hover::after,
-    button[type="submit"]:hover::after,
-    .btn-submit:hover::after,
-    .cta-btn:hover::after,
-    a.btn:hover::after,
-    .apply-btn:hover::after {
-      animation: shineSweep 0.6s ease forwards;
+    .article-read-btn:hover::after,
+    .article-cta-bar:hover::after,
+    button[type="submit"]:hover::after {
+      opacity: 1 !important;
+      animation: shineSweep 0.55s ease-in-out forwards !important;
     }
 
   </style>
