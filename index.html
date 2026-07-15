@@ -1022,6 +1022,100 @@
     .mob-link:last-of-type { border-bottom:none; }
     [data-theme="dark"] #mobileMenu { background:rgba(11,22,40,0.98) !important; border-bottom-color:rgba(232,96,10,0.3) !important; }
     [data-theme="dark"] .mob-link { color:#f0f4ff !important; border-bottom-color:rgba(255,255,255,0.08) !important; }
+
+    /* ══════════════════════════════════════
+       1. FADE-UP ON SCROLL
+    ══════════════════════════════════════ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.d1 { transition-delay: 0.08s; }
+    .fade-up.d2 { transition-delay: 0.16s; }
+    .fade-up.d3 { transition-delay: 0.24s; }
+
+    /* ══════════════════════════════════════
+       2. POINTER TILT ON CARDS
+    ══════════════════════════════════════ */
+    .service-card,
+    .industry-card,
+    .team-card,
+    .insight-card {
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease !important;
+    }
+
+    /* ══════════════════════════════════════
+       3. ICON POP ON SERVICE & INDUSTRY CARD HOVER
+    ══════════════════════════════════════ */
+    .service-card .service-img-icon,
+    .industry-card .industry-icon {
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), background 0.2s;
+    }
+    .service-card:hover .service-img-icon,
+    .industry-card:hover .industry-icon {
+      transform: scale(1.25) rotate(-6deg);
+    }
+
+    /* ══════════════════════════════════════
+       4. BOUNCY SOCIAL ICON HOVER
+    ══════════════════════════════════════ */
+    @keyframes socialBounce {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(1.35); }
+      60%  { transform: scale(0.9); }
+      80%  { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+    .social-link,
+    .team-social a {
+      transition: background 0.2s, color 0.2s !important;
+    }
+    .social-link:hover,
+    .team-social a:hover {
+      animation: socialBounce 0.45s cubic-bezier(0.36,0.07,0.19,0.97) both !important;
+    }
+
+    /* ══════════════════════════════════════
+       5. BACK TO TOP BUTTON
+    ══════════════════════════════════════ */
+    #backToTop {
+      position: fixed;
+      bottom: 28px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(232,96,10,0.4);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    #backToTop.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    #backToTop:hover {
+      background: var(--orange-light);
+      transform: translateY(-3px);
+    }
+
   </style>
 
 <script type="application/ld+json">
@@ -5231,5 +5325,52 @@ window.servicesI18n = {
       timer = setInterval(() => goSlide(current + 1), INTERVAL);
     })();
   </script>
+
+  <!-- Back to top -->
+  <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // 1. Fade-up scroll observer
+    (function() {
+      const els = document.querySelectorAll('.section-label, .section-title');
+      els.forEach((el, i) => {
+        el.classList.add('fade-up');
+        if (i % 3 === 1) el.classList.add('d1');
+        if (i % 3 === 2) el.classList.add('d2');
+      });
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    })();
+
+    // 2. Pointer tilt on cards
+    (function() {
+      const cards = document.querySelectorAll('.service-card, .industry-card, .team-card, .insight-card');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top)  / r.height - 0.5;
+          card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    })();
+
+    // 5. Back to top visibility
+    (function() {
+      const btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+      }, { passive: true });
+    })();
+  </script>
+
 </body>
 </html>
