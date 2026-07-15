@@ -141,8 +141,8 @@
     .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
     /* ── Shine sweep animation — hover only ── */
     @keyframes shineSweep {
-      0%   { transform: translateX(-100%) skewX(-15deg); }
-      100% { transform: translateX(250%) skewX(-15deg); }
+      0%   { left: -60%; }
+      100% { left: 130%; }
     }
     .btn-primary,
     .nav-cta,
@@ -150,25 +150,30 @@
     .career-apply {
       position: relative !important;
       overflow: hidden !important;
+      isolation: isolate !important;
     }
     .btn-primary::after,
     .nav-cta::after,
     .form-submit::after,
     .career-apply::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
-      transform: translateX(-100%) skewX(-15deg);
-      pointer-events: none;
+      content: '' !important;
+      position: absolute !important;
+      top: -10% !important;
+      left: -60% !important;
+      width: 45% !important;
+      height: 120% !important;
+      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.5) 50%, transparent 80%) !important;
+      transform: skewX(-15deg) !important;
+      pointer-events: none !important;
+      opacity: 0 !important;
+      z-index: 2 !important;
     }
     .btn-primary:hover::after,
     .nav-cta:hover::after,
     .form-submit:hover::after,
     .career-apply:hover::after {
-      animation: shineSweep 0.6s ease forwards;
+      opacity: 1 !important;
+      animation: shineSweep 0.55s ease-in-out forwards !important;
     }
 
     .btn-primary {
