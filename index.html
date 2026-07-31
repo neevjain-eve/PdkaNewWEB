@@ -1116,6 +1116,78 @@
       transform: translateY(-3px);
     }
 
+
+    /* ══ MEGA MENU ══ */
+    .has-mega { position: relative; }
+
+    .mega-menu {
+      display: none;
+      position: fixed;
+      left: 0; right: 0;
+      top: 72px;
+      background: #fff;
+      box-shadow: 0 12px 48px rgba(13,27,62,0.14);
+      border-top: 3px solid var(--orange);
+      padding: 28px 5%;
+      z-index: 9998;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .has-mega:hover .mega-menu,
+    .mega-menu:hover {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .mega-label {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .mega-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--navy);
+      transition: background 0.15s, transform 0.15s;
+      margin-bottom: 2px;
+    }
+    .mega-item:hover {
+      background: #fff7ed;
+      transform: translateX(4px);
+    }
+    .mega-icon {
+      width: 34px; height: 34px;
+      background: #fff7ed;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange);
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .mega-item span { display: flex; flex-direction: column; }
+    .mega-item b { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .mega-item small { font-size: 11px; color: #64748b; margin-top: 2px; }
+    .mega-item:hover b { color: var(--orange); }
+
+    /* Hide mega on mobile */
+    @media (max-width: 900px) { .has-mega .mega-menu { display: none !important; } }
+
   </style>
 
 <script type="application/ld+json">
@@ -1404,12 +1476,85 @@
   </a>
   <ul class="nav-links">
     <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)" data-i18n="nav-home">Home</a></li>
-    <li><a href="javascript:void(0)" onclick="openPdkaPage('about.html','About')" data-i18n="nav-about">About</a></li>
-    <li><a href="#founder" data-i18n="nav-founder">Founder</a></li>
-    <li><a href="#services" data-i18n="nav-services">Services</a></li>
+
+    <!-- About mega -->
+    <li class="has-mega" id="mega-about-trigger">
+      <a href="javascript:void(0)" onclick="openPdkaPage('about.html','About')" data-i18n="nav-about">About <i class="fas fa-chevron-down" style="font-size:9px;margin-left:3px;"></i></a>
+      <div class="mega-menu" id="mega-about">
+        <div class="mega-col">
+          <div class="mega-label">The Firm</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('about.html','About')"><i class="fas fa-building mega-icon"></i><span><b>About PDKA</b><small>28 years · Bangalore · Global reach</small></span></a>
+          <a class="mega-item" href="#founder"><i class="fas fa-user-tie mega-icon"></i><span><b>Founder</b><small>Dilip Kumar P. · FCA · CISA · DISA</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('team.html','Team')"><i class="fas fa-users mega-icon"></i><span><b>Our Team</b><small>Department heads & professionals</small></span></a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-label">Credentials</div>
+          <a class="mega-item" href="#"><i class="fas fa-certificate mega-icon"></i><span><b>ICAI Registered</b><small>Fellow Chartered Accountant</small></span></a>
+          <a class="mega-item" href="#"><i class="fas fa-shield-alt mega-icon"></i><span><b>CISA Certified</b><small>Information Systems Auditor</small></span></a>
+          <a class="mega-item" href="#"><i class="fas fa-globe mega-icon"></i><span><b>9 Countries</b><small>India · USA · UK · Dubai & more</small></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Services mega -->
+    <li class="has-mega" id="mega-services-trigger">
+      <a href="#services" data-i18n="nav-services">Services <i class="fas fa-chevron-down" style="font-size:9px;margin-left:3px;"></i></a>
+      <div class="mega-menu" id="mega-services">
+        <div class="mega-col">
+          <div class="mega-label">Assurance & Tax</div>
+          <a class="mega-item" href="#services"><i class="fas fa-search-dollar mega-icon"></i><span><b>Audit & Assurance</b><small>Statutory, internal & IS audit</small></span></a>
+          <a class="mega-item" href="#services"><i class="fas fa-file-invoice-dollar mega-icon"></i><span><b>Tax Advisory</b><small>Direct tax, ITR, TDS, advance tax</small></span></a>
+          <a class="mega-item" href="#services"><i class="fas fa-receipt mega-icon"></i><span><b>GST Compliance</b><small>Registration, returns, reconciliation</small></span></a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-label">Advisory & CFO</div>
+          <a class="mega-item" href="#services"><i class="fas fa-chart-line mega-icon"></i><span><b>Virtual CFO</b><small>MIS, financial reporting, advisory</small></span></a>
+          <a class="mega-item" href="#services"><i class="fas fa-globe-asia mega-icon"></i><span><b>FEMA & International</b><small>ODI, LRS, foreign remittances</small></span></a>
+          <a class="mega-item" href="#services"><i class="fas fa-shield-alt mega-icon"></i><span><b>Risk Management</b><small>Controls, governance, compliance</small></span></a>
+        </div>
+      </div>
+    </li>
+
     <li><a href="#team" data-i18n="nav-team">Team</a></li>
-    <li><a href="#insights" data-i18n="nav-insights">Insights</a></li>
-    <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')" data-i18n="nav-careers">Careers</a></li>
+
+    <!-- Insights mega -->
+    <li class="has-mega" id="mega-insights-trigger">
+      <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" data-i18n="nav-insights">Insights <i class="fas fa-chevron-down" style="font-size:9px;margin-left:3px;"></i></a>
+      <div class="mega-menu" id="mega-insights">
+        <div class="mega-col">
+          <div class="mega-label">Latest Articles</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-landmark mega-icon"></i><span><b>Union Budget FY2026-27</b><small>Key tax changes for businesses</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-balance-scale mega-icon"></i><span><b>ICAI Code of Ethics 2026</b><small>What changed for CA firms</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-file-alt mega-icon"></i><span><b>ITR Filing FY 2025-26</b><small>Compliance checklist</small></span></a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-label">By Topic</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-percentage mega-icon"></i><span><b>GST Updates</b><small>ITC reconciliation, e-invoicing</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-globe mega-icon"></i><span><b>FEMA & International</b><small>Foreign remittance guide</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-lock mega-icon"></i><span><b>DPDPA 2025</b><small>Data protection compliance</small></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Careers mega -->
+    <li class="has-mega" id="mega-careers-trigger">
+      <a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')" data-i18n="nav-careers">Careers <i class="fas fa-chevron-down" style="font-size:9px;margin-left:3px;"></i></a>
+      <div class="mega-menu" id="mega-careers">
+        <div class="mega-col">
+          <div class="mega-label">Open Positions</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')"><i class="fas fa-graduation-cap mega-icon"></i><span><b>Article Assistant</b><small>CA Foundation / Inter · Articleship</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')"><i class="fas fa-briefcase mega-icon"></i><span><b>Senior CA / Asst. Manager</b><small>FCA/ACA · IT/ITES experience</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')"><i class="fas fa-envelope mega-icon"></i><span><b>Open Application</b><small>Send your CV anytime</small></span></a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-label">Why PDKA</div>
+          <a class="mega-item" href="#"><i class="fas fa-star mega-icon"></i><span><b>28+ Years of Practice</b><small>Learn from experienced professionals</small></span></a>
+          <a class="mega-item" href="#"><i class="fas fa-globe mega-icon"></i><span><b>International Exposure</b><small>Work across 9 countries</small></span></a>
+          <a class="mega-item" href="#"><i class="fas fa-certificate mega-icon"></i><span><b>ICAI Registered Firm</b><small>Structured articleship training</small></span></a>
+        </div>
+      </div>
+    </li>
+
     <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
