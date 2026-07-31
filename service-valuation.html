@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Valuation & Transaction Advisory | P. Dilip Kumar & Associates</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+:root{--orange:#e8600a;--navy:#0d1b3e;}
+body{background:#f8fafc;color:#1e293b;}
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:70px;}
+.nav-logo img{height:38px;width:auto;}
+.nav-back{background:var(--orange);color:#fff;padding:9px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:background .2s;}
+.nav-back:hover{background:#c94f06;}
+/* Hero */
+.sp-hero{position:relative;height:420px;overflow:hidden;display:flex;align-items:center;}
+.sp-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.sp-hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(13,27,62,.88) 0%,rgba(13,27,62,.65) 60%,rgba(13,27,62,.3) 100%);}
+.sp-hero-content{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:0 5%;}
+.sp-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,96,10,.2);border:1px solid rgba(232,96,10,.5);color:#f97316;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;}
+.sp-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:14px;}
+.sp-hero p{font-size:1.1rem;color:rgba(255,255,255,.82);max-width:600px;line-height:1.7;}
+/* Content */
+.sp-body{max-width:1100px;margin:0 auto;padding:60px 5%;display:grid;grid-template-columns:1fr 340px;gap:50px;align-items:start;}
+@media(max-width:900px){.sp-body{grid-template-columns:1fr;}}
+.sp-overview{background:#fff;border-radius:16px;padding:36px;border:1px solid #e2e8f0;margin-bottom:32px;}
+.sp-overview h2{font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+.sp-overview p{color:#475569;line-height:1.8;}
+.sp-services h2{font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:10px;border-bottom:3px solid var(--orange);}
+.sp-service-item{display:flex;gap:16px;padding:20px;background:#fff;border-radius:14px;border:1px solid #e2e8f0;margin-bottom:14px;transition:box-shadow .2s,border-color .2s;}
+.sp-service-item:hover{box-shadow:0 4px 20px rgba(232,96,10,.1);border-color:rgba(232,96,10,.3);}
+.sp-service-icon{width:44px;height:44px;background:#fff7ed;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:16px;flex-shrink:0;margin-top:2px;}
+.sp-service-item h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.sp-service-item p{font-size:13px;color:#64748b;line-height:1.65;}
+/* Sidebar */
+.sp-sidebar{position:sticky;top:90px;}
+.sp-why{background:var(--navy);border-radius:16px;padding:28px;margin-bottom:20px;}
+.sp-why h3{color:#fff;font-size:1rem;font-weight:700;margin-bottom:16px;}
+.sp-why ul{list-style:none;}
+.sp-why li{color:rgba(255,255,255,.82);font-size:13px;line-height:1.6;margin-bottom:10px;display:flex;gap:10px;align-items:flex-start;}
+.sp-why li i{color:var(--orange);margin-top:3px;flex-shrink:0;}
+.sp-cta{background:var(--orange);border-radius:16px;padding:28px;text-align:center;}
+.sp-cta h3{color:#fff;font-size:1rem;font-weight:700;margin-bottom:8px;}
+.sp-cta p{color:rgba(255,255,255,.8);font-size:13px;margin-bottom:18px;}
+.sp-cta a{display:block;background:#fff;color:var(--orange);font-weight:700;font-size:14px;padding:12px 20px;border-radius:8px;text-decoration:none;transition:background .2s;}
+.sp-cta a:hover{background:#fff7ed;}
+.sp-related{background:#fff;border-radius:16px;padding:24px;border:1px solid #e2e8f0;}
+.sp-related h3{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em;}
+.sp-related a{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f1f5f9;text-decoration:none;color:#475569;font-size:13px;transition:color .2s;}
+.sp-related a:last-child{border-bottom:none;}
+.sp-related a:hover{color:var(--orange);}
+.sp-related i{color:var(--orange);font-size:11px;}
+/* Shine on CTA */
+.sp-cta a{position:relative;overflow:hidden;isolation:isolate;}
+.sp-cta a::after{content:"";position:absolute;top:-10%;left:-60%;width:45%;height:120%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.5) 50%,transparent 80%);transform:skewX(-15deg);pointer-events:none;opacity:0;z-index:9;}
+.sp-cta a:hover::after{opacity:1;animation:shineSweep .55s ease-in-out forwards;}
+@keyframes shineSweep{0%{left:-60%}100%{left:130%}}
+/* Footer */
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:13px;margin-top:60px;}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;}
+footer a:hover{color:#fff;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA"></a>
+  <a href="index.html#services" class="nav-back"><i class="fas fa-arrow-left"></i> All Services</a>
+</nav>
+
+<div class="sp-hero">
+  <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&h=600&fit=crop" alt="Valuation & Transaction Advisory">
+  <div class="sp-hero-overlay"></div>
+  <div class="sp-hero-content">
+    <div class="sp-hero-badge"><i class="fas fa-balance-scale"></i> PDKA Services</div>
+    <h1>Valuation & Transaction Advisory</h1>
+    <p>Independent, defensible valuations for regulatory, transactional, and reporting purposes.</p>
+  </div>
+</div>
+
+<div class="sp-body">
+  <main>
+    <div class="sp-overview">
+      <h2>Overview</h2>
+      <p>PDKA provides business valuation and transaction advisory services for M&A, FDI, ESOP grants, gift tax, estate planning, and regulatory submissions. Our valuations are prepared in accordance with ICAI Valuation Standards and accepted regulatory frameworks.</p>
+    </div>
+    <div class="sp-services">
+      <h2>What We Do</h2>
+      
+                <div class="sp-service-item">
+                    <div class="sp-service-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div>
+                        <h3>Business Valuation (FMV / DCF / NAV)</h3>
+                        <p>Valuation of shares and businesses using Discounted Cash Flow (DCF), Net Asset Value (NAV), Comparable Company Analysis (CCA) and other methods as per Rule 11UA.</p>
+                    </div>
+                </div>
+                <div class="sp-service-item">
+                    <div class="sp-service-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div>
+                        <h3>ESOP / Sweat Equity Valuation</h3>
+                        <p>Valuation for ESOP grant price determination (Section 62), perquisite computation on exercise and Sweat Equity issuance under the Companies Act.</p>
+                    </div>
+                </div>
+                <div class="sp-service-item">
+                    <div class="sp-service-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div>
+                        <h3>FDI & Angel Tax Valuation (Sec 56(2)(viib))</h3>
+                        <p>FEMA Rule 11UA valuation for foreign investment compliance and angel tax defence for start-ups receiving funding from domestic investors.</p>
+                    </div>
+                </div>
+                <div class="sp-service-item">
+                    <div class="sp-service-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div>
+                        <h3>Goodwill & Intangible Valuation</h3>
+                        <p>Valuation of brands, customer relationships, technology platforms, and other intangible assets for purchase price allocation and accounting.</p>
+                    </div>
+                </div>
+                <div class="sp-service-item">
+                    <div class="sp-service-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div>
+                        <h3>M&A Due Diligence</h3>
+                        <p>Financial due diligence for acquisitions including quality of earnings, normalised EBITDA, working capital analysis and warranty & indemnity risk review.</p>
+                    </div>
+                </div>
+                <div class="sp-service-item">
+                    <div class="sp-service-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div>
+                        <h3>NCLT / Insolvency Valuations</h3>
+                        <p>Registered Valuer support for CIRP under IBC — liquidation value and fair value assessment of assets.</p>
+                    </div>
+                </div>
+    </div>
+  </main>
+
+  <aside class="sp-sidebar">
+    <div class="sp-why">
+      <h3>Why Choose PDKA</h3>
+      <ul><li><i class="fas fa-check-circle"></i> ICAI Valuation Standards compliant reports</li><li><i class="fas fa-check-circle"></i> Accepted by RBI, NCLT, Income Tax, and SEBI for regulatory submissions</li><li><i class="fas fa-check-circle"></i> Experience across SaaS, Manufacturing, Real Estate, and Financial Services</li><li><i class="fas fa-check-circle"></i> Independent, conflict-free valuations with full documentation trail</li><li><i class="fas fa-check-circle"></i> Fast turnaround for time-sensitive M&A and funding transactions</li></ul>
+    </div>
+    <div class="sp-cta">
+      <h3>Request a Valuation</h3>
+      <p>Talk to our team — we respond within one business day.</p>
+      <a href="index.html#contact">Contact Us &rarr;</a>
+    </div>
+    <div class="sp-related" style="margin-top:20px;">
+      <h3>Other Services</h3>
+      <a href="service-audit-assurance.html"><i class="fas fa-chevron-right"></i> Audit & Assurance</a>
+      <a href="service-taxation.html"><i class="fas fa-chevron-right"></i> Tax Advisory</a>
+      <a href="service-fema-international.html"><i class="fas fa-chevron-right"></i> FEMA & International</a>
+      <a href="service-is-audit.html"><i class="fas fa-chevron-right"></i> IS Audit (CISA/DISA)</a>
+      <a href="service-virtual-cfo.html"><i class="fas fa-chevron-right"></i> Virtual CFO</a>
+      <a href="service-business-advisory.html"><i class="fas fa-chevron-right"></i> Business Advisory</a>
+      <a href="service-startup-advisory.html"><i class="fas fa-chevron-right"></i> Startup Advisory</a>
+      <a href="service-valuation.html"><i class="fas fa-chevron-right"></i> Valuation</a>
+      <a href="service-payroll-hr.html"><i class="fas fa-chevron-right"></i> Payroll & HR</a>
+      <a href="service-project-finance.html"><i class="fas fa-chevron-right"></i> Project Finance</a>
+      <a href="service-erp-accounting.html"><i class="fas fa-chevron-right"></i> ERP & Accounting</a>
+      <a href="service-nri-international.html"><i class="fas fa-chevron-right"></i> NRI Services</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <p>&copy; 2025 P. Dilip Kumar & Associates. All rights reserved. &nbsp;|&nbsp; <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="index.html#contact">Contact</a></p>
+</footer>
+</body>
+</html>
