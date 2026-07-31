@@ -3332,17 +3332,23 @@ const services = {
 };
 
 function openService(id) {
-  var lang = window.pdkaLang || 'en';
-  var pool = (lang !== 'en' && window.servicesI18n && window.servicesI18n[lang]) ? window.servicesI18n[lang] : services;
-  var s = pool[id] || services[id];
-  if (!s) return;
-  document.getElementById('svcTag').textContent   = s.tag;
-  document.getElementById('svcTitle').textContent = s.title;
-  document.getElementById('svcMeta').textContent  = s.meta;
-  document.getElementById('svcBody').innerHTML    = s.body;
-  const overlay = document.getElementById('serviceModal');
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  var pages = {
+    'audit':        'service-audit-assurance.html',
+    'taxation':     'service-taxation.html',
+    'fema':         'service-fema-international.html',
+    'isaudit':      'service-is-audit.html',
+    'vcfo':         'service-virtual-cfo.html',
+    'advisory':     'service-business-advisory.html',
+    'startup':      'service-startup-advisory.html',
+    'valuation':    'service-valuation.html',
+    'payroll':      'service-payroll-hr.html',
+    'projectfinance':'service-project-finance.html',
+    'erp':          'service-erp-accounting.html',
+    'nri':          'service-nri-international.html'
+  };
+  if (pages[id]) {
+    openPdkaPage(pages[id], id);
+  }
 }
 function closeService() {
   document.getElementById('serviceModal').classList.remove('open');
