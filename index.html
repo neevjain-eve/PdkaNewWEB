@@ -1124,8 +1124,10 @@
       position: fixed;
       left: 0; right: 0;
       top: 72px;
-      background: #fff;
-      box-shadow: 0 12px 48px rgba(13,27,62,0.14);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 12px 48px rgba(13,27,62,0.10);
       border-top: 3px solid var(--orange);
       padding: 28px 5%;
       z-index: 9998;
@@ -1165,7 +1167,7 @@
       margin-bottom: 2px;
     }
     .mega-item:hover {
-      background: #fff7ed;
+      background: rgba(249,115,22,0.10);
       transform: translateX(4px);
     }
     .mega-icon {
