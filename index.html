@@ -1121,7 +1121,6 @@
     .has-mega { position: relative; }
 
     .mega-menu {
-      display: none;
       position: fixed;
       left: 0; right: 0;
       top: 72px;
@@ -1138,8 +1137,7 @@
       pointer-events: none;
       transition: opacity 0.22s ease, transform 0.22s ease;
     }
-    .has-mega:hover .mega-menu,
-    .mega-menu:hover {
+    .has-mega.mega-open .mega-menu {
       opacity: 1;
       transform: translateY(0);
       pointer-events: all;
@@ -5497,5 +5495,48 @@ window.servicesI18n = {
 .btn-primary::after,.btn-primary::after,.nav-cta::after,.form-submit::after,.career-apply::after,.article-read-btn::after,button[type="submit"]::after{content:""!important;position:absolute!important;top:-10%!important;left:-60%!important;width:45%!important;height:120%!important;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.5) 50%,transparent 80%)!important;transform:skewX(-15deg)!important;pointer-events:none!important;opacity:0!important;z-index:9!important}
 .btn-primary:hover::after,.btn-primary:hover::after,.nav-cta:hover::after,.form-submit:hover::after,.career-apply:hover::after,.article-read-btn:hover::after,button[type="submit"]:hover::after{opacity:1!important;animation:shineSweep .55s ease-in-out forwards!important}
 </style>
+
+  <script>
+  // ── Mega menu: open on hover, close with delay so user can move to menu ──
+  (function() {
+    const triggers = document.querySelectorAll('.has-mega');
+    let closeTimer = null;
+
+    triggers.forEach(trigger => {
+      const menu = trigger.querySelector('.mega-menu');
+      if (!menu) return;
+
+      function openMenu() {
+        clearTimeout(closeTimer);
+        // Close all others
+        triggers.forEach(t => { if (t !== trigger) t.classList.remove('mega-open'); });
+        trigger.classList.add('mega-open');
+      }
+
+      function scheduleClose() {
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(() => {
+          trigger.classList.remove('mega-open');
+        }, 180);
+      }
+
+      // Trigger link hover
+      trigger.addEventListener('mouseenter', openMenu);
+      trigger.addEventListener('mouseleave', scheduleClose);
+
+      // Menu hover — cancel close
+      menu.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+      menu.addEventListener('mouseleave', scheduleClose);
+    });
+
+    // Click outside closes all
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.has-mega')) {
+        triggers.forEach(t => t.classList.remove('mega-open'));
+      }
+    });
+  })();
+  </script>
+
 </body>
 </html>
