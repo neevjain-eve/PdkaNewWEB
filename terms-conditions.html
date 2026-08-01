@@ -1152,6 +1152,21 @@ body.page-leaving {
   to   { opacity: 0; transform: translateY(-8px); }
 }
 </style>
+<script id="setlang-base">
+window.setLang = function(lang) {
+  try {
+    var label = document.getElementById('langLabel');
+    if (label) label.textContent = lang === 'ja' ? 'JP' : lang === 'hi' ? 'HI' : 'EN';
+    ['en','ja','hi'].forEach(function(l) {
+      var btn = document.getElementById('opt-' + l);
+      if (btn) btn.classList.toggle('active', l === lang);
+    });
+    var menu = document.getElementById('langMenu');
+    if (menu) menu.style.display = 'none';
+    localStorage.setItem('pdka-lang', lang);
+  } catch(e) {}
+};
+</script>
 <script id="lang-persist">
 (function() {
   // 1. Save lang to localStorage whenever setLang is called
