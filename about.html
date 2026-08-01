@@ -1759,6 +1759,66 @@ body.page-leaving {
   to   { opacity: 0; transform: translateY(-8px); }
 }
 </style>
+<script id="lang-persist">
+(function() {
+  // 1. Save lang to localStorage whenever setLang is called
+  var _origSetLang = window.setLang;
+  function patchSetLang() {
+    if (window.setLang && !window.setLang._patched) {
+      var orig = window.setLang;
+      window.setLang = function(lang) {
+        try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
+        orig(lang);
+      };
+      window.setLang._patched = true;
+    }
+  }
+
+  // 2. On every page load, read saved lang and apply it
+  function applyStoredLang() {
+    try {
+      var saved = localStorage.getItem('pdka-lang') || 'en';
+      // Also check URL param (takes priority)
+      var urlParam = new URLSearchParams(window.location.search).get('lang');
+      var lang = urlParam || saved;
+      if (lang && lang !== 'en') {
+        patchSetLang();
+        if (window.setLang) {
+          window.setLang(lang);
+        } else {
+          // setLang not ready yet — wait
+          document.addEventListener('DOMContentLoaded', function() {
+            patchSetLang();
+            if (window.setLang) window.setLang(lang);
+          });
+        }
+      }
+    } catch(e) {}
+  }
+
+  // 3. Pass lang in URL when navigating to keep it across pages
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href.startsWith('javascript') || href.startsWith('#') ||
+        href.startsWith('mailto') || href.startsWith('tel') ||
+        href.startsWith('http') || a.target === '_blank') return;
+    try {
+      var lang = localStorage.getItem('pdka-lang') || 'en';
+      if (lang !== 'en') {
+        e.preventDefault();
+        var url = new URL(href, window.location.href);
+        url.searchParams.set('lang', lang);
+        document.body.classList.add('page-leaving');
+        setTimeout(function() { window.location.href = url.toString(); }, 250);
+      }
+    } catch(err) {}
+  }, true); // capture phase so it runs before transition handler
+
+  applyStoredLang();
+})();
+</script>
 </head>
 <body>
 
@@ -2267,7 +2327,7 @@ body.page-leaving {
     if (menu) menu.style.display = 'none';
   });
   (function() {
-    try { var lg = 'en'; if (lg && lg !== 'en') { setTimeout(function(){ setLang(lg); }, 50); } } catch(e) {}
+    try { var lg = localStorage.getItem('pdka-lang') || 'en'; if (lg && lg !== 'en') { setTimeout(function(){ if(window.setLang) setLang(lg); }, 80); } } catch(e) {}
   })();
   </script>
 
