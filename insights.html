@@ -4459,5 +4459,31 @@ footer .footer-brand p, footer .footer-desc {
   };
 })();
 </script>
+<script id="mega-menu-js">
+(function() {
+  var triggers = document.querySelectorAll('.has-mega');
+  var closeTimer = null;
+  triggers.forEach(function(trigger) {
+    var menu = trigger.querySelector('.mega-menu');
+    if (!menu) return;
+    function openMenu() {
+      clearTimeout(closeTimer);
+      triggers.forEach(function(t) { if (t !== trigger) t.classList.remove('mega-open'); });
+      trigger.classList.add('mega-open');
+    }
+    function scheduleClose() {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(function() { trigger.classList.remove('mega-open'); }, 180);
+    }
+    trigger.addEventListener('mouseenter', openMenu);
+    trigger.addEventListener('mouseleave', scheduleClose);
+    menu.addEventListener('mouseenter', function() { clearTimeout(closeTimer); });
+    menu.addEventListener('mouseleave', scheduleClose);
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.has-mega')) triggers.forEach(function(t) { t.classList.remove('mega-open'); });
+  });
+})();
+</script>
 </body>
 </html>
