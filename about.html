@@ -1741,6 +1741,24 @@
     .lang-option.active { color: var(--orange, #e8600a) !important; }
   </style>
 
+
+<style id="page-transitions">
+/* Page fade-in on load */
+body { animation: pageFadeIn 0.35s ease forwards; }
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Fade-out before leaving */
+body.page-leaving {
+  animation: pageFadeOut 0.25s ease forwards !important;
+  pointer-events: none;
+}
+@keyframes pageFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-8px); }
+}
+</style>
 </head>
 <body>
 
@@ -2368,6 +2386,33 @@
   }
   // Expose lang to parent if needed
   window.pdkaLang = lang;
+})();
+</script>
+
+<script id="page-transition-js">
+// Smooth page transitions
+(function() {
+  // Intercept ALL internal link clicks
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href.startsWith('javascript') || href.startsWith('#') ||
+        href.startsWith('mailto') || href.startsWith('tel') ||
+        href.startsWith('http') || a.target === '_blank') return;
+    e.preventDefault();
+    document.body.classList.add('page-leaving');
+    setTimeout(function() { window.location.href = href; }, 250);
+  });
+
+  // Intercept openPdkaPage calls
+  window.openPdkaPage = function(url, title) {
+    var lang = window.pdkaLang || 'en';
+    var sep = url.indexOf('?') >= 0 ? '&' : '?';
+    var dest = lang !== 'en' ? (url + sep + 'lang=' + lang) : url;
+    document.body.classList.add('page-leaving');
+    setTimeout(function() { window.location.href = dest; }, 250);
+  };
 })();
 </script>
 </body>
