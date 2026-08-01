@@ -1314,7 +1314,7 @@
     [data-theme="dark"] h1,h2,h3,h4,h5 { color: #f0f4ff; }
     [data-theme="dark"] p,
     [data-theme="dark"] .section-sub { color: #ffffff !important; }
-    [data-theme="dark"] .section-label { color: var(--orange-light); }
+    [data-theme="dark"] .section-label { color: var(--orange-light) !important; }
 
     [data-theme="dark"] .service-card,
     [data-theme="dark"] .insight-card,
@@ -1969,11 +1969,11 @@ footer .footer-brand p, footer .footer-desc {
     .stat-cell-modern strong { font-size: clamp(26px, 3vw, 34px); font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 6px; }
     .stat-cell-modern span { font-size: 12.5px; color: var(--text-mid); font-weight: 600; }
 
-    [data-theme="dark"] .about-stats-modern { background: #0f1f47 !important; }
+    [data-theme="dark"] .about-stats-modern { background: #16294f !important; box-shadow: 0 24px 60px rgba(0,0,0,0.4) !important; }
     [data-theme="dark"] .stat-cell-modern:hover { background: rgba(232,96,10,0.10) !important; }
     [data-theme="dark"] .stat-cell-modern strong { color: #f0f4ff !important; }
     [data-theme="dark"] .stat-cell-modern span { color: rgba(255,255,255,0.6) !important; }
-    [data-theme="dark"] .stat-icon-modern { background: rgba(232,96,10,0.15) !important; }
+    [data-theme="dark"] .stat-icon-modern { background: rgba(232,96,10,0.22) !important; }
 
     @media (max-width: 700px) {
       .about-stats-modern { grid-template-columns: repeat(2, 1fr); margin-top: -50px; }
@@ -2005,7 +2005,7 @@ footer .footer-brand p, footer .footer-desc {
     }
     .quick-facts-card li:last-child { margin-bottom: 0; }
     .quick-facts-card li i { color: var(--orange-light); font-size: 15px; margin-top: 2px; flex-shrink: 0; }
-    [data-theme="dark"] .quick-facts-card { background: #0f1f47 !important; border: 1px solid rgba(255,255,255,0.08); }
+    [data-theme="dark"] .quick-facts-card { background: #16294f !important; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
 
     @media (max-width: 860px) {
       .about-body-modern { grid-template-columns: 1fr; gap: 40px; }
@@ -2023,7 +2023,8 @@ footer .footer-brand p, footer .footer-desc {
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
     .country-tag-modern:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(13,27,62,0.12); border-color: var(--orange); }
-    [data-theme="dark"] .country-tag-modern { background: #0f1f47 !important; border-color: rgba(255,255,255,0.1) !important; color: #fff !important; }
+    [data-theme="dark"] .country-tag-modern { background: #16294f !important; border-color: rgba(255,255,255,0.14) !important; color: #fff !important; }
+    [data-theme="dark"] .country-tag-modern:hover { background: #1c3260 !important; border-color: var(--orange) !important; }
 
     /* Values — icon cards */
     .values-section-modern { max-width: 1080px; margin: 20px auto 90px; padding: 0 5%; }
@@ -2044,10 +2045,11 @@ footer .footer-brand p, footer .footer-desc {
     }
     .value-card-modern h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
     .value-card-modern p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
-    [data-theme="dark"] .value-card-modern { background: #0f1f47 !important; border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .value-card-modern { background: #16294f !important; border-color: rgba(255,255,255,0.1) !important; }
+    [data-theme="dark"] .value-card-modern:hover { background: #1c3260 !important; border-color: var(--orange) !important; }
     [data-theme="dark"] .value-card-modern h4 { color: #fff !important; }
     [data-theme="dark"] .value-card-modern p { color: rgba(255,255,255,0.65) !important; }
-    [data-theme="dark"] .value-icon-modern { background: rgba(232,96,10,0.14) !important; }
+    [data-theme="dark"] .value-icon-modern { background: rgba(232,96,10,0.22) !important; }
 
     @media (max-width: 700px) {
       .values-grid-modern { grid-template-columns: 1fr 1fr; }
