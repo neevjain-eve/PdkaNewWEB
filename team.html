@@ -19,10 +19,10 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy: #0d1b3e; --navy-mid: #1a2f5e; --orange: #e8600a; --orange-light: #f47820;
+      --navy: #360083; --navy-mid: #5b0fc2; --orange: #e8600a; --orange-light: #f47820;
       --white: #ffffff; --grey-light: #f5f6fa; --grey-mid: #e8eaf0;
       --text-dark: #111827; --text-mid: #374151; --text-light: #4b5563;
-      --radius: 12px; --shadow: 0 4px 24px rgba(13,27,62,0.10); --shadow-lg: 0 8px 48px rgba(13,27,62,0.16);
+      --radius: 12px; --shadow: 0 4px 24px rgba(54,0,131,0.10); --shadow-lg: 0 8px 48px rgba(54,0,131,0.16);
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--grey-light); min-height: 100vh; display: flex; flex-direction: column; }
@@ -41,7 +41,7 @@
     [data-theme="dark"] body { background: #0b1628; color: #e8edf8; }
     [data-theme="dark"] nav { background: rgba(11,22,40,0.98) !important; border-bottom-color: rgba(255,255,255,0.08) !important; }
     [data-theme="dark"] .hero-band { background: #060e1f !important; }
-    [data-theme="dark"] .dept-section { background: #0f1f47 !important; border-color: rgba(255,255,255,0.07) !important; }
+    [data-theme="dark"] .dept-section { background: #2b0066 !important; border-color: rgba(255,255,255,0.07) !important; }
     [data-theme="dark"] .dept-section h2 { color: #f0f4ff !important; }
     [data-theme="dark"] .dept-section p { color: #ffffff !important; }
     [data-theme="dark"] .dept-divider { border-color: rgba(255,255,255,0.08) !important; }
@@ -50,14 +50,14 @@
     [data-theme="dark"] .member-card .role { color: #ffffff !important; }
     [data-theme="dark"] .member-card .quals { color: rgba(180,200,255,0.75) !important; }
     [data-theme="dark"] .member-card p { color: #e0e8ff !important; }
-    [data-theme="dark"] .member-photo-wrap { background: #1a2f5e !important; }
+    [data-theme="dark"] .member-photo-wrap { background: #5b0fc2 !important; }
     [data-theme="dark"] .dept-nav-pill { background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.1) !important; color: rgba(200,220,255,0.8) !important; }
     [data-theme="dark"] .dept-nav-pill:hover, [data-theme="dark"] .dept-nav-pill.active { background: var(--orange) !important; color: white !important; border-color: var(--orange) !important; }
     [data-theme="dark"] .head-card { background: #0b1628 !important; border-color: var(--orange) !important; }
     [data-theme="dark"] .head-card h3 { color: #f0f4ff !important; }
     [data-theme="dark"] .head-card .role { color: #ffffff !important; }
     [data-theme="dark"] .head-card .quals { color: rgba(180,200,255,0.75) !important; }
-    [data-theme="dark"] .head-photo-wrap { background: #1a2f5e !important; }
+    [data-theme="dark"] .head-photo-wrap { background: #5b0fc2 !important; }
     [data-theme="dark"] footer { background: #060e1f !important; }
 
     /* HERO */
@@ -167,14 +167,14 @@
     .lang-option:hover { background: var(--surface, #f5f5f5); }
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
     /* Dark nav override for sub-pages */
-    .lang-menu { background: #1a2f5e !important; border-color: rgba(255,255,255,0.15) !important; }
+    .lang-menu { background: #5b0fc2 !important; border-color: rgba(255,255,255,0.15) !important; }
     .lang-option { color: rgba(255,255,255,0.92) !important; } [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.92) !important; }
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
   
     .nav-mobile {
       display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
-      background: rgba(13,27,62,0.98); border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(54,0,131,0.98); border-bottom: 1px solid rgba(255,255,255,0.08);
       padding: 16px 5% 24px; flex-direction: column; gap: 0; list-style: none;
     }
     .nav-mobile.open { display: flex; }
@@ -269,7 +269,7 @@
       width: 100%;
       box-sizing: border-box;
       position: relative; z-index: 1;
-      box-shadow: 0 3px 14px rgba(13,27,62,0.10);
+      box-shadow: 0 3px 14px rgba(54,0,131,0.10);
     }
     .org-sm .osm-photo {
       width: 84px;
@@ -307,7 +307,7 @@
       text-align: center;
       width: 100%;
       box-sizing: border-box;
-      box-shadow: 0 2px 10px rgba(13,27,62,0.07);
+      box-shadow: 0 2px 10px rgba(54,0,131,0.07);
       position: relative; z-index: 1;
     }
     .org-member .om-photo {
@@ -335,7 +335,7 @@
 
     /* Dark mode */
     [data-theme="dark"] .org-chart   { background: #090f1e; border-top-color: rgba(255,255,255,0.08); }
-    [data-theme="dark"] .org-sm      { background: #0f1f47; border-color: var(--orange); }
+    [data-theme="dark"] .org-sm      { background: #2b0066; border-color: var(--orange); }
     [data-theme="dark"] .org-member  { background: #0b1628; border-color: rgba(255,255,255,0.15); }
     [data-theme="dark"] .org-sm .osm-name, [data-theme="dark"] .org-member .om-name { color: #f0f4ff; }
     [data-theme="dark"] .org-chart ul ul::after,
@@ -361,11 +361,11 @@ nav {
   transition: transform 0.3s ease !important;
 }
 [data-theme="dark"] nav {
-  background: rgba(13,27,62,0.97) !important;
+  background: rgba(54,0,131,0.97) !important;
   border-bottom-color: rgba(255,255,255,0.08) !important;
 }
 footer {
-  background: #0d1b3e !important;
+  background: #360083 !important;
   color: rgba(255,255,255,0.7) !important;
   padding: 60px 5% 28px !important;
   margin-top: 0 !important;
@@ -378,10 +378,10 @@ nav {
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid rgba(0,0,0,0.08) !important;
-  color: #0d1b3e !important;
+  color: #360083 !important;
 }
 nav a, nav .nav-links a, nav .nav-links li a {
-  color: #0d1b3e !important;
+  color: #360083 !important;
 }
 nav a:hover, nav .nav-links a:hover {
   color: #e8600a !important;
@@ -392,14 +392,14 @@ nav a:hover, nav .nav-links a:hover {
   border: none !important;
 }
 .lang-btn, .theme-toggle {
-  color: #0d1b3e !important;
+  color: #360083 !important;
   border-color: rgba(0,0,0,0.2) !important;
 }
-.nav-toggle { color: #0d1b3e !important; }
+.nav-toggle { color: #360083 !important; }
 
 /* Dark mode nav */
 [data-theme="dark"] nav {
-  background: rgba(13,27,62,0.97) !important;
+  background: rgba(54,0,131,0.97) !important;
   border-bottom: 1px solid rgba(255,255,255,0.08) !important;
 }
 [data-theme="dark"] nav a,
@@ -412,7 +412,7 @@ nav a:hover, nav .nav-links a:hover {
 
 /* ===== UNIFORM FOOTER ===== */
 footer {
-  background: #0d1b3e !important;
+  background: #360083 !important;
   color: rgba(255,255,255,0.7) !important;
   padding: 60px 5% 28px !important;
   margin-top: 0 !important;
@@ -470,7 +470,7 @@ body.page-leaving { animation: pageFadeOut 0.25s ease forwards !important; point
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
     [data-theme="dark"] .lang-btn { color: var(--orange, #e8600a); border-color: var(--orange, #e8600a); }
     [data-theme="dark"] .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; }
-    [data-theme="dark"] .lang-menu { background: #1a2f5e; border-color: rgba(255,255,255,0.12); }
+    [data-theme="dark"] .lang-menu { background: #5b0fc2; border-color: rgba(255,255,255,0.12); }
     [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.85); }
     [data-theme="dark"] .lang-option:hover { background: rgba(232,96,10,0.2); color: #fff; }
     [data-theme="dark"] .lang-option.active { color: var(--orange, #e8600a); }
@@ -503,7 +503,7 @@ body.page-leaving { animation: pageFadeOut 0.25s ease forwards !important; point
     .lang-option:hover { background: var(--surface, #f5f5f5); }
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
     /* Dark nav override for sub-pages */
-    .lang-menu { background: #1a2f5e !important; border-color: rgba(255,255,255,0.15) !important; }
+    .lang-menu { background: #5b0fc2 !important; border-color: rgba(255,255,255,0.15) !important; }
     .lang-option { color: rgba(255,255,255,0.92) !important; } [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.92) !important; }
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
@@ -615,7 +615,7 @@ body.page-leaving { animation: pageFadeOut 0.25s ease forwards !important; point
   </div>
 
   <!-- Mobile Menu Drawer -->
-  <div id="mobileMenu" style="display:none;position:fixed;top:72px;left:0;right:0;z-index:999;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);border-bottom:2px solid rgba(232,96,10,0.3);padding:16px 5% 20px;flex-direction:column;gap:4px;box-shadow:0 8px 32px rgba(13,27,62,0.12);">
+  <div id="mobileMenu" style="display:none;position:fixed;top:72px;left:0;right:0;z-index:999;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);border-bottom:2px solid rgba(232,96,10,0.3);padding:16px 5% 20px;flex-direction:column;gap:4px;box-shadow:0 8px 32px rgba(54,0,131,0.12);">
     <a href="javascript:void(0)" onclick="window.scrollTo(0,0);closeMobileMenu()" class="mob-link" data-i18n="nav-home">Home</a>
     <a href="javascript:void(0)" onclick="openPdkaPage('about.html','About');closeMobileMenu()" class="mob-link" data-i18n="nav-about">About</a>
     <a href="#founder" onclick="closeMobileMenu()" class="mob-link" data-i18n="nav-founder">Founder</a>
