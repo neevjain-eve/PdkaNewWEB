@@ -1266,6 +1266,33 @@ footer a:hover { color: var(--orange, #e8600a) !important; }
 body { padding-top: 72px !important; }
 #home { margin-top: -72px !important; padding-top: 0 !important; }
 </style>
+<style id="hf-override">
+nav {
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(255,255,255,0.98) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  padding: 0 5% !important;
+  height: 72px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  transition: transform 0.3s ease !important;
+}
+[data-theme="dark"] nav {
+  background: rgba(13,27,62,0.97) !important;
+  border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+footer {
+  background: #0d1b3e !important;
+  color: rgba(255,255,255,0.7) !important;
+  padding: 60px 5% 28px !important;
+  margin-top: 0 !important;
+}
+</style>
 </head>
 <body>
 
