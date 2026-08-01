@@ -5537,11 +5537,28 @@ window.servicesI18n = {
   (function(){
     var nav = document.querySelector('nav');
     var lastY = 0;
+    var hoveringTop = false;
+
     window.addEventListener('scroll', function(){
       var y = window.scrollY;
+      if (hoveringTop) { lastY = y; return; } // don't hide while cursor is at top
       if(y > lastY && y > 80) { nav.classList.add('nav-hidden'); }
       else { nav.classList.remove('nav-hidden'); }
       lastY = y;
+    }, { passive: true });
+
+    // Reveal nav when cursor approaches the top of the screen
+    document.addEventListener('mousemove', function(e){
+      if (e.clientY <= 60) {
+        if (!hoveringTop) {
+          hoveringTop = true;
+          nav.classList.remove('nav-hidden');
+        }
+      } else if (hoveringTop && e.clientY > 100) {
+        hoveringTop = false;
+        // Re-hide only if user has scrolled down past the threshold
+        if (window.scrollY > 80) { nav.classList.add('nav-hidden'); }
+      }
     }, { passive: true });
   })();
   </script>
