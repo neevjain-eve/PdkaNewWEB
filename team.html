@@ -429,6 +429,18 @@ footer .footer-brand p, footer .footer-desc {
   color: rgba(255,255,255,0.55) !important;
 }
 </style>
+<style id="shine-fx">
+@keyframes shineSweep{0%{left:-60%}100%{left:130%}}
+.btn-primary,.nav-cta,.form-submit,.career-apply,.article-read-btn,button[type="submit"]{position:relative!important;overflow:hidden!important;isolation:isolate!important}
+.btn-primary::after,.nav-cta::after,.form-submit::after,.career-apply::after,.article-read-btn::after,button[type="submit"]::after{content:""!important;position:absolute!important;top:-10%!important;left:-60%!important;width:45%!important;height:120%!important;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.5) 50%,transparent 80%)!important;transform:skewX(-15deg)!important;pointer-events:none!important;opacity:0!important;z-index:9!important}
+.btn-primary:hover::after,.nav-cta:hover::after,.form-submit:hover::after,.career-apply:hover::after,.article-read-btn:hover::after,button[type="submit"]:hover::after{opacity:1!important;animation:shineSweep .55s ease-in-out forwards!important}
+</style>
+<style id="page-transitions">
+body { animation: pageFadeIn 0.35s ease forwards; }
+@keyframes pageFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+body.page-leaving { animation: pageFadeOut 0.25s ease forwards !important; pointer-events: none; }
+@keyframes pageFadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-8px); } }
+</style>
 </head>
 <body>
 
@@ -498,23 +510,122 @@ footer .footer-brand p, footer .footer-desc {
   
       </style>');}</script>
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo.png?v=3" alt="PDKA" />
+  <a href="#home" class="nav-logo">
+    <img src="logo.png?v=3" alt="PDKA" style="height:40px;width:auto;display:block;" />
   </a>
-  <a href="index.html#team" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Website</a>
-  <div class="lang-dropdown" id="langDropdown">
+  <ul class="nav-links">
+    <li><a href="javascript:void(0)" onclick="window.scrollTo(0,0)" data-i18n="nav-home">Home</a></li>
+
+    <!-- About mega -->
+    <li class="has-mega" id="mega-about-trigger">
+      <a href="javascript:void(0)" onclick="openPdkaPage('about.html','About')" data-i18n="nav-about">About <i class="fas fa-chevron-down" style="font-size:9px;margin-left:3px;"></i></a>
+      <div class="mega-menu" id="mega-about">
+        <div class="mega-col">
+          <div class="mega-label">The Firm</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('about.html','About')"><i class="fas fa-building mega-icon"></i><span><b>About PDKA</b><small>28 years · Bangalore · Global reach</small></span></a>
+          <a class="mega-item" href="#founder"><i class="fas fa-user-tie mega-icon"></i><span><b>Founder</b><small>Dilip Kumar Parasmal · FCA · CISA · DISA</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('team.html','Team')"><i class="fas fa-users mega-icon"></i><span><b>Our Team</b><small>Department heads & professionals</small></span></a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-label">Credentials</div>
+          <a class="mega-item" href="#"><i class="fas fa-certificate mega-icon"></i><span><b>ICAI Registered</b><small>Fellow Chartered Accountant</small></span></a>
+          <a class="mega-item" href="#"><i class="fas fa-shield-alt mega-icon"></i><span><b>CISA Certified</b><small>Information Systems Auditor</small></span></a>
+          <a class="mega-item" href="#"><i class="fas fa-globe mega-icon"></i><span><b>9 Countries</b><small>India · USA · UK · Dubai & more</small></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Services mega -->
+    <li class="has-mega" id="mega-services-trigger">
+      <a href="#services" data-i18n="nav-services">Services <i class="fas fa-chevron-down" style="font-size:9px;margin-left:3px;"></i></a>
+      <div class="mega-menu" id="mega-services">
+        <div class="mega-col">
+          <div class="mega-label">Assurance & Tax</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('service-audit-assurance.html','Audit')" ><i class="fas fa-search-dollar mega-icon"></i><span><b>Audit & Assurance</b><small>Statutory, internal & IS audit</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('service-taxation.html','Tax Advisory')" ><i class="fas fa-file-invoice-dollar mega-icon"></i><span><b>Tax Advisory</b><small>Direct tax, ITR, TDS, advance tax</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('service-taxation.html','GST')" ><i class="fas fa-receipt mega-icon"></i><span><b>GST Compliance</b><small>Registration, returns, reconciliation</small></span></a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-label">Advisory & CFO</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('service-virtual-cfo.html','Virtual CFO')" ><i class="fas fa-chart-line mega-icon"></i><span><b>Virtual CFO</b><small>MIS, financial reporting, advisory</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('service-fema-international.html','FEMA')" ><i class="fas fa-globe-asia mega-icon"></i><span><b>FEMA & International</b><small>ODI, LRS, foreign remittances</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('service-is-audit.html','IS Audit')" ><i class="fas fa-shield-alt mega-icon"></i><span><b>Risk Management</b><small>Controls, governance, compliance</small></span></a>
+        </div>
+      </div>
+    </li>
+
+    <li><a href="#team" data-i18n="nav-team">Team</a></li>
+
+    <!-- Insights mega -->
+    <li class="has-mega" id="mega-insights-trigger">
+      <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" data-i18n="nav-insights">Insights <i class="fas fa-chevron-down" style="font-size:9px;margin-left:3px;"></i></a>
+      <div class="mega-menu" id="mega-insights">
+        <div class="mega-col">
+          <div class="mega-label">Latest Articles</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-landmark mega-icon"></i><span><b>Union Budget FY2026-27</b><small>Key tax changes for businesses</small></span></a>
+
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-file-alt mega-icon"></i><span><b>ITR Filing FY 2025-26</b><small>Compliance checklist</small></span></a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-label">By Topic</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-percentage mega-icon"></i><span><b>GST Updates</b><small>ITC reconciliation, e-invoicing</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-globe mega-icon"></i><span><b>FEMA & International</b><small>Foreign remittance guide</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')"><i class="fas fa-lock mega-icon"></i><span><b>DPDPA 2025</b><small>Data protection compliance</small></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Careers mega -->
+    <li class="has-mega" id="mega-careers-trigger">
+      <a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')" data-i18n="nav-careers">Careers <i class="fas fa-chevron-down" style="font-size:9px;margin-left:3px;"></i></a>
+      <div class="mega-menu" id="mega-careers">
+        <div class="mega-col">
+          <div class="mega-label">Open Positions</div>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')"><i class="fas fa-graduation-cap mega-icon"></i><span><b>Article Assistant</b><small>CA Foundation / Inter · Articleship</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')"><i class="fas fa-briefcase mega-icon"></i><span><b>Senior CA / Asst. Manager</b><small>FCA/ACA · IT/ITES experience</small></span></a>
+          <a class="mega-item" href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')"><i class="fas fa-envelope mega-icon"></i><span><b>Open Application</b><small>Send your CV anytime</small></span></a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-label">Why PDKA</div>
+          <a class="mega-item" href="#"><i class="fas fa-star mega-icon"></i><span><b>28+ Years of Practice</b><small>Learn from experienced professionals</small></span></a>
+          <a class="mega-item" href="#"><i class="fas fa-globe mega-icon"></i><span><b>International Exposure</b><small>Work across 9 countries</small></span></a>
+          <a class="mega-item" href="#"><i class="fas fa-certificate mega-icon"></i><span><b>ICAI Registered Firm</b><small>Structured articleship training</small></span></a>
+        </div>
+      </div>
+    </li>
+
+    <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+        <div class="lang-dropdown" id="langDropdown">
       <button class="lang-btn" onclick="toggleLangMenu(event)" aria-label="Language">
         <i class="fas fa-globe"></i>
         <span id="langLabel">EN</span>
         <i class="fas fa-chevron-down" style="font-size:10px;"></i>
       </button>
       <ul class="lang-menu" id="langMenu">
-        <li><button onclick="setLang('en');var _l=document.getElementById('langLabel');if(_l)_l.textContent='EN';" class="lang-option active" id="opt-en">English</button></li>
-        <li><button onclick="setLang('ja');var _l=document.getElementById('langLabel');if(_l)_l.textContent='JP';" class="lang-option" id="opt-ja">&#x65E5;&#x672C;&#x8A9E;</button></li>
-        <li><button onclick="setLang('hi');var _l=document.getElementById('langLabel');if(_l)_l.textContent='HI';" class="lang-option" id="opt-hi">&#x939;&#x93F;&#x928;&#x094D;&#x926;&#x940;</button></li>
+        <li><button onclick="setLang('en')" class="lang-option active" id="opt-en">English</button></li>
+        <li><button onclick="setLang('ja')" class="lang-option" id="opt-ja">日本語</button></li>
+        <li><button onclick="setLang('hi')" class="lang-option" id="opt-hi">हिन्दी</button></li>
       </ul>
     </div>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
+    <a href="#contact" class="nav-cta" data-i18n="nav-cta">Get Started</a>
+    <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobileMenu" style="display:none;position:fixed;top:72px;left:0;right:0;z-index:999;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);border-bottom:2px solid rgba(232,96,10,0.3);padding:16px 5% 20px;flex-direction:column;gap:4px;box-shadow:0 8px 32px rgba(13,27,62,0.12);">
+    <a href="javascript:void(0)" onclick="window.scrollTo(0,0);closeMobileMenu()" class="mob-link" data-i18n="nav-home">Home</a>
+    <a href="javascript:void(0)" onclick="openPdkaPage('about.html','About');closeMobileMenu()" class="mob-link" data-i18n="nav-about">About</a>
+    <a href="#founder" onclick="closeMobileMenu()" class="mob-link" data-i18n="nav-founder">Founder</a>
+    <a href="#services" onclick="closeMobileMenu()" class="mob-link" data-i18n="nav-services">Services</a>
+    <a href="javascript:void(0)" onclick="openPdkaPage('team.html','Team');closeMobileMenu()" class="mob-link" data-i18n="nav-team">Team</a>
+    <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights');closeMobileMenu()" class="mob-link" data-i18n="nav-insights">Insights</a>
+    <a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers');closeMobileMenu()" class="mob-link" data-i18n="nav-careers">Careers</a>
+    <a href="#contact" onclick="closeMobileMenu()" class="mob-link" data-i18n="nav-contact">Contact</a>
+    <a href="#contact" onclick="closeMobileMenu()" class="btn-primary" style="display:inline-flex;margin-top:12px;justify-content:center;" data-i18n="nav-cta">Get Started</a>
+  </div>
 </nav>
 <ul class="nav-mobile" id="mobileNav">
   <li><a href="index.html">Home</a></li>
@@ -830,7 +941,7 @@ footer .footer-brand p, footer .footer-desc {
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo"><img src="logo.png?v=3" alt="PDKA" style="height:40px;width:auto;display:block;" /></a>
+        <a href="#home" class="nav-logo"><img src="logo.png?v=3" alt="PDKA" style="height:40px;width:auto;display:block;" /></a>
         <p>A professional firm of Chartered Accountants committed to quality, integrity, and ICAI standards since 1998.</p>
         <a href="javascript:void(0)" onclick="openPdkaPage('client-portal.html','Client Portal')" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--orange);color:white;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#f47820'" onmouseout="this.style.background='var(--orange)'"><i class="fas fa-user-circle"></i> Client Portal</a>
         <!-- ICAI Logo -->
@@ -847,14 +958,14 @@ footer .footer-brand p, footer .footer-desc {
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="index.html#services">Audit &amp; Assurance</a></li>
-          <li><a href="index.html#services">Direct Tax</a></li>
-          <li><a href="index.html#services">Indirect Tax</a></li>
-          <li><a href="index.html#services">FEMA &amp; International</a></li>
-          <li><a href="index.html#services">IS Audit (CISA/DISA)</a></li>
-          <li><a href="index.html#services">Virtual CFO</a></li>
-          <li><a href="index.html#services">Business Advisory</a></li>
-          <li><a href="index.html#services">Company Secretary</a></li>
+          <li><a href="#services">Audit &amp; Assurance</a></li>
+          <li><a href="#services">Direct Tax</a></li>
+          <li><a href="#services">Indirect Tax</a></li>
+          <li><a href="#services">FEMA &amp; International</a></li>
+          <li><a href="#services">IS Audit (CISA/DISA)</a></li>
+          <li><a href="#services">Virtual CFO</a></li>
+          <li><a href="#services">Business Advisory</a></li>
+          <li><a href="#services">Company Secretary</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -862,9 +973,9 @@ footer .footer-brand p, footer .footer-desc {
         <ul>
           <li><a href="#about">About Us</a></li>
           <li><a href="#team">Our Team</a></li>
-          <li><a href="index.html#insights">Insights</a></li>
+          <li><a href="#insights">Insights</a></li>
           <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">Careers</a></li>
-          <li><a href="index.html#contact">Contact Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1131,23 +1242,7 @@ footer .footer-brand p, footer .footer-desc {
   })();
   </script>
 
-<script>
-  function toggleMobileNav() {
-    var nav = document.getElementById("mobileNav");
-    var btn = document.getElementById("navToggle");
-    if (!nav) return;
-    nav.classList.toggle("open");
-    if (btn) btn.innerHTML = nav.classList.contains("open") ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-  }
-  document.addEventListener("click", function(e) {
-    var nav = document.getElementById("mobileNav");
-    var btn = document.getElementById("navToggle");
-    if (nav && nav.classList.contains("open") && !nav.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
-      nav.classList.remove("open");
-      if (btn) btn.innerHTML = '<i class="fas fa-bars"></i>';
-    }
-  });
-</script>
+
 <script>
   (function() {
     if (window.self !== window.top) return; // skip in iframe
@@ -1166,5 +1261,138 @@ footer .footer-brand p, footer .footer-desc {
       });
     }, { passive: true });
   })();
-</script></body>
+</script><script id="mega-menu-js">
+(function() {
+  var triggers = document.querySelectorAll('.has-mega');
+  var closeTimer = null;
+  triggers.forEach(function(trigger) {
+    var menu = trigger.querySelector('.mega-menu');
+    if (!menu) return;
+    function openMenu() {
+      clearTimeout(closeTimer);
+      triggers.forEach(function(t) { if (t !== trigger) t.classList.remove('mega-open'); });
+      trigger.classList.add('mega-open');
+    }
+    function scheduleClose() {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(function() { trigger.classList.remove('mega-open'); }, 180);
+    }
+    trigger.addEventListener('mouseenter', openMenu);
+    trigger.addEventListener('mouseleave', scheduleClose);
+    menu.addEventListener('mouseenter', function() { clearTimeout(closeTimer); });
+    menu.addEventListener('mouseleave', scheduleClose);
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.has-mega')) triggers.forEach(function(t) { t.classList.remove('mega-open'); });
+  });
+})();
+</script>
+<script id="shared-nav-js">
+function toggleMobileNav() {
+  var nav = document.getElementById('mobileNav');
+  var icon = document.getElementById('navToggle').querySelector('i');
+  if (!nav) return;
+  nav.classList.toggle('open');
+  if (icon) icon.className = nav.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+}
+function toggleTheme() {
+  var html = document.documentElement;
+  var icon = document.getElementById('themeIcon');
+  var label = document.getElementById('themeLabel');
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    if (icon) icon.className = 'fas fa-moon';
+    if (label) label.textContent = 'Dark';
+    localStorage.setItem('pdka-theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    if (icon) icon.className = 'fas fa-sun';
+    if (label) label.textContent = 'Light';
+    localStorage.setItem('pdka-theme', 'dark');
+  }
+}
+(function() {
+  var saved = localStorage.getItem('pdka-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    var icon = document.getElementById('themeIcon');
+    var label = document.getElementById('themeLabel');
+    if (icon) icon.className = 'fas fa-sun';
+    if (label) label.textContent = 'Light';
+  }
+})();
+function toggleLangMenu(event) {
+  event.stopPropagation();
+  var menu = document.getElementById('langMenu');
+  if (!menu) return;
+  var isOpen = menu.style.display === 'block';
+  menu.style.display = isOpen ? 'none' : 'block';
+}
+function setLang(lang) {
+  var label = document.getElementById('langLabel');
+  if (label) label.textContent = lang === 'ja' ? 'JP' : lang === 'hi' ? 'HI' : 'EN';
+  ['en','ja','hi'].forEach(function(l) {
+    var btn = document.getElementById('opt-' + l);
+    if (btn) btn.classList.toggle('active', l === lang);
+  });
+  var menu = document.getElementById('langMenu');
+  if (menu) menu.style.display = 'none';
+  try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
+}
+document.addEventListener('click', function() {
+  var menu = document.getElementById('langMenu');
+  if (menu) menu.style.display = 'none';
+});
+(function() {
+  try {
+    var lg = localStorage.getItem('pdka-lang') || 'en';
+    if (lg && lg !== 'en') { setTimeout(function(){ if(window.setLang) setLang(lg); }, 80); }
+  } catch(e) {}
+})();
+(function() {
+  var nav = document.querySelector('nav');
+  if (!nav) return;
+  var lastY = 0;
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY;
+    if (y > lastY && y > 80) { nav.classList.add('nav-hidden'); }
+    else { nav.classList.remove('nav-hidden'); }
+    lastY = y;
+  }, { passive: true });
+})();
+window.openPdkaPage = function(url, title) {
+  var lang = window.pdkaLang || localStorage.getItem('pdka-lang') || 'en';
+  var sep = url.indexOf('?') >= 0 ? '&' : '?';
+  var dest = lang !== 'en' ? (url + sep + 'lang=' + lang) : url;
+  document.body.classList.add('page-leaving');
+  setTimeout(function() { window.location.href = dest; }, 250);
+};
+</script>
+<script id="auto-lang">
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang') || localStorage.getItem('pdka-lang') || 'en';
+  window.pdkaLang = lang;
+  if (lang && lang !== 'en') {
+    if (window.setLang) { window.setLang(lang); }
+    else { window.addEventListener('DOMContentLoaded', function() { if (window.setLang) window.setLang(lang); }); }
+  }
+})();
+</script>
+<script id="page-transition-js">
+(function() {
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href.startsWith('javascript') || href.startsWith('#') ||
+        href.startsWith('mailto') || href.startsWith('tel') ||
+        href.startsWith('http') || a.target === '_blank') return;
+    e.preventDefault();
+    document.body.classList.add('page-leaving');
+    setTimeout(function() { window.location.href = href; }, 250);
+  });
+})();
+</script>
+</body>
 </html>
