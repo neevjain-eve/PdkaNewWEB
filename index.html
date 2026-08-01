@@ -805,26 +805,30 @@
     [data-theme="dark"] .section-sub { color: #ffffff !important; }
     [data-theme="dark"] .section-label { color: var(--orange-light); }
 
-    [data-theme="dark"] .service-card,
-    [data-theme="dark"] .insight-card,
     [data-theme="dark"] .team-card,
     [data-theme="dark"] .dept-card,
     [data-theme="dark"] .career-card,
     [data-theme="dark"] .founder-card { background: #1a2f5e !important; border-color: rgba(255,255,255,0.08) !important; }
 
-    [data-theme="dark"] .service-card h3,
-    [data-theme="dark"] .insight-card h3,
+    /* Service & Insight cards stay white in dark mode for contrast against dark page background */
+    [data-theme="dark"] .service-card,
+    [data-theme="dark"] .insight-card { background: #ffffff !important; border-color: rgba(13,27,62,0.08) !important; box-shadow: 0 4px 24px rgba(0,0,0,0.35) !important; }
+
     [data-theme="dark"] .team-card h4,
     [data-theme="dark"] .dept-card h4,
     [data-theme="dark"] .career-card h3 { color: #f0f4ff; }
 
-    [data-theme="dark"] .service-card p,
-    [data-theme="dark"] .insight-card p,
+    [data-theme="dark"] .service-card h3,
+    [data-theme="dark"] .insight-card h3 { color: var(--text-dark) !important; }
+
     [data-theme="dark"] .team-card p,
     [data-theme="dark"] .dept-info span,
     [data-theme="dark"] .dept-role,
     [data-theme="dark"] .dept-quals,
     [data-theme="dark"] .career-card p  { color: rgba(255,255,255,0.9); }
+
+    [data-theme="dark"] .service-card p,
+    [data-theme="dark"] .insight-card p { color: var(--text-mid) !important; }
     [data-theme="dark"] .dept-card h4   { color: #f0f4ff !important; }
 
     [data-theme="dark"] .footer-inner,
@@ -1667,7 +1671,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
     </li>
 
-    <li><a href="#team" data-i18n="nav-team">Team</a></li>
+    <li><a href="team.html" data-i18n="nav-team">Team</a></li>
 
     <!-- Insights mega -->
     <li class="has-mega" id="mega-insights-trigger">
@@ -2096,145 +2100,7 @@ footer .footer-brand p, footer .footer-desc {
 </section>
 
 <!-- TEAM -->
-<section id="team">
-  <div class="section-inner">
-    <div style="text-align:center;">
-      <div class="section-label" data-i18n="team-label">Our People</div>
-      <h2 class="section-title" data-i18n="team-title">Meet the Team</h2>
-      <p class="section-sub" style="margin:0 auto;">Our partners and department leads bring decades of specialised experience, professional certifications, and a client-first approach to every engagement.</p>
-    </div>
 
-    <!-- DEPARTMENT LEADS -->
-    <div class="team-dept-section">
-      <div class="team-dept-label">Department Leads</div>
-      <div class="team-dept-grid">
-
-        <div class="dept-card">
-          <div class="dept-photo">
-            <div style="text-align:center">
-              <div class="dept-initials">R</div>
-              <div class="dept-photo-note">Photo to be updated</div>
-            </div>
-          </div>
-          <div class="dept-info">
-            <div class="dept-tag">Company Secretary</div>
-            <h4>Rinkal Handey</h4>
-            <div class="dept-role">Head — Corporate Compliance</div>
-            <a href="team.html#company-secretary" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="dept-card">
-          <div class="dept-photo">
-            <div style="text-align:center">
-              <div class="dept-initials">V</div>
-              <div class="dept-photo-note">Photo to be updated</div>
-            </div>
-          </div>
-          <div class="dept-info">
-            <div class="dept-tag">Audit &amp; Assurance</div>
-            <h4>Vedamurthy S</h4>
-            <div class="dept-role">Head — Audit &amp; Assurance</div>
-            <a href="team.html#audit" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="dept-card">
-          <div class="dept-photo">
-            <div style="text-align:center">
-              <div class="dept-initials">R</div>
-              <div class="dept-photo-note">Photo to be updated</div>
-            </div>
-          </div>
-          <div class="dept-info">
-            <div class="dept-tag">Advisory</div>
-            <h4>Richa Khetawat</h4>
-            <div class="dept-role">Head — Business Advisory</div>
-            <a href="team.html#advisory" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        
-        <div class="dept-card">
-          <div class="dept-photo">
-            <div style="text-align:center">
-              <div class="dept-initials">SJ</div>
-              <div class="dept-photo-note">Photo to be updated</div>
-            </div>
-          </div>
-          <div class="dept-info">
-            <div class="dept-tag">Direct Tax</div>
-            <h4>Sandeep Jain S</h4>
-            <div class="dept-role">Head &mdash; Direct Tax</div>
-            <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="dept-card">
-          <div class="dept-photo">
-            <div style="text-align:center">
-              <div class="dept-initials">RK</div>
-              <div class="dept-photo-note">Photo to be updated</div>
-            </div>
-          </div>
-          <div class="dept-info">
-            <div class="dept-tag">Indirect Tax</div>
-            <h4>Rakesh Kumar G Jain</h4>
-            <div class="dept-role">Head &mdash; Indirect Tax</div>
-            <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="dept-card">
-          <div class="dept-photo">
-            <div style="text-align:center">
-              <div class="dept-initials">R</div>
-              <div class="dept-photo-note">Photo to be updated</div>
-            </div>
-          </div>
-          <div class="dept-info">
-            <div class="dept-tag">FinOps</div>
-            <h4>Ramya R</h4>
-            <div class="dept-role">Head — FinOps</div>
-            
-            <a href="team.html#finops" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="dept-card">
-          <div class="dept-photo">
-            <div style="text-align:center">
-              <div class="dept-initials">NM</div>
-              <div class="dept-photo-note">Photo to be updated</div>
-            </div>
-          </div>
-          <div class="dept-info">
-            <div class="dept-tag">Administration</div>
-            <h4>Namratha MN</h4>
-            <div class="dept-role">Head &mdash; Administration</div>
-            <a href="team.html#admin" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="dept-card">
-          <div class="dept-photo">
-            <div style="text-align:center">
-              <div class="dept-initials">SN</div>
-              <div class="dept-photo-note">Photo to be updated</div>
-            </div>
-          </div>
-          <div class="dept-info">
-            <div class="dept-tag">Human Resources</div>
-            <h4>Sowmya N</h4>
-            <div class="dept-role">Head &mdash; Human Resources</div>
-            <a href="team.html#hr" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- INSIGHTS -->
@@ -2559,7 +2425,7 @@ footer .footer-brand p, footer .footer-desc {
         <h4>Company</h4>
         <ul>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#team">Our Team</a></li>
+          <li><a href="team.html">Our Team</a></li>
           <li><a href="#insights">Insights</a></li>
           <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">Careers</a></li>
           <li><a href="#contact">Contact Us</a></li>
@@ -4199,7 +4065,7 @@ function closeSvcIfOutside(e) {
         <h4>Company</h4>
         <ul>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#team">Our Team</a></li>
+          <li><a href="team.html">Our Team</a></li>
           <li><a href="#insights">Insights</a></li>
           <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">Careers</a></li>
           <li><a href="#contact">Contact Us</a></li>
@@ -4272,7 +4138,7 @@ function closeSvcIfOutside(e) {
     <li><a href="javascript:void(0)" onclick="openPdkaPage('about.html','About')">About</a></li>
     <li><a href="#founder">Founder</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#team">Team</a></li>
+    <li><a href="team.html">Team</a></li>
     <li><a href="#insights">Insights</a></li>
     <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">Careers</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -4724,7 +4590,7 @@ function closeSvcIfOutside(e) {
         <h4>会社情報</h4>
         <ul>
           <li><a href="#about">会社概要</a></li>
-          <li><a href="#team">チーム</a></li>
+          <li><a href="team.html">チーム</a></li>
           <li><a href="#insights">インサイト</a></li>
           <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','採用情報')">採用情報</a></li>
           <li><a href="#contact">お問い合わせ</a></li>
@@ -4797,7 +4663,7 @@ function closeSvcIfOutside(e) {
     <li><a href="javascript:void(0)" onclick="openPdkaPage('about.html','会社概要')">会社概要</a></li>
     <li><a href="#founder">創業者</a></li>
     <li><a href="#services">サービス</a></li>
-    <li><a href="#team">チーム</a></li>
+    <li><a href="team.html">チーム</a></li>
     <li><a href="#insights">インサイト</a></li>
     <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','採用情報')">採用情報</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
@@ -5243,7 +5109,7 @@ function closeSvcIfOutside(e) {
         <h4>कंपनी</h4>
         <ul>
           <li><a href="#about">हमारे बारे में</a></li>
-          <li><a href="#team">टीम</a></li>
+          <li><a href="team.html">टीम</a></li>
           <li><a href="#insights">अंतर्दृष्टि</a></li>
           <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">करियर</a></li>
           <li><a href="#contact">संपर्क</a></li>
@@ -5315,7 +5181,7 @@ function closeSvcIfOutside(e) {
     <li><a href="javascript:void(0)" onclick="openPdkaPage('about.html','About')">हमारे बारे में</a></li>
     <li><a href="#founder">संस्थापक</a></li>
     <li><a href="#services">सेवाएं</a></li>
-    <li><a href="#team">टीम</a></li>
+    <li><a href="team.html">टीम</a></li>
     <li><a href="#insights">अंतर्दृष्टि</a></li>
     <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">करियर</a></li>
     <li><a href="#contact">संपर्क</a></li>
