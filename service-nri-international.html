@@ -168,5 +168,23 @@ footer a:hover{color:#fff;}
     <p style="color:rgba(255,255,255,0.5);font-size:13px;text-align:center;">&copy; 2025 P. Dilip Kumar & Associates. All rights reserved. &nbsp;|&nbsp; <a href="index.html" style="color:rgba(255,255,255,0.7);text-decoration:none;">Home</a> &nbsp;|&nbsp; <a href="index.html#contact" style="color:rgba(255,255,255,0.7);text-decoration:none;">Contact</a></p>
   </div>
 </footer>
+
+<script>
+// Auto-translate based on ?lang= param passed from parent
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang') || (window.parent && window.parent.pdkaLang) || 'en';
+  if (lang && lang !== 'en' && window.setLang) {
+    window.setLang(lang);
+  } else if (lang && lang !== 'en') {
+    // If setLang not defined yet, wait for DOM
+    window.addEventListener('DOMContentLoaded', function() {
+      if (window.setLang) window.setLang(lang);
+    });
+  }
+  // Expose lang to parent if needed
+  window.pdkaLang = lang;
+})();
+</script>
 </body>
 </html>
