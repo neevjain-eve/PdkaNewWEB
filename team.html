@@ -2211,6 +2211,68 @@ footer .footer-brand p, footer .footer-desc {
     [data-theme="dark"] .org-chart ul ul > li::before,
     [data-theme="dark"] .org-chart ul ul > li::after,
     [data-theme="dark"] .org-chart li > ul::before { background: #3a4f7a; }</style>
+<style id="team-people-grid-css">
+    /* ===== PROFESSIONAL TEAM GRID (replaces org-chart tree) ===== */
+    .team-people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 20px;
+      margin-top: 8px;
+    }
+    .person-card {
+      background: #fff;
+      border: 1.5px solid var(--grey-mid);
+      border-radius: 16px;
+      padding: 30px 20px 24px;
+      text-align: center;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    .person-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 34px rgba(13,27,62,0.12);
+      border-color: var(--orange);
+    }
+    .person-card-head {
+      border: 2px solid var(--orange);
+      background: linear-gradient(180deg, #fff7ed 0%, #ffffff 65%);
+    }
+    .person-avatar {
+      width: 68px; height: 68px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--orange);
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      letter-spacing: 0.5px;
+    }
+    .person-card-head .person-avatar { background: var(--orange); color: #fff; }
+    .person-head-tag {
+      display: inline-block;
+      background: var(--orange); color: #fff;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 3px 11px; border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .person-name { font-weight: 700; font-size: 15.5px; color: var(--navy); margin-bottom: 3px; line-height: 1.3; }
+    .person-role { font-size: 12.5px; color: var(--text-mid); margin-bottom: 5px; line-height: 1.35; }
+    .person-quals { font-size: 11px; color: var(--orange); font-weight: 700; letter-spacing: 0.02px; }
+
+    [data-theme="dark"] .person-card { background: #0f1f47 !important; border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .person-card-head { background: linear-gradient(180deg, #1a2f5e 0%, #0f1f47 65%) !important; border-color: var(--orange) !important; }
+    [data-theme="dark"] .person-name { color: #f0f4ff !important; }
+    [data-theme="dark"] .person-role { color: rgba(255,255,255,0.65) !important; }
+    [data-theme="dark"] .person-avatar { background: #1a2f5e !important; }
+    [data-theme="dark"] .person-card-head .person-avatar { background: var(--orange) !important; }
+
+    @media (max-width: 640px) {
+      .team-people-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+      .person-card { padding: 22px 14px 18px; }
+    }
+</style>
 </head>
 <body>
 
@@ -2427,25 +2489,19 @@ footer .footer-brand p, footer .footer-desc {
         <p>Handling ROC filings, secretarial compliance, board governance, and statutory registers for companies across industries.</p>
       </div>
     </div>
-    <div class="head-card">
-      <div class="head-photo-wrap">R</div>
-      <div class="head-info">
-        <div class="head-badge">Department Head</div>
-        <h3>Rinkal Handey</h3>
-        <div class="role">Head — Corporate Compliance</div>
-        <div class="quals">ACS · B.Com · 10 Yrs Exp</div>
+    <div class="team-people-grid">
+      <div class="person-card person-card-head">
+        <div class="person-head-tag head-badge">Department Head</div>
+        <div class="person-avatar">R</div>
+        <div class="person-name">Rinkal Handey</div>
+        <div class="person-role">Head — Corporate Compliance</div>
+        <div class="person-quals">ACS · B.Com · 10 Yrs Exp</div>
       </div>
-    </div>
-    <div class="org-chart">
-      <ul class="org-root">
-        <li>
-          <div class="org-member">
-            <div class="om-photo">VT</div>
-            <div class="om-name">Varsha TA</div>
-            <div class="om-role">Accounts Executive</div>
-          </div>
-        </li>
-      </ul>
+      <div class="person-card">
+        <div class="person-avatar">VT</div>
+        <div class="person-name">Varsha TA</div>
+        <div class="person-role">Accounts Executive</div>
+      </div>
     </div>
   </div>
 
@@ -2458,20 +2514,13 @@ footer .footer-brand p, footer .footer-desc {
         <p>Statutory audit, internal audit, tax audit, and IS audit engagements carried out under ICAI standards for listed, unlisted, and foreign subsidiaries.</p>
       </div>
     </div>
-    <div class="head-card">
-      <div class="head-photo-wrap">V</div>
-      <div class="head-info">
-        <div class="head-badge">Department Head</div>
-        <h3>Vedamurthy S</h3>
-        <div class="role">Head — Audit &amp; Assurance</div>
-        <div class="quals">ACA · DISA · 12 Yrs Exp</div>
-      </div>
-    </div>
-
-    <div class="team-grid">
-      <div class="empty-state" style="grid-column: 1/-1;">
-        <i class="fas fa-users"></i>
-        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+    <div class="team-people-grid">
+      <div class="person-card person-card-head">
+        <div class="person-head-tag head-badge">Department Head</div>
+        <div class="person-avatar">V</div>
+        <div class="person-name">Vedamurthy S</div>
+        <div class="person-role">Head — Audit &amp; Assurance</div>
+        <div class="person-quals">ACA · DISA · 12 Yrs Exp</div>
       </div>
     </div>
   </div>
@@ -2485,20 +2534,13 @@ footer .footer-brand p, footer .footer-desc {
         <p>Business consulting, valuations, internal controls review, and governance advisory for growth-stage and established organisations.</p>
       </div>
     </div>
-    <div class="head-card">
-      <div class="head-photo-wrap">R</div>
-      <div class="head-info">
-        <div class="head-badge">Department Head</div>
-        <h3>Richa Khetawat</h3>
-        <div class="role">Head — Business Advisory</div>
-        <div class="quals">MBA · ACA · 9 Yrs Exp</div>
-      </div>
-    </div>
-
-    <div class="team-grid">
-      <div class="empty-state" style="grid-column: 1/-1;">
-        <i class="fas fa-users"></i>
-        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+    <div class="team-people-grid">
+      <div class="person-card person-card-head">
+        <div class="person-head-tag head-badge">Department Head</div>
+        <div class="person-avatar">R</div>
+        <div class="person-name">Richa Khetawat</div>
+        <div class="person-role">Head — Business Advisory</div>
+        <div class="person-quals">MBA · ACA · 9 Yrs Exp</div>
       </div>
     </div>
   </div>
@@ -2512,25 +2554,19 @@ footer .footer-brand p, footer .footer-desc {
         <p>Corporate and personal income tax planning, TDS compliance, transfer pricing, and international taxation across India and cross-border jurisdictions.</p>
       </div>
     </div>
-    <div class="head-card">
-      <div class="head-photo-wrap">SJ</div>
-      <div class="head-info">
-        <div class="head-badge">Department Head</div>
-        <h3>Sandeep Jain S</h3>
-        <div class="role">Head - Direct Tax</div>
-        <div class="quals">ACA · LLB · 14 Yrs Exp</div>
+    <div class="team-people-grid">
+      <div class="person-card person-card-head">
+        <div class="person-head-tag head-badge">Department Head</div>
+        <div class="person-avatar">SJ</div>
+        <div class="person-name">Sandeep Jain S</div>
+        <div class="person-role">Head - Direct Tax</div>
+        <div class="person-quals">ACA · LLB · 14 Yrs Exp</div>
       </div>
-    </div>
-    <div class="org-chart">
-      <ul class="org-root">
-        <li>
-          <div class="org-member">
-            <div class="om-photo">SB</div>
-            <div class="om-name">Shamanth BT</div>
-            <div class="om-role">Accounts Executive</div>
-          </div>
-        </li>
-      </ul>
+      <div class="person-card">
+        <div class="person-avatar">SB</div>
+        <div class="person-name">Shamanth BT</div>
+        <div class="person-role">Accounts Executive</div>
+      </div>
     </div>
   </div>
 
@@ -2543,26 +2579,19 @@ footer .footer-brand p, footer .footer-desc {
         <p>GST advisory, compliance, filings, and indirect tax planning for businesses operating across India and international jurisdictions.</p>
       </div>
     </div>
-    <div class="head-card">
-      <div class="head-photo-wrap">RJ</div>
-      <div class="head-info">
-        <div class="head-badge">Department Head</div>
-        <h3>Rakesh Kumar G Jain</h3>
-        <div class="role">Head - Indirect Tax</div>
-        <div class="quals">ACA · GST Specialist</div>
+    <div class="team-people-grid">
+      <div class="person-card person-card-head">
+        <div class="person-head-tag head-badge">Department Head</div>
+        <div class="person-avatar">RJ</div>
+        <div class="person-name">Rakesh Kumar G Jain</div>
+        <div class="person-role">Head - Indirect Tax</div>
+        <div class="person-quals">ACA · GST Specialist</div>
       </div>
-    </div>
-
-        <div class="org-chart">
-      <ul class="org-root">
-        <li>
-          <div class="org-member">
-            <div class="om-photo">SB</div>
-            <div class="om-name">Shamanth BT</div>
-            <div class="om-role">Accounts Executive</div>
-          </div>
-        </li>
-      </ul>
+      <div class="person-card">
+        <div class="person-avatar">SB</div>
+        <div class="person-name">Shamanth BT</div>
+        <div class="person-role">Accounts Executive</div>
+      </div>
     </div>
   </div>
 
@@ -2575,79 +2604,47 @@ footer .footer-brand p, footer .footer-desc {
         <p>Virtual CFO services, MIS reporting, and financial modelling for startups and scaling businesses.</p>
       </div>
     </div>
-
-    <div class="org-chart">
-      <!-- 6 Sr. Managers as peers â€” no single root node -->
-      <ul class="org-root">
-        <li>
-          <div class="org-sm">
-            <div class="osm-photo">BR</div>
-            <div class="osm-badge">Sr. Manager</div>
-            <div class="osm-name">Bindu Rao TN</div>
-            <div class="osm-role">FinOps</div>
-          </div>
-          <ul>
-            <li><div class="org-member"><div class="om-photo">VL</div><div class="om-name">Vijetha L</div><div class="om-role">FinOps</div></div></li>
-            <li><div class="org-member"><div class="om-photo">MJ</div><div class="om-name">Mansi G Jain</div><div class="om-role">FinOps</div></div></li>
-          </ul>
-        </li>
-        <li>
-          <div class="org-sm">
-            <div class="osm-photo">SK</div>
-            <div class="osm-badge">Sr. Manager</div>
-            <div class="osm-name">Srikrishna</div>
-            <div class="osm-role">FinOps</div>
-          </div>
-          <ul>
-            <li><div class="org-member"><div class="om-photo">SK</div><div class="om-name">Shivam Kumar</div><div class="om-role">FinOps</div></div></li>
-          </ul>
-        </li>
-        <li>
-          <div class="org-sm">
-            <div class="osm-photo">NK</div>
-            <div class="osm-badge">Sr. Manager</div>
-            <div class="osm-name">Naveen Kumar</div>
-            <div class="osm-role">FinOps</div>
-          </div>
-          <ul>
-            <li><div class="org-member"><div class="om-photo">GS</div><div class="om-name">Geetha S</div><div class="om-role">FinOps</div></div></li>
-            <li><div class="org-member"><div class="om-photo">B</div><div class="om-name">Bhavya</div><div class="om-role">FinOps</div></div></li>
-          </ul>
-        </li>
-        <li>
-          <div class="org-sm">
-            <div class="osm-photo">MS</div>
-            <div class="osm-badge">Sr. Manager</div>
-            <div class="osm-name">Manju S</div>
-            <div class="osm-role">FinOps</div>
-          </div>
-          <ul>
-            <li><div class="org-member"><div class="om-photo">KU</div><div class="om-name">K Umamaheswar</div><div class="om-role">FinOps</div></div></li>
-          </ul>
-        </li>
-        <li>
-          <div class="org-sm">
-            <div class="osm-photo">KS</div>
-            <div class="osm-badge">Sr. Manager</div>
-            <div class="osm-name">Kavyashree S</div>
-            <div class="osm-role">FinOps</div>
-          </div>
-          <ul>
-            <li><div class="org-member"><div class="om-photo">RS</div><div class="om-name">Rani S</div><div class="om-role">FinOps</div></div></li>
-          </ul>
-        </li>
-        <li>
-          <div class="org-sm">
-            <div class="osm-photo">Ra</div>
-            <div class="osm-badge">Sr. Manager</div>
-            <div class="osm-name">Ramya R</div>
-            <div class="osm-role">FinOps</div>
-          </div>
-          <ul>
-            <li><div class="org-member"><div class="om-photo">VK</div><div class="om-name">Vijay Kumar DN</div><div class="om-role">FinOps</div></div></li>
-          </ul>
-        </li>
-      </ul>
+    <div class="team-people-grid">
+      <div class="person-card">
+        <div class="person-avatar">VL</div>
+        <div class="person-name">Vijetha L</div>
+        <div class="person-role">FinOps</div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar">MJ</div>
+        <div class="person-name">Mansi G Jain</div>
+        <div class="person-role">FinOps</div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar">SK</div>
+        <div class="person-name">Shivam Kumar</div>
+        <div class="person-role">FinOps</div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar">GS</div>
+        <div class="person-name">Geetha S</div>
+        <div class="person-role">FinOps</div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar">B</div>
+        <div class="person-name">Bhavya</div>
+        <div class="person-role">FinOps</div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar">KU</div>
+        <div class="person-name">K Umamaheswar</div>
+        <div class="person-role">FinOps</div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar">RS</div>
+        <div class="person-name">Rani S</div>
+        <div class="person-role">FinOps</div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar">VK</div>
+        <div class="person-name">Vijay Kumar DN</div>
+        <div class="person-role">FinOps</div>
+      </div>
     </div>
   </div>
 
@@ -2660,20 +2657,13 @@ footer .footer-brand p, footer .footer-desc {
         <p>Overseeing office operations, facilities, vendor management, and administrative coordination across the organisation.</p>
       </div>
     </div>
-    <div class="head-card">
-      <div class="head-photo-wrap">NM</div>
-      <div class="head-info">
-        <div class="head-badge">Department Head</div>
-        <h3>Namratha MN</h3>
-        <div class="role">Head - Administration</div>
-        <div class="quals">Office &amp; Operations Management</div>
-      </div>
-    </div>
-
-    <div class="team-grid">
-      <div class="empty-state" style="grid-column: 1/-1;">
-        <i class="fas fa-users"></i>
-        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+    <div class="team-people-grid">
+      <div class="person-card person-card-head">
+        <div class="person-head-tag head-badge">Department Head</div>
+        <div class="person-avatar">NM</div>
+        <div class="person-name">Namratha MN</div>
+        <div class="person-role">Head - Administration</div>
+        <div class="person-quals">Office &amp; Operations Management</div>
       </div>
     </div>
   </div>
@@ -2687,20 +2677,13 @@ footer .footer-brand p, footer .footer-desc {
         <p>Talent acquisition, employee relations, HR policy, payroll coordination, and organisational development.</p>
       </div>
     </div>
-    <div class="head-card">
-      <div class="head-photo-wrap">SN</div>
-      <div class="head-info">
-        <div class="head-badge">Department Head</div>
-        <h3>Sowmya N</h3>
-        <div class="role">Head - Human Resources</div>
-        <div class="quals">HR Management &amp; Employee Relations</div>
-      </div>
-    </div>
-
-    <div class="team-grid">
-      <div class="empty-state" style="grid-column: 1/-1;">
-        <i class="fas fa-users"></i>
-        <p>Team members will be added here. Contact us at <a href="mailto:dilip@pdka.in" style="color:var(--orange);">dilip@pdka.in</a> to learn more.</p>
+    <div class="team-people-grid">
+      <div class="person-card person-card-head">
+        <div class="person-head-tag head-badge">Department Head</div>
+        <div class="person-avatar">SN</div>
+        <div class="person-name">Sowmya N</div>
+        <div class="person-role">Head - Human Resources</div>
+        <div class="person-quals">HR Management &amp; Employee Relations</div>
       </div>
     </div>
   </div>
@@ -3096,6 +3079,46 @@ footer .footer-brand p, footer .footer-desc {
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.has-mega')) triggers.forEach(function(t) { t.classList.remove('mega-open'); });
   });
+})();
+</script>
+<script id="dept-tab-switch">
+(function() {
+  var pills = document.querySelectorAll('.dept-nav-pill');
+  var sections = document.querySelectorAll('.dept-section');
+
+  function showDept(id) {
+    sections.forEach(function(s) { s.classList.toggle('active', s.id === id); });
+    pills.forEach(function(p) {
+      var target = p.getAttribute('href').replace('#', '');
+      p.classList.toggle('active', target === id);
+    });
+  }
+
+  pills.forEach(function(p) {
+    p.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = p.getAttribute('href').replace('#', '');
+      showDept(id);
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+
+  // Show department from URL hash, or default to the first one
+  function init() {
+    var hash = window.location.hash.replace('#', '');
+    var validIds = Array.from(sections).map(function(s) { return s.id; });
+    if (hash && validIds.indexOf(hash) !== -1) {
+      showDept(hash);
+    } else if (sections.length) {
+      showDept(sections[0].id);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
 </script>
 </body>
