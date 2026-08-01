@@ -1353,11 +1353,21 @@ document.addEventListener('click', function() {
   var nav = document.querySelector('nav');
   if (!nav) return;
   var lastY = 0;
+  var hoveringTop = false;
   window.addEventListener('scroll', function() {
     var y = window.scrollY;
+    if (hoveringTop) { lastY = y; return; }
     if (y > lastY && y > 80) { nav.classList.add('nav-hidden'); }
     else { nav.classList.remove('nav-hidden'); }
     lastY = y;
+  }, { passive: true });
+  document.addEventListener('mousemove', function(e) {
+    if (e.clientY <= 60) {
+      if (!hoveringTop) { hoveringTop = true; nav.classList.remove('nav-hidden'); }
+    } else if (hoveringTop && e.clientY > 100) {
+      hoveringTop = false;
+      if (window.scrollY > 80) { nav.classList.add('nav-hidden'); }
+    }
   }, { passive: true });
 })();
 window.openPdkaPage = function(url, title) {
