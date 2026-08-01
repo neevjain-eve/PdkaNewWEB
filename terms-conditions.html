@@ -1917,27 +1917,43 @@ footer .footer-brand p, footer .footer-desc {
 
 
 <script>
-  (function() {
-  var nav = document.querySelector("nav");
-  if (!nav) return;
-  var lastY = 0;
-  var hoveringTop = false;
-  window.addEventListener("scroll", function() {
-    var y = window.scrollY;
-    if (hoveringTop) { lastY = y; return; }
-    if (y > lastY && y > 80) { nav.classList.add("nav-hidden"); }
-    else { nav.classList.remove("nav-hidden"); }
-    lastY = y;
-  }, { passive: true });
-  document.addEventListener("mousemove", function(e) {
-    if (e.clientY <= 60) {
-      if (!hoveringTop) { hoveringTop = true; nav.classList.remove("nav-hidden"); }
-    } else if (hoveringTop && e.clientY > 100) {
-      hoveringTop = false;
-      if (window.scrollY > 80) { nav.classList.add("nav-hidden"); }
+  (function(){
+    function init() {
+      var nav = document.querySelector('nav');
+      if (!nav) return;
+      var lastY = window.scrollY;
+      var hoveringTop = false;
+
+      window.addEventListener('scroll', function(){
+        var y = window.scrollY;
+        if (hoveringTop) { lastY = y; return; }
+        if (y > lastY && y > 80) { nav.classList.add('nav-hidden'); }
+        else { nav.classList.remove('nav-hidden'); }
+        lastY = y;
+      }, { passive: true });
+
+      document.addEventListener('mousemove', function(e){
+        if (e.clientY <= 120) {
+          if (!hoveringTop) { hoveringTop = true; }
+          nav.classList.remove('nav-hidden');
+        } else if (hoveringTop) {
+          hoveringTop = false;
+          if (window.scrollY > 80) { nav.classList.add('nav-hidden'); }
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchstart', function(e){
+        if (e.touches && e.touches[0] && e.touches[0].clientY <= 120) {
+          nav.classList.remove('nav-hidden');
+        }
+      }, { passive: true });
     }
-  }, { passive: true });
-})();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
 </script>
 <script>
 // Auto-translate based on ?lang= param passed from parent
