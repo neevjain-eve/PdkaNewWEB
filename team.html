@@ -344,6 +344,33 @@
     [data-theme="dark"] .org-chart li > ul::before { background: #3a4f7a; }
     /* ====== END ORG CHART ====== */
   </style>
+<style id="hf-override">
+nav {
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(255,255,255,0.98) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  padding: 0 5% !important;
+  height: 72px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  transition: transform 0.3s ease !important;
+}
+[data-theme="dark"] nav {
+  background: rgba(13,27,62,0.97) !important;
+  border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+footer {
+  background: #0d1b3e !important;
+  color: rgba(255,255,255,0.7) !important;
+  padding: 60px 5% 28px !important;
+  margin-top: 0 !important;
+}
+</style>
 </head>
 <body>
 
@@ -414,7 +441,7 @@
       </style>');}</script>
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" />
+    <img src="logo.png?v=3" alt="PDKA" />
   </a>
   <a href="index.html#team" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Website</a>
   <div class="lang-dropdown" id="langDropdown">
@@ -742,11 +769,65 @@
 </main>
 
 <footer>
-  <div style="text-align:center;padding:32px 5% 20px;">
-    <a href="index.html" class="nav-logo"><img src="https://neevjain-eve.github.io/PDKA-/logo.png?v=2" alt="PDKA" style="height:40px;width:auto;display:block;" /></a>
-    <p style="font-size:13px;color:rgba(255,255,255,0.45);margin:0;">
-      &copy; 2026 P. Dilip Kumar &amp; Associates &nbsp;&middot;&nbsp; Chartered Accountants &nbsp;&middot;&nbsp; Bangalore
-    </p>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="logo.png?v=3" alt="PDKA" style="height:40px;width:auto;display:block;" /></a>
+        <p>A professional firm of Chartered Accountants committed to quality, integrity, and ICAI standards since 1998.</p>
+        <a href="javascript:void(0)" onclick="openPdkaPage('client-portal.html','Client Portal')" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--orange);color:white;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#f47820'" onmouseout="this.style.background='var(--orange)'"><i class="fas fa-user-circle"></i> Client Portal</a>
+        <!-- ICAI Logo -->
+        <div style="display:flex;align-items:center;gap:14px;margin-top:20px;">
+          <svg height="52" viewBox="0 0 80 52" xmlns="http://www.w3.org/2000/svg" aria-label="ICAI — Institute of Chartered Accountants of India" style="opacity:0.85;">
+            <rect x="1" y="1" width="78" height="50" rx="4" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+            <text x="40" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#e8600a">CA</text>
+            <text x="40" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="rgba(255,255,255,0.7)" letter-spacing="0.5">INDIA</text>
+            <text x="40" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.5" fill="rgba(255,255,255,0.45)" letter-spacing="0.3">ICAI MEMBER FIRM</text>
+          </svg>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">ICAI Member Firm<br/>Bangalore, India</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Audit &amp; Assurance</a></li>
+          <li><a href="index.html#services">Direct Tax</a></li>
+          <li><a href="index.html#services">Indirect Tax</a></li>
+          <li><a href="index.html#services">FEMA &amp; International</a></li>
+          <li><a href="index.html#services">IS Audit (CISA/DISA)</a></li>
+          <li><a href="index.html#services">Virtual CFO</a></li>
+          <li><a href="index.html#services">Business Advisory</a></li>
+          <li><a href="index.html#services">Company Secretary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="index.html#insights">Insights</a></li>
+          <li><a href="javascript:void(0)" onclick="openPdkaPage('careers.html','Careers')">Careers</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://www.icai.org" target="_blank">ICAI Portal</a></li>
+          <li><a href="https://www.incometax.gov.in" target="_blank">Income Tax India</a></li>
+          <li><a href="https://www.gst.gov.in" target="_blank">GST Portal</a></li>
+          <li><a href="https://www.mca.gov.in" target="_blank">MCA Portal</a></li>
+          <li><a href="https://www.tdscpc.gov.in" target="_blank">TRACES Portal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer-copy">© 2026 P. Dilip Kumar &amp; Associates. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="javascript:void(0)" onclick="openPdkaPage('privacy-policy.html','Privacy Policy')">Privacy Policy</a>
+        <a href="javascript:void(0)" onclick="openPdkaPage('terms-conditions.html','Terms & Conditions')">Terms &amp; Conditions</a>
+        <a href="javascript:void(0)" title="Registered with the Institute of Chartered Accountants of India">ICAI Registered</a>
+      </div>
+    </div>
   </div>
 </footer>
 
