@@ -594,7 +594,17 @@
 
 
     /* ── FOUNDER ── */
-    #founder { background: white; }
+    #founder { position: relative; background: #04141c; overflow: hidden; }
+    #founder::before { content: ''; position: absolute; inset: 0; background: url('founder-bg.jpg') center center / cover no-repeat; z-index: 0; }
+    #founder::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(4,20,28,0.90) 0%, rgba(4,20,28,0.75) 100%); z-index: 1; }
+    #founder .section-inner { position: relative; z-index: 2; }
+    #founder .section-label { color: var(--orange-light) !important; }
+    #founder .section-title { color: #fff !important; }
+    #founder .founder-bio { color: rgba(255,255,255,0.85) !important; }
+    #founder .founder-cred { background: rgba(255,255,255,0.12) !important; color: #fff !important; border-color: rgba(255,255,255,0.22) !important; }
+    #founder .founder-email-btn { border-color: rgba(255,255,255,0.4) !important; color: #fff !important; }
+    #founder .founder-email-btn:hover { background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.7) !important; }
+    #founder .founder-photo { box-shadow: 0 20px 60px rgba(0,0,0,0.55) !important; border: 2px solid rgba(255,255,255,0.15); }
     [data-theme="dark"] #founder { background: #0b1628; }
     .founder-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: center; }
     .founder-photo-wrap { position: relative; }
@@ -1852,9 +1862,9 @@ footer .footer-brand p, footer .footer-desc {
         </div>
       </div>
       <div class="founder-content">
-        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--navy);margin-bottom:6px;">Dilip Kumar Parasmal</h3>
+        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:#fff;margin-bottom:6px;">Dilip Kumar Parasmal</h3>
         <p style="font-size:15px;color:var(--orange);font-weight:600;margin-bottom:4px;">Founder &amp; Managing Partner</p>
-        <p style="font-size:13px;color:var(--text-light);">P. Dilip Kumar &amp; Associates, Bangalore</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.65);">P. Dilip Kumar &amp; Associates, Bangalore</p>
         <div class="founder-creds">
           <span class="founder-cred">FCA</span>
           <span class="founder-cred">CISA</span>
@@ -3687,9 +3697,9 @@ function closeSvcIfOutside(e) {
         </div>
       </div>
       <div class="founder-content">
-        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--navy);margin-bottom:6px;">Dilip Kumar Parasmal</h3>
+        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:#fff;margin-bottom:6px;">Dilip Kumar Parasmal</h3>
         <p style="font-size:15px;color:var(--orange);font-weight:600;margin-bottom:4px;">Founder &amp; Managing Partner</p>
-        <p style="font-size:13px;color:var(--text-light);">P. Dilip Kumar &amp; Associates, Bangalore</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.65);">P. Dilip Kumar &amp; Associates, Bangalore</p>
         <div class="founder-creds">
           <span class="founder-cred">FCA</span>
           <span class="founder-cred">CISA</span>
