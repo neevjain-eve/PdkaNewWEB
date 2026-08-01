@@ -1712,12 +1712,25 @@
 
   </style>
   <style>
-    .about-page-hero { background: var(--navy); padding: 120px 5% 64px; text-align: center; }
+    .about-page-hero { background: var(--navy); padding: 120px 5% 64px; text-align: center; position: relative; overflow: hidden; }
+    .about-page-hero::before {
+      content: ''; position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+      width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,96,10,0.18) 0%, transparent 70%);
+      animation: heroGlowPulse 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes heroGlowPulse {
+      0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+      50%      { opacity: 1;   transform: translateX(-50%) scale(1.15); }
+    }
+    .about-page-hero > * { position: relative; z-index: 1; }
     .about-page-hero .label { color: var(--orange); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
     .about-page-hero h1 { font-size: clamp(32px, 5vw, 56px); color: white; font-weight: 800; margin-bottom: 16px; line-height: 1.1; }
     .about-page-hero p { color: rgba(255,255,255,0.7); font-size: 17px; max-width: 600px; margin: 0 auto 48px; }
     .stats-band { display: grid; grid-template-columns: repeat(4,1fr); background: var(--orange); color: white; }
-    .stat-cell { padding: 32px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); }
+    .stat-cell { padding: 32px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); transition: background 0.25s ease, transform 0.25s ease; }
+    .stat-cell:hover { background: rgba(255,255,255,0.12); transform: translateY(-4px); }
     .stat-cell:last-child { border-right: none; }
     .stat-cell strong { display: block; font-size: clamp(28px,4vw,44px); font-weight: 800; line-height: 1; }
     .stat-cell span { font-size: 13px; opacity: 0.88; margin-top: 6px; display: block; }
@@ -1726,9 +1739,11 @@
     .about-body h2 { font-size: clamp(24px,3vw,36px); color: var(--navy); margin-bottom: 24px; }
     .about-body p { font-size: 16px; line-height: 1.8; margin-bottom: 18px; color: var(--text-mid); }
     .countries-strip { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 40px; }
-    .country-tag { background: var(--grey-light); border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: var(--text-dark); }
+    .country-tag { background: var(--grey-light); border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: var(--text-dark); display: inline-block; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+    .country-tag:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 20px rgba(13,27,62,0.12); background: #fff; }
     .values-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 32px; }
-    .value-card { background: var(--grey-light); border-radius: 12px; padding: 24px; border-left: 4px solid var(--orange); }
+    .value-card { background: var(--grey-light); border-radius: 12px; padding: 24px; border-left: 4px solid var(--orange); transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease; }
+    .value-card:hover { transform: translateY(-6px); box-shadow: 0 14px 32px rgba(13,27,62,0.12); background: #fff; }
     .value-card h4 { color: var(--navy); font-size: 15px; margin-bottom: 4px; }
     @media(max-width:600px){ .stats-band { grid-template-columns: repeat(2,1fr); } .values-grid { grid-template-columns: 1fr; } }
     .lang-dropdown { position: relative; }
@@ -2092,45 +2107,45 @@ footer .footer-brand p, footer .footer-desc {
 
 <!-- HERO BAND -->
 <div class="about-page-hero" id="abt-hero">
-  <div class="label">The Firm</div>
-  <img src="logo.png?v=3" srcset="logo.png 1x, logo.png 2x, logo.png 3x" width="351" height="91" alt="P. Dilip Kumar &amp; Associates" style="max-width:min(351px,88vw);height:auto;display:block;margin:0 auto 8px;image-rendering:crisp-edges;" />
-  <p>A professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards — established 1998, Bangalore.</p>
+  <div class="label reveal reveal-scale">The Firm</div>
+  <img src="logo.png?v=3" srcset="logo.png 1x, logo.png 2x, logo.png 3x" width="351" height="91" alt="P. Dilip Kumar &amp; Associates" style="max-width:min(351px,88vw);height:auto;display:block;margin:0 auto 8px;image-rendering:crisp-edges;" class="reveal reveal-delay-1" />
+  <p class="reveal reveal-delay-2">A professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards — established 1998, Bangalore.</p>
 </div>
 
 <!-- STATS BAND -->
 <div class="stats-band" id="abt-stats">
-  <div class="stat-cell"><strong>28+</strong><span>Years of Practice</span></div>
-  <div class="stat-cell"><strong>9</strong><span>Countries Served</span></div>
-  <div class="stat-cell"><strong>60+</strong><span>Staff</span></div>
-  <div class="stat-cell"><strong>1998</strong><span>Est. Bangalore</span></div>
+  <div class="stat-cell reveal reveal-scale reveal-delay-1"><strong class="count-up" data-target="28" data-suffix="+">0+</strong><span>Years of Practice</span></div>
+  <div class="stat-cell reveal reveal-scale reveal-delay-2"><strong class="count-up" data-target="9" data-suffix="">0</strong><span>Countries Served</span></div>
+  <div class="stat-cell reveal reveal-scale reveal-delay-3"><strong class="count-up" data-target="60" data-suffix="+">0+</strong><span>Staff</span></div>
+  <div class="stat-cell reveal reveal-scale reveal-delay-4"><strong>1998</strong><span>Est. Bangalore</span></div>
 </div>
 
 <!-- BODY -->
 <div class="about-body" id="abt-body">
-  <div class="section-label">Who We Are</div>
-  <h2>About the Firm</h2>
-  <p>PDKA is a fast growing professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards. Over the last twenty-eight years of practice, the firm has created a niche for itself offering a bouquet of services to a selected clientele from India and other countries.</p>
-  <p>Based in Bangalore, the IT Capital of India, the firm has made a name for itself by offering end-to-end services under one roof — in particular for the IT &amp; ITES industry and the Retail sector in India.</p>
-  <p>The firm serves clients across India, USA, Australia, Dubai, UK, Ireland, Singapore, Japan and Italy.</p>
+  <div class="section-label reveal">Who We Are</div>
+  <h2 class="reveal reveal-delay-1">About the Firm</h2>
+  <p class="reveal reveal-delay-1">PDKA is a fast growing professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards. Over the last twenty-eight years of practice, the firm has created a niche for itself offering a bouquet of services to a selected clientele from India and other countries.</p>
+  <p class="reveal reveal-delay-2">Based in Bangalore, the IT Capital of India, the firm has made a name for itself by offering end-to-end services under one roof — in particular for the IT &amp; ITES industry and the Retail sector in India.</p>
+  <p class="reveal reveal-delay-3">The firm serves clients across India, USA, Australia, Dubai, UK, Ireland, Singapore, Japan and Italy.</p>
 
   <div class="countries-strip">
-    <span class="country-tag">🇮🇳 India</span>
-    <span class="country-tag">🇺🇸 USA</span>
-    <span class="country-tag">🇦🇺 Australia</span>
-    <span class="country-tag">🇦🇪 Dubai</span>
-    <span class="country-tag">🇬🇧 UK</span>
-    <span class="country-tag">🇮🇪 Ireland</span>
-    <span class="country-tag">🇸🇬 Singapore</span>
-    <span class="country-tag">🇯🇵 Japan</span>
-    <span class="country-tag">🇮🇹 Italy</span>
+    <span class="country-tag reveal reveal-scale reveal-delay-1">🇮🇳 India</span>
+    <span class="country-tag reveal reveal-scale reveal-delay-1">🇺🇸 USA</span>
+    <span class="country-tag reveal reveal-scale reveal-delay-2">🇦🇺 Australia</span>
+    <span class="country-tag reveal reveal-scale reveal-delay-2">🇦🇪 Dubai</span>
+    <span class="country-tag reveal reveal-scale reveal-delay-3">🇬🇧 UK</span>
+    <span class="country-tag reveal reveal-scale reveal-delay-3">🇮🇪 Ireland</span>
+    <span class="country-tag reveal reveal-scale reveal-delay-4">🇸🇬 Singapore</span>
+    <span class="country-tag reveal reveal-scale reveal-delay-4">🇯🇵 Japan</span>
+    <span class="country-tag reveal reveal-scale reveal-delay-5">🇮🇹 Italy</span>
   </div>
 
-  <div class="section-label" style="margin-top:48px;">Our Values</div>
+  <div class="section-label reveal" style="margin-top:48px;">Our Values</div>
   <div class="values-grid">
-    <div class="value-card"><h4>Trust &amp; Integrity</h4></div>
-    <div class="value-card"><h4>Professional Ethics</h4></div>
-    <div class="value-card"><h4>Confidentiality</h4></div>
-    <div class="value-card"><h4>Personalised Service</h4></div>
+    <div class="value-card reveal reveal-left reveal-delay-1"><h4>Trust &amp; Integrity</h4></div>
+    <div class="value-card reveal reveal-left reveal-delay-2"><h4>Professional Ethics</h4></div>
+    <div class="value-card reveal reveal-right reveal-delay-3"><h4>Confidentiality</h4></div>
+    <div class="value-card reveal reveal-right reveal-delay-4"><h4>Personalised Service</h4></div>
   </div>
 </div>
 
@@ -2615,6 +2630,54 @@ footer .footer-brand p, footer .footer-desc {
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.has-mega')) triggers.forEach(function(t) { t.classList.remove('mega-open'); });
   });
+})();
+</script>
+<script id="reveal-observer">
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el) { obs.observe(el); });
+})();
+
+// Count-up animation for stat numbers
+(function() {
+  var nums = document.querySelectorAll('.count-up');
+  if (!nums.length) return;
+  var done = false;
+  var statsBand = document.getElementById('abt-stats');
+  function runCountUp() {
+    if (done) return;
+    done = true;
+    nums.forEach(function(el) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = 1400;
+      var start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  if (statsBand) {
+    var obs2 = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { runCountUp(); obs2.disconnect(); } });
+    }, { threshold: 0.3 });
+    obs2.observe(statsBand);
+  }
 })();
 </script>
 </body>
