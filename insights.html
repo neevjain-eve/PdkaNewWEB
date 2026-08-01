@@ -20,8 +20,8 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #360083;
-      --navy-mid: #5b0fc2;
+      --navy: #0d1b3e;
+      --navy-mid: #1a2f5e;
       --orange: #e8600a;
       --orange-light: #f47820;
       --white: #ffffff;
@@ -31,8 +31,8 @@
       --text-mid: #374151;
       --text-light: #4b5563;
       --radius: 12px;
-      --shadow: 0 4px 24px rgba(54,0,131,0.10);
-      --shadow-lg: 0 8px 48px rgba(54,0,131,0.16);
+      --shadow: 0 4px 24px rgba(13,27,62,0.10);
+      --shadow-lg: 0 8px 48px rgba(13,27,62,0.16);
     }
 
     html { scroll-behavior: smooth; }
@@ -40,16 +40,16 @@
 
 
     .ins-faq { margin: 36px 0 24px; background: #f5f6fa; border-left: 4px solid #e8600a; border-radius: 0 8px 8px 0; padding: 24px 28px; }
-    .ins-faq h3 { font-size: 15px; font-weight: 700; color: #360083; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .05em; }
+    .ins-faq h3 { font-size: 15px; font-weight: 700; color: #0d1b3e; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .05em; }
     .ins-faq-item { margin-bottom: 16px; }
     .ins-faq-item:last-child { margin-bottom: 0; }
-    .ins-faq-q { font-weight: 700; color: #360083; margin-bottom: 4px; }
+    .ins-faq-q { font-weight: 700; color: #0d1b3e; margin-bottom: 4px; }
     .ins-faq-a { color: #374151; font-size: 14px; line-height: 1.7; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(54,0,131,0.97); backdrop-filter: blur(12px);
+      background: rgba(13,27,62,0.97); backdrop-filter: blur(12px);
       padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -72,20 +72,20 @@
     }
     .nav-cta:hover { background: var(--orange-light) !important; }
     .theme-toggle {
-      background: #360083; border: 1.5px solid rgba(255,255,255,0.18);
+      background: #0d1b3e; border: 1.5px solid rgba(255,255,255,0.18);
       color: white; border-radius: 24px; padding: 7px 16px;
       cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center;
       gap: 7px; transition: all 0.2s; white-space: nowrap; letter-spacing: 0.2px;
     }
     .theme-toggle i { font-size: 14px; }
-    [data-theme="dark"] .theme-toggle { background: #24004d; border-color: rgba(255,255,255,0.2); }
+    [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.2); }
     .theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
     .nav-toggle { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
 
     /* Mobile nav drawer */
     .nav-mobile {
       display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
-      background: rgba(54,0,131,0.98); border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(13,27,62,0.98); border-bottom: 1px solid rgba(255,255,255,0.08);
       padding: 16px 5% 24px; flex-direction: column; gap: 0;
     }
     .nav-mobile.open { display: flex; }
@@ -103,7 +103,7 @@
     .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
     .page-hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(54,0,131,0.55) 0%, rgba(54,0,131,0.88) 100%);
+      background: linear-gradient(to bottom, rgba(13,27,62,0.55) 0%, rgba(13,27,62,0.88) 100%);
     }
     .page-hero-content { position: relative; z-index: 1; max-width: 1200px; width: 100%; margin: 0 auto; }
     .page-hero-label { font-size: 11px; font-weight: 700; color: var(--orange-light); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
@@ -201,14 +201,14 @@
     /* Dark mode */
     [data-theme="dark"] body { background: #0b1628; color: #e8edf8; }
     [data-theme="dark"] .insights-page { background: #0a1520; }
-    [data-theme="dark"] .article-card { background: #2b0066; }
+    [data-theme="dark"] .article-card { background: #0f1f47; }
     [data-theme="dark"] .article-card-body h3 { color: #e0e8ff; }
     [data-theme="dark"] .article-card-body p { color: rgba(200,215,255,0.75); }
     [data-theme="dark"] .article-card-footer { border-color: rgba(255,255,255,0.08); }
     [data-theme="dark"] .article-date { color: rgba(200,215,255,0.45); }
-    [data-theme="dark"] .filter-btn { background: #2b0066; border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); }
+    [data-theme="dark"] .filter-btn { background: #0f1f47; border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); }
     [data-theme="dark"] .filter-btn:hover, [data-theme="dark"] .filter-btn.active { background: var(--orange); color: white; border-color: var(--orange); }
-    [data-theme="dark"] .article-full { background: #2b0066; }
+    [data-theme="dark"] .article-full { background: #0f1f47; }
     [data-theme="dark"] .article-full-body h3 { color: #e0e8ff; }
     [data-theme="dark"] .article-full-body p,
     [data-theme="dark"] .article-full-body li { color: rgba(200,215,255,0.8); }
@@ -254,7 +254,7 @@
     .lang-option:hover { background: var(--surface, #f5f5f5); }
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
     /* Dark nav override for sub-pages */
-    .lang-menu { background: #5b0fc2 !important; border-color: rgba(255,255,255,0.15) !important; }
+    .lang-menu { background: #1a2f5e !important; border-color: rgba(255,255,255,0.15) !important; }
     .lang-option { color: rgba(255,255,255,0.92) !important; } [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.92) !important; }
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
@@ -263,7 +263,7 @@
     /* ── SHARED NAV & FOOTER CSS ── */
     :root {
       --orange: #e8600a;
-      --navy: #360083;
+      --navy: #0d1b3e;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
     body { background: #f8fafc; }
@@ -467,7 +467,7 @@
     .article-modal-body strong { color: var(--text-dark); }
     .article-modal-cta { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--grey-mid); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .article-modal-cta p { font-size: 13px; color: var(--text-light); margin: 0; }
-    [data-theme="dark"] .article-modal { background: #2b0066; }
+    [data-theme="dark"] .article-modal { background: #0f1f47; }
     [data-theme="dark"] .article-modal-body h3 { color: #e0e8ff; }
     [data-theme="dark"] .article-modal-body p,
     [data-theme="dark"] .article-modal-body li { color: rgba(200,215,255,0.8); }
@@ -477,7 +477,7 @@
 
     /* ── DPDPA BANNER ── */
     #dpdpa {
-      background: linear-gradient(135deg, #360083 0%, #520ab3 50%, #360083 100%);
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a2a5e 50%, #0d1b3e 100%);
       padding: 70px 5%;
     }
     .dpdpa-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
@@ -630,7 +630,7 @@
     .founder-photo-wrap { position: relative; }
     .founder-photo {
       border-radius: 20px; overflow: hidden;
-      box-shadow: 0 16px 56px rgba(54,0,131,0.2);
+      box-shadow: 0 16px 56px rgba(13,27,62,0.2);
       max-width: 380px; aspect-ratio: 3/4;
     }
     .founder-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
@@ -801,7 +801,7 @@
     [data-theme="dark"] #about,
     [data-theme="dark"] #team,
     [data-theme="dark"] #insights,
-    [data-theme="dark"] #careers { background: #2b0066 !important; }
+    [data-theme="dark"] #careers { background: #0f1f47 !important; }
     [data-theme="dark"] #about .about-overlay {
       background: linear-gradient(to bottom, rgba(5,10,25,0.15) 0%, rgba(5,10,25,0.45) 100%) !important;
     }
@@ -810,7 +810,7 @@
     [data-theme="dark"] #about .about-desc { color: rgba(255,255,255,0.92) !important; }
     [data-theme="dark"] #about .about-pill { background: rgba(255,255,255,0.15) !important; color: #ffffff !important; border-color: rgba(255,255,255,0.3) !important; }
     [data-theme="dark"] #dpdpa  {
-      background: linear-gradient(135deg, #0a1020 0%, #2a0060 45%, #24004d 100%) !important;
+      background: linear-gradient(135deg, #0a1020 0%, #0f1e3e 45%, #162444 100%) !important;
       border-top: 3px solid var(--orange);
       border-bottom: 3px solid rgba(232,96,10,0.3);
     }
@@ -830,7 +830,7 @@
     [data-theme="dark"] .team-card,
     [data-theme="dark"] .dept-card,
     [data-theme="dark"] .career-card,
-    [data-theme="dark"] .founder-card { background: #5b0fc2 !important; border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .founder-card { background: #1a2f5e !important; border-color: rgba(255,255,255,0.08) !important; }
 
     [data-theme="dark"] .service-card h3,
     [data-theme="dark"] .insight-card h3,
@@ -866,14 +866,14 @@
 
     /* Theme toggle button */
     .theme-toggle {
-      background: #360083; border: 1.5px solid rgba(255,255,255,0.18);
+      background: #0d1b3e; border: 1.5px solid rgba(255,255,255,0.18);
       color: white; border-radius: 24px; padding: 7px 16px;
       cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center;
       gap: 7px; transition: all 0.2s; white-space: nowrap; letter-spacing: 0.2px;
     }
     .theme-toggle i { font-size: 14px; }
     .theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
-    [data-theme="dark"] .theme-toggle { background: #24004d; border-color: rgba(255,255,255,0.55); color: rgba(255,255,255,0.9); }
+    [data-theme="dark"] .theme-toggle { background: #162444; border-color: rgba(255,255,255,0.55); color: rgba(255,255,255,0.9); }
   
     /* ── 28+ STAT COUNTER ── */
     .about-logo {
@@ -970,7 +970,7 @@
     /* ── Lang dropdown dark mode ── */
     [data-theme="dark"] .lang-btn { color: var(--orange, #e8600a); border-color: var(--orange, #e8600a); }
     [data-theme="dark"] .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; border-color: var(--orange, #e8600a); }
-    [data-theme="dark"] .lang-menu { background: #5b0fc2; border-color: rgba(255,255,255,0.12); }
+    [data-theme="dark"] .lang-menu { background: #1a2f5e; border-color: rgba(255,255,255,0.12); }
     [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.85); }
     [data-theme="dark"] .lang-option:hover { background: rgba(232,96,10,0.2); color: #fff; }
     [data-theme="dark"] .lang-option.active { color: var(--orange, #e8600a); }
@@ -985,11 +985,11 @@
     #dpdpaModal.open { display:flex; }
     .dpdpa-modal-box {
       background:#fff; border-radius:16px; max-width:860px; width:100%;
-      box-shadow:0 24px 80px rgba(54,0,131,0.22); overflow:hidden;
+      box-shadow:0 24px 80px rgba(13,27,62,0.22); overflow:hidden;
       animation:fadeUp 0.3s cubic-bezier(.22,.68,0,1.2);
     }
     .dpdpa-modal-header {
-      background:linear-gradient(135deg,#360083 0%,#520ab3 100%);
+      background:linear-gradient(135deg,#0d1b3e 0%,#1a2a5e 100%);
       padding:32px 36px 28px; position:relative;
     }
     .dpdpa-modal-header h2 {
@@ -1015,7 +1015,7 @@
       border:1px solid #e8eaf0; border-radius:10px; padding:14px 16px;
       background:#f9fafb;
     }
-    .dpdpa-card h4 { font-size:13px; font-weight:700; color:#360083; margin-bottom:5px; }
+    .dpdpa-card h4 { font-size:13px; font-weight:700; color:#0d1b3e; margin-bottom:5px; }
     .dpdpa-card p { font-size:13px; color:#374151; line-height:1.6; margin:0; }
     .dpdpa-provision-list { list-style:none; padding:0; margin:0; }
     .dpdpa-provision-list li {
@@ -1048,7 +1048,7 @@
     }
     .dpdpa-modal-footer p { font-size:13px; color:#6b7280; margin:0; }    /* Mobile menu */
     @keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
-    .mob-link { display:block;padding:11px 0;border-bottom:1px solid #f0f0f0;color:#360083;font-weight:600;text-decoration:none;font-size:15px; }
+    .mob-link { display:block;padding:11px 0;border-bottom:1px solid #f0f0f0;color:#0d1b3e;font-weight:600;text-decoration:none;font-size:15px; }
     .mob-link:last-of-type { border-bottom:none; }
     [data-theme="dark"] #mobileMenu { background:rgba(11,22,40,0.98) !important; border-bottom-color:rgba(232,96,10,0.3) !important; }
     [data-theme="dark"] .mob-link { color:#f0f4ff !important; border-bottom-color:rgba(255,255,255,0.08) !important; }
@@ -1157,7 +1157,7 @@
       background: rgba(0, 0, 0, 0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 12px 48px rgba(54,0,131,0.10);
+      box-shadow: 0 12px 48px rgba(13,27,62,0.10);
       border-top: 3px solid var(--orange);
       padding: 28px 5%;
       z-index: 9998;
@@ -1316,11 +1316,11 @@ nav {
   transition: transform 0.3s ease !important;
 }
 [data-theme="dark"] nav {
-  background: rgba(54,0,131,0.97) !important;
+  background: rgba(13,27,62,0.97) !important;
   border-bottom-color: rgba(255,255,255,0.08) !important;
 }
 footer {
-  background: #360083 !important;
+  background: #0d1b3e !important;
   color: rgba(255,255,255,0.7) !important;
   padding: 60px 5% 28px !important;
   margin-top: 0 !important;
@@ -1333,10 +1333,10 @@ nav {
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid rgba(0,0,0,0.08) !important;
-  color: #360083 !important;
+  color: #0d1b3e !important;
 }
 nav a, nav .nav-links a, nav .nav-links li a {
-  color: #360083 !important;
+  color: #0d1b3e !important;
 }
 nav a:hover, nav .nav-links a:hover {
   color: #e8600a !important;
@@ -1347,14 +1347,14 @@ nav a:hover, nav .nav-links a:hover {
   border: none !important;
 }
 .lang-btn, .theme-toggle {
-  color: #360083 !important;
+  color: #0d1b3e !important;
   border-color: rgba(0,0,0,0.2) !important;
 }
-.nav-toggle { color: #360083 !important; }
+.nav-toggle { color: #0d1b3e !important; }
 
 /* Dark mode nav */
 [data-theme="dark"] nav {
-  background: rgba(54,0,131,0.97) !important;
+  background: rgba(13,27,62,0.97) !important;
   border-bottom: 1px solid rgba(255,255,255,0.08) !important;
 }
 [data-theme="dark"] nav a,
@@ -1367,7 +1367,7 @@ nav a:hover, nav .nav-links a:hover {
 
 /* ===== UNIFORM FOOTER ===== */
 footer {
-  background: #360083 !important;
+  background: #0d1b3e !important;
   color: rgba(255,255,255,0.7) !important;
   padding: 60px 5% 28px !important;
   margin-top: 0 !important;
@@ -1414,7 +1414,7 @@ footer .footer-brand p, footer .footer-desc {
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
     [data-theme="dark"] .lang-btn { color: var(--orange, #e8600a); border-color: var(--orange, #e8600a); }
     [data-theme="dark"] .lang-btn:hover { background: var(--orange, #e8600a); color: #fff; }
-    [data-theme="dark"] .lang-menu { background: #5b0fc2; border-color: rgba(255,255,255,0.12); }
+    [data-theme="dark"] .lang-menu { background: #1a2f5e; border-color: rgba(255,255,255,0.12); }
     [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.85); }
     [data-theme="dark"] .lang-option:hover { background: rgba(232,96,10,0.2); color: #fff; }
     [data-theme="dark"] .lang-option.active { color: var(--orange, #e8600a); }
@@ -1447,7 +1447,7 @@ footer .footer-brand p, footer .footer-desc {
     .lang-option:hover { background: var(--surface, #f5f5f5); }
     .lang-option.active { color: var(--orange, #e8600a); font-weight: 700; }
     /* Dark nav override for sub-pages */
-    .lang-menu { background: #5b0fc2 !important; border-color: rgba(255,255,255,0.15) !important; }
+    .lang-menu { background: #1a2f5e !important; border-color: rgba(255,255,255,0.15) !important; }
     .lang-option { color: rgba(255,255,255,0.92) !important; } [data-theme="dark"] .lang-option { color: rgba(255,255,255,0.92) !important; }
     .lang-option:hover { background: rgba(255,255,255,0.1) !important; }
     .lang-option.active { color: var(--orange, #e8600a) !important; }
@@ -1558,7 +1558,7 @@ footer .footer-brand p, footer .footer-desc {
   </div>
 
   <!-- Mobile Menu Drawer -->
-  <div id="mobileMenu" style="display:none;position:fixed;top:72px;left:0;right:0;z-index:999;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);border-bottom:2px solid rgba(232,96,10,0.3);padding:16px 5% 20px;flex-direction:column;gap:4px;box-shadow:0 8px 32px rgba(54,0,131,0.12);">
+  <div id="mobileMenu" style="display:none;position:fixed;top:72px;left:0;right:0;z-index:999;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);border-bottom:2px solid rgba(232,96,10,0.3);padding:16px 5% 20px;flex-direction:column;gap:4px;box-shadow:0 8px 32px rgba(13,27,62,0.12);">
     <a href="javascript:void(0)" onclick="window.scrollTo(0,0);closeMobileMenu()" class="mob-link" data-i18n="nav-home">Home</a>
     <a href="javascript:void(0)" onclick="openPdkaPage('about.html','About');closeMobileMenu()" class="mob-link" data-i18n="nav-about">About</a>
     <a href="index.html#founder" onclick="closeMobileMenu()" class="mob-link" data-i18n="nav-founder">Founder</a>
@@ -1617,7 +1617,7 @@ footer .footer-brand p, footer .footer-desc {
     <div class="articles-grid" id="articlesGrid">
 
       <div class="article-card" data-category="FDI">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">FDI &middot; Jun 2026</span>
           <h3>India Entry Strategy for Foreign Companies 2026: Subsidiary, Branch Office or Liaison Office?</h3>
@@ -1630,7 +1630,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="MNC">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">MNC &middot; Jun 2026</span>
           <h3>PLI Scheme 2026: How Manufacturing MNCs Can Claim Government Subsidies in India</h3>
@@ -1643,7 +1643,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="MNC">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">MNC &middot; May 2026</span>
           <h3>Transfer Pricing for MNCs in India 2026: OECD BEPS Alignment, Master File &amp; CBDT Documentation</h3>
@@ -1656,7 +1656,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="FDI">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">FDI &middot; May 2026</span>
           <h3>FEMA Compliance for Foreign Companies in India: FDI Reporting, ODI Filings &amp; RBI Obligations</h3>
@@ -1813,7 +1813,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="FDI">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">FDI &middot; Jun 2026</span>
           <h3>Permanent Establishment (PE) Risk in India: How Foreign Companies Avoid Unexpected Tax Liability</h3>
@@ -1826,7 +1826,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="MNC">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">MNC &middot; May 2026</span>
           <h3>SEZ Benefits for MNCs in India 2026: Tax Holidays, Duty-Free Import &amp; How to Set Up</h3>
@@ -1839,7 +1839,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="MNC">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">MNC &middot; May 2026</span>
           <h3>Virtual CFO for MNC Subsidiaries in India: What It Covers, Cost &amp; When You Need One</h3>
@@ -1865,7 +1865,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="FDI">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">FDI &middot; Apr 2026</span>
           <h3>Japan-India Business 2026: Setting Up a Japanese Company&rsquo;s India Subsidiary — Tax, FEMA &amp; Treaty Guide</h3>
@@ -1878,7 +1878,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="FDI">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">FDI &middot; Mar 2026</span>
           <h3>Startup India for Foreign-Owned Startups: DPIIT Recognition, Angel Tax Exemption &amp; Fund Repatriation</h3>
@@ -1891,7 +1891,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="MNC">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">MNC &middot; Mar 2026</span>
           <h3>State Industrial Incentives for MNCs in India 2026: Karnataka, Tamil Nadu, Telangana &amp; Maharashtra Compared</h3>
@@ -1904,7 +1904,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
 
       <div class="article-card" data-category="MNC">
-        <div class="article-card-header" style="background:linear-gradient(135deg,#360083,#5b0fc2);"></div>
+        <div class="article-card-header" style="background:linear-gradient(135deg,#0d1b3e,#1a2f5e);"></div>
         <div class="article-card-body">
           <span class="article-tag">MNC &middot; Feb 2026</span>
           <h3>India Subsidiary Annual Compliance Calendar 2026: RBI, MCA, Income Tax, GST &amp; Transfer Pricing Deadlines</h3>
