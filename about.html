@@ -1924,6 +1924,138 @@ footer .footer-brand p, footer .footer-desc {
   color: rgba(255,255,255,0.55) !important;
 }
 </style>
+<style id="modern-about-css">
+    /* ===== MODERN ABOUT PAGE REDESIGN ===== */
+    .about-page-hero {
+      background: var(--navy);
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(232,96,10,0.10) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(91,15,194,0.10) 0%, transparent 45%);
+      padding: 130px 5% 140px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-page-hero .label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,96,10,0.14); border: 1px solid rgba(232,96,10,0.35);
+      color: var(--orange-light) !important; padding: 6px 18px; border-radius: 30px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .about-page-hero p {
+      font-size: 17px; max-width: 620px; margin: 0 auto; line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* Floating stats card — overlaps hero/body boundary */
+    .about-stats-modern {
+      max-width: 1040px; margin: -84px auto 0; position: relative; z-index: 5;
+      background: #fff; border-radius: 22px; box-shadow: 0 24px 60px rgba(13,27,62,0.18);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      padding: 8px;
+    }
+    .stat-cell-modern {
+      padding: 32px 20px; text-align: center; border-radius: 16px;
+      transition: background 0.25s ease, transform 0.25s ease;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .stat-cell-modern:hover { background: #fff7ed; transform: translateY(-4px); }
+    .stat-icon-modern {
+      width: 46px; height: 46px; border-radius: 12px; background: #fff7ed;
+      color: var(--orange); font-size: 18px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+    }
+    .stat-cell-modern strong { font-size: clamp(26px, 3vw, 34px); font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+    .stat-cell-modern span { font-size: 12.5px; color: var(--text-mid); font-weight: 600; }
+
+    [data-theme="dark"] .about-stats-modern { background: #0f1f47 !important; }
+    [data-theme="dark"] .stat-cell-modern:hover { background: rgba(232,96,10,0.10) !important; }
+    [data-theme="dark"] .stat-cell-modern strong { color: #f0f4ff !important; }
+    [data-theme="dark"] .stat-cell-modern span { color: rgba(255,255,255,0.6) !important; }
+    [data-theme="dark"] .stat-icon-modern { background: rgba(232,96,10,0.15) !important; }
+
+    @media (max-width: 700px) {
+      .about-stats-modern { grid-template-columns: repeat(2, 1fr); margin-top: -50px; }
+    }
+
+    /* Two-column body layout */
+    .about-body-modern {
+      max-width: 1080px; margin: 0 auto; padding: 80px 5% 40px;
+      display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; align-items: start;
+    }
+    .about-body-main h2 { font-size: clamp(26px,3vw,38px); color: var(--navy); margin-bottom: 22px; font-family: 'Playfair Display', serif; }
+    .about-body-main p { font-size: 16px; line-height: 1.85; margin-bottom: 20px; color: var(--text-mid); }
+    [data-theme="dark"] .about-body-main h2 { color: #fff !important; }
+    [data-theme="dark"] .about-body-main p { color: rgba(255,255,255,0.75) !important; }
+
+    .quick-facts-card {
+      background: var(--navy); border-radius: 20px; padding: 36px 30px;
+      position: sticky; top: 100px;
+    }
+    .quick-facts-card h4 {
+      color: #fff; font-size: 15px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: 22px; padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .quick-facts-card ul { list-style: none; }
+    .quick-facts-card li {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px;
+      color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.5;
+    }
+    .quick-facts-card li:last-child { margin-bottom: 0; }
+    .quick-facts-card li i { color: var(--orange-light); font-size: 15px; margin-top: 2px; flex-shrink: 0; }
+    [data-theme="dark"] .quick-facts-card { background: #0f1f47 !important; border: 1px solid rgba(255,255,255,0.08); }
+
+    @media (max-width: 860px) {
+      .about-body-modern { grid-template-columns: 1fr; gap: 40px; }
+      .quick-facts-card { position: static; }
+    }
+
+    /* Countries — refined chip row */
+    .countries-strip-modern {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;
+    }
+    .country-tag-modern {
+      background: #fff; border: 1.5px solid var(--grey-mid); border-radius: 30px;
+      padding: 9px 18px; font-size: 13.5px; font-weight: 600; color: var(--text-dark);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .country-tag-modern:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(13,27,62,0.12); border-color: var(--orange); }
+    [data-theme="dark"] .country-tag-modern { background: #0f1f47 !important; border-color: rgba(255,255,255,0.1) !important; color: #fff !important; }
+
+    /* Values — icon cards */
+    .values-section-modern { max-width: 1080px; margin: 20px auto 90px; padding: 0 5%; }
+    .values-header { text-align: center; margin-bottom: 44px; }
+    .values-grid-modern {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+    }
+    .value-card-modern {
+      background: #fff; border: 1.5px solid var(--grey-mid); border-radius: 18px;
+      padding: 32px 24px; text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .value-card-modern:hover { transform: translateY(-8px); box-shadow: 0 20px 44px rgba(13,27,62,0.14); border-color: var(--orange); }
+    .value-icon-modern {
+      width: 56px; height: 56px; border-radius: 16px; background: #fff7ed;
+      color: var(--orange); font-size: 22px; margin: 0 auto 18px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .value-card-modern h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .value-card-modern p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    [data-theme="dark"] .value-card-modern { background: #0f1f47 !important; border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .value-card-modern h4 { color: #fff !important; }
+    [data-theme="dark"] .value-card-modern p { color: rgba(255,255,255,0.65) !important; }
+    [data-theme="dark"] .value-icon-modern { background: rgba(232,96,10,0.14) !important; }
+
+    @media (max-width: 700px) {
+      .values-grid-modern { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .values-grid-modern { grid-template-columns: 1fr; }
+    }
+</style>
 </head>
 <body>
 
@@ -2112,40 +2244,77 @@ footer .footer-brand p, footer .footer-desc {
   <p class="reveal reveal-delay-2">A professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards — established 1998, Bangalore.</p>
 </div>
 
-<!-- STATS BAND -->
-<div class="stats-band" id="abt-stats">
-  <div class="stat-cell reveal reveal-scale reveal-delay-1"><strong class="count-up" data-target="28" data-suffix="+">0+</strong><span>Years of Practice</span></div>
-  <div class="stat-cell reveal reveal-scale reveal-delay-2"><strong class="count-up" data-target="9" data-suffix="">0</strong><span>Countries Served</span></div>
-  <div class="stat-cell reveal reveal-scale reveal-delay-3"><strong class="count-up" data-target="60" data-suffix="+">0+</strong><span>Staff</span></div>
-  <div class="stat-cell reveal reveal-scale reveal-delay-4"><strong>1998</strong><span>Est. Bangalore</span></div>
+<!-- MODERN STATS CARD -->
+<div class="about-stats-modern reveal reveal-scale" id="abt-stats">
+  <div class="stat-cell-modern"><div class="stat-icon-modern"><i class="fas fa-calendar-alt"></i></div><strong class="count-up" data-target="28" data-suffix="+">0+</strong><span>Years of Practice</span></div>
+  <div class="stat-cell-modern"><div class="stat-icon-modern"><i class="fas fa-globe-asia"></i></div><strong class="count-up" data-target="9" data-suffix="">0</strong><span>Countries Served</span></div>
+  <div class="stat-cell-modern"><div class="stat-icon-modern"><i class="fas fa-users"></i></div><strong class="count-up" data-target="60" data-suffix="+">0+</strong><span>Staff</span></div>
+  <div class="stat-cell-modern"><div class="stat-icon-modern"><i class="fas fa-landmark"></i></div><strong>1998</strong><span>Est. Bangalore</span></div>
 </div>
 
-<!-- BODY -->
-<div class="about-body" id="abt-body">
-  <div class="section-label reveal">Who We Are</div>
-  <h2 class="reveal reveal-delay-1">About the Firm</h2>
-  <p class="reveal reveal-delay-1">PDKA is a fast growing professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards. Over the last twenty-eight years of practice, the firm has created a niche for itself offering a bouquet of services to a selected clientele from India and other countries.</p>
-  <p class="reveal reveal-delay-2">Based in Bangalore, the IT Capital of India, the firm has made a name for itself by offering end-to-end services under one roof — in particular for the IT &amp; ITES industry and the Retail sector in India.</p>
-  <p class="reveal reveal-delay-3">The firm serves clients across India, USA, Australia, Dubai, UK, Ireland, Singapore, Japan and Italy.</p>
+<!-- MODERN TWO-COLUMN BODY -->
+<div class="about-body-modern" id="abt-body">
+  <div class="about-body-main">
+    <div class="section-label reveal">Who We Are</div>
+    <h2 class="reveal reveal-delay-1">About the Firm</h2>
+    <p class="reveal reveal-delay-1">PDKA is a fast growing professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards. Over the last twenty-eight years of practice, the firm has created a niche for itself offering a bouquet of services to a selected clientele from India and other countries.</p>
+    <p class="reveal reveal-delay-2">Based in Bangalore, the IT Capital of India, the firm has made a name for itself by offering end-to-end services under one roof — in particular for the IT &amp; ITES industry and the Retail sector in India.</p>
+    <p class="reveal reveal-delay-3">The firm serves clients across India, USA, Australia, Dubai, UK, Ireland, Singapore, Japan and Italy.</p>
 
-  <div class="countries-strip">
-    <span class="country-tag reveal reveal-scale reveal-delay-1">🇮🇳 India</span>
-    <span class="country-tag reveal reveal-scale reveal-delay-1">🇺🇸 USA</span>
-    <span class="country-tag reveal reveal-scale reveal-delay-2">🇦🇺 Australia</span>
-    <span class="country-tag reveal reveal-scale reveal-delay-2">🇦🇪 Dubai</span>
-    <span class="country-tag reveal reveal-scale reveal-delay-3">🇬🇧 UK</span>
-    <span class="country-tag reveal reveal-scale reveal-delay-3">🇮🇪 Ireland</span>
-    <span class="country-tag reveal reveal-scale reveal-delay-4">🇸🇬 Singapore</span>
-    <span class="country-tag reveal reveal-scale reveal-delay-4">🇯🇵 Japan</span>
-    <span class="country-tag reveal reveal-scale reveal-delay-5">🇮🇹 Italy</span>
+    <div class="countries-strip-modern">
+      <span class="country-tag-modern reveal reveal-scale reveal-delay-1">🇮🇳 India</span>
+      <span class="country-tag-modern reveal reveal-scale reveal-delay-1">🇺🇸 USA</span>
+      <span class="country-tag-modern reveal reveal-scale reveal-delay-2">🇦🇺 Australia</span>
+      <span class="country-tag-modern reveal reveal-scale reveal-delay-2">🇦🇪 Dubai</span>
+      <span class="country-tag-modern reveal reveal-scale reveal-delay-3">🇬🇧 UK</span>
+      <span class="country-tag-modern reveal reveal-scale reveal-delay-3">🇮🇪 Ireland</span>
+      <span class="country-tag-modern reveal reveal-scale reveal-delay-4">🇸🇬 Singapore</span>
+      <span class="country-tag-modern reveal reveal-scale reveal-delay-4">🇯🇵 Japan</span>
+      <span class="country-tag-modern reveal reveal-scale reveal-delay-5">🇮🇹 Italy</span>
+    </div>
   </div>
 
-  <div class="section-label reveal" style="margin-top:48px;">Our Values</div>
-  <div class="values-grid">
-    <div class="value-card reveal reveal-left reveal-delay-1"><h4>Trust &amp; Integrity</h4></div>
-    <div class="value-card reveal reveal-left reveal-delay-2"><h4>Professional Ethics</h4></div>
-    <div class="value-card reveal reveal-right reveal-delay-3"><h4>Confidentiality</h4></div>
-    <div class="value-card reveal reveal-right reveal-delay-4"><h4>Personalised Service</h4></div>
+  <div class="about-body-side reveal reveal-right reveal-delay-2">
+    <div class="quick-facts-card">
+      <h4>At a Glance</h4>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> ICAI Registered Firm</li>
+        <li><i class="fas fa-check-circle"></i> CISA &amp; DISA Certified Leadership</li>
+        <li><i class="fas fa-check-circle"></i> IT/ITES &amp; Retail Sector Specialists</li>
+        <li><i class="fas fa-check-circle"></i> Presence Across 9 Countries</li>
+        <li><i class="fas fa-check-circle"></i> Established 1998, Bangalore</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- MODERN VALUES SECTION -->
+<div class="values-section-modern" id="abt-values">
+  <div class="values-header">
+    <div class="section-label reveal">Our Values</div>
+    <h2 class="reveal reveal-delay-1" style="font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,32px);color:var(--navy);">What We Stand For</h2>
+  </div>
+  <div class="values-grid-modern">
+    <div class="value-card-modern reveal reveal-left reveal-delay-1">
+      <div class="value-icon-modern"><i class="fas fa-handshake"></i></div>
+      <h4>Trust &amp; Integrity</h4>
+      <p>Building lasting relationships through honest, transparent client service.</p>
+    </div>
+    <div class="value-card-modern reveal reveal-left reveal-delay-2">
+      <div class="value-icon-modern"><i class="fas fa-balance-scale"></i></div>
+      <h4>Professional Ethics</h4>
+      <p>Upholding the highest standards set by the ICAI in every engagement.</p>
+    </div>
+    <div class="value-card-modern reveal reveal-right reveal-delay-3">
+      <div class="value-icon-modern"><i class="fas fa-user-shield"></i></div>
+      <h4>Confidentiality</h4>
+      <p>Safeguarding client information with strict professional discretion.</p>
+    </div>
+    <div class="value-card-modern reveal reveal-right reveal-delay-4">
+      <div class="value-icon-modern"><i class="fas fa-hands-helping"></i></div>
+      <h4>Personalised Service</h4>
+      <p>Tailored advisory that responds to each client&#8217;s unique needs.</p>
+    </div>
   </div>
 </div>
 
@@ -2189,156 +2358,172 @@ footer .footer-brand p, footer .footer-desc {
 (function(){
   var T = {
     en: {
-      hero:  `
+      hero: `
   <div class="label">The Firm</div>
   <img src="logo.png?v=3" srcset="logo.png 1x, logo.png 2x, logo.png 3x" width="351" height="91" alt="P. Dilip Kumar &amp; Associates" style="max-width:min(351px,88vw);height:auto;display:block;margin:0 auto 8px;image-rendering:crisp-edges;" />
   <p>A professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards — established 1998, Bangalore.</p>`,
-      stats: `
-  <div class="stat-cell"><strong>28+</strong><span>Years of Practice</span></div>
-  <div class="stat-cell"><strong>9</strong><span>Countries Served</span></div>
-  <div class="stat-cell"><strong>60+</strong><span>Staff</span></div>
-  <div class="stat-cell"><strong>1998</strong><span>Est. Bangalore</span></div>`,
-      body:  `
-  <div class="section-label">Who We Are</div>
-  <h2>About the Firm</h2>
-  <p>PDKA is a fast growing professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards. Over the last twenty-eight years of practice, the firm has created a niche for itself offering a bouquet of services to a selected clientele from India and other countries.</p>
-  <p>Based in Bangalore, the IT Capital of India, the firm has made a name for itself by offering end-to-end services under one roof — in particular for the IT &amp; ITES industry and the Retail sector in India.</p>
-  <p>The firm serves clients across India, USA, Australia, Dubai, UK, Ireland, Singapore, Japan and Italy.</p>
-
-  <div class="countries-strip">
-    <span class="country-tag">🇮🇳 India</span>
-    <span class="country-tag">🇺🇸 USA</span>
-    <span class="country-tag">🇦🇺 Australia</span>
-    <span class="country-tag">🇦🇪 Dubai</span>
-    <span class="country-tag">🇬🇧 UK</span>
-    <span class="country-tag">🇮🇪 Ireland</span>
-    <span class="country-tag">🇸🇬 Singapore</span>
-    <span class="country-tag">🇯🇵 Japan</span>
-    <span class="country-tag">🇮🇹 Italy</span>
+      body: `
+  <div class="about-body-main">
+    <div class="section-label">Who We Are</div>
+    <h2>About the Firm</h2>
+    <p>PDKA is a fast growing professional firm of Chartered Accountants committed to its values, quality policy and ICAI Standards. Over the last twenty-eight years of practice, the firm has created a niche for itself offering a bouquet of services to a selected clientele from India and other countries.</p>
+    <p>Based in Bangalore, the IT Capital of India, the firm has made a name for itself by offering end-to-end services under one roof — in particular for the IT &amp; ITES industry and the Retail sector in India.</p>
+    <p>The firm serves clients across India, USA, Australia, Dubai, UK, Ireland, Singapore, Japan and Italy.</p>
+    <div class="countries-strip-modern">
+      <span class="country-tag-modern">🇮🇳 India</span>
+      <span class="country-tag-modern">🇺🇸 USA</span>
+      <span class="country-tag-modern">🇦🇺 Australia</span>
+      <span class="country-tag-modern">🇦🇪 Dubai</span>
+      <span class="country-tag-modern">🇬🇧 UK</span>
+      <span class="country-tag-modern">🇮🇪 Ireland</span>
+      <span class="country-tag-modern">🇸🇬 Singapore</span>
+      <span class="country-tag-modern">🇯🇵 Japan</span>
+      <span class="country-tag-modern">🇮🇹 Italy</span>
+    </div>
   </div>
-
-  <div class="section-label" style="margin-top:48px;">Our Values</div>
-  <div class="values-grid">
-    <div class="value-card"><h4>Trust &amp; Integrity</h4></div>
-    <div class="value-card"><h4>Professional Ethics</h4></div>
-    <div class="value-card"><h4>Confidentiality</h4></div>
-    <div class="value-card"><h4>Personalised Service</h4></div>
+  <div class="about-body-side">
+    <div class="quick-facts-card">
+      <h4>At a Glance</h4>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> ICAI Registered Firm</li>
+        <li><i class="fas fa-check-circle"></i> CISA &amp; DISA Certified Leadership</li>
+        <li><i class="fas fa-check-circle"></i> IT/ITES &amp; Retail Sector Specialists</li>
+        <li><i class="fas fa-check-circle"></i> Presence Across 9 Countries</li>
+        <li><i class="fas fa-check-circle"></i> Established 1998, Bangalore</li>
+      </ul>
+    </div>
+  </div>`,
+      values: `
+  <div class="values-header">
+    <div class="section-label">Our Values</div>
+  </div>
+  <div class="values-grid-modern">
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-handshake"></i></div><h4>Trust &amp; Integrity</h4><p>Building lasting relationships through honest, transparent client service.</p></div>
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-balance-scale"></i></div><h4>Professional Ethics</h4><p>Upholding the highest standards set by the ICAI in every engagement.</p></div>
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-user-shield"></i></div><h4>Confidentiality</h4><p>Safeguarding client information with strict professional discretion.</p></div>
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-hands-helping"></i></div><h4>Personalised Service</h4><p>Tailored advisory that responds to each client&#8217;s unique needs.</p></div>
   </div>`
     },
     ja: {
-      hero:  `
+      hero: `
   <div class="label">事務所について</div>
   <img src="logo.png?v=3" srcset="logo.png 1x, logo.png 2x, logo.png 3x" width="351" height="91" alt="P. ディリップ・クマール &amp; アソシエイツ" style="max-width:min(351px,88vw);height:auto;display:block;margin:0 auto 8px;image-rendering:crisp-edges;" />
   <p>品質、誠実さ、ICAIの規程を遵守するプロフェッショナルな公認会計士事務所。1998年バンガロール設立。</p>
 `,
-      stats: `
-  <div class="stat-cell"><strong>28+</strong><span>実績年数</span></div>
-  <div class="stat-cell"><strong>9</strong><span>対応国数</span></div>
-  <div class="stat-cell"><strong>60+</strong><span>スタッフ</span></div>
-  <div class="stat-cell"><strong>1998</strong><span>バンガロール創業</span></div>
-`,
-      body:  `
-  <div class="section-label">私たちについて</div>
-  <h2>事務所概要</h2>
-  <p>PDKAは、急成長中のプロフェッショナルな公認会計士事務所です。28年にわたる実績の中で、インド国内外の選ばれたクライアントに多様なサービスを提供し、独自の地位を確立してきました。</p>
-  <p>インドのITの首都であるバンガロールを拠点に、特にIT・ITES産業とインドの小売セクターにおいて、ワンストップでエンドツーエンドのサービスを提供しています。</p>
-  <p>事務所はインド、米国、オーストラリア、ドバイ、英国、アイルランド、シンガポール、日本、イタリアのクライアントにサービスを提供しています。</p>
-
-  <div class="countries-strip">
-    <span class="country-tag">🇮🇳 インド</span>
-    <span class="country-tag">🇺🇸 米国</span>
-    <span class="country-tag">🇦🇺 オーストラリア</span>
-    <span class="country-tag">🇦🇪 ドバイ</span>
-    <span class="country-tag">🇬🇧 英国</span>
-    <span class="country-tag">🇮🇪 アイルランド</span>
-    <span class="country-tag">🇸🇬 シンガポール</span>
-    <span class="country-tag">🇯🇵 日本</span>
-    <span class="country-tag">🇮🇹 イタリア</span>
+      body: `
+  <div class="about-body-main">
+    <div class="section-label">私たちについて</div>
+    <h2>事務所概要</h2>
+    <p>PDKAは、急成長中のプロフェッショナルな公認会計士事務所です。28年にわたる実績の中で、インド国内外の選ばれたクライアントに多様なサービスを提供し、独自の地位を確立してきました。</p>
+    <p>インドのITの首都であるバンガロールを拠点に、特にIT・ITES産業とインドの小売セクターにおいて、ワンストップでエンドツーエンドのサービスを提供しています。</p>
+    <p>事務所はインド、米国、オーストラリア、ドバイ、英国、アイルランド、シンガポール、日本、イタリアのクライアントにサービスを提供しています。</p>
+    <div class="countries-strip-modern">
+      <span class="country-tag-modern">🇮🇳 インド</span>
+      <span class="country-tag-modern">🇺🇸 米国</span>
+      <span class="country-tag-modern">🇦🇺 オーストラリア</span>
+      <span class="country-tag-modern">🇦🇪 ドバイ</span>
+      <span class="country-tag-modern">🇬🇧 英国</span>
+      <span class="country-tag-modern">🇮🇪 アイルランド</span>
+      <span class="country-tag-modern">🇸🇬 シンガポール</span>
+      <span class="country-tag-modern">🇯🇵 日本</span>
+      <span class="country-tag-modern">🇮🇹 イタリア</span>
+    </div>
   </div>
-
-  <div class="section-label" style="margin-top:48px;">私たちの価値観</div>
-  <div class="values-grid">
-    <div class="value-card"><h4>信頼と誠実さ</h4></div>
-    <div class="value-card"><h4>プロとしての倫理</h4></div>
-    <div class="value-card"><h4>守秘義務</h4></div>
-    <div class="value-card"><h4>個別対応サービス</h4></div>
+  <div class="about-body-side">
+    <div class="quick-facts-card">
+      <h4>会社概要</h4>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> ICAI登録事務所</li>
+        <li><i class="fas fa-check-circle"></i> CISA・DISA認定のリーダーシップ</li>
+        <li><i class="fas fa-check-circle"></i> IT・ITES及び小売業界の専門家</li>
+        <li><i class="fas fa-check-circle"></i> 9カ国に拠点</li>
+        <li><i class="fas fa-check-circle"></i> 1998年バンガロール設立</li>
+      </ul>
+    </div>
+  </div>`,
+      values: `
+  <div class="values-header">
+    <div class="section-label">私たちの価値観</div>
   </div>
-`
+  <div class="values-grid-modern">
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-handshake"></i></div><h4>信頼と誠実さ</h4><p>誠実で透明性のあるクライアントサービスを通じて、永続的な関係を築きます。</p></div>
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-balance-scale"></i></div><h4>プロとしての倫理</h4><p>すべての業務においてICAIが定める最高水準を遵守します。</p></div>
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-user-shield"></i></div><h4>守秘義務</h4><p>厳格なプロフェッショナルとしての判断でクライアント情報を保護します。</p></div>
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-hands-helping"></i></div><h4>個別対応サービス</h4><p>各クライアントの固有のニーズに応じたオーダーメイドのアドバイザリー。</p></div>
+  </div>`
     },
     hi: {
-      hero:  `
+      hero: `
   <div class="label">फर्म के बारे में</div>
   <img src="logo.png?v=3" srcset="logo.png 1x, logo.png 2x, logo.png 3x" width="351" height="91" alt="पी. दिलीप कुमार एंड एसोसिएट्स" style="max-width:min(351px,88vw);height:auto;display:block;margin:0 auto 8px;image-rendering:crisp-edges;" />
   <p>मूल्यों, गुणवत्ता नीति और ICAI मानकों के प्रति समर्पित एक पेशेवर CA फर्म — 1998 में बेंगलूरु में स्थापित।</p>`,
-      stats: `
-  <div class="stat-cell"><strong>28+</strong><span>वर्षों का अनुभव</span></div>
-  <div class="stat-cell"><strong>9</strong><span>देशों में सेवा</span></div>
-  <div class="stat-cell"><strong>60+</strong><span>कर्मचारी</span></div>
-  <div class="stat-cell"><strong>1998</strong><span>बेंगलूरु में स्थापित</span></div>`,
-      body:  `
-  <div class="section-label">हम कौन हैं</div>
-  <h2>फर्म के बारे में</h2>
-  <p>PDKA एक तेज़ी से बढ़ती पेशेवर चार्टर्ड अकाउंटेंट फर्म है जो अपने मूल्यों, गुणवत्ता नीति और ICAI मानकों के प्रति प्रतिबद्ध है। अट्ठाईस वर्षों के अभ्यास में, फर्म ने भारत और विदेश के चुनिंदा ग्राहकों को विविध सेवाएं प्रदान करके अपनी एक विशेष पहचान बनाई है।</p>
-  <p>भारत की IT राजधानी बेंगलूरु में स्थित, फर्म ने विशेष रूप से IT एवं ITES उद्योग और भारतीय खुदरा क्षेत्र के लिए एकीकृत, एंड-टू-एंड सेवाएं प्रदान करके अपना नाम बनाया है।</p>
-  <p>फर्म भारत, अमेरिका, ऑस्ट्रेलिया, दुबई, ब्रिटेन, आयरलैंड, सिंगापुर, जापान और इटली के ग्राहकों की सेवा करती है।</p>
-
-  <div class="countries-strip">
-    <span class="country-tag">🇮🇳 भारत</span>
-    <span class="country-tag">🇺🇸 अमेरिका</span>
-    <span class="country-tag">🇦🇺 ऑस्ट्रेलिया</span>
-    <span class="country-tag">🇦🇪 दुबई</span>
-    <span class="country-tag">🇬🇧 ब्रिटेन</span>
-    <span class="country-tag">🇮🇪 आयरलैंड</span>
-    <span class="country-tag">🇸🇬 सिंगापुर</span>
-    <span class="country-tag">🇯🇵 जापान</span>
-    <span class="country-tag">🇮🇹 इटली</span>
+      body: `
+  <div class="about-body-main">
+    <div class="section-label">हम कौन हैं</div>
+    <h2>फर्म के बारे में</h2>
+    <p>PDKA एक तेज़ी से बढ़ती पेशेवर चार्टर्ड अकाउंटेंट फर्म है जो अपने मूल्यों, गुणवत्ता नीति और ICAI मानकों के प्रति प्रतिबद्ध है। अट्ठाईस वर्षों के अभ्यास में, फर्म ने भारत और विदेश के चुनिंदा ग्राहकों को विविध सेवाएं प्रदान करके अपनी एक विशेष पहचान बनाई है।</p>
+    <p>भारत की IT राजधानी बेंगलूरु में स्थित, फर्म ने विशेष रूप से IT एवं ITES उद्योग और भारतीय खुदरा क्षेत्र के लिए एकीकृत, एंड-टू-एंड सेवाएं प्रदान करके अपना नाम बनाया है।</p>
+    <p>फर्म भारत, अमेरिका, ऑस्ट्रेलिया, दुबई, ब्रिटेन, आयरलैंड, सिंगापुर, जापान और इटली के ग्राहकों की सेवा करती है।</p>
+    <div class="countries-strip-modern">
+      <span class="country-tag-modern">🇮🇳 भारत</span>
+      <span class="country-tag-modern">🇺🇸 अमेरिका</span>
+      <span class="country-tag-modern">🇦🇺 ऑस्ट्रेलिया</span>
+      <span class="country-tag-modern">🇦🇪 दुबई</span>
+      <span class="country-tag-modern">🇬🇧 ब्रिटेन</span>
+      <span class="country-tag-modern">🇮🇪 आयरलैंड</span>
+      <span class="country-tag-modern">🇸🇬 सिंगापुर</span>
+      <span class="country-tag-modern">🇯🇵 जापान</span>
+      <span class="country-tag-modern">🇮🇹 इटली</span>
+    </div>
   </div>
-
-  <div class="section-label" style="margin-top:48px;">हमारे मूल्य</div>
-  <div class="values-grid">
-    <div class="value-card"><h4>विश्वास एवं सत्यनिष्ठा</h4></div>
-    <div class="value-card"><h4>पेशेवर नैतिकता</h4></div>
-    <div class="value-card"><h4>गोपनीयता</h4></div>
-    <div class="value-card"><h4>व्यक्तिगत सेवा</h4></div>
+  <div class="about-body-side">
+    <div class="quick-facts-card">
+      <h4>एक नज़र में</h4>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> ICAI पंजीकृत फर्म</li>
+        <li><i class="fas fa-check-circle"></i> CISA एवं DISA प्रमाणित नेतृत्व</li>
+        <li><i class="fas fa-check-circle"></i> IT/ITES एवं रिटेल सेक्टर विशेषज्ञ</li>
+        <li><i class="fas fa-check-circle"></i> 9 देशों में उपस्थिति</li>
+        <li><i class="fas fa-check-circle"></i> स्थापना 1998, बेंगलूरु</li>
+      </ul>
+    </div>
+  </div>`,
+      values: `
+  <div class="values-header">
+    <div class="section-label">हमारे मूल्य</div>
+  </div>
+  <div class="values-grid-modern">
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-handshake"></i></div><h4>विश्वास एवं सत्यनिष्ठा</h4><p>ईमानदार और पारदर्शी ग्राहक सेवा के माध्यम से स्थायी संबंध बनाना।</p></div>
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-balance-scale"></i></div><h4>पेशेवर नैतिकता</h4><p>प्रत्येक कार्य में ICAI द्वारा निर्धारित उच्चतम मानकों का पालन करना।</p></div>
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-user-shield"></i></div><h4>गोपनीयता</h4><p>सख्त पेशेवर विवेक के साथ ग्राहक जानकारी की सुरक्षा करना।</p></div>
+    <div class="value-card-modern"><div class="value-icon-modern"><i class="fas fa-hands-helping"></i></div><h4>व्यक्तिगत सेवा</h4><p>प्रत्येक ग्राहक की विशिष्ट आवश्यकताओं के अनुरूप अनुकूलित परामर्श।</p></div>
   </div>`
     }
   };
 
   window.setAboutLang = function(lang) {
-    ['hero','stats','body'].forEach(function(k) {
-      var ids = {hero:'abt-hero', stats:'abt-stats', body:'abt-body'};
+    var ids = {hero:'abt-hero', body:'abt-body', values:'abt-values'};
+    ['hero','body','values'].forEach(function(k) {
       var el = document.getElementById(ids[k]);
-      if (el && T[lang][k]) el.innerHTML = T[lang][k];
+      if (el && T[lang] && T[lang][k]) el.innerHTML = T[lang][k];
     });
-    // Also update nav CTA
     var cta = document.querySelector('.nav-cta');
     if (cta) cta.textContent = lang==='ja' ? '始める' : (lang==='hi' ? 'शुरू करें' : 'Get Started');
-    document.getElementById('aboutLangLabel').textContent = lang==='ja' ? 'JP' : (lang==='hi' ? 'HI' : 'EN');
-    document.getElementById('aboutLangMenu').classList.remove('open');
+    var label = document.getElementById('langLabel');
+    if (label) label.textContent = lang==='ja' ? 'JP' : (lang==='hi' ? 'HI' : 'EN');
+    var menu = document.getElementById('langMenu');
+    if (menu) menu.style.display = 'none';
     document.documentElement.lang = lang;
     try { localStorage.setItem('pdka-lang', lang); } catch(e){}
   };
 
-  window.toggleAboutLang = function(e) {
-    e.stopPropagation();
-    var m = document.getElementById('aboutLangMenu');
-    m.classList.toggle('open');
-  };
-
-  document.addEventListener('click', function(){
-    var m = document.getElementById('aboutLangMenu');
-    if (m) m.style.display = 'none';
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      var saved = localStorage.getItem('pdka-lang') || 'en';
+      if (saved !== 'en') window.setAboutLang(saved);
+    } catch(e) {}
   });
 
-  (function _aboutAutoLang(){
-    function apply(){
-      try{ var lg='en'; if(lg&&lg!=='en') window.setAboutLang(lg); }catch(e){}
-    }
-    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply);
-    else apply();
-  })();
-
-  // Respond when parent page changes language
   window.addEventListener('storage', function(e) {
     if (e.key === 'pdka-lang' && e.newValue) {
       try { window.setAboutLang(e.newValue); } catch(ex) {}
