@@ -725,5 +725,23 @@
       lastY = y;
     }, { passive: true });
   })();
-</script></body>
+</script>
+<script>
+// Auto-translate based on ?lang= param passed from parent
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang') || (window.parent && window.parent.pdkaLang) || 'en';
+  if (lang && lang !== 'en' && window.setLang) {
+    window.setLang(lang);
+  } else if (lang && lang !== 'en') {
+    // If setLang not defined yet, wait for DOM
+    window.addEventListener('DOMContentLoaded', function() {
+      if (window.setLang) window.setLang(lang);
+    });
+  }
+  // Expose lang to parent if needed
+  window.pdkaLang = lang;
+})();
+</script>
+</body>
 </html>
