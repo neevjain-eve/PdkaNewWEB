@@ -2788,6 +2788,17 @@ footer .footer-brand p, footer .footer-desc {
     document.body.classList.add('page-leaving');
     setTimeout(function() { window.location.href = dest; }, 250);
   };
+
+  // FIX: when the page is restored from the browser's back-forward cache
+  // (e.g. clicking back after visiting Client Portal), it can be frozen in
+  // its faded-out "page-leaving" state, or be a stale snapshot. Force a
+  // clean reload so the page always shows fresh, fully-visible content.
+  window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+      document.body.classList.remove('page-leaving');
+      window.location.reload();
+    }
+  });
 })();
 </script>
 <script id="mega-menu-js">
