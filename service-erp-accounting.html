@@ -1044,6 +1044,36 @@ body.page-leaving {
   to   { opacity: 0; transform: translateY(-8px); }
 }
 </style>
+<script id="toggletheme-base">
+function toggleTheme() {
+  var html = document.documentElement;
+  var icon = document.getElementById('themeIcon');
+  var label = document.getElementById('themeLabel');
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    if (icon) icon.className = 'fas fa-moon';
+    if (label) label.textContent = 'Dark';
+    try { localStorage.setItem('pdka-theme', 'light'); } catch(e) {}
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    if (icon) icon.className = 'fas fa-sun';
+    if (label) label.textContent = 'Light';
+    try { localStorage.setItem('pdka-theme', 'dark'); } catch(e) {}
+  }
+}
+(function() {
+  try {
+    var saved = localStorage.getItem('pdka-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var icon = document.getElementById('themeIcon');
+      var label = document.getElementById('themeLabel');
+      if (icon) icon.className = 'fas fa-sun';
+      if (label) label.textContent = 'Light';
+    }
+  } catch(e) {}
+})();
+</script>
 <script id="setlang-base">
 window.setLang = function(lang) {
   try {
