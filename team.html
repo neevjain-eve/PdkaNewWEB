@@ -2311,6 +2311,43 @@ footer .footer-brand p, footer .footer-desc {
     }
     [data-theme="dark"] .team-join-cta { background: linear-gradient(135deg, #060e1f 0%, #0f1f47 100%) !important; }
 </style>
+<style id="finops-groups-css">    /* FinOps: manager groups */
+    .finops-groups {
+      display: flex; flex-direction: column; gap: 22px; margin-top: 8px;
+    }
+    .finops-group {
+      background: var(--grey-light); border: 1.5px solid var(--grey-mid); border-radius: 18px;
+      padding: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
+    }
+    .finops-manager-card {
+      flex: 0 0 200px; text-align: center; background: #fff; border: 2px solid var(--orange);
+      border-radius: 14px; padding: 20px 16px;
+    }
+    .finops-manager-card .person-head-tag { background: var(--orange); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+    .finops-manager-card .person-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--orange); color: #fff; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+    .finops-manager-card .person-name { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 2px; }
+    .finops-manager-card .person-role { font-size: 11.5px; color: var(--text-mid); }
+    .finops-arrow { color: var(--grey-mid); font-size: 20px; flex-shrink: 0; }
+    .finops-reports { display: flex; flex-wrap: wrap; gap: 14px; flex: 1; }
+    .finops-report-card { background: #fff; border: 1px solid var(--grey-mid); border-radius: 12px; padding: 14px 18px; text-align: center; min-width: 130px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .finops-report-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(13,27,62,0.10); }
+    .finops-report-card .person-avatar { width: 40px; height: 40px; font-size: 13px; border-radius: 50%; background: var(--navy); color: var(--orange); font-family: 'Playfair Display', serif; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+    .finops-report-card .person-name { font-weight: 700; font-size: 12.5px; color: var(--navy); }
+    .finops-report-card .person-role { font-size: 10.5px; color: var(--text-mid); margin-top: 2px; }
+
+    [data-theme="dark"] .finops-group { background: rgba(255,255,255,0.03) !important; border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .finops-manager-card { background: #16294f !important; }
+    [data-theme="dark"] .finops-manager-card .person-name { color: #fff !important; }
+    [data-theme="dark"] .finops-manager-card .person-role { color: rgba(255,255,255,0.6) !important; }
+    [data-theme="dark"] .finops-report-card { background: #16294f !important; border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .finops-report-card .person-name { color: #fff !important; }
+    [data-theme="dark"] .finops-report-card .person-role { color: rgba(255,255,255,0.55) !important; }
+
+    @media (max-width: 700px) {
+      .finops-group { flex-direction: column; }
+      .finops-arrow { transform: rotate(90deg); }
+    }
+</style>
 </head>
 <body>
 
@@ -2639,49 +2676,83 @@ footer .footer-brand p, footer .footer-desc {
       <div>
         <div class="dept-badge"><i class="fas fa-coins"></i> <span class="dept-badge-label">FinOps</span></div>
         <h2>FinOps Team</h2>
-        <p>Virtual CFO services, MIS reporting, and financial modelling for startups and scaling businesses.</p>
+        <p>Virtual CFO services, MIS reporting, and financial modelling for startups and scaling businesses. Led by 6 Senior Managers overseeing dedicated client teams.</p>
       </div>
     </div>
-    <div class="team-people-grid">
-      <div class="person-card">
-        <div class="person-avatar">VL</div>
-        <div class="person-name">Vijetha L</div>
-        <div class="person-role">FinOps</div>
+    <div class="finops-groups">
+      <div class="finops-group">
+        <div class="finops-manager-card">
+          <div class="person-head-tag">Sr. Manager</div>
+          <div class="person-avatar">BR</div>
+          <div class="person-name">Bindu Rao TN</div>
+          <div class="person-role">FinOps</div>
+        </div>
+        <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="finops-reports">
+        <div class="finops-report-card"><div class="person-avatar">VL</div><div class="person-name">Vijetha L</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar">MJ</div><div class="person-name">Mansi G Jain</div><div class="person-role">FinOps</div></div>
+        </div>
       </div>
-      <div class="person-card">
-        <div class="person-avatar">MJ</div>
-        <div class="person-name">Mansi G Jain</div>
-        <div class="person-role">FinOps</div>
+      <div class="finops-group">
+        <div class="finops-manager-card">
+          <div class="person-head-tag">Sr. Manager</div>
+          <div class="person-avatar">SK</div>
+          <div class="person-name">Srikrishna</div>
+          <div class="person-role">FinOps</div>
+        </div>
+        <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="finops-reports">
+        <div class="finops-report-card"><div class="person-avatar">SK</div><div class="person-name">Shivam Kumar</div><div class="person-role">FinOps</div></div>
+        </div>
       </div>
-      <div class="person-card">
-        <div class="person-avatar">SK</div>
-        <div class="person-name">Shivam Kumar</div>
-        <div class="person-role">FinOps</div>
+      <div class="finops-group">
+        <div class="finops-manager-card">
+          <div class="person-head-tag">Sr. Manager</div>
+          <div class="person-avatar">NK</div>
+          <div class="person-name">Naveen Kumar</div>
+          <div class="person-role">FinOps</div>
+        </div>
+        <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="finops-reports">
+        <div class="finops-report-card"><div class="person-avatar">GS</div><div class="person-name">Geetha S</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar">B</div><div class="person-name">Bhavya</div><div class="person-role">FinOps</div></div>
+        </div>
       </div>
-      <div class="person-card">
-        <div class="person-avatar">GS</div>
-        <div class="person-name">Geetha S</div>
-        <div class="person-role">FinOps</div>
+      <div class="finops-group">
+        <div class="finops-manager-card">
+          <div class="person-head-tag">Sr. Manager</div>
+          <div class="person-avatar">MS</div>
+          <div class="person-name">Manju S</div>
+          <div class="person-role">FinOps</div>
+        </div>
+        <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="finops-reports">
+        <div class="finops-report-card"><div class="person-avatar">KU</div><div class="person-name">K Umamaheswar</div><div class="person-role">FinOps</div></div>
+        </div>
       </div>
-      <div class="person-card">
-        <div class="person-avatar">B</div>
-        <div class="person-name">Bhavya</div>
-        <div class="person-role">FinOps</div>
+      <div class="finops-group">
+        <div class="finops-manager-card">
+          <div class="person-head-tag">Sr. Manager</div>
+          <div class="person-avatar">KS</div>
+          <div class="person-name">Kavyashree S</div>
+          <div class="person-role">FinOps</div>
+        </div>
+        <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="finops-reports">
+        <div class="finops-report-card"><div class="person-avatar">RS</div><div class="person-name">Rani S</div><div class="person-role">FinOps</div></div>
+        </div>
       </div>
-      <div class="person-card">
-        <div class="person-avatar">KU</div>
-        <div class="person-name">K Umamaheswar</div>
-        <div class="person-role">FinOps</div>
-      </div>
-      <div class="person-card">
-        <div class="person-avatar">RS</div>
-        <div class="person-name">Rani S</div>
-        <div class="person-role">FinOps</div>
-      </div>
-      <div class="person-card">
-        <div class="person-avatar">VK</div>
-        <div class="person-name">Vijay Kumar DN</div>
-        <div class="person-role">FinOps</div>
+      <div class="finops-group">
+        <div class="finops-manager-card">
+          <div class="person-head-tag">Sr. Manager</div>
+          <div class="person-avatar">Ra</div>
+          <div class="person-name">Ramya R</div>
+          <div class="person-role">FinOps</div>
+        </div>
+        <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="finops-reports">
+        <div class="finops-report-card"><div class="person-avatar">VK</div><div class="person-name">Vijay Kumar DN</div><div class="person-role">FinOps</div></div>
+        </div>
       </div>
     </div>
   </div>
