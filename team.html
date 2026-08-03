@@ -2348,6 +2348,19 @@ footer .footer-brand p, footer .footer-desc {
       .finops-arrow { transform: rotate(90deg); }
     }
 </style>
+<style id="team-photo-support-css">
+/* Photo-ready avatars: image sits on top; initials show underneath as fallback if image 404s */
+.person-avatar, .finops-manager-card .person-avatar, .finops-report-card .person-avatar {
+  position: relative; overflow: hidden;
+}
+.person-avatar img, .finops-manager-card .person-avatar img, .finops-report-card .person-avatar img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top; border-radius: 50%;
+}
+.person-avatar span, .finops-manager-card .person-avatar span, .finops-report-card .person-avatar span {
+  position: relative; z-index: 0;
+}
+</style>
 </head>
 <body>
 
@@ -2567,13 +2580,13 @@ footer .footer-brand p, footer .footer-desc {
     <div class="team-people-grid">
       <div class="person-card person-card-head">
         <div class="person-head-tag head-badge">Department Head</div>
-        <div class="person-avatar">R</div>
+        <div class="person-avatar"><img src="team-photos/rinkal-handey.jpg" alt="Rinkal Handey" onerror="this.style.display='none'"><span>R</span></div>
         <div class="person-name">Rinkal Handey</div>
         <div class="person-role">Head — Corporate Compliance</div>
         <div class="person-quals">ACS · B.Com · 10 Yrs Exp</div>
       </div>
       <div class="person-card">
-        <div class="person-avatar">VT</div>
+        <div class="person-avatar"><img src="team-photos/varsha-ta.jpg" alt="Varsha TA" onerror="this.style.display='none'"><span>VT</span></div>
         <div class="person-name">Varsha TA</div>
         <div class="person-role">Accounts Executive</div>
       </div>
@@ -2592,7 +2605,7 @@ footer .footer-brand p, footer .footer-desc {
     <div class="team-people-grid">
       <div class="person-card person-card-head">
         <div class="person-head-tag head-badge">Department Head</div>
-        <div class="person-avatar">V</div>
+        <div class="person-avatar"><img src="team-photos/vedamurthy-s.jpg" alt="Vedamurthy S" onerror="this.style.display='none'"><span>V</span></div>
         <div class="person-name">Vedamurthy S</div>
         <div class="person-role">Head — Audit &amp; Assurance</div>
         <div class="person-quals">ACA · DISA · 12 Yrs Exp</div>
@@ -2612,7 +2625,7 @@ footer .footer-brand p, footer .footer-desc {
     <div class="team-people-grid">
       <div class="person-card person-card-head">
         <div class="person-head-tag head-badge">Department Head</div>
-        <div class="person-avatar">R</div>
+        <div class="person-avatar"><img src="team-photos/richa-khetawat.jpg" alt="Richa Khetawat" onerror="this.style.display='none'"><span>R</span></div>
         <div class="person-name">Richa Khetawat</div>
         <div class="person-role">Head — Business Advisory</div>
         <div class="person-quals">MBA · ACA · 9 Yrs Exp</div>
@@ -2632,13 +2645,13 @@ footer .footer-brand p, footer .footer-desc {
     <div class="team-people-grid">
       <div class="person-card person-card-head">
         <div class="person-head-tag head-badge">Department Head</div>
-        <div class="person-avatar">SJ</div>
+        <div class="person-avatar"><img src="team-photos/sandeep-jain-s.jpg" alt="Sandeep Jain S" onerror="this.style.display='none'"><span>SJ</span></div>
         <div class="person-name">Sandeep Jain S</div>
         <div class="person-role">Head - Direct Tax</div>
         <div class="person-quals">ACA · LLB · 14 Yrs Exp</div>
       </div>
       <div class="person-card">
-        <div class="person-avatar">SB</div>
+        <div class="person-avatar"><img src="team-photos/shamanth-bt.jpg" alt="Shamanth BT" onerror="this.style.display='none'"><span>SB</span></div>
         <div class="person-name">Shamanth BT</div>
         <div class="person-role">Accounts Executive</div>
       </div>
@@ -2657,13 +2670,13 @@ footer .footer-brand p, footer .footer-desc {
     <div class="team-people-grid">
       <div class="person-card person-card-head">
         <div class="person-head-tag head-badge">Department Head</div>
-        <div class="person-avatar">RJ</div>
+        <div class="person-avatar"><img src="team-photos/rakesh-kumar-g-jain.jpg" alt="Rakesh Kumar G Jain" onerror="this.style.display='none'"><span>RJ</span></div>
         <div class="person-name">Rakesh Kumar G Jain</div>
         <div class="person-role">Head - Indirect Tax</div>
         <div class="person-quals">ACA · GST Specialist</div>
       </div>
       <div class="person-card">
-        <div class="person-avatar">SB</div>
+        <div class="person-avatar"><img src="team-photos/shamanth-bt.jpg" alt="Shamanth BT" onerror="this.style.display='none'"><span>SB</span></div>
         <div class="person-name">Shamanth BT</div>
         <div class="person-role">Accounts Executive</div>
       </div>
@@ -2683,75 +2696,75 @@ footer .footer-brand p, footer .footer-desc {
       <div class="finops-group">
         <div class="finops-manager-card">
           <div class="person-head-tag">Sr. Manager</div>
-          <div class="person-avatar">BR</div>
+          <div class="person-avatar"><img src="team-photos/bindu-rao-tn.jpg" alt="Bindu Rao TN" onerror="this.style.display='none'"><span>BR</span></div>
           <div class="person-name">Bindu Rao TN</div>
           <div class="person-role">FinOps</div>
         </div>
         <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
         <div class="finops-reports">
-        <div class="finops-report-card"><div class="person-avatar">VL</div><div class="person-name">Vijetha L</div><div class="person-role">FinOps</div></div>
-        <div class="finops-report-card"><div class="person-avatar">MJ</div><div class="person-name">Mansi G Jain</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar"><img src="team-photos/vijetha-l.jpg" alt="Vijetha L" onerror="this.style.display='none'"><span>VL</span></div><div class="person-name">Vijetha L</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar"><img src="team-photos/mansi-g-jain.jpg" alt="Mansi G Jain" onerror="this.style.display='none'"><span>MJ</span></div><div class="person-name">Mansi G Jain</div><div class="person-role">FinOps</div></div>
         </div>
       </div>
       <div class="finops-group">
         <div class="finops-manager-card">
           <div class="person-head-tag">Sr. Manager</div>
-          <div class="person-avatar">SK</div>
+          <div class="person-avatar"><img src="team-photos/srikrishna.jpg" alt="Srikrishna" onerror="this.style.display='none'"><span>SK</span></div>
           <div class="person-name">Srikrishna</div>
           <div class="person-role">FinOps</div>
         </div>
         <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
         <div class="finops-reports">
-        <div class="finops-report-card"><div class="person-avatar">SK</div><div class="person-name">Shivam Kumar</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar"><img src="team-photos/shivam-kumar.jpg" alt="Shivam Kumar" onerror="this.style.display='none'"><span>SK</span></div><div class="person-name">Shivam Kumar</div><div class="person-role">FinOps</div></div>
         </div>
       </div>
       <div class="finops-group">
         <div class="finops-manager-card">
           <div class="person-head-tag">Sr. Manager</div>
-          <div class="person-avatar">NK</div>
+          <div class="person-avatar"><img src="team-photos/naveen-kumar.jpg" alt="Naveen Kumar" onerror="this.style.display='none'"><span>NK</span></div>
           <div class="person-name">Naveen Kumar</div>
           <div class="person-role">FinOps</div>
         </div>
         <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
         <div class="finops-reports">
-        <div class="finops-report-card"><div class="person-avatar">GS</div><div class="person-name">Geetha S</div><div class="person-role">FinOps</div></div>
-        <div class="finops-report-card"><div class="person-avatar">B</div><div class="person-name">Bhavya</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar"><img src="team-photos/geetha-s.jpg" alt="Geetha S" onerror="this.style.display='none'"><span>GS</span></div><div class="person-name">Geetha S</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar"><img src="team-photos/bhavya.jpg" alt="Bhavya" onerror="this.style.display='none'"><span>B</span></div><div class="person-name">Bhavya</div><div class="person-role">FinOps</div></div>
         </div>
       </div>
       <div class="finops-group">
         <div class="finops-manager-card">
           <div class="person-head-tag">Sr. Manager</div>
-          <div class="person-avatar">MS</div>
+          <div class="person-avatar"><img src="team-photos/manju-s.jpg" alt="Manju S" onerror="this.style.display='none'"><span>MS</span></div>
           <div class="person-name">Manju S</div>
           <div class="person-role">FinOps</div>
         </div>
         <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
         <div class="finops-reports">
-        <div class="finops-report-card"><div class="person-avatar">KU</div><div class="person-name">K Umamaheswar</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar"><img src="team-photos/k-umamaheswar.jpg" alt="K Umamaheswar" onerror="this.style.display='none'"><span>KU</span></div><div class="person-name">K Umamaheswar</div><div class="person-role">FinOps</div></div>
         </div>
       </div>
       <div class="finops-group">
         <div class="finops-manager-card">
           <div class="person-head-tag">Sr. Manager</div>
-          <div class="person-avatar">KS</div>
+          <div class="person-avatar"><img src="team-photos/kavyashree-s.jpg" alt="Kavyashree S" onerror="this.style.display='none'"><span>KS</span></div>
           <div class="person-name">Kavyashree S</div>
           <div class="person-role">FinOps</div>
         </div>
         <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
         <div class="finops-reports">
-        <div class="finops-report-card"><div class="person-avatar">RS</div><div class="person-name">Rani S</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar"><img src="team-photos/rani-s.jpg" alt="Rani S" onerror="this.style.display='none'"><span>RS</span></div><div class="person-name">Rani S</div><div class="person-role">FinOps</div></div>
         </div>
       </div>
       <div class="finops-group">
         <div class="finops-manager-card">
           <div class="person-head-tag">Sr. Manager</div>
-          <div class="person-avatar">Ra</div>
+          <div class="person-avatar"><img src="team-photos/ramya-r.jpg" alt="Ramya R" onerror="this.style.display='none'"><span>Ra</span></div>
           <div class="person-name">Ramya R</div>
           <div class="person-role">FinOps</div>
         </div>
         <div class="finops-arrow"><i class="fas fa-arrow-right"></i></div>
         <div class="finops-reports">
-        <div class="finops-report-card"><div class="person-avatar">VK</div><div class="person-name">Vijay Kumar DN</div><div class="person-role">FinOps</div></div>
+        <div class="finops-report-card"><div class="person-avatar"><img src="team-photos/vijay-kumar-dn.jpg" alt="Vijay Kumar DN" onerror="this.style.display='none'"><span>VK</span></div><div class="person-name">Vijay Kumar DN</div><div class="person-role">FinOps</div></div>
         </div>
       </div>
     </div>
@@ -2769,7 +2782,7 @@ footer .footer-brand p, footer .footer-desc {
     <div class="team-people-grid">
       <div class="person-card person-card-head">
         <div class="person-head-tag head-badge">Department Head</div>
-        <div class="person-avatar">NM</div>
+        <div class="person-avatar"><img src="team-photos/namratha-mn.jpg" alt="Namratha MN" onerror="this.style.display='none'"><span>NM</span></div>
         <div class="person-name">Namratha MN</div>
         <div class="person-role">Head - Administration</div>
         <div class="person-quals">Office &amp; Operations Management</div>
@@ -2789,7 +2802,7 @@ footer .footer-brand p, footer .footer-desc {
     <div class="team-people-grid">
       <div class="person-card person-card-head">
         <div class="person-head-tag head-badge">Department Head</div>
-        <div class="person-avatar">SN</div>
+        <div class="person-avatar"><img src="team-photos/sowmya-n.jpg" alt="Sowmya N" onerror="this.style.display='none'"><span>SN</span></div>
         <div class="person-name">Sowmya N</div>
         <div class="person-role">Head - Human Resources</div>
         <div class="person-quals">HR Management &amp; Employee Relations</div>
