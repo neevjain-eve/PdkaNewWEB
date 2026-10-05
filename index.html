@@ -5386,14 +5386,7 @@ function closeSvcIfOutside(e) {
     // Footer
     var footer = document.querySelector('footer');
     if (footer && d.footer) footer.innerHTML = d.footer;
-    // Nav links
-    var navLinks = document.querySelector('.nav-links');
-    if (navLinks && d.nav) {
-      var tmp = document.createElement('div');
-      tmp.innerHTML = d.nav;
-      var newUl = tmp.querySelector('ul');
-      if (newUl) navLinks.innerHTML = newUl.innerHTML;
-    }
+    // Nav: translated in place by mega-i18n.js (keeps the mega menus intact)
     // Hero words
     if (window._heroWords) window._heroWords = heroWords[lang];
     // Get Started button
@@ -5803,6 +5796,7 @@ window.servicesI18n = {
   });
 })();
 </script>
+<script src="mega-i18n.js"></script>
 <script src="essentials.js" defer></script>
 </body>
 </html>
