@@ -1328,6 +1328,10 @@ footer .footer-brand p, footer .footer-desc {
   color: rgba(255,255,255,0.55) !important;
 }
 </style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0d1b3e">
 </head>
 <body>
 
@@ -1586,7 +1590,12 @@ footer .footer-brand p, footer .footer-desc {
 
     <div class="legal-section" id="s9">
       <h2><span class="sec-num">9</span> Cookies</h2>
-      <p>This website may use cookies to improve your browsing experience. Cookies are small files stored on your device. You can manage or disable cookies through your browser settings. Disabling cookies may affect some functionality of the website.</p>
+      <p>Cookies are small files stored on your device. This website uses them as follows:</p>
+      <ul>
+        <li><strong>Essential:</strong> your language and light/dark theme choice, your cookie and disclaimer choices. These are stored in your browser's local storage or a first-party cookie (<code>pdka_consent</code>, six months) and are needed for the site to work properly.</li>
+        <li><strong>Optional (analytics):</strong> we do not currently run analytics or advertising cookies. If we introduce them, they will only be set after you choose "Accept all" in the cookie banner.</li>
+      </ul>
+      <p>You can change your choice at any time using the "Cookie settings" link in the footer, or clear cookies and site data in your browser settings. Blocking essential storage may stop some features, such as language selection, from working.</p>
     </div>
 
     <div class="legal-section" id="s10">
@@ -2127,5 +2136,6 @@ footer .footer-brand p, footer .footer-desc {
   });
 })();
 </script>
+<script src="essentials.js" defer></script>
 </body>
 </html>
