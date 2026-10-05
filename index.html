@@ -195,6 +195,15 @@
     }
     .cert-badge i { color: #4caf86; margin-right: 5px; }
 
+
+    /* Hero office address */
+    .hero-address { display:inline-flex; align-items:flex-start; gap:14px; margin-top:28px; max-width:560px; padding:14px 20px; border-radius:12px; background:rgba(10,18,40,0.55); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.14); border-left:3px solid var(--orange); color:#fff; text-decoration:none; transition:background .2s, transform .2s; }
+    .hero-address:hover { background:rgba(10,18,40,0.75); transform:translateY(-2px); }
+    .hero-address i { color:var(--orange-light); font-size:18px; margin-top:3px; }
+    .hero-address strong { display:block; font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:var(--orange-light); margin-bottom:4px; }
+    .hero-address span { display:block; font-size:14px; line-height:1.55; color:rgba(255,255,255,0.92); font-weight:500; }
+    @media (max-width:600px){ .hero-address { margin-top:20px; padding:12px 14px; } .hero-address span { font-size:13px; } }
+
     /* Stats strip — fixed height so it never overflows 100vh */
     .hero-stats-strip {
       position: relative; z-index: 2; flex-shrink: 0;
@@ -1221,8 +1230,10 @@
       "email": "dilip@pdka.in",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Bangalore",
+        "streetAddress": "Unit F-5 & F-6 First Floor, Sampurna Chambers, 13, Vasavi Temple St, opp. Vijaya Bank, Vishweshwarapura, Shankarapura",
+        "addressLocality": "Bengaluru",
         "addressRegion": "Karnataka",
+        "postalCode": "560004",
         "addressCountry": "IN"
       },
       "geo": {
@@ -1365,10 +1376,10 @@
       ],
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Bangalore",
-        "addressLocality": "Bangalore",
+        "streetAddress": "Unit F-5 & F-6 First Floor, Sampurna Chambers, 13, Vasavi Temple St, opp. Vijaya Bank, Vishweshwarapura, Shankarapura",
+        "addressLocality": "Bengaluru",
         "addressRegion": "Karnataka",
-        "postalCode": "560001",
+        "postalCode": "560004",
         "addressCountry": "IN"
       },
       "geo": { "@type": "GeoCoordinates", "latitude": 12.9716, "longitude": 77.5946 },
@@ -1830,6 +1841,10 @@ footer .footer-brand p, footer .footer-desc {
   <div class="hero-content-wrap">
     <div class="hero-content">
       <h1 class="hero-title" data-i18n="hero-title">Empowering<br/>Businesses with<br/><span id="hero-word"></span></h1>
+      <a class="hero-address" id="heroAddress" href="https://www.google.com/maps/search/Sampurna+Chambers+13+Vasavi+Temple+St+opp+Vijaya+Bank+Vishweshwarapura+Shankarapura+Bengaluru+560004" target="_blank" rel="noopener">
+        <i class="fas fa-map-marker-alt"></i>
+        <div><strong id="heroAddrLabel">Visit Our Office</strong><span id="heroAddrText">Unit F-5 &amp; F-6 First Floor, Sampurna Chambers, 13, Vasavi Temple St, opp. Vijaya Bank, Vishweshwarapura, Shankarapura, Bengaluru, Karnataka 560004</span></div>
+      </a>
     </div>
   </div>
 </section>
@@ -5801,5 +5816,29 @@ window.servicesI18n = {
 })();
 </script>
 <script src="essentials.js" defer></script>
+<script id="pdka-hero-address">
+(function () {
+  var D = {
+    en: ['Visit Our Office', 'Unit F-5 & F-6 First Floor, Sampurna Chambers, 13, Vasavi Temple St, opp. Vijaya Bank, Vishweshwarapura, Shankarapura, Bengaluru, Karnataka 560004'],
+    ja: ['オフィスのご案内', 'F-5 & F-6号室、1階、Sampurna Chambers、13, Vasavi Temple St、Vijaya Bank向かい、Vishweshwarapura、Shankarapura、ベンガルール、カルナータカ州 560004'],
+    hi: ['हमारा कार्यालय', 'F-5 & F-6, प्रथम तल, Sampurna Chambers, 13, Vasavi Temple St, Vijaya Bank के सामने, Vishweshwarapura, Shankarapura, बेंगलुरु, कर्नाटक 560004']
+  };
+  function apply(l) {
+    var d = D[l] || D.en, a = document.getElementById('heroAddrLabel'), b = document.getElementById('heroAddrText');
+    if (a && b) { a.textContent = d[0]; b.textContent = d[1]; }
+  }
+  function saved() { try { return localStorage.getItem('pdka-lang') || 'en'; } catch (e) { return 'en'; } }
+  function wrap() {
+    var orig = window.setLang;
+    if (typeof orig === 'function' && !orig.__heroAddr) {
+      var w = function (l) { var r = orig.apply(this, arguments); apply(l); return r; };
+      w.__heroAddr = true; window.setLang = w;
+    }
+  }
+  apply(saved());
+  window.addEventListener('load', function () { wrap(); apply(saved()); });
+  window.addEventListener('pageshow', function () { apply(saved()); });
+})();
+</script>
 </body>
 </html>
