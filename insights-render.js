@@ -9,7 +9,8 @@
   var ALL = window.PDKA_INSIGHTS || [];
   var CAT = window.PDKA_CATEGORIES || {};
   var PUB = ALL.filter(function (e) { return e.status === 'published'; })
-               .sort(function (a, b) { return b.date < a.date ? -1 : b.date > a.date ? 1 : 0; });
+               .sort(function (a, b) { return b.date < a.date ? -1 : b.date > a.date ? 1 : 0; })
+               .slice(0, window.PDKA_MAX_VISIBLE || 1000);
 
   var MONTHS = {
     en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -47,7 +48,7 @@
     if (l === 'hi') return fullDate(e, l) + ' को प्रकाशित · ' + e.readMins + ' मिनट पढ़ने का समय';
     return 'Published ' + FULLM[p.m - 1] + ' ' + p.d + ', ' + p.y + ' · ' + e.readMins + ' min read';
   }
-  function byId(id) { for (var i = 0; i < ALL.length; i++) if (ALL[i].id === id && ALL[i].status === 'published') return ALL[i]; return null; }
+  function byId(id) { for (var i = 0; i < PUB.length; i++) if (PUB[i].id === id) return PUB[i]; return null; }
 
   var cache = {};
   function body(id) {

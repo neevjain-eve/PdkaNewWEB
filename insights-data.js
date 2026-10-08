@@ -8,6 +8,10 @@
  * sources:[{label,url}] (shown under the article).
  * Content must be factual and informational (ICAI Code of Ethics): no solicitation, comparison or claims of superiority.
  */
+/* Freshness: the site shows only the newest PDKA_MAX_VISIBLE published articles.
+ * Older ones drop off automatically (kept in this file and in insights/, never deleted).
+ * Change the number to show more or fewer. */
+window.PDKA_MAX_VISIBLE = 8;
 window.PDKA_CATEGORIES = {
   "ICAI": "ICAI",
   "ITR": "Taxation",

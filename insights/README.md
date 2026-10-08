@@ -34,3 +34,7 @@ the pull request is reviewed and merged. Before merging, change `"status": "draf
 Informational only. No client names, testimonials, fees, comparisons or claims of being best/leading,
 no promotion of the firm or its services, no calls to action. Cite official sources. A partner should approve
 each article before it is published.
+
+
+## Rolling window
+`PDKA_MAX_VISIBLE` in `insights-data.js` (default 8) limits the site to the newest published articles. When a new one is published, the oldest drops off automatically. Nothing is deleted.
