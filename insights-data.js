@@ -22,6 +22,17 @@ window.PDKA_CATEGORIES = {
 };
 window.PDKA_INSIGHTS = [
   {
+    "id": "cbdtdue2026",
+    "category": "ITR",
+    "topic": "Income Tax",
+    "date": "2026-10-08",
+    "title": "CBDT extends AY 2026-27 due dates for tax audit report and return of income in audit cases",
+    "summary": "CBDT has moved the tax audit report date to 21 October 2026 and the return due date for audit cases to 21 November 2026. A formal order is to follow; who is covered and what to check are summarised.",
+    "readMins": 3,
+    "status": "draft",
+    "sources": [{ "label": "CBDT press release, 28 September 2026: extension of due date for furnishing return of income for AY 2026-27", "url": "https://www.incometaxindia.gov.in/documents/d/guest/cbdt-extends-due-date-for-furnishing-return-of-income-for-ay-2026-27-pdf" }]
+  },
+  {
     "id": "cafirmblr2026",
     "category": "COMPANY",
     "topic": "Bangalore",
