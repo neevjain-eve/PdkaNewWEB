@@ -1485,10 +1485,10 @@
 
 <style id="page-transitions">
 /* Page fade-in on load */
-body { animation: pageFadeIn 0.35s ease forwards; }
+body { animation: pageFadeIn 0.35s ease; }
 @keyframes pageFadeIn {
   from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: none; }
 }
 /* Fade-out before leaving */
 body.page-leaving {
@@ -2122,56 +2122,7 @@ footer .footer-brand p, footer .footer-desc {
       </div>
       <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="ins-all">View All <i class="fas fa-arrow-right"></i></a>
     </div>
-    <div class="insights-grid">
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">ICAI · Apr 2026</span>
-          <h3>ICAI Code of Ethics 2026: What Changed for CA Firms</h3>
-          <p>The 13th Edition of the ICAI Code of Ethics effective April 2026 brings significant changes to advertising, website, and networking guidelines for CA firms.</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">Apr 15, 2026</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('icai2026')">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">ITR · Apr 2026</span>
-          <h3>ITR Filing FY 2025-26: Compliance Checklist for Businesses</h3>
-          <p>Key deadlines, updated ITR forms, and a practical compliance checklist to ensure accurate and timely ITR filing for FY 2025-26.</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">Apr 8, 2026</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('itr2026')">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">FEMA · Jan 2025</span>
-          <h3>FEMA 2025: Foreign Remittances, ODI Rules &amp; Compliance for IT Companies</h3>
-          <p>Updated FEMA compliance guide covering overseas direct investment, LRS limits, and key obligations for IT &amp; ITES companies with foreign operations.</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">Jan 20, 2025</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('fema2025')">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">Union Budget · May 2026</span>
-          <h3>Union Budget FY2026-27: Key Tax Changes for Businesses</h3>
-          <p>A summary of direct and indirect tax amendments from the Union Budget 2026-27 and their implications for Indian businesses and MSMEs.</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">May 1, 2026</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('budget2026')">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
+    <div class="insights-grid"></div>
   </div>
 </section>
 
@@ -2931,144 +2882,18 @@ function toggleTheme() {
 </div>
 
 <script>
-const articles = {
-  icai2026: {
-    tag: 'ICAI · Apr 2026',
-    title: 'ICAI Code of Ethics 2026: What Changed for CA Firms',
-    meta: 'Published April 15, 2026 · 5 min read',
-    body: `
-      <h3>Overview</h3>
-      <p>The Institute of Chartered Accountants of India (ICAI) released the <strong>13th Edition of the Code of Ethics</strong>, effective from April 1, 2026. This edition aligns Indian standards closer to the IESBA International Code and introduces substantive changes that every CA firm must be aware of.</p>
-
-      <h3>Key Changes: Advertising & Publicity</h3>
-      <p>CA firms are now permitted to maintain a professional website and list their services, provided content is factual and not misleading. The following are now permitted:</p>
-      <ul>
-        <li>Listing services offered, fee ranges (indicative), and team credentials</li>
-        <li>Publishing technical articles, insights, and thought leadership content</li>
-        <li>Mentioning major client industries (without naming clients)</li>
-      </ul>
-      <p>However, <strong>comparative advertising, testimonials, and ranking claims</strong> remain prohibited. Firms must not imply superiority over other CA firms in any medium.</p>
-
-      <h3>Networking & Referral Arrangements</h3>
-      <p>The 2026 edition provides greater clarity on permitted networking. CA firms may enter into formal alliances with non-CA professionals (lawyers, valuers, consultants) for cross-referrals, provided independence is not compromised and clients are informed of such arrangements upfront.</p>
-
-      <h3>Independence for Audit Engagements</h3>
-      <p>Significant tightening of independence rules for statutory auditors includes:</p>
-      <ul>
-        <li>Cooling-off period of 2 years before an audit firm partner can join an audit client</li>
-        <li>Explicit prohibition on audit firms providing bookkeeping, payroll, or IT implementation to audit clients</li>
-        <li>Strengthened provisions on financial self-interest and advocacy threats</li>
-      </ul>
-
-      <h3>What PDKA Is Doing</h3>
-      <p>At P. Dilip Kumar & Associates, we have reviewed our engagement letters, website content, and referral practices to ensure full compliance with the updated Code. Our team undertook internal training in March 2026 ahead of the April effective date.</p>
-
-      <div class="article-modal-cta">
-        <p>Questions about how the new Code impacts your firm or engagement with us?</p>
-        <a href="#contact" class="btn-primary" onclick="closeArticle()" style="display:inline-flex;">Contact Us <i class="fas fa-arrow-right"></i></a>
-      </div>
-    `
-  },
-  itr2026: {
-    tag: 'ITR · Apr 2026',
-    title: 'ITR Filing FY 2025-26: Compliance Checklist for Businesses',
-    meta: 'Published April 8, 2026 · 6 min read',
-    body: `
-      <h3>Key Deadlines for FY 2025-26</h3>
-      <p>Staying ahead of ITR deadlines is critical to avoiding interest under Section 234A/B/C and late filing fees under Section 234F. Here are the key dates:</p>
-      <ul>
-        <li><strong>July 31, 2026</strong> — Non-audit cases (individuals, HUFs, firms not requiring audit)</li>
-        <li><strong>October 31, 2026</strong> — Audit cases (companies, firms requiring tax audit)</li>
-        <li><strong>November 30, 2026</strong> — Entities with transfer pricing report (Form 3CEB)</li>
-      </ul>
-
-      <h3>Updated ITR Forms for AY 2026-27</h3>
-      <p>The CBDT notified revised ITR forms in March 2026. Notable changes include:</p>
-      <ul>
-        <li><strong>ITR-3 & ITR-5:</strong> New schedules for reporting crypto assets and VDA income separately</li>
-        <li><strong>ITR-6:</strong> Enhanced disclosure for related-party transactions and deferred tax</li>
-        <li><strong>All forms:</strong> Mandatory linking of PAN with Aadhaar; mismatches will result in processing delays</li>
-      </ul>
-
-      <h3>Pre-Filing Compliance Checklist</h3>
-      <ul>
-        <li>☑ Reconcile Books of Accounts with 26AS, AIS, and TIS</li>
-        <li>☑ Verify TDS credits — mismatches are a primary cause of ITR processing delays</li>
-        <li>☑ Confirm depreciation calculation under both Companies Act and Income Tax Act</li>
-        <li>☑ Review MAT/AMT applicability and compute book profits under Section 115JB</li>
-        <li>☑ Compile details of carried-forward losses and ensure proper schedule filing</li>
-        <li>☑ MSME vendor outstanding — Section 43B(h) disallowance applicable where dues unpaid beyond agreed period</li>
-        <li>☑ Ensure Form 3CD, 3CB, and 3CA are finalised before due date</li>
-      </ul>
-
-      <h3>Common Pitfalls to Avoid</h3>
-      <p>Our team frequently encounters these errors during tax filings. Double-check your returns against these before submission:</p>
-      <ul>
-        <li>Incorrect reporting of deemed dividends under Section 2(22)(e)</li>
-        <li>Missing disclosure of director loans in closely-held companies</li>
-        <li>Failure to report exempt income (LTCG on equities below ₹1 lakh threshold must still be disclosed)</li>
-      </ul>
-
-      <div class="article-modal-cta">
-        <p>Need assistance with ITR filing or tax audit for FY 2025-26?</p>
-        <a href="#contact" class="btn-primary" onclick="closeArticle()" style="display:inline-flex;">Get in Touch <i class="fas fa-arrow-right"></i></a>
-      </div>
-    `
-  },
-  fema2025: {
-    tag: 'FEMA · Jan 2025',
-    title: 'FEMA 2025: Foreign Remittances, ODI Rules & Compliance for IT Companies',
-    meta: 'Published January 20, 2025 · 7 min read',
-    body: `
-      <h3>Background</h3>
-      <p>The Foreign Exchange Management Act (FEMA) framework saw significant regulatory updates in 2024–25. For IT and ITES companies with global operations, understanding the updated ODI rules, LRS limits, and AD bank obligations is essential to remain compliant.</p>
-
-      <h3>Overseas Direct Investment (ODI) — Revised Framework</h3>
-      <p>FEMA (Overseas Investment) Rules, 2022 and subsequent RBI circulars have reshaped how Indian companies can invest abroad. Key points for IT firms:</p>
-      <ul>
-        <li><strong>Financial Commitment (FC) limit:</strong> Indian entities can invest up to 400% of their net worth in overseas JVs/WOS, subject to RBI approval beyond automatic route thresholds</li>
-        <li><strong>Step-down subsidiaries:</strong> Any indirect investment through a foreign holding company must now be reported in the Annual Performance Report (APR)</li>
-        <li><strong>Round-tripping:</strong> Structures where funds remitted overseas are reinvested in India via a foreign entity remain under enhanced scrutiny</li>
-      </ul>
-
-      <h3>LRS (Liberalised Remittance Scheme) Updates</h3>
-      <p>The $250,000 per financial year limit remains unchanged for individuals. However, the TCS implications under Section 206C(1G) must be factored in:</p>
-      <ul>
-        <li>TCS @ 20% applies on remittances exceeding ₹7 lakh per FY under LRS (except for education loans and medical treatment)</li>
-        <li>Employers must account for TCS on overseas travel packages arranged for employees</li>
-        <li>Form 15CA/CB requirements remain mandatory for most foreign remittances above prescribed thresholds</li>
-      </ul>
-
-      <h3>Compliance Obligations for IT & ITES Companies</h3>
-      <p>IT companies with subsidiaries or branch offices overseas face the following ongoing compliance requirements:</p>
-      <ul>
-        <li><strong>APR (Annual Performance Report):</strong> Due by December 31 each year; covers financial details of foreign entity and repatriation of dividends</li>
-        <li><strong>Form ODI:</strong> Must be filed within 30 days of any new investment or change in shareholding of the overseas entity</li>
-        <li><strong>SOFTEX / STPI:</strong> IT exporters must file SOFTEX forms for software exports; non-compliance attracts RBI notice</li>
-        <li><strong>ECB compliance:</strong> External Commercial Borrowings from overseas group entities require RBI filing and adherence to all-in-cost ceilings</li>
-      </ul>
-
-      <h3>How PDKA Can Help</h3>
-      <p>Our FEMA practice, led by our founder P. Dilip Kumar (a CISA-certified expert with experience across 9 countries), assists IT and ITES companies with ODI filings, APR preparation, SOFTEX compliance, and RBI compounding applications where past non-compliances need to be regularised.</p>
-
-      <div class="article-modal-cta">
-        <p>Need a FEMA compliance review for your company's overseas operations?</p>
-        <a href="#contact" class="btn-primary" onclick="closeArticle()" style="display:inline-flex;">Talk to Our Team <i class="fas fa-arrow-right"></i></a>
-      </div>
-    `
-  }
-};
-
 function openArticle(id) {
-  const a = articles[id];
+  const a = window.PDKA_ARTICLE && PDKA_ARTICLE.get(id);
   if (!a) return;
-  document.getElementById('modalTag').textContent = a.tag;
-  document.getElementById('modalTitle').textContent = a.title;
-  document.getElementById('modalMeta').textContent = a.meta;
-  document.getElementById('modalBody').innerHTML = a.body;
+  document.getElementById('modalTag').textContent = PDKA_ARTICLE.tag(a);
+  document.getElementById('modalTitle').textContent = PDKA_ARTICLE.title(a);
+  document.getElementById('modalMeta').textContent = PDKA_ARTICLE.meta(a);
+  const bodyEl = document.getElementById('modalBody');
+  bodyEl.innerHTML = '<p>' + PDKA_ARTICLE.loadingText() + '</p>';
   const overlay = document.getElementById('articleModal');
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
+  PDKA_ARTICLE.body(id).then(function (h) { bodyEl.innerHTML = h; });
 }
 function closeArticle() {
   document.getElementById('articleModal').classList.remove('open');
@@ -3902,56 +3727,7 @@ function closeSvcIfOutside(e) {
       </div>
       <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="ins-all">View All <i class="fas fa-arrow-right"></i></a>
     </div>
-    <div class="insights-grid">
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">ICAI · Apr 2026</span>
-          <h3>ICAI Code of Ethics 2026: What Changed for CA Firms</h3>
-          <p>The 13th Edition of the ICAI Code of Ethics effective April 2026 brings significant changes to advertising, website, and networking guidelines for CA firms.</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">Apr 15, 2026</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('icai2026')">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">ITR · Apr 2026</span>
-          <h3>ITR Filing FY 2025-26: Compliance Checklist for Businesses</h3>
-          <p>Key deadlines, updated ITR forms, and a practical compliance checklist to ensure accurate and timely ITR filing for FY 2025-26.</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">Apr 8, 2026</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('itr2026')">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">FEMA · Jan 2025</span>
-          <h3>FEMA 2025: Foreign Remittances, ODI Rules &amp; Compliance for IT Companies</h3>
-          <p>Updated FEMA compliance guide covering overseas direct investment, LRS limits, and key obligations for IT &amp; ITES companies with foreign operations.</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">Jan 20, 2025</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('fema2025')">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">Union Budget · May 2026</span>
-          <h3>Union Budget FY2026-27: Key Tax Changes for Businesses</h3>
-          <p>A summary of direct and indirect tax amendments from the Union Budget 2026-27 and their implications for Indian businesses and MSMEs.</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">May 1, 2026</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('budget2026')">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
+    <div class="insights-grid"></div>
   </div>
 `,
       contact:  `
@@ -4513,56 +4289,7 @@ function closeSvcIfOutside(e) {
       </div>
       <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;">すべて見る <i class="fas fa-arrow-right"></i></a>
     </div>
-    <div class="insights-grid">
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">ICAI · 2026年4月</span>
-          <h3>ICAI倫理規程2026：CA事務所への変更点</h3>
-          <p>2026年4月施行のICAI倫理規程第13版により、CA事務所の広告、ウェブサイト、ネットワーキングガイドラインに重要な変更が加えられました。</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">2026年4月15日</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('icai2026')">続きを読む <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">ITR · 2026年4月</span>
-          <h3>ITR申告 FY2025-26：企業向けコンプライアンスチェックリスト</h3>
-          <p>FY2025-26の正確・適時なITR申告を確実にするための主要期限、更新されたITRフォーム、実践的なコンプライアンスチェックリストをご紹介します。</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">2026年4月8日</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('itr2026')">続きを読む <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">FEMA · 2025年1月</span>
-          <h3>FEMA 2025：IT企業向け海外送金・ODIルール・コンプライアンス</h3>
-          <p>海外直接投資、LRS上限額、外国事業を持つIT・ITES企業向けの主要義務を網羅したFEMAコンプライアンスガイド更新版。</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">2025年1月20日</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('fema2025')">続きを読む <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">予算 · 2026年5月</span>
-          <h3>2026-27年度予算：企業向け主要税制変更点</h3>
-          <p>2026-27年度連邦予算における直接税・間接税の改正点と、インド企業および中小企業への影響をまとめました。</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">2026年5月1日</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('budget2026')">続きを読む <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
+    <div class="insights-grid"></div>
   </div>
 `,
       contact:  `
@@ -5118,56 +4845,7 @@ function closeSvcIfOutside(e) {
       </div>
       <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;">सभी देखें <i class="fas fa-arrow-right"></i></a>
     </div>
-    <div class="insights-grid">
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">ICAI · अप्रैल 2026</span>
-          <h3>ICAI आचार संहिता 2026: CA फर्मों पर प्रभाव</h3>
-          <p>अप्रैल 2026 से लागू ICAI आचार संहिता के 13वें संस्करण में CA फर्मों के विज्ञापन, वेबसाइट और नेटवर्किंग दिशानिर्देशों में महत्वपूर्ण बदलाव किए गए हैं।</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">15 अप्रैल 2026</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('icai2026')">और पढ़ें <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">ITR · अप्रैल 2026</span>
-          <h3>ITR फाइलिंग FY2025-26: व्यवसायों के लिए अनुपालन चेकलिस्ट</h3>
-          <p>FY2025-26 के लिए सटीक और समय पर ITR फाइलिंग सुनिश्चित करने हेतु प्रमुख तिथियां, अपडेट किए गए ITR फॉर्म और व्यावहारिक अनुपालन चेकलिस्ट।</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">8 अप्रैल 2026</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('itr2026')">और पढ़ें <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">FEMA · जनवरी 2025</span>
-          <h3>FEMA 2025: IT कंपनियों के लिए विदेशी प्रेषण, ODI नियम एवं अनुपालन</h3>
-          <p>विदेशी प्रत्यक्ष निवेश, LRS सीमाएं और विदेशी कारोबार वाली IT/ITES कंपनियों के लिए प्रमुख दायित्वों को कवर करने वाली FEMA अनुपालन मार्गदर्शिका।</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">20 जनवरी 2025</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('fema2025')">और पढ़ें <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-header"></div>
-        <div class="insight-body">
-          <span class="insight-tag">केंद्रीय बजट · मई 2026</span>
-          <h3>केंद्रीय बजट FY2026-27: व्यवसायों के लिए प्रमुख कर परिवर्तन</h3>
-          <p>केंद्रीय बजट 2026-27 के प्रत्यक्ष एवं अप्रत्यक्ष कर संशोधनों तथा भारतीय व्यवसायों एवं MSME पर उनके प्रभाव का सारांश।</p>
-        </div>
-        <div class="insight-footer">
-          <span class="insight-date">1 मई, 2026</span>
-          <a href="javascript:void(0)" class="insight-link" onclick="openArticle('budget2026')">और पढ़ें <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
+    <div class="insights-grid"></div>
   </div>`
 ,
       contact:  `  <div class="section-inner">
@@ -5796,6 +5474,8 @@ window.servicesI18n = {
   });
 })();
 </script>
+<script src="insights-data.js"></script>
+<script src="insights-render.js"></script>
 <script src="mega-i18n.js"></script>
 <script src="essentials.js" defer></script>
 </body>

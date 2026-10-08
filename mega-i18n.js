@@ -85,7 +85,7 @@
   }
 
   function nodes() {
-    return document.querySelectorAll('.mega-menu .mega-label, .mega-menu b, .mega-menu small');
+    return document.querySelectorAll('.mega-menu .mega-label, .mega-menu a:not([data-dyn]) b, .mega-menu a:not([data-dyn]) small');
   }
   function apply(lang) {
     applyNav(lang);

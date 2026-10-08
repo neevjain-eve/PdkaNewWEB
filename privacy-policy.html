@@ -1148,10 +1148,10 @@
 
 <style id="page-transitions">
 /* Page fade-in on load */
-body { animation: pageFadeIn 0.35s ease forwards; }
+body { animation: pageFadeIn 0.35s ease; }
 @keyframes pageFadeIn {
   from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: none; }
 }
 /* Fade-out before leaving */
 body.page-leaving {
@@ -2136,6 +2136,8 @@ footer .footer-brand p, footer .footer-desc {
   });
 })();
 </script>
+<script src="insights-data.js"></script>
+<script src="insights-render.js"></script>
 <script src="mega-i18n.js"></script>
 <script src="essentials.js" defer></script>
 </body>
