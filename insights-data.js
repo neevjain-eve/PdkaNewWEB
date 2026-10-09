@@ -26,6 +26,17 @@ window.PDKA_CATEGORIES = {
 };
 window.PDKA_INSIGHTS = [
   {
+    "id": "mcaannual2026",
+    "category": "COMPANY",
+    "topic": "Companies Act",
+    "date": "2026-10-09",
+    "title": "Annual filing with the ROC for FY 2025-26: AOC-4 and MGT-7 timelines under the Companies Act",
+    "summary": "AOC-4 is due within 30 days and MGT-7 within 60 days of the AGM. For an AGM held on 30 September 2026, that is 30 October and 29 November 2026.",
+    "readMins": 3,
+    "status": "draft",
+    "sources": [{ "label": "Ministry of Corporate Affairs: Companies Act, 2013 and Rules (sections 92, 96, 137)", "url": "https://www.mca.gov.in" }]
+  },
+  {
     "id": "cbdtdue2026",
     "category": "ITR",
     "topic": "Income Tax",
