@@ -26,6 +26,20 @@ window.PDKA_CATEGORIES = {
 };
 window.PDKA_INSIGHTS = [
   {
+    "id": "femaexim2610",
+    "category": "FEMA",
+    "topic": "FEMA",
+    "date": "2026-10-12",
+    "title": "RBI export and import regulations in force from 1 October 2026: nine-month realisation period",
+    "summary": "The FEMA Export and Import of Goods and Services Regulations, 2026 took effect on 1 October 2026. A 22 September amendment set export realisation at nine months, or twelve if invoiced in rupees.",
+    "readMins": 3,
+    "status": "draft",
+    "sources": [
+      { "label": "RBI: FEMA 23(R)/2026-RB, Export and Import of Goods and Services Regulations, 2026 (as amended up to 22 September 2026)", "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277&Mode=0" },
+      { "label": "RBI press release 2025-2026/1933, 16 January 2026", "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=62049" }
+    ]
+  },
+  {
     "id": "mcaannual2026",
     "category": "COMPANY",
     "topic": "Companies Act",
