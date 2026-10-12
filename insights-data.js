@@ -33,7 +33,7 @@ window.PDKA_INSIGHTS = [
     "title": "RBI export and import regulations in force from 1 October 2026: nine-month realisation period",
     "summary": "The FEMA Export and Import of Goods and Services Regulations, 2026 took effect on 1 October 2026. A 22 September amendment set export realisation at nine months, or twelve if invoiced in rupees.",
     "readMins": 3,
-    "status": "draft",
+    "status": "published",
     "sources": [
       { "label": "RBI: FEMA 23(R)/2026-RB, Export and Import of Goods and Services Regulations, 2026 (as amended up to 22 September 2026)", "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277&Mode=0" },
       { "label": "RBI press release 2025-2026/1933, 16 January 2026", "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=62049" }
@@ -47,7 +47,7 @@ window.PDKA_INSIGHTS = [
     "title": "Annual filing with the ROC for FY 2025-26: AOC-4 and MGT-7 timelines under the Companies Act",
     "summary": "AOC-4 is due within 30 days and MGT-7 within 60 days of the AGM. For an AGM held on 30 September 2026, that is 30 October and 29 November 2026.",
     "readMins": 3,
-    "status": "draft",
+    "status": "published",
     "sources": [{ "label": "Ministry of Corporate Affairs: Companies Act, 2013 and Rules (sections 92, 96, 137)", "url": "https://www.mca.gov.in" }]
   },
   {
