@@ -26,6 +26,20 @@ window.PDKA_CATEGORIES = {
 };
 window.PDKA_INSIGHTS = [
   {
+    "id": "gstcouncil57",
+    "category": "GST",
+    "topic": "GST",
+    "date": "2026-10-19",
+    "title": "57th GST Council recommendations of 8 October 2026: registration, refunds, ITC, penalties and arrest",
+    "summary": "The Council recommended process reforms, ITC changes, higher prosecution thresholds and removal of arrest powers. These take effect only once notified or legislated.",
+    "readMins": 4,
+    "status": "published",
+    "sources": [
+      { "label": "GST Council: Recommendations of the 57th Meeting (press release)", "url": "https://www.gstcouncil.gov.in/sites/default/files/2026-10/press_release.pdf" },
+      { "label": "PIB: Recommendations of the 57th Meeting of the GST Council", "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2320934&reg=48&lang=1" }
+    ]
+  },
+  {
     "id": "femaexim2610",
     "category": "FEMA",
     "topic": "FEMA",
