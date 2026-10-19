@@ -460,11 +460,16 @@ window.PDKA_INSIGHTS = [
     "category": "DPDPA",
     "topic": "DPDPA",
     "date": "2025-12-05",
-    "title": "DPDPA 2023: A Practical Compliance Roadmap for Businesses",
-    "summary": "India's Digital Personal Data Protection Act enforcement begins May 2027. Here is a step-by-step readiness roadmap — from data mapping to consent management and breach response protocols.",
-    "readMins": 8,
+    "title": "Digital Personal Data Protection Act, 2023 and the DPDP Rules, 2025: an overview",
+    "summary": "The DPDP Rules were notified on 14 November 2025 with an eighteen-month phased timeline. This summarises duties of Data Fiduciaries, rights of individuals and the maximum penalties.",
+    "readMins": 4,
     "status": "published",
-    "sources": []
+    "reviewed": "2026-10-19",
+    "updated": "2026-10-19",
+    "sources": [
+      { "label": "PIB: Government notifies DPDP Rules to empower citizens and protect privacy (14 November 2025)", "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014&reg=3&lang=2" },
+      { "label": "PIB: DPDP Rules, 2025 Notified (explainer)", "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/nov/doc20251117695301.pdf" }
+    ]
   },
   {
     "id": "vcfo2025",
@@ -495,21 +500,18 @@ window.PDKA_INSIGHTS = [
     "category": "FEMA",
     "topic": "FEMA",
     "date": "2025-01-20",
-    "title": "FEMA 2025-26: Foreign Remittances, ODI Rules & Compliance for IT Companies",
-    "summary": "Updated FEMA compliance guide covering overseas direct investment, LRS limits, and key obligations for IT & ITES companies with foreign operations.",
-    "readMins": 7,
+    "title": "FEMA overview: overseas investment reporting, the Liberalised Remittance Scheme and TCS on remittances",
+    "summary": "Summarises the RBI overseas investment framework, the annual USD 250,000 LRS limit and the TCS threshold on remittances, with pointers to the official pages.",
+    "readMins": 3,
     "status": "published",
-    "sources": [],
-    "featured": true,
-    "i18n": {
-      "ja": {
-        "title": "FEMA 2025：IT企業向け海外送金・ODIルール・コンプライアンス",
-        "summary": "海外直接投資、LRS上限額、外国事業を持つIT・ITES企業向けの主要義務を網羅したFEMAコンプライアンスガイド更新版。"
-      },
-      "hi": {
-        "title": "FEMA 2025: IT कंपनियों के लिए विदेशी प्रेषण, ODI नियम एवं अनुपालन",
-        "summary": "विदेशी प्रत्यक्ष निवेश, LRS सीमाएं और विदेशी कारोबार वाली IT/ITES कंपनियों के लिए प्रमुख दायित्वों को कवर करने वाली FEMA अनुपालन मार्गदर्शिका।"
-      }
-    }
+    "reviewed": "2026-10-19",
+    "updated": "2026-10-19",
+    "sources": [
+      { "label": "RBI: Foreign Exchange Management (Overseas Investment) Rules and Regulations, 2022 (22 August 2022)", "url": "https://rbi.org.in/scripts/NotificationUser.aspx?Mode=0&Id=12381" },
+      { "label": "RBI: Annual Performance Report (APR) form and instructions", "url": "https://www.rbi.org.in/hindi1/Upload/Returns/PDFs/FORM%20APR%2022082022C172346CFDD64D89979E63A2492C53B8.PDF" },
+      { "label": "RBI FAQ: Liberalised Remittance Scheme", "url": "https://www.rbi.org.in/Scripts/FAQDisplay.aspx?Id=115" },
+      { "label": "Income Tax Department: TCS rates", "url": "https://www.incometaxindia.gov.in/w/tcs-rates" }
+    ],
+    "featured": true
   }
 ];
