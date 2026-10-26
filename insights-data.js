@@ -419,7 +419,9 @@ window.PDKA_INSIGHTS = [
     "title": "State Industrial Incentives for MNCs in India 2026: Karnataka, Tamil Nadu, Telangana & Maharashtra",
     "summary": "Each Indian state competes aggressively for MNC investment with capital subsidies, power tariff concessions, and stamp duty waivers. A head-to-head comparison for manufacturing and IT companies.",
     "readMins": 7,
-    "status": "published",
+    "reviewed": "2026-10-26",
+    "status": "hold",
+    "holdReason": "Comparative state incentive figures could not be verified against official state policy documents and the text contains superlatives and company references; needs a full rewrite from official state policies.",
     "sources": []
   },
   {
@@ -439,11 +441,18 @@ window.PDKA_INSIGHTS = [
     "category": "MNC",
     "topic": "MNC",
     "date": "2026-02-01",
-    "title": "India Subsidiary Annual Compliance Calendar 2026: RBI, MCA, Income Tax, GST & TP Deadlines",
-    "summary": "Missing a single RBI or MCA deadline can trigger penalties and compound interest that cost more than the underlying compliance. The complete month-by-month calendar for Indian subsidiaries of foreign companies.",
-    "readMins": 6,
+    "updated": "2026-10-26",
+    "reviewed": "2026-10-26",
+    "title": "Recurring compliance dates for companies with foreign investment: advance tax, RBI FLA return and GSTR-9",
+    "summary": "A summary of three recurring dates stated on official pages: advance tax instalments, the RBI Foreign Liabilities and Assets return (15 July) and the GST annual return (31 December).",
+    "readMins": 4,
     "status": "published",
-    "sources": []
+    "sources": [
+      { "label": "Income Tax Department: FAQs on interest under sections 234A, 234B, 234C and 234D (advance tax dates)", "url": "https://www.incometaxindia.gov.in/w/what-are-the-due-dates-for-payment-of-advance-tax-" },
+      { "label": "RBI: Foreign Liabilities and Assets (FLA) Return, FAQs", "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=1171" },
+      { "label": "GST portal: FAQs on Form GSTR-9", "url": "https://tutorial.gst.gov.in/userguide/returns/FAQs_gstr9.htm" },
+      { "label": "Income Tax Department: CBDT press release on AY 2026-27 due dates", "url": "https://www.incometaxindia.gov.in/documents/d/guest/cbdt-extends-due-date-for-furnishing-return-of-income-for-ay-2026-27-pdf" }
+    ]
   },
   {
     "id": "startupCAblr2026",
