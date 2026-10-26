@@ -26,6 +26,20 @@ window.PDKA_CATEGORIES = {
 };
 window.PDKA_INSIGHTS = [
   {
+    "id": "fastds2610",
+    "category": "ITR",
+    "topic": "Income Tax",
+    "date": "2026-10-26",
+    "title": "FAST-DS 2026: foreign assets disclosure scheme open until 31 December 2026",
+    "summary": "A one-time scheme under the Finance Act, 2026 lets eligible residents declare undisclosed foreign assets or income by 31 December 2026. Categories, thresholds and payment steps are summarised.",
+    "readMins": 4,
+    "status": "published",
+    "sources": [
+      { "label": "Income Tax Department: FAST-DS 2026 FAQs (13 August 2026)", "url": "https://www.incometaxindia.gov.in/documents/81799/15520974/FAST-DS-FAQs.pdf" },
+      { "label": "Income Tax Department: News and e-campaigns (CBDT Notification No. 114/2026, FAST-DS rules and forms)", "url": "https://www.incometax.gov.in/iec/foportal/latest-news" }
+    ]
+  },
+  {
     "id": "gstcouncil57",
     "category": "GST",
     "topic": "GST",
