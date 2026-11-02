@@ -385,8 +385,10 @@ window.PDKA_INSIGHTS = [
     "title": "Startup India for Foreign-Owned Startups: DPIIT Recognition, Angel Tax Exemption & Fund Repatriation",
     "summary": "Foreign-owned or foreign-funded startups in India can access DPIIT recognition, income tax exemption for 3 years, and angel tax relief under Section 56(2)(viib). Full eligibility and application guide.",
     "readMins": 6,
-    "status": "published",
-    "sources": []
+    "status": "hold",
+    "sources": [],
+    "reviewed": "2026-11-02",
+    "holdReason": "Weekly review 2026-11-02: angel tax (Section 56(2)(viib)), 80-IAC, tender and fee-rebate claims could not be verified against official sources in this run (provisions may have changed with the Finance Acts and the Income-tax Act, 2025), and the text uses persuasive wording. Needs a verified, neutral rewrite before republishing."
   },
   {
     "id": "gccblr2026",
@@ -408,8 +410,10 @@ window.PDKA_INSIGHTS = [
     "title": "GSTR-9 & GSTR-9C FY 2025-26: Filing Guide & Common Errors",
     "summary": "A practical guide to filing the GST Annual Return and Reconciliation Statement, covering common reconciliation pitfalls and how to avoid notices from the GST department.",
     "readMins": 6,
-    "status": "published",
-    "sources": []
+    "status": "hold",
+    "sources": [],
+    "reviewed": "2026-11-02",
+    "holdReason": "Weekly review 2026-11-02: filing thresholds, late-fee figures and form requirements could not be verified against cbic.gov.in / gst.gov.in in this run, and the FAQ contains promotional wording. Needs a verified, neutral rewrite before republishing."
   },
   {
     "id": "stateincentives2026",
