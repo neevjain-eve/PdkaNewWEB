@@ -119,3 +119,8 @@
 [data-theme="dark"] .dept-badge-label,
 [data-theme="dark"] .car-inner a { color: #f47820; }
 [data-theme="dark"] .career-badge { color: #4ade80; }
+
+/* ---- Language dropdown always wins over mega-menu panels (see lang-guard.js) ---- */
+html.lang-open .has-mega .mega-menu,
+html.lang-open .has-mega.mega-open .mega-menu { opacity: 0 !important; pointer-events: none !important; visibility: hidden; }
+.lang-dropdown { position: relative; z-index: 10000; }
