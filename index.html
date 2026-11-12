@@ -22,6 +22,9 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* a11y: skip link (visible only when focused) */
+    .skip-link { position: absolute; left: 12px; top: -64px; z-index: 100001; background: var(--navy); color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: top .15s; }
+    .skip-link:focus { top: 12px; outline: 3px solid var(--orange-fill); outline-offset: 2px; }
     :root[data-theme="dark"] { --orange-text: #e8600a; }
     :root {
       --navy: #0d1b3e;
@@ -1518,11 +1521,13 @@ footer .footer-brand p, footer .footer-desc {
 <meta name="theme-color" content="#0d1b3e">
 </head>
 <body>
+<a class="skip-link" href="#main" data-i18n-skip>Skip to main content</a>
 
 <!-- SECTION DOTS -->
 
 <!-- NAV -->
-<nav>
+<header>
+<nav aria-label="Primary">
   <a href="#home" class="nav-logo">
     <img src="logo.png?v=3" alt="PDKA" style="height:40px;width:auto;display:block;" />
   </a>
@@ -1642,6 +1647,7 @@ footer .footer-brand p, footer .footer-desc {
     <a href="#contact" onclick="closeMobileMenu()" class="btn-primary" style="display:inline-flex;margin-top:12px;justify-content:center;" data-i18n="nav-cta">Contact</a>
   </div>
 </nav>
+</header>
 
 <!-- ── PAGE OVERLAY (About / Careers / etc.) ── -->
 <div id="pdka-page-overlay" style="
@@ -1678,6 +1684,7 @@ footer .footer-brand p, footer .footer-desc {
 </div>
 
 
+<main id="main">
 <!-- HERO (sticky — about slides over it) -->
 <section id="home">
   <!-- Full-bleed background image -->
@@ -2236,7 +2243,7 @@ footer .footer-brand p, footer .footer-desc {
     </div>
   </div>
 </section>
-
+</main>
 
 <!-- FOOTER -->
 <footer>

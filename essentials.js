@@ -79,6 +79,19 @@
   }
 
   function addSkipLink() {
+    var existing = document.querySelector('a.skip-link');
+    if (existing) {
+      // Page ships its own skip link: localise it and move focus to the target on activation.
+      var tgt = document.querySelector(existing.getAttribute('href'));
+      existing.addEventListener('click', function () { if (tgt) { tgt.setAttribute('tabindex', '-1'); tgt.focus(); } });
+      var loc = function () { existing.textContent = t().skip; };
+      loc();
+      try {
+        var o = Storage.prototype.setItem;
+        Storage.prototype.setItem = function (k, v) { var r = o.apply(this, arguments); if (k === 'pdka-lang') loc(); return r; };
+      } catch (e) {}
+      return;
+    }
     var main = document.querySelector('main') || document.querySelector('[role="main"]');
     if (!main) { main = document.querySelector('section') || document.body.children[0]; }
     if (main && !main.id) main.id = 'main-content';
