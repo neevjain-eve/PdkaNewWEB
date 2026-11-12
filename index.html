@@ -366,7 +366,7 @@
     }
     .industry-card:hover .industry-overlay { background: linear-gradient(to top, rgba(232,96,10,0.82) 0%, rgba(232,96,10,0.3) 60%, transparent 100%); }
     .industry-overlay i { font-size: 24px; color: white; margin-bottom: 8px; opacity: 0.9; }
-    .industry-overlay h4 { font-size: 13px; font-weight: 700; color: white; text-align: center; line-height: 1.3; }
+    .industry-overlay h4, .industry-overlay h3 { font-size: 13px; font-weight: 700; color: white; text-align: center; line-height: 1.3; }
 
     /* ── TEAM ── */
     #team { background: var(--grey-light); }
@@ -595,7 +595,7 @@
     .footer-brand .nav-logo { margin-bottom: 16px; display: inline-flex; }
     .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; }
     .footer-brand .reg { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 12px; }
-    .footer-col h4 { font-size: 13px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px; }
+    .footer-col h4, .footer-col .footer-heading { font-size: 13px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
     .footer-col ul li a:hover { color: white; }
@@ -703,7 +703,7 @@
       padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px;
     }
-    .dept-info h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .dept-info h4, .dept-info h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
     .dept-info .dept-role { font-size: 12px; color: var(--text-mid); margin-bottom: 4px; }
     .dept-info .dept-quals { font-size: 11px; color: var(--text-light); font-weight: 600; }
     .dept-team-link { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; color: var(--orange); text-decoration: none; margin-top: 10px; transition: gap 0.2s; }
@@ -846,6 +846,7 @@
     [data-theme="dark"] .insight-card { background: #ffffff !important; border-color: rgba(13,27,62,0.08) !important; box-shadow: 0 4px 24px rgba(0,0,0,0.35) !important; }
 
     [data-theme="dark"] .team-card h4,
+    [data-theme="dark"] .dept-card h3,
     [data-theme="dark"] .dept-card h4,
     [data-theme="dark"] .career-card h3 { color: #f0f4ff; }
 
@@ -860,6 +861,7 @@
 
     [data-theme="dark"] .service-card p,
     [data-theme="dark"] .insight-card p { color: var(--text-mid) !important; }
+    [data-theme="dark"] .dept-card h3,
     [data-theme="dark"] .dept-card h4   { color: #f0f4ff !important; }
 
     [data-theme="dark"] .footer-inner,
@@ -1030,7 +1032,7 @@
       border:1px solid #e8eaf0; border-radius:10px; padding:14px 16px;
       background:#f9fafb;
     }
-    .dpdpa-card h4 { font-size:13px; font-weight:700; color:#0d1b3e; margin-bottom:5px; }
+    .dpdpa-card h4, .dpdpa-card h3 { font-size:13px; font-weight:700; color:#0d1b3e; margin-bottom:5px; }
     .dpdpa-card p { font-size:13px; color:#374151; line-height:1.6; margin:0; }
     .dpdpa-provision-list { list-style:none; padding:0; margin:0; }
     .dpdpa-provision-list li {
@@ -1996,35 +1998,35 @@ footer .footer-brand p, footer .footer-desc {
     <div class="industries-grid">
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=320&fit=crop" alt="IT & ITES" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-laptop-code"></i><h4>IT &amp; ITES</h4></div>
+        <div class="industry-overlay"><i class="fas fa-laptop-code"></i><h3>IT &amp; ITES</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=320&fit=crop" alt="Retail" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-store"></i><h4>Retail &amp; E-Commerce</h4></div>
+        <div class="industry-overlay"><i class="fas fa-store"></i><h3>Retail &amp; E-Commerce</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400&h=320&fit=crop" alt="Manufacturing" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-industry"></i><h4>Manufacturing</h4></div>
+        <div class="industry-overlay"><i class="fas fa-industry"></i><h3>Manufacturing</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=320&fit=crop" alt="Startups" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-rocket"></i><h4>Startups &amp; D2C</h4></div>
+        <div class="industry-overlay"><i class="fas fa-rocket"></i><h3>Startups &amp; D2C</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&h=320&fit=crop" alt="Hospitality" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-hotel"></i><h4>Hospitality</h4></div>
+        <div class="industry-overlay"><i class="fas fa-hotel"></i><h3>Hospitality</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&h=320&fit=crop" alt="Healthcare" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-heartbeat"></i><h4>Healthcare</h4></div>
+        <div class="industry-overlay"><i class="fas fa-heartbeat"></i><h3>Healthcare</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=320&fit=crop" alt="Fintech Services" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h4>Fintech Services</h4></div>
+        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h3>Fintech Services</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=320&fit=crop" alt="MNCs" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-globe"></i><h4>MNCs &amp; Subsidiaries</h4></div>
+        <div class="industry-overlay"><i class="fas fa-globe"></i><h3>MNCs &amp; Subsidiaries</h3></div>
       </div>
     </div>
   </div>
@@ -2104,11 +2106,11 @@ footer .footer-brand p, footer .footer-desc {
       </p>
       <div class="dpdpa-grid">
         <div class="dpdpa-card">
-          <h4><i class="fas fa-gavel" style="color:#e8600a;margin-right:6px;"></i> Applicability</h4>
+          <h3><i class="fas fa-gavel" style="color:#e8600a;margin-right:6px;"></i> Applicability</h3>
           <p>Applies to all entities processing digital personal data within India, and to processing outside India if goods/services are offered to persons in India.</p>
         </div>
         <div class="dpdpa-card">
-          <h4><i class="fas fa-ban" style="color:#e8600a;margin-right:6px;"></i> Exemptions</h4>
+          <h3><i class="fas fa-ban" style="color:#e8600a;margin-right:6px;"></i> Exemptions</h3>
           <p>Personal/domestic use, journalistic/research purposes, State processing for national security, publicly available data, and data processed outside India by Indian entities.</p>
         </div>
       </div>
@@ -2130,10 +2132,10 @@ footer .footer-brand p, footer .footer-desc {
       <!-- Data Principal Rights -->
       <div class="dpdpa-section-title"><i class="fas fa-user-shield"></i> Data Principal Rights (Sec 11–16)</div>
       <div class="dpdpa-grid">
-        <div class="dpdpa-card"><h4>Right to Information</h4><p>Access a summary of personal data being processed and the identity of all Data Fiduciaries and processors handling it.</p></div>
-        <div class="dpdpa-card"><h4>Right to Correction & Erasure</h4><p>Request correction of inaccurate/incomplete data and erasure of data no longer needed for the stated purpose.</p></div>
-        <div class="dpdpa-card"><h4>Right to Grievance Redressal</h4><p>Register complaints with the Data Fiduciary first; escalate to the Data Protection Board if unresolved.</p></div>
-        <div class="dpdpa-card"><h4>Right to Nominate</h4><p>Nominate an individual who can exercise rights on behalf of the Data Principal in case of death or incapacity.</p></div>
+        <div class="dpdpa-card"><h3>Right to Information</h3><p>Access a summary of personal data being processed and the identity of all Data Fiduciaries and processors handling it.</p></div>
+        <div class="dpdpa-card"><h3>Right to Correction & Erasure</h3><p>Request correction of inaccurate/incomplete data and erasure of data no longer needed for the stated purpose.</p></div>
+        <div class="dpdpa-card"><h3>Right to Grievance Redressal</h3><p>Register complaints with the Data Fiduciary first; escalate to the Data Protection Board if unresolved.</p></div>
+        <div class="dpdpa-card"><h3>Right to Nominate</h3><p>Nominate an individual who can exercise rights on behalf of the Data Principal in case of death or incapacity.</p></div>
       </div>
 
       <!-- Penalties -->
@@ -2157,10 +2159,10 @@ footer .footer-brand p, footer .footer-desc {
       <!-- How PDKA Helps -->
       <div class="dpdpa-section-title"><i class="fas fa-handshake"></i> How PDKA Can Help</div>
       <div class="dpdpa-grid">
-        <div class="dpdpa-card"><h4>Data Mapping & Gap Analysis</h4><p>Identify all personal data flows, classify data types, and assess your gap against DPDPA obligations.</p></div>
-        <div class="dpdpa-card"><h4>Consent Framework Design</h4><p>Design and implement granular consent mechanisms aligned with the Act's notice and consent requirements.</p></div>
-        <div class="dpdpa-card"><h4>Breach Response Planning</h4><p>Build a 72-hour breach detection, notification, and reporting protocol that satisfies the DPBI.</p></div>
-        <div class="dpdpa-card"><h4>SDF Advisory & DPO Support</h4><p>Assess whether you qualify as a Significant Data Fiduciary and fulfill DPO, DPIA, and audit requirements.</p></div>
+        <div class="dpdpa-card"><h3>Data Mapping & Gap Analysis</h3><p>Identify all personal data flows, classify data types, and assess your gap against DPDPA obligations.</p></div>
+        <div class="dpdpa-card"><h3>Consent Framework Design</h3><p>Design and implement granular consent mechanisms aligned with the Act's notice and consent requirements.</p></div>
+        <div class="dpdpa-card"><h3>Breach Response Planning</h3><p>Build a 72-hour breach detection, notification, and reporting protocol that satisfies the DPBI.</p></div>
+        <div class="dpdpa-card"><h3>SDF Advisory & DPO Support</h3><p>Assess whether you qualify as a Significant Data Fiduciary and fulfill DPO, DPIA, and audit requirements.</p></div>
       </div>
 
     </div>
@@ -2285,7 +2287,7 @@ footer .footer-brand p, footer .footer-desc {
         </div>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <p class="footer-heading">Services</p>
         <ul>
           <li><a href="#services">Audit &amp; Assurance</a></li>
           <li><a href="#services">Direct Tax</a></li>
@@ -2298,7 +2300,7 @@ footer .footer-brand p, footer .footer-desc {
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <p class="footer-heading">Company</p>
         <ul>
           <li><a href="#about">About Us</a></li>
           <li><a href="team.html">Our Team</a></li>
@@ -2308,7 +2310,7 @@ footer .footer-brand p, footer .footer-desc {
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
+        <p class="footer-heading">Resources</p>
         <ul>
           <li><a href="https://www.icai.org" target="_blank" rel="noopener noreferrer">ICAI Portal</a></li>
           <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer">Income Tax India</a></li>
@@ -3539,7 +3541,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Company Secretary</div>
-            <h4>Rinkal Handey</h4>
+            <h3>Rinkal Handey</h3>
             <div class="dept-role">Head — Corporate Compliance</div>
             <a href="team.html#company-secretary" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -3554,7 +3556,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Audit &amp; Assurance</div>
-            <h4>Vedamurthy S</h4>
+            <h3>Vedamurthy S</h3>
             <div class="dept-role">Head — Audit &amp; Assurance</div>
             <a href="team.html#audit" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -3569,7 +3571,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Advisory</div>
-            <h4>Richa Khetawat</h4>
+            <h3>Richa Khetawat</h3>
             <div class="dept-role">Head — Business Advisory</div>
             <a href="team.html#advisory" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -3585,7 +3587,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Direct Tax</div>
-            <h4>Sandeep Jain S</h4>
+            <h3>Sandeep Jain S</h3>
             <div class="dept-role">Head &mdash; Direct Tax</div>
             <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -3600,7 +3602,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Indirect Tax</div>
-            <h4>Rakesh Kumar G Jain</h4>
+            <h3>Rakesh Kumar G Jain</h3>
             <div class="dept-role">Head &mdash; Indirect Tax</div>
             <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -3615,7 +3617,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">FinOps</div>
-            <h4>Ramya R</h4>
+            <h3>Ramya R</h3>
             <div class="dept-role">Head — FinOps</div>
             
             <a href="team.html#finops" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
@@ -3631,7 +3633,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Administration</div>
-            <h4>Namratha MN</h4>
+            <h3>Namratha MN</h3>
             <div class="dept-role">Head &mdash; Administration</div>
             <a href="team.html#admin" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -3646,7 +3648,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Human Resources</div>
-            <h4>Sowmya N</h4>
+            <h3>Sowmya N</h3>
             <div class="dept-role">Head &mdash; Human Resources</div>
             <a href="team.html#hr" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -3774,7 +3776,7 @@ function closeSvcIfOutside(e) {
         </div>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <p class="footer-heading">Services</p>
         <ul>
           <li><a href="#services">Audit &amp; Assurance</a></li>
           <li><a href="#services">Direct Tax</a></li>
@@ -3787,7 +3789,7 @@ function closeSvcIfOutside(e) {
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <p class="footer-heading">Company</p>
         <ul>
           <li><a href="#about">About Us</a></li>
           <li><a href="team.html">Our Team</a></li>
@@ -3797,7 +3799,7 @@ function closeSvcIfOutside(e) {
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
+        <p class="footer-heading">Resources</p>
         <ul>
           <li><a href="https://www.icai.org" target="_blank" rel="noopener noreferrer">ICAI Portal</a></li>
           <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer">Income Tax India</a></li>
@@ -3825,35 +3827,35 @@ function closeSvcIfOutside(e) {
     <div class="industries-grid">
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=320&fit=crop" alt="IT & ITES" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-laptop-code"></i><h4>IT &amp; ITES</h4></div>
+        <div class="industry-overlay"><i class="fas fa-laptop-code"></i><h3>IT &amp; ITES</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=320&fit=crop" alt="Retail" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-store"></i><h4>Retail &amp; E-Commerce</h4></div>
+        <div class="industry-overlay"><i class="fas fa-store"></i><h3>Retail &amp; E-Commerce</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400&h=320&fit=crop" alt="Manufacturing" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-industry"></i><h4>Manufacturing</h4></div>
+        <div class="industry-overlay"><i class="fas fa-industry"></i><h3>Manufacturing</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=320&fit=crop" alt="Startups" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-rocket"></i><h4>Startups &amp; D2C</h4></div>
+        <div class="industry-overlay"><i class="fas fa-rocket"></i><h3>Startups &amp; D2C</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&h=320&fit=crop" alt="Hospitality" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-hotel"></i><h4>Hospitality</h4></div>
+        <div class="industry-overlay"><i class="fas fa-hotel"></i><h3>Hospitality</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&h=320&fit=crop" alt="Healthcare" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-heartbeat"></i><h4>Healthcare</h4></div>
+        <div class="industry-overlay"><i class="fas fa-heartbeat"></i><h3>Healthcare</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=320&fit=crop" alt="Fintech Services" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h4>Fintech Services</h4></div>
+        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h3>Fintech Services</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=320&fit=crop" alt="MNCs" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-globe"></i><h4>MNCs &amp; Subsidiaries</h4></div>
+        <div class="industry-overlay"><i class="fas fa-globe"></i><h3>MNCs &amp; Subsidiaries</h3></div>
       </div>
     </div>
   </div>
@@ -4101,7 +4103,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Company Secretary</div>
-            <h4>Rinkal Handey</h4>
+            <h3>Rinkal Handey</h3>
             <div class="dept-role">Head — Corporate Compliance</div>
             <a href="team.html#company-secretary" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4116,7 +4118,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Audit &amp; Assurance</div>
-            <h4>Vedamurthy S</h4>
+            <h3>Vedamurthy S</h3>
             <div class="dept-role">Head — Audit &amp; Assurance</div>
             <a href="team.html#audit" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4131,7 +4133,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Advisory</div>
-            <h4>Richa Khetawat</h4>
+            <h3>Richa Khetawat</h3>
             <div class="dept-role">Head — Business Advisory</div>
             <a href="team.html#advisory" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4147,7 +4149,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Direct Tax</div>
-            <h4>Sandeep Jain S</h4>
+            <h3>Sandeep Jain S</h3>
             <div class="dept-role">Head &mdash; Direct Tax</div>
             <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4162,7 +4164,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Indirect Tax</div>
-            <h4>Rakesh Kumar G Jain</h4>
+            <h3>Rakesh Kumar G Jain</h3>
             <div class="dept-role">Head &mdash; Indirect Tax</div>
             <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4177,7 +4179,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">FinOps</div>
-            <h4>Ramya R</h4>
+            <h3>Ramya R</h3>
             <div class="dept-role">Head — FinOps</div>
             
             <a href="team.html#finops" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
@@ -4193,7 +4195,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Administration</div>
-            <h4>Namratha MN</h4>
+            <h3>Namratha MN</h3>
             <div class="dept-role">Head &mdash; Administration</div>
             <a href="team.html#admin" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4208,7 +4210,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Human Resources</div>
-            <h4>Sowmya N</h4>
+            <h3>Sowmya N</h3>
             <div class="dept-role">Head &mdash; Human Resources</div>
             <a href="team.html#hr" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4338,7 +4340,7 @@ function closeSvcIfOutside(e) {
         </div>
       </div>
       <div class="footer-col">
-        <h4>サービス</h4>
+        <p class="footer-heading">サービス</p>
         <ul>
           <li><a href="#services">監査・保証</a></li>
           <li><a href="#services">税務</a></li>
@@ -4349,7 +4351,7 @@ function closeSvcIfOutside(e) {
         </ul>
       </div>
       <div class="footer-col">
-        <h4>会社情報</h4>
+        <p class="footer-heading">会社情報</p>
         <ul>
           <li><a href="#about">会社概要</a></li>
           <li><a href="team.html">チーム</a></li>
@@ -4359,7 +4361,7 @@ function closeSvcIfOutside(e) {
         </ul>
       </div>
       <div class="footer-col">
-        <h4>リソース</h4>
+        <p class="footer-heading">リソース</p>
         <ul>
           <li><a href="https://www.icai.org" target="_blank" rel="noopener noreferrer">ICAIポータル</a></li>
           <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer">インド所得税局</a></li>
@@ -4387,35 +4389,35 @@ function closeSvcIfOutside(e) {
     <div class="industries-grid">
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=320&fit=crop" alt="IT・ITES" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-laptop-code"></i><h4>IT・ITES</h4></div>
+        <div class="industry-overlay"><i class="fas fa-laptop-code"></i><h3>IT・ITES</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=320&fit=crop" alt="小売・Eコマース" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-store"></i><h4>小売・Eコマース</h4></div>
+        <div class="industry-overlay"><i class="fas fa-store"></i><h3>小売・Eコマース</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400&h=320&fit=crop" alt="製造業" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-industry"></i><h4>製造業</h4></div>
+        <div class="industry-overlay"><i class="fas fa-industry"></i><h3>製造業</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=320&fit=crop" alt="スタートアップ" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-rocket"></i><h4>スタートアップ・D2C</h4></div>
+        <div class="industry-overlay"><i class="fas fa-rocket"></i><h3>スタートアップ・D2C</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&h=320&fit=crop" alt="ホスピタリティ" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-hotel"></i><h4>ホスピタリティ</h4></div>
+        <div class="industry-overlay"><i class="fas fa-hotel"></i><h3>ホスピタリティ</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&h=320&fit=crop" alt="ヘルスケア" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-heartbeat"></i><h4>ヘルスケア</h4></div>
+        <div class="industry-overlay"><i class="fas fa-heartbeat"></i><h3>ヘルスケア</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=320&fit=crop" alt="Fintech Services" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h4>Fintech Services</h4></div>
+        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h3>Fintech Services</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=320&fit=crop" alt="多国籍企業" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-globe"></i><h4>多国籍企業・子会社</h4></div>
+        <div class="industry-overlay"><i class="fas fa-globe"></i><h3>多国籍企業・子会社</h3></div>
       </div>
     </div>
   </div>
@@ -4660,7 +4662,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Company Secretary</div>
-            <h4>Rinkal Handey</h4>
+            <h3>Rinkal Handey</h3>
             <div class="dept-role">Head — Corporate Compliance</div>
             <a href="team.html#company-secretary" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4675,7 +4677,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Audit &amp; Assurance</div>
-            <h4>Vedamurthy S</h4>
+            <h3>Vedamurthy S</h3>
             <div class="dept-role">Head — Audit &amp; Assurance</div>
             <a href="team.html#audit" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4690,7 +4692,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Advisory</div>
-            <h4>Richa Khetawat</h4>
+            <h3>Richa Khetawat</h3>
             <div class="dept-role">Head — Business Advisory</div>
             <a href="team.html#advisory" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4706,7 +4708,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Direct Tax</div>
-            <h4>Sandeep Jain S</h4>
+            <h3>Sandeep Jain S</h3>
             <div class="dept-role">Head &mdash; Direct Tax</div>
             <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4721,7 +4723,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Indirect Tax</div>
-            <h4>Rakesh Kumar G Jain</h4>
+            <h3>Rakesh Kumar G Jain</h3>
             <div class="dept-role">Head &mdash; Indirect Tax</div>
             <a href="team.html#taxation" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4736,7 +4738,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">FinOps</div>
-            <h4>Ramya R</h4>
+            <h3>Ramya R</h3>
             <div class="dept-role">Head — FinOps</div>
             
             <a href="team.html#finops" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
@@ -4752,7 +4754,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Administration</div>
-            <h4>Namratha MN</h4>
+            <h3>Namratha MN</h3>
             <div class="dept-role">Head &mdash; Administration</div>
             <a href="team.html#admin" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4767,7 +4769,7 @@ function closeSvcIfOutside(e) {
           </div>
           <div class="dept-info">
             <div class="dept-tag">Human Resources</div>
-            <h4>Sowmya N</h4>
+            <h3>Sowmya N</h3>
             <div class="dept-role">Head &mdash; Human Resources</div>
             <a href="team.html#hr" class="dept-team-link">View Team <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -4894,7 +4896,7 @@ function closeSvcIfOutside(e) {
         </div>
       </div>
       <div class="footer-col">
-        <h4>सेवाएं</h4>
+        <p class="footer-heading">सेवाएं</p>
         <ul>
           <li><a href="#services">लेखा परीक्षा एवं आश्वासन</a></li>
           <li><a href="#services">कराधान</a></li>
@@ -4905,7 +4907,7 @@ function closeSvcIfOutside(e) {
         </ul>
       </div>
       <div class="footer-col">
-        <h4>कंपनी</h4>
+        <p class="footer-heading">कंपनी</p>
         <ul>
           <li><a href="#about">हमारे बारे में</a></li>
           <li><a href="team.html">टीम</a></li>
@@ -4915,7 +4917,7 @@ function closeSvcIfOutside(e) {
         </ul>
       </div>
       <div class="footer-col">
-        <h4>संसाधन</h4>
+        <p class="footer-heading">संसाधन</p>
         <ul>
           <li><a href="https://www.icai.org" target="_blank" rel="noopener noreferrer">ICAI पोर्टल</a></li>
           <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer">आयकर विभाग</a></li>
@@ -4942,35 +4944,35 @@ function closeSvcIfOutside(e) {
     <div class="industries-grid">
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=320&fit=crop" alt="IT एवं ITES" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-laptop-code"></i><h4>IT एवं ITES</h4></div>
+        <div class="industry-overlay"><i class="fas fa-laptop-code"></i><h3>IT एवं ITES</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=320&fit=crop" alt="खुदरा एवं ई-कॉमर्स" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-store"></i><h4>खुदरा एवं ई-कॉमर्स</h4></div>
+        <div class="industry-overlay"><i class="fas fa-store"></i><h3>खुदरा एवं ई-कॉमर्स</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400&h=320&fit=crop" alt="विनिर्माण" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-industry"></i><h4>विनिर्माण</h4></div>
+        <div class="industry-overlay"><i class="fas fa-industry"></i><h3>विनिर्माण</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=320&fit=crop" alt="स्टार्टअप" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-rocket"></i><h4>स्टार्टअप एवं D2C</h4></div>
+        <div class="industry-overlay"><i class="fas fa-rocket"></i><h3>स्टार्टअप एवं D2C</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&h=320&fit=crop" alt="आतिथ्य" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-hotel"></i><h4>आतिथ्य</h4></div>
+        <div class="industry-overlay"><i class="fas fa-hotel"></i><h3>आतिथ्य</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&h=320&fit=crop" alt="स्वास्थ्य सेवा" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-heartbeat"></i><h4>स्वास्थ्य सेवा</h4></div>
+        <div class="industry-overlay"><i class="fas fa-heartbeat"></i><h3>स्वास्थ्य सेवा</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=320&fit=crop" alt="Fintech Services" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h4>Fintech Services</h4></div>
+        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h3>Fintech Services</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=320&fit=crop" alt="बहुराष्ट्रीय कंपनियां" loading="lazy" />
-        <div class="industry-overlay"><i class="fas fa-globe"></i><h4>बहुराष्ट्रीय कंपनियां</h4></div>
+        <div class="industry-overlay"><i class="fas fa-globe"></i><h3>बहुराष्ट्रीय कंपनियां</h3></div>
       </div>
     </div>
   </div>`
