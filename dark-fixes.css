@@ -124,3 +124,5 @@
 html.lang-open .has-mega .mega-menu,
 html.lang-open .has-mega.mega-open .mega-menu { opacity: 0 !important; pointer-events: none !important; visibility: hidden; }
 .lang-dropdown { position: relative; z-index: 10000; }
+/* Nav must not slide away (and take the language list with it) while the list is open */
+html.lang-open nav, html.lang-open nav.nav-hidden { transform: none !important; }
