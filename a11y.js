@@ -10,6 +10,7 @@
     language:    { en: 'Language', ja: '言語', hi: 'भाषा' },
     heroPause:   { en: 'Pause slideshow', ja: 'スライドショーを一時停止', hi: 'स्लाइडशो रोकें' },
     heroPlay:    { en: 'Play slideshow',  ja: 'スライドショーを再生',   hi: 'स्लाइडशो चलाएँ' },
+    heroSub:     { en: 'Audit, tax and advisory for businesses in 9 countries', ja: '9か国の企業向けの監査・税務・アドバイザリー', hi: '9 देशों के व्यवसायों के लिए ऑडिट, कर और सलाहकार सेवाएँ' },
     slide:       { en: 'Go to slide {n} of {t}', ja: 'スライド {n} / {t} へ移動', hi: 'स्लाइड {n} / {t} पर जाएँ' }
   };
   function lang() { try { return localStorage.getItem('pdka-lang') || 'en'; } catch (e) { return 'en'; } }
@@ -48,6 +49,7 @@
   }
   function apply() {
     menuState(); themeState(); slides(); heroLabel();
+    var hs = document.getElementById('heroSub'); if (hs) { var tx = tr('heroSub'); if (hs.textContent !== tx) hs.textContent = tx; }
     setAttr($('.lang-btn'), 'aria-label', tr('language'));
   }
 

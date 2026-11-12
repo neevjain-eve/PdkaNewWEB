@@ -47,6 +47,7 @@
     /* a11y: hero slideshow pause/play button (44x44 hit area, small visual) */
     #heroDots .hero-pause { box-sizing: content-box; width: 14px; height: 14px; padding: 15px; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.85); font-size: 12px; line-height: 14px; display: inline-flex; align-items: center; justify-content: center; margin-right: 4px; }
     #heroDots .hero-pause:hover { color: #fff; }
+    .hero-subhead { font-size: clamp(15px, 1.6vw, 20px); line-height: 1.5; color: rgba(255,255,255,0.92); max-width: 560px; margin: 14px 0 0; padding-left: 29px; text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
     :root[data-theme="dark"] { --orange-text: #e8600a; }
     :root {
       --navy: #0d1b3e;
@@ -1751,7 +1752,9 @@ footer .footer-brand p, footer .footer-desc {
   <!-- Main content -->
   <div class="hero-content-wrap">
     <div class="hero-content">
-      <h1 class="hero-title" data-i18n="hero-title">Empowering<br/>Businesses with<br/><span id="hero-word"></span></h1>
+      <h1 class="hero-title" data-i18n="hero-title">Empowering<br/>Businesses with<br/><span id="hero-word">Confidence</span></h1>
+      <p class="hero-subhead" id="heroSub">Audit, tax and advisory for businesses in 9 countries</p>
+      <noscript><style>#hero-word{border-right:0;animation:none}</style></noscript>
     </div>
   </div>
 </section>
@@ -1767,9 +1770,9 @@ footer .footer-brand p, footer .footer-desc {
             <img src="logo-centered.png" width="282" height="66" alt="P. Dilip Kumar &amp; Associates" class="about-logo" />
     <div class="about-stat-wrap" id="aboutStatWrap">
       <div class="about-stat-num-row">
-        <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
+        <span id="aboutBigNum">28</span><span id="aboutBigPlus" class="show">+</span>
       </div>
-      <div class="about-stat-line" id="aboutStatLine"></div>
+      <div class="about-stat-line draw" id="aboutStatLine"></div>
     </div>
     <div class="about-sub">Years of Professional Services</div>
     <p class="about-desc">PDKA is a professional CA firm based in Bangalore, serving clients across India and 9 countries — USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy.</p>
@@ -2630,7 +2633,7 @@ footer .footer-brand p, footer .footer-desc {
     const phrases = ['Tax Advisory','Audit & Assurance','Compliance Services','Business Advisory','CFO Services'];
     const el = document.getElementById('hero-word');
     if (!el) return;
-    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = phrases[0]; return; }
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }          // keep the static default word
     el.textContent = '';
     let pi = 0, ci = 0, deleting = false;
 
@@ -3302,9 +3305,9 @@ function closeSvcIfOutside(e) {
             <img src="logo-centered.png" width="282" height="66" alt="P. Dilip Kumar &amp; Associates" class="about-logo" />
     <div class="about-stat-wrap" id="aboutStatWrap">
       <div class="about-stat-num-row">
-        <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
+        <span id="aboutBigNum">28</span><span id="aboutBigPlus" class="show">+</span>
       </div>
-      <div class="about-stat-line" id="aboutStatLine"></div>
+      <div class="about-stat-line draw" id="aboutStatLine"></div>
     </div>
     <div class="about-sub">Years of Professional Services</div>
     <p class="about-desc">PDKA is a professional CA firm based in Bangalore, serving clients across India and 9 countries — USA, UK, Australia, Dubai, Singapore, Ireland, Japan and Italy.</p>
@@ -3877,9 +3880,9 @@ function closeSvcIfOutside(e) {
     <img src="logo.png?v=3" srcset="logo.png 1x, logo.png 2x, logo.png 3x" width="351" height="91" alt="P. ディリップ・クマール &amp; アソシエイツ" class="about-logo" />
     <div class="about-stat-wrap" id="aboutStatWrap">
       <div class="about-stat-num-row">
-        <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
+        <span id="aboutBigNum">28</span><span id="aboutBigPlus" class="show">+</span>
       </div>
-      <div class="about-stat-line" id="aboutStatLine"></div>
+      <div class="about-stat-line draw" id="aboutStatLine"></div>
     </div>
     <div class="about-sub">年の専門サービス</div>
     <p class="about-desc">PDKAはバンガロールを拠点とする公認会計士事務所で、インド全土および米国、英国、オーストラリア、ドバイ、シンガポール、アイルランド、日本、イタリアの9カ国のクライアントにサービスを提供しています。</p>
@@ -4439,9 +4442,9 @@ function closeSvcIfOutside(e) {
     <img src="logo.png?v=3" srcset="logo.png 1x, logo.png 2x, logo.png 3x" width="351" height="91" alt="पी. दिलीप कुमार एंड एसोसिएट्स" class="about-logo" />
     <div class="about-stat-wrap" id="aboutStatWrap">
       <div class="about-stat-num-row">
-        <span id="aboutBigNum">0</span><span id="aboutBigPlus">+</span>
+        <span id="aboutBigNum">28</span><span id="aboutBigPlus" class="show">+</span>
       </div>
-      <div class="about-stat-line" id="aboutStatLine"></div>
+      <div class="about-stat-line draw" id="aboutStatLine"></div>
     </div>
     <div class="about-sub">वर्षों की पेशेवर सेवा</div>
     <p class="about-desc">PDKA बेंगलूरु स्थित एक प्रमुख CA फर्म है जो भारत भर के तथा अमेरिका, ब्रिटेन, ऑस्ट्रेलिया, दुबई, सिंगापुर, आयरलैंड, जापान और इटली — 9 देशों के ग्राहकों की सेवा करती है।</p>
