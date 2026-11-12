@@ -58,7 +58,8 @@
     nameReq:   { en: 'Please enter your name.', ja: 'お名前を入力してください。', hi: 'कृपया अपना नाम दर्ज करें।' },
     emailReq:  { en: 'Please enter your email address.', ja: 'メールアドレスを入力してください。', hi: 'कृपया अपना ईमेल पता दर्ज करें।' },
     emailBad:  { en: 'Please enter a valid email address, for example name@company.com.', ja: '有効なメールアドレスを入力してください(例: name@company.com)。', hi: 'कृपया मान्य ईमेल पता दर्ज करें, जैसे name@company.com।' },
-    success:   { en: "Message sent! We'll get back to you within one business day.", ja: 'メッセージを送信しました。1営業日以内にご連絡いたします。', hi: 'संदेश भेज दिया गया है। हम एक कार्यदिवस के भीतर आपसे संपर्क करेंगे।' }
+    success:   { en: "Thanks, {name}. We'll call or email you.", ja: '{name}様、ありがとうございます。お電話またはメールでご連絡いたします。', hi: 'धन्यवाद, {name}। हम आपको कॉल या ईमेल करेंगे।' },
+    successNoName: { en: "Thanks. We'll call or email you.", ja: 'ありがとうございます。お電話またはメールでご連絡いたします。', hi: 'धन्यवाद। हम आपको कॉल या ईमेल करेंगे।' }
   };
   function ft(key) { var l = lang(); return (F[key][l] || F[key].en); }
   function showError(ctl, msg) {
@@ -96,12 +97,17 @@
       if (first) { first.focus(); return false; }
       return true;
     },
-    announce: function (el) {
+    announce: function (el, name) {
       if (!el) return;
-      var html = '<i class="fas fa-check-circle" aria-hidden="true"></i> ' + ft('success');
+      name = (name || '').trim();
+      var text = name ? ft('success').replace('{name}', name) : ft('successNoName');   // text node, never innerHTML, so the name can't inject markup
       el.textContent = '';
       el.style.display = 'block';
-      setTimeout(function () { el.innerHTML = html; }, 60);   // content change inside a live region is what gets announced
+      setTimeout(function () {     // content change inside a live region is what gets announced
+        el.textContent = '';
+        var ic = document.createElement('i'); ic.className = 'fas fa-check-circle'; ic.setAttribute('aria-hidden', 'true');
+        el.appendChild(ic); el.appendChild(document.createTextNode(' ' + text));
+      }, 60);
     }
   };
 
