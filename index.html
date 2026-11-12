@@ -29,6 +29,15 @@
     .field-error { display: flex; align-items: flex-start; gap: 6px; margin-top: 6px; font-size: 13px; font-weight: 600; color: #b91c1c; line-height: 1.4; }
     .form-group input[aria-invalid="true"], .form-group select[aria-invalid="true"], .form-group textarea[aria-invalid="true"] { border-color: #b91c1c; }
     [data-theme="dark"] .field-error { color: #fca5a5; }
+    /* a11y: visible keyboard focus */
+    :focus-visible { outline: 3px solid var(--orange-fill); outline-offset: 2px; }
+    /* a11y: 44x44 touch targets (hit area grows, visuals stay the same) */
+    .nav-toggle { min-width: 44px; min-height: 44px; }
+    .lang-option { min-height: 44px; display: flex; align-items: center; }
+    .lang-btn { position: relative; }
+    .lang-btn::after { content: ''; position: absolute; inset: -8px 0; }
+    #heroDots { gap: 0; }
+    #heroDots .hero-dot { box-sizing: content-box; padding: 19px; background-clip: content-box; }
     :root[data-theme="dark"] { --orange-text: #e8600a; }
     :root {
       --navy: #0d1b3e;
@@ -520,7 +529,7 @@
     .form-group input, .form-group select, .form-group textarea {
       width: 100%; padding: 12px 14px; border: 1.5px solid var(--grey-mid); border-radius: 8px;
       font-size: 14px; font-family: 'Source Sans 3', sans-serif; color: var(--text-dark); background: white;
-      outline: none; transition: border-color 0.2s;
+      transition: border-color 0.2s;
     }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--orange); }
     .form-group textarea { resize: vertical; min-height: 110px; }
@@ -594,7 +603,7 @@
     .newsletter-form { display: flex; gap: 10px; }
     .newsletter-form input {
       padding: 12px 18px; border-radius: 8px; border: none; font-size: 14px;
-      width: 260px; outline: none; font-family: 'Source Sans 3', sans-serif;
+      width: 260px; font-family: 'Source Sans 3', sans-serif;
     }
     .newsletter-form button {
       background: var(--navy); color: white; padding: 12px 22px; border: none;

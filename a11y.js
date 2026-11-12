@@ -95,6 +95,48 @@
     }
   };
 
+
+  /* ---------- Keyboard: nav dropdowns open on focus, close on Escape; language menu Escape ---------- */
+  function megaKeyboard() {
+    var items = document.querySelectorAll('.has-mega');
+    for (var i = 0; i < items.length; i++) (function (li) {
+      var link = li.querySelector(':scope > a');
+      if (link) { link.setAttribute('aria-haspopup', 'true'); link.setAttribute('aria-expanded', 'false'); }
+      function sync() { if (link) link.setAttribute('aria-expanded', li.classList.contains('mega-open') ? 'true' : 'false'); }
+      new MutationObserver(sync).observe(li, { attributes: true, attributeFilter: ['class'] });
+      li.addEventListener('focusin', function () {
+        if (li._esc) return;           // focus was just returned here by Escape: keep the menu closed
+        for (var j = 0; j < items.length; j++) if (items[j] !== li) items[j].classList.remove('mega-open');
+        li.classList.add('mega-open');
+      });
+      li.addEventListener('focusout', function (e) {
+        if (!e.relatedTarget || !li.contains(e.relatedTarget)) { li._esc = false; li.classList.remove('mega-open'); }
+      });
+      li.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && li.classList.contains('mega-open')) {
+          li._esc = true;
+          li.classList.remove('mega-open');
+          if (link) link.focus();
+          e.stopPropagation();
+        }
+      });
+    })(items[i]);
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var menu = document.getElementById('langMenu'), btn = document.querySelector('.lang-btn');
+      if (menu && menu.style.display === 'block') {
+        menu.style.display = 'none';
+        var dd = document.getElementById('langDropdown'); if (dd) dd.classList.remove('open');
+        if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.focus(); }
+      }
+      var m = document.getElementById('mobileMenu');
+      if (m && m.style.display === 'flex') {
+        m.style.display = 'none'; menuState(false);
+        var t = document.getElementById('navToggle'); if (t) t.innerHTML = '<i class="fas fa-bars"></i>', t.focus();
+      }
+    });
+  }
+
   window.pdkaA11y = { menuState: menuState, slides: slides, tr: tr, apply: apply };
 
   try {
@@ -108,6 +150,7 @@
 
   function init() {
     apply();
+    megaKeyboard();
     if (window.MutationObserver) {
       new MutationObserver(themeState).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     }
