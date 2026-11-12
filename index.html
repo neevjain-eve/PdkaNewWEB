@@ -25,6 +25,10 @@
     /* a11y: skip link (visible only when focused) */
     .skip-link { position: absolute; left: 12px; top: -64px; z-index: 100001; background: var(--navy); color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: top .15s; }
     .skip-link:focus { top: 12px; outline: 3px solid var(--orange-fill); outline-offset: 2px; }
+    /* a11y: form errors (icon + text, not colour alone) */
+    .field-error { display: flex; align-items: flex-start; gap: 6px; margin-top: 6px; font-size: 13px; font-weight: 600; color: #b91c1c; line-height: 1.4; }
+    .form-group input[aria-invalid="true"], .form-group select[aria-invalid="true"], .form-group textarea[aria-invalid="true"] { border-color: #b91c1c; }
+    [data-theme="dark"] .field-error { color: #fca5a5; }
     :root[data-theme="dark"] { --orange-text: #e8600a; }
     :root {
       --navy: #0d1b3e;
@@ -2158,7 +2162,7 @@ footer .footer-brand p, footer .footer-desc {
             <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
             <div class="contact-item-text">
               <strong>Phone</strong>
-              <p><a href="tel:08041219056">080-4121-9056</a> / <a href="tel:08041219057">080-4121-9057</a></p>
+              <p><a href="tel:+918041219056">080-4121-9056</a> / <a href="tel:+918041219057">080-4121-9057</a></p>
             </div>
           </div>
           <div class="contact-item">
@@ -2194,27 +2198,27 @@ footer .footer-brand p, footer .footer-desc {
         <form id="contactForm" onsubmit="submitContactForm(event)" novalidate>
         <div class="form-row">
           <div class="form-group">
-            <label>Your Name *</label>
-            <input type="text" data-i18n-ph="form-name" placeholder="Full name" />
+            <label for="cf-name">Your Name *</label>
+            <input id="cf-name" name="name" autocomplete="name" aria-required="true" type="text" data-i18n-ph="form-name" placeholder="Full name" />
           </div>
           <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" data-i18n-ph="form-email" placeholder="you@company.com" />
+            <label for="cf-email">Email Address *</label>
+            <input id="cf-email" name="email" autocomplete="email" aria-required="true" type="email" data-i18n-ph="form-email" placeholder="you@company.com" />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" data-i18n-ph="form-phone" placeholder="+91 98765 43210" />
+            <label for="cf-phone">Phone Number</label>
+            <input id="cf-phone" name="phone" autocomplete="tel" type="tel" data-i18n-ph="form-phone" placeholder="+91 98765 43210" />
           </div>
           <div class="form-group">
-            <label>Company Name</label>
-            <input type="text" data-i18n-ph="form-company" placeholder="Your company" />
+            <label for="cf-company">Company Name</label>
+            <input id="cf-company" name="company" autocomplete="organization" type="text" data-i18n-ph="form-company" placeholder="Your company" />
           </div>
         </div>
         <div class="form-group">
-          <label>Service Required</label>
-          <select>
+          <label for="cf-service">Service Required</label>
+          <select id="cf-service">
             <option value="">Select a service...</option>
             <option>Audit &amp; Assurance</option>
             <option>Taxation</option>
@@ -2232,11 +2236,11 @@ footer .footer-brand p, footer .footer-desc {
           </select>
         </div>
         <div class="form-group">
-          <label>Message</label>
-          <textarea data-i18n-ph="form-msg" placeholder="Briefly describe your requirement..."></textarea>
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" data-i18n-ph="form-msg" placeholder="Briefly describe your requirement..."></textarea>
         </div>
         <button type="submit" class="form-submit"><i class="fas fa-paper-plane"></i> Send Message</button>
-        <div id="formSuccess" style="display:none;background:#f0fdf4;border:1px solid #16a34a;border-radius:8px;padding:12px 16px;color:#15803d;font-size:14px;font-weight:600;margin-top:12px;"><i class="fas fa-check-circle"></i> Message sent! We'll get back to you within one business day.</div>
+        <div id="formSuccess" role="status" aria-live="polite" style="display:none;background:#f0fdf4;border:1px solid #16a34a;border-radius:8px;padding:12px 16px;color:#15803d;font-size:14px;font-weight:600;margin-top:12px;"><i class="fas fa-check-circle"></i> Message sent! We'll get back to you within one business day.</div>
         </form>
         <p class="form-note">🔒 Your information is confidential and will not be shared.</p>
       </div>
@@ -2325,7 +2329,10 @@ footer .footer-brand p, footer .footer-desc {
 
 
   // Form submit
-  document.querySelector('.form-submit').addEventListener('click', function(e) {
+  // DISABLED (a11y/form fix): this click handler cancelled the real submit and only pretended to send
+  // ("Message Sent!") without validating or opening the email client. The form's own submit handler,
+  // submitContactForm(), now does validation and the mailto hand-off. Re-enable only if you want the old fake.
+  /* document.querySelector('.form-submit').addEventListener('click', function(e) {
     e.preventDefault();
     this.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
     this.style.background = '#2d8a5e';
@@ -2333,7 +2340,7 @@ footer .footer-brand p, footer .footer-desc {
       this.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
       this.style.background = '';
     }, 3000);
-  });
+  }); */
 
 
 
@@ -3230,8 +3237,7 @@ function closeSvcIfOutside(e) {
     var service = form.querySelector('select').value;
     var message = form.querySelector('textarea').value.trim();
 
-    if (!name) { alert('Please enter your name.'); return; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+    if (window.pdkaForm && !pdkaForm.validate(form)) return;
 
     var body = 'Name: ' + name + '%0D%0A' +
                'Email: ' + email + '%0D%0A' +
@@ -3245,7 +3251,8 @@ function closeSvcIfOutside(e) {
 
     // Show success after short delay
     setTimeout(function() {
-      document.getElementById('formSuccess').style.display = 'block';
+      var ok = document.getElementById('formSuccess');
+      if (window.pdkaForm) pdkaForm.announce(ok); else ok.style.display = 'block';
       form.reset();
     }, 500);
   }</script>
@@ -3644,7 +3651,7 @@ function closeSvcIfOutside(e) {
             <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
             <div class="contact-item-text">
               <strong>Phone</strong>
-              <p><a href="tel:08041219056">080-4121-9056</a> / <a href="tel:08041219057">080-4121-9057</a></p>
+              <p><a href="tel:+918041219056">080-4121-9056</a> / <a href="tel:+918041219057">080-4121-9057</a></p>
             </div>
           </div>
           <div class="contact-item">
@@ -3677,29 +3684,30 @@ function closeSvcIfOutside(e) {
       </div>
       <div class="contact-form-card">
         <h3>Send Us a Message</h3>
+        <form id="contactForm" onsubmit="submitContactForm(event)" novalidate>
         <div class="form-row">
           <div class="form-group">
-            <label>Your Name *</label>
-            <input type="text" data-i18n-ph="form-name" placeholder="Full name" />
+            <label for="cf-name">Your Name *</label>
+            <input id="cf-name" name="name" autocomplete="name" aria-required="true" type="text" data-i18n-ph="form-name" placeholder="Full name" />
           </div>
           <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" data-i18n-ph="form-email" placeholder="you@company.com" />
+            <label for="cf-email">Email Address *</label>
+            <input id="cf-email" name="email" autocomplete="email" aria-required="true" type="email" data-i18n-ph="form-email" placeholder="you@company.com" />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" data-i18n-ph="form-phone" placeholder="+91 98765 43210" />
+            <label for="cf-phone">Phone Number</label>
+            <input id="cf-phone" name="phone" autocomplete="tel" type="tel" data-i18n-ph="form-phone" placeholder="+91 98765 43210" />
           </div>
           <div class="form-group">
-            <label>Company Name</label>
-            <input type="text" data-i18n-ph="form-company" placeholder="Your company" />
+            <label for="cf-company">Company Name</label>
+            <input id="cf-company" name="company" autocomplete="organization" type="text" data-i18n-ph="form-company" placeholder="Your company" />
           </div>
         </div>
         <div class="form-group">
-          <label>Service Required</label>
-          <select>
+          <label for="cf-service">Service Required</label>
+          <select id="cf-service">
             <option value="">Select a service...</option>
             <option>Audit &amp; Assurance</option>
             <option>Taxation (Income Tax / GST)</option>
@@ -3712,11 +3720,11 @@ function closeSvcIfOutside(e) {
           </select>
         </div>
         <div class="form-group">
-          <label>Message</label>
-          <textarea data-i18n-ph="form-msg" placeholder="Briefly describe your requirement..."></textarea>
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" data-i18n-ph="form-msg" placeholder="Briefly describe your requirement..."></textarea>
         </div>
         <button type="submit" class="form-submit"><i class="fas fa-paper-plane"></i> Send Message</button>
-        <div id="formSuccess" style="display:none;background:#f0fdf4;border:1px solid #16a34a;border-radius:8px;padding:12px 16px;color:#15803d;font-size:14px;font-weight:600;margin-top:12px;"><i class="fas fa-check-circle"></i> Message sent! We'll get back to you within one business day.</div>
+        <div id="formSuccess" role="status" aria-live="polite" style="display:none;background:#f0fdf4;border:1px solid #16a34a;border-radius:8px;padding:12px 16px;color:#15803d;font-size:14px;font-weight:600;margin-top:12px;"><i class="fas fa-check-circle"></i> Message sent! We'll get back to you within one business day.</div>
         </form>
         <p class="form-note">🔒 Your information is confidential and will not be shared.</p>
       </div>
@@ -4205,7 +4213,7 @@ function closeSvcIfOutside(e) {
             <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
             <div class="contact-item-text">
               <strong>電話</strong>
-              <p><a href="tel:08041219056">080-4121-9056</a> / <a href="tel:08041219057">080-4121-9057</a></p>
+              <p><a href="tel:+918041219056">080-4121-9056</a> / <a href="tel:+918041219057">080-4121-9057</a></p>
             </div>
           </div>
           <div class="contact-item">
@@ -4238,29 +4246,30 @@ function closeSvcIfOutside(e) {
       </div>
       <div class="contact-form-card">
         <h3>メッセージを送る</h3>
+        <form id="contactForm" onsubmit="submitContactForm(event)" novalidate>
         <div class="form-row">
           <div class="form-group">
-            <label>お名前 *</label>
-            <input type="text" placeholder="お名前" />
+            <label for="cf-name">お名前 *</label>
+            <input id="cf-name" name="name" autocomplete="name" aria-required="true" type="text" placeholder="お名前" />
           </div>
           <div class="form-group">
-            <label>メールアドレス *</label>
-            <input type="email" placeholder="メールアドレス" />
+            <label for="cf-email">メールアドレス *</label>
+            <input id="cf-email" name="email" autocomplete="email" aria-required="true" type="email" placeholder="メールアドレス" />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>電話番号</label>
-            <input type="tel" placeholder="+91 98765 43210" />
+            <label for="cf-phone">電話番号</label>
+            <input id="cf-phone" name="phone" autocomplete="tel" type="tel" placeholder="+91 98765 43210" />
           </div>
           <div class="form-group">
-            <label>会社名</label>
-            <input type="text" placeholder="会社名" />
+            <label for="cf-company">会社名</label>
+            <input id="cf-company" name="company" autocomplete="organization" type="text" placeholder="会社名" />
           </div>
         </div>
         <div class="form-group">
-          <label>サービス</label>
-          <select>
+          <label for="cf-service">サービス</label>
+          <select id="cf-service">
             <option value="">-- サービスを選択 --</option>
             <option>監査・保証</option>
             <option>税務</option>
@@ -4272,10 +4281,12 @@ function closeSvcIfOutside(e) {
           </select>
         </div>
         <div class="form-group">
-          <label>メッセージ *</label>
-          <textarea rows="4" placeholder="要件を簡単にご記入ください…"></textarea>
+          <label for="cf-message">メッセージ *</label>
+          <textarea id="cf-message" rows="4" placeholder="要件を簡単にご記入ください…"></textarea>
         </div>
         <button type="submit" class="btn-primary" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> 送信する</button>
+        <div id="formSuccess" role="status" aria-live="polite" style="display:none;background:#f0fdf4;border:1px solid #16a34a;border-radius:8px;padding:12px 16px;color:#15803d;font-size:14px;font-weight:600;margin-top:12px;"></div>
+        </form>
       </div>
     </div>
   </div>
@@ -4759,7 +4770,7 @@ function closeSvcIfOutside(e) {
             <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
             <div class="contact-item-text">
               <strong>फ़ोन</strong>
-              <p><a href="tel:08041219056">080-4121-9056</a> / <a href="tel:08041219057">080-4121-9057</a></p>
+              <p><a href="tel:+918041219056">080-4121-9056</a> / <a href="tel:+918041219057">080-4121-9057</a></p>
             </div>
           </div>
           <div class="contact-item">
@@ -4792,29 +4803,30 @@ function closeSvcIfOutside(e) {
       </div>
       <div class="contact-form-card">
         <h3>संदेश भेजें</h3>
+        <form id="contactForm" onsubmit="submitContactForm(event)" novalidate>
         <div class="form-row">
           <div class="form-group">
-            <label>नाम *</label>
-            <input type="text" placeholder="आपका नाम" />
+            <label for="cf-name">नाम *</label>
+            <input id="cf-name" name="name" autocomplete="name" aria-required="true" type="text" placeholder="आपका नाम" />
           </div>
           <div class="form-group">
-            <label>ईमेल पता *</label>
-            <input type="email" placeholder="आपका ईमेल" />
+            <label for="cf-email">ईमेल पता *</label>
+            <input id="cf-email" name="email" autocomplete="email" aria-required="true" type="email" placeholder="आपका ईमेल" />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>फ़ोन नंबर</label>
-            <input type="tel" placeholder="+91 98765 43210" />
+            <label for="cf-phone">फ़ोन नंबर</label>
+            <input id="cf-phone" name="phone" autocomplete="tel" type="tel" placeholder="+91 98765 43210" />
           </div>
           <div class="form-group">
-            <label>कंपनी</label>
-            <input type="text" placeholder="कंपनी का नाम" />
+            <label for="cf-company">कंपनी</label>
+            <input id="cf-company" name="company" autocomplete="organization" type="text" placeholder="कंपनी का नाम" />
           </div>
         </div>
         <div class="form-group">
-          <label>सेवा</label>
-          <select>
+          <label for="cf-service">सेवा</label>
+          <select id="cf-service">
             <option value="">-- सेवा चुनें --</option>
             <option>लेखा परीक्षा एवं आश्वासन</option>
             <option>कराधान</option>
@@ -4826,10 +4838,12 @@ function closeSvcIfOutside(e) {
           </select>
         </div>
         <div class="form-group">
-          <label>संदेश *</label>
-          <textarea rows="4" placeholder="अपनी आवश्यकता संक्षेप में बताएं…"></textarea>
+          <label for="cf-message">संदेश *</label>
+          <textarea id="cf-message" rows="4" placeholder="अपनी आवश्यकता संक्षेप में बताएं…"></textarea>
         </div>
         <button type="submit" class="btn-primary" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> संदेश भेजें</button>
+        <div id="formSuccess" role="status" aria-live="polite" style="display:none;background:#f0fdf4;border:1px solid #16a34a;border-radius:8px;padding:12px 16px;color:#15803d;font-size:14px;font-weight:600;margin-top:12px;"></div>
+        </form>
       </div>
     </div>
   </div>`

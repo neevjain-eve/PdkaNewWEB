@@ -42,6 +42,59 @@
     menuState(); themeState(); slides();
     setAttr($('.lang-btn'), 'aria-label', tr('language'));
   }
+
+  /* ---------- Contact form: inline validation + status message ---------- */
+  var F = {
+    nameReq:   { en: 'Please enter your name.', ja: 'お名前を入力してください。', hi: 'कृपया अपना नाम दर्ज करें।' },
+    emailReq:  { en: 'Please enter your email address.', ja: 'メールアドレスを入力してください。', hi: 'कृपया अपना ईमेल पता दर्ज करें।' },
+    emailBad:  { en: 'Please enter a valid email address, for example name@company.com.', ja: '有効なメールアドレスを入力してください(例: name@company.com)。', hi: 'कृपया मान्य ईमेल पता दर्ज करें, जैसे name@company.com।' },
+    success:   { en: "Message sent! We'll get back to you within one business day.", ja: 'メッセージを送信しました。1営業日以内にご連絡いたします。', hi: 'संदेश भेज दिया गया है। हम एक कार्यदिवस के भीतर आपसे संपर्क करेंगे।' }
+  };
+  function ft(key) { var l = lang(); return (F[key][l] || F[key].en); }
+  function showError(ctl, msg) {
+    var id = ctl.id + '-err', err = document.getElementById(id);
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'field-error'; err.id = id;
+      err.innerHTML = '<i class="fas fa-exclamation-circle" aria-hidden="true"></i><span></span>';
+      ctl.parentNode.insertBefore(err, ctl.nextSibling);
+    }
+    err.lastChild.textContent = msg;
+    ctl.setAttribute('aria-invalid', 'true');
+    ctl.setAttribute('aria-describedby', id);
+    if (!ctl._pdkaClear) {
+      ctl._pdkaClear = true;
+      ctl.addEventListener('input', function () { clearError(ctl); });
+    }
+  }
+  function clearError(ctl) {
+    var err = document.getElementById(ctl.id + '-err');
+    if (err && err.parentNode) err.parentNode.removeChild(err);
+    ctl.removeAttribute('aria-invalid');
+    ctl.removeAttribute('aria-describedby');
+  }
+  window.pdkaForm = {
+    validate: function (form) {
+      var name = form.querySelector('#cf-name'), email = form.querySelector('#cf-email'), first = null;
+      [name, email].forEach(function (c) { if (c) clearError(c); });
+      if (name && !name.value.trim()) { showError(name, ft('nameReq')); first = first || name; }
+      if (email) {
+        var v = email.value.trim();
+        if (!v) { showError(email, ft('emailReq')); first = first || email; }
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { showError(email, ft('emailBad')); first = first || email; }
+      }
+      if (first) { first.focus(); return false; }
+      return true;
+    },
+    announce: function (el) {
+      if (!el) return;
+      var html = '<i class="fas fa-check-circle" aria-hidden="true"></i> ' + ft('success');
+      el.textContent = '';
+      el.style.display = 'block';
+      setTimeout(function () { el.innerHTML = html; }, 60);   // content change inside a live region is what gets announced
+    }
+  };
+
   window.pdkaA11y = { menuState: menuState, slides: slides, tr: tr, apply: apply };
 
   try {
