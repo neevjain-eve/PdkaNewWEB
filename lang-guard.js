@@ -10,7 +10,7 @@
     var m = document.getElementById('langMenu');
     var open = !!m && (m.classList.contains('open') || getComputedStyle(m).display !== 'none');
     root.classList.toggle('lang-open', open);
-    if (open) closeMega();
+    if (open) { closeMega(); var n = document.querySelector('nav'); if (n) n.classList.remove('nav-hidden'); }
   }
   function init() {
     var dd = document.getElementById('langDropdown'), m = document.getElementById('langMenu');
@@ -25,6 +25,10 @@
     dd.addEventListener('mousemove', function () { if (document.querySelector('.has-mega.mega-open')) closeMega(); });
     // Language option clicked: close the dropdown and any panel
     m.addEventListener('click', function () { setTimeout(function () { closeMega(); sync(); }, 0); });
+    // The bar auto-hides on scroll; while the language list is open keep it put so the options don't move under the cursor
+    window.addEventListener('scroll', function () {
+      if (root.classList.contains('lang-open')) { var n = document.querySelector('nav'); if (n) n.classList.remove('nav-hidden'); }
+    }, { passive: true });
     sync();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
