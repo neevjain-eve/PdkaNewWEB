@@ -8,6 +8,8 @@
     themeToDark: { en: 'Switch to dark theme',  ja: 'ダークテーマに切り替え', hi: 'डार्क थीम पर जाएँ' },
     themeToLight:{ en: 'Switch to light theme', ja: 'ライトテーマに切り替え', hi: 'लाइट थीम पर जाएँ' },
     language:    { en: 'Language', ja: '言語', hi: 'भाषा' },
+    heroPause:   { en: 'Pause slideshow', ja: 'スライドショーを一時停止', hi: 'स्लाइडशो रोकें' },
+    heroPlay:    { en: 'Play slideshow',  ja: 'スライドショーを再生',   hi: 'स्लाइडशो चलाएँ' },
     slide:       { en: 'Go to slide {n} of {t}', ja: 'スライド {n} / {t} へ移動', hi: 'स्लाइड {n} / {t} पर जाएँ' }
   };
   function lang() { try { return localStorage.getItem('pdka-lang') || 'en'; } catch (e) { return 'en'; } }
@@ -38,8 +40,14 @@
       else dots[i].removeAttribute('aria-current');
     }
   }
+  function heroLabel(paused) {
+    var b = document.getElementById('heroPause');
+    if (!b) return;
+    if (paused === undefined) paused = b.getAttribute('aria-pressed') === 'true';
+    setAttr(b, 'aria-label', tr(paused ? 'heroPlay' : 'heroPause'));
+  }
   function apply() {
-    menuState(); themeState(); slides();
+    menuState(); themeState(); slides(); heroLabel();
     setAttr($('.lang-btn'), 'aria-label', tr('language'));
   }
 
@@ -137,7 +145,7 @@
     });
   }
 
-  window.pdkaA11y = { menuState: menuState, slides: slides, tr: tr, apply: apply };
+  window.pdkaA11y = { menuState: menuState, heroLabel: heroLabel, slides: slides, tr: tr, apply: apply };
 
   try {
     var orig = Storage.prototype.setItem;

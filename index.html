@@ -38,6 +38,15 @@
     .lang-btn::after { content: ''; position: absolute; inset: -8px 0; }
     #heroDots { gap: 0; }
     #heroDots .hero-dot { box-sizing: content-box; padding: 19px; background-clip: content-box; }
+    /* a11y: respect reduced-motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+      .hero-progress { animation: none !important; width: 0 !important; }
+      #hero-word { animation: none !important; }
+    }
+    /* a11y: hero slideshow pause/play button (44x44 hit area, small visual) */
+    #heroDots .hero-pause { box-sizing: content-box; width: 14px; height: 14px; padding: 15px; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.85); font-size: 12px; line-height: 14px; display: inline-flex; align-items: center; justify-content: center; margin-right: 4px; }
+    #heroDots .hero-pause:hover { color: #fff; }
     :root[data-theme="dark"] { --orange-text: #e8600a; }
     :root {
       --navy: #0d1b3e;
@@ -1726,6 +1735,7 @@ footer .footer-brand p, footer .footer-desc {
     <div class="hero-progress" id="heroProgress"></div>
     <!-- Dots -->
     <div class="hero-dots" id="heroDots">
+      <button class="hero-pause" id="heroPause" type="button" aria-pressed="false" aria-label="Pause slideshow"><i class="fas fa-pause" aria-hidden="true"></i></button>
       <button class="hero-dot active" type="button" onclick="goSlide(0)" aria-label="Go to slide 1 of 6" aria-current="true"></button>
       <button class="hero-dot" type="button" onclick="goSlide(1)" aria-label="Go to slide 2 of 6"></button>
       <button class="hero-dot" type="button" onclick="goSlide(2)" aria-label="Go to slide 3 of 6"></button>
@@ -2334,7 +2344,7 @@ footer .footer-brand p, footer .footer-desc {
     document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
   }
   updateCountdown();
-  setInterval(updateCountdown, 1000);
+  if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) setInterval(updateCountdown, 1000);
 
 
   // Form submit
@@ -2407,6 +2417,7 @@ footer .footer-brand p, footer .footer-desc {
   // ── HERO CANVAS ANIMATION ──
   (function() {
     const canvas = document.getElementById('hero-canvas');
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;   // decorative animation off
     const ctx = canvas.getContext('2d');
     let W, H, particles, mouse = { x: null, y: null };
 
@@ -2619,6 +2630,7 @@ footer .footer-brand p, footer .footer-desc {
     const phrases = ['Tax Advisory','Audit & Assurance','Compliance Services','Business Advisory','CFO Services'];
     const el = document.getElementById('hero-word');
     if (!el) return;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = phrases[0]; return; }
     el.textContent = '';
     let pi = 0, ci = 0, deleting = false;
 
@@ -3143,6 +3155,12 @@ function closeSvcIfOutside(e) {
 
     var loopTimer = null;
     var animating = false;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      numEl.textContent = '28';
+      if (plusEl) plusEl.classList.add('show');
+      if (lineEl) lineEl.classList.add('draw');
+      return;                                  // reduced motion: show the final value, no counting loop
+    }
 
     function reset() {
       numEl.textContent = '0';
@@ -5232,6 +5250,8 @@ window.servicesI18n = {
       const INTERVAL = 60000; // 60 seconds
       let current = 0;
       let timer = null;
+      const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let paused = reduce;               // reduced motion: no autoplay until the visitor presses Play
 
       function goSlide(n) {
         // Remove active from current
@@ -5244,21 +5264,44 @@ window.servicesI18n = {
         if (window.pdkaA11y) pdkaA11y.slides();
         // Restart progress bar
         const bar = document.getElementById('heroProgress');
-        if (bar) {
+        if (bar && !paused) {
           bar.style.animation = 'none';
           bar.offsetHeight; // reflow
           bar.style.animation = 'heroProgress 60s linear forwards';
         }
         // Restart timer
         clearInterval(timer);
-        timer = setInterval(() => goSlide(current + 1), INTERVAL);
+        if (!paused) timer = setInterval(() => goSlide(current + 1), INTERVAL);
       }
+
+      function setPaused(p) {
+        paused = p;
+        clearInterval(timer);
+        const bar = document.getElementById('heroProgress');
+        if (p) { if (bar) bar.style.animationPlayState = 'paused'; }
+        else {
+          if (bar) { bar.style.animation = 'none'; bar.offsetHeight; bar.style.animation = 'heroProgress 60s linear forwards'; }
+          timer = setInterval(() => goSlide(current + 1), INTERVAL);
+        }
+        const btn = document.getElementById('heroPause');
+        if (btn) {
+          btn.setAttribute('aria-pressed', p ? 'true' : 'false');
+          btn.innerHTML = '<i class="fas ' + (p ? 'fa-play' : 'fa-pause') + '" aria-hidden="true"></i>';
+        }
+        if (window.pdkaA11y) pdkaA11y.heroLabel(p);
+      }
+      window.pdkaHero = { pause: () => setPaused(true), play: () => setPaused(false), toggle: () => setPaused(!paused), isPaused: () => paused };
+      (function() {
+        const btn = document.getElementById('heroPause');
+        if (btn) btn.addEventListener('click', () => setPaused(!paused));
+        if (reduce) setPaused(true);
+      })();
 
       // Make goSlide global for dot onclick
       window.goSlide = goSlide;
 
       // Start
-      timer = setInterval(() => goSlide(current + 1), INTERVAL);
+      if (!paused) timer = setInterval(() => goSlide(current + 1), INTERVAL);
     })();
   </script>
 
