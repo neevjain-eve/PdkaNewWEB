@@ -22,12 +22,16 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root[data-theme="dark"] { --orange-text: #e8600a; }
     :root {
       --navy: #0d1b3e;
       --navy-mid: #1a2f5e;
       --orange: #e8600a;
       --orange-light: #f47820;
       --gold: #c9922a;
+      --orange-fill: #c24e00;   /* white text on this: 4.8:1 */
+      --gold-text: #8a6100;     /* gold text on light backgrounds */
+      --orange-text: #b34700;   /* orange text on white/tinted light backgrounds (>=4.5:1) */
       --white: #ffffff;
       --grey-light: #f5f6fa;
       --grey-mid: #e8eaf0;
@@ -63,10 +67,10 @@
     .nav-links a, .nav-links a:visited, .nav-links a:active, .nav-links a:focus { color: var(--navy) !important; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--orange) !important; }
     .nav-cta {
-      background: var(--orange); color: white; padding: 10px 22px; border-radius: 8px;
+      background: var(--orange-fill); color: white; padding: 10px 22px; border-radius: 8px;
       font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s;
     }
-    .nav-cta:hover { background: var(--orange-light); }
+    .nav-cta:hover { background: #a84300; }
     .nav-hidden { transform: translateY(-100%); }
     .nav-toggle { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
 
@@ -172,11 +176,11 @@
     }
 
     .btn-primary {
-      background: var(--orange); color: white; padding: 10px 22px; border-radius: 4px;
+      background: var(--orange-fill); color: white; padding: 10px 22px; border-radius: 4px;
       font-weight: 700; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 7px;
       transition: background 0.2s, transform 0.15s; box-shadow: 0 4px 16px rgba(232,96,10,0.35);
     }
-    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+    .btn-primary:hover { background: #a84300; transform: translateY(-2px); }
     .btn-outline {
       border: 2px solid rgba(255,255,255,0.45); color: white; padding: 10px 22px; border-radius: 4px;
       font-weight: 700; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 7px;
@@ -216,7 +220,7 @@
     /* ── SECTION COMMON ── */
     section { padding: 52px 5%; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-label { font-size: 11px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+    .section-label { font-size: 11px; font-weight: 700; color: var(--orange-text); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
     .section-title { font-family: 'Source Serif 4', serif; font-size: clamp(22px,2.4vw,32px); color: var(--text-dark); line-height: 1.2; margin-bottom: 8px; }
     .section-sub { font-size: 14px; color: var(--text-mid); max-width: 600px; line-height: 1.6; }
 
@@ -308,7 +312,7 @@
     .service-body { padding: 14px 16px 18px; }
     .service-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
     .service-card p { font-size: 12.5px; color: var(--text-mid); line-height: 1.6; }
-    .service-card a { display: inline-flex; align-items: center; gap: 6px; color: var(--orange); font-size: 12px; font-weight: 600; text-decoration: none; margin-top: 10px; }
+    .service-card a { display: inline-flex; align-items: center; gap: 6px; color: var(--orange-text); font-size: 12px; font-weight: 600; text-decoration: none; margin-top: 10px; }
     .service-card a:hover { gap: 10px; }
 
     /* ── INDUSTRIES ── */
@@ -385,7 +389,7 @@
     }
     .insight-body { padding: 24px; }
     .insight-tag {
-      display: inline-block; background: rgba(232,96,10,0.1); color: var(--orange);
+      display: inline-block; background: rgba(232,96,10,0.1); color: var(--orange-text);
       padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;
     }
@@ -393,9 +397,9 @@
     .insight-body p { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
     .insight-footer { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; border-top: 1px solid var(--grey-mid); }
     .insight-date { font-size: 12px; color: var(--text-light); }
-    .insight-link { color: var(--orange); font-size: 13px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; cursor: pointer; }
+    .insight-link { color: var(--orange-text); font-size: 13px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; cursor: pointer; }
     .insight-link:hover { gap: 8px; }
-    .svc-know-more { color: var(--orange); font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; transition: gap 0.2s; }
+    .svc-know-more { color: var(--orange-text); font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; transition: gap 0.2s; }
     .svc-know-more:hover { gap: 8px; }
 
     /* ── ARTICLE MODAL ── */
@@ -518,7 +522,7 @@
       border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer;
       transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .form-submit:hover { background: var(--orange); }
+    .form-submit:hover { background: var(--orange-fill); }
     .form-note { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 10px; }
     [data-theme="dark"] .form-note { color: rgba(255,255,255,0.9); }
 
@@ -550,7 +554,7 @@
       background: var(--navy); color: white; padding: 10px 22px; border-radius: 8px;
       font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s;
     }
-    .career-apply:hover { background: var(--orange); }
+    .career-apply:hover { background: var(--orange-fill); }
     .careers-open-app {
       text-align: center; padding: 28px; background: white; border-radius: var(--radius);
       border: 1.5px dashed var(--grey-mid); color: var(--text-mid); font-size: 15px;
@@ -669,7 +673,7 @@
     .dept-photo-note { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 6px; text-align: center; }
     .dept-info { padding: 14px 12px 18px; }
     .dept-tag {
-      display: inline-block; background: rgba(232,96,10,0.1); color: var(--orange);
+      display: inline-block; background: rgba(232,96,10,0.1); color: var(--orange-text);
       padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px;
     }
@@ -1461,7 +1465,7 @@ nav a:hover, nav .nav-links a:hover {
   color: #e8600a !important;
 }
 .nav-cta, a.nav-cta {
-  background: #e8600a !important;
+  background: var(--orange-fill) !important;
   color: #fff !important;
   border: none !important;
 }
@@ -2005,7 +2009,7 @@ footer .footer-brand p, footer .footer-desc {
         <div class="section-label" data-i18n="ins-label">Knowledge Hub</div>
         <h2 class="section-title" data-i18n="ins-title">Insights &amp; Updates</h2>
       </div>
-      <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="ins-all">View All <i class="fas fa-arrow-right"></i></a>
+      <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" style="color:var(--orange-text);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="ins-all">View All <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="insights-grid"></div>
   </div>
@@ -3609,7 +3613,7 @@ function closeSvcIfOutside(e) {
         <div class="section-label" data-i18n="ins-label">Knowledge Hub</div>
         <h2 class="section-title" data-i18n="ins-title">Insights &amp; Updates</h2>
       </div>
-      <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" style="color:var(--orange);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="ins-all">View All <i class="fas fa-arrow-right"></i></a>
+      <a href="javascript:void(0)" onclick="openPdkaPage('insights.html','Insights')" style="color:var(--orange-text);font-weight:600;font-size:14px;text-decoration:none;" data-i18n="ins-all">View All <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="insights-grid"></div>
   </div>
