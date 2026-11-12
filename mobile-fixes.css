@@ -1,0 +1,23 @@
+/* PDKA mobile nav fixes (phones). Delete this file and its <link> tags to undo.
+   Problem: logo + language + theme (with text label) + hamburger were wider than the screen below ~400px,
+   pushing the hamburger off-screen, and the controls were smaller than a finger. */
+@media (max-width: 600px) {
+  nav { padding-left: 3%; padding-right: 3%; gap: 6px; }
+  nav > div[style*="display:flex"] { gap: 6px !important; flex-shrink: 0; }
+  .nav-logo { min-width: 0; flex: 0 1 auto; }
+  .nav-logo img { height: 32px !important; width: auto !important; max-width: 40vw; object-fit: contain; }
+
+  /* 44px touch targets */
+  .lang-btn { min-height: 44px; min-width: 44px; padding: 5px 10px; justify-content: center; }
+  .theme-toggle { width: 44px; height: 44px; padding: 0; justify-content: center; border-radius: 50%; gap: 0; }
+  .theme-toggle #themeLabel { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .nav-toggle { min-width: 44px; min-height: 44px; }
+
+  /* language list: big rows, never wider than the screen, anchored under its button */
+  .lang-menu { min-width: 160px; max-width: calc(100vw - 16px); padding: 8px; }
+  .lang-option { min-height: 48px; font-size: 16px; padding: 12px 14px; }
+}
+@media (max-width: 360px) {
+  .nav-logo img { height: 28px !important; max-width: 36vw; }
+  .lang-btn { padding: 5px 8px; gap: 4px; }
+}

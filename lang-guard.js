@@ -10,7 +10,7 @@
     var m = document.getElementById('langMenu');
     var open = !!m && (m.classList.contains('open') || getComputedStyle(m).display !== 'none');
     root.classList.toggle('lang-open', open);
-    if (open) { closeMega(); var n = document.querySelector('nav'); if (n) n.classList.remove('nav-hidden'); }
+    if (open) { closeMega(); try { if (typeof closeMobileMenu === 'function') closeMobileMenu(); } catch (e) {} var n = document.querySelector('nav'); if (n) n.classList.remove('nav-hidden'); }
   }
   function init() {
     var dd = document.getElementById('langDropdown'), m = document.getElementById('langMenu');
