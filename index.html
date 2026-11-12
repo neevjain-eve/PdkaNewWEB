@@ -1618,7 +1618,7 @@ footer .footer-brand p, footer .footer-desc {
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
         <div class="lang-dropdown" id="langDropdown">
-      <button class="lang-btn" onclick="toggleLangMenu(event)" aria-label="Language">
+      <button class="lang-btn" type="button" onclick="toggleLangMenu(event)" aria-label="Language" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu">
         <i class="fas fa-globe"></i>
         <span id="langLabel">EN</span>
         <i class="fas fa-chevron-down" style="font-size:10px;"></i>
@@ -1629,9 +1629,9 @@ footer .footer-brand p, footer .footer-desc {
         <li><button onclick="setLang('hi')" class="lang-option" id="opt-hi">हिन्दी</button></li>
       </ul>
     </div>
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
+    <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark theme"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeLabel">Dark</span></button>
     <a href="#contact" class="nav-cta" data-i18n="nav-cta">Contact</a>
-    <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i class="fas fa-bars"></i></button>
   </div>
 
   <!-- Mobile Menu Drawer -->
@@ -1713,12 +1713,12 @@ footer .footer-brand p, footer .footer-desc {
     <div class="hero-progress" id="heroProgress"></div>
     <!-- Dots -->
     <div class="hero-dots" id="heroDots">
-      <button class="hero-dot active" onclick="goSlide(0)"></button>
-      <button class="hero-dot" onclick="goSlide(1)"></button>
-      <button class="hero-dot" onclick="goSlide(2)"></button>
-      <button class="hero-dot" onclick="goSlide(3)"></button>
-      <button class="hero-dot" onclick="goSlide(4)"></button>
-      <button class="hero-dot" onclick="goSlide(5)"></button>
+      <button class="hero-dot active" type="button" onclick="goSlide(0)" aria-label="Go to slide 1 of 6" aria-current="true"></button>
+      <button class="hero-dot" type="button" onclick="goSlide(1)" aria-label="Go to slide 2 of 6"></button>
+      <button class="hero-dot" type="button" onclick="goSlide(2)" aria-label="Go to slide 3 of 6"></button>
+      <button class="hero-dot" type="button" onclick="goSlide(3)" aria-label="Go to slide 4 of 6"></button>
+      <button class="hero-dot" type="button" onclick="goSlide(4)" aria-label="Go to slide 5 of 6"></button>
+      <button class="hero-dot" type="button" onclick="goSlide(5)" aria-label="Go to slide 6 of 6"></button>
     </div>
   </div>
 
@@ -2667,6 +2667,7 @@ footer .footer-brand p, footer .footer-desc {
         const isOpen = menu.style.display === 'block';
         menu.style.display = isOpen ? 'none' : 'block';
         if (dropdown) dropdown.classList.toggle('open', !isOpen);
+        var lb = document.querySelector('.lang-btn'); if (lb) lb.setAttribute('aria-expanded', String(!isOpen));
     }
 
     // Close lang menu when clicking outside
@@ -2676,6 +2677,7 @@ footer .footer-brand p, footer .footer-desc {
             const menu = document.getElementById('langMenu');
             if (menu) menu.style.display = 'none';
             if (dropdown) dropdown.classList.remove('open');
+            var lb = document.querySelector('.lang-btn'); if (lb) lb.setAttribute('aria-expanded', 'false');
         }
     });
 
@@ -3200,11 +3202,13 @@ function closeSvcIfOutside(e) {
       var isOpen = menu.style.display === 'flex';
       menu.style.display = isOpen ? 'none' : 'flex';
       btn.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+      if (window.pdkaA11y) pdkaA11y.menuState(!isOpen);
     });
     document.addEventListener('click', function(e) {
       if (menu.style.display === 'flex' && !menu.contains(e.target) && e.target !== btn) {
         menu.style.display = 'none';
         btn.innerHTML = '<i class="fas fa-bars"></i>';
+        if (window.pdkaA11y) pdkaA11y.menuState(false);
       }
     });
   })();
@@ -3213,6 +3217,7 @@ function closeSvcIfOutside(e) {
     var btn  = document.getElementById('navToggle');
     if (menu) menu.style.display = 'none';
     if (btn)  btn.innerHTML = '<i class="fas fa-bars"></i>';
+    if (window.pdkaA11y) pdkaA11y.menuState(false);
   }
   // Contact form submission
   function submitContactForm(e) {
@@ -3248,6 +3253,7 @@ function closeSvcIfOutside(e) {
 
 
 
+<script src="a11y.js" defer></script>
 <script id="pdka-i18n">
 (function() {
   var sections = {
@@ -4967,7 +4973,7 @@ function closeSvcIfOutside(e) {
     document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.remove('active'); });
     var opt = document.getElementById('opt-' + lang);
     if (opt) opt.classList.add('active');
-    var _m=document.getElementById('langMenu'); if(_m) _m.style.display='none';
+    var _m=document.getElementById('langMenu'); if(_m) _m.style.display='none'; var _lb=document.querySelector('.lang-btn'); if(_lb) _lb.setAttribute('aria-expanded','false');
     document.documentElement.lang = lang;
     // Store preference
     try { localStorage.setItem('pdka-lang', lang); } catch(e) {}
@@ -5212,6 +5218,7 @@ window.servicesI18n = {
         current = (n + TOTAL) % TOTAL;
         document.getElementById('slide-' + current).classList.add('active');
         document.querySelectorAll('.hero-dot')[current].classList.add('active');
+        if (window.pdkaA11y) pdkaA11y.slides();
         // Restart progress bar
         const bar = document.getElementById('heroProgress');
         if (bar) {
