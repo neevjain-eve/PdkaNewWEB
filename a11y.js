@@ -7,6 +7,8 @@
     menuClose:   { en: 'Close menu', ja: 'メニューを閉じる', hi: 'मेन्यू बंद करें' },
     themeToDark: { en: 'Switch to dark theme',  ja: 'ダークテーマに切り替え', hi: 'डार्क थीम पर जाएँ' },
     themeToLight:{ en: 'Switch to light theme', ja: 'ライトテーマに切り替え', hi: 'लाइट थीम पर जाएँ' },
+    labelDark:   { en: 'Dark',  ja: 'ダーク', hi: 'डार्क' },
+    labelLight:  { en: 'Light', ja: 'ライト', hi: 'लाइट' },
     language:    { en: 'Language', ja: '言語', hi: 'भाषा' },
     heroPause:   { en: 'Pause slideshow', ja: 'スライドショーを一時停止', hi: 'स्लाइडशो रोकें' },
     heroPlay:    { en: 'Play slideshow',  ja: 'スライドショーを再生',   hi: 'स्लाइडशो चलाएँ' },
@@ -32,6 +34,8 @@
   function themeState() {
     var dark = document.documentElement.getAttribute('data-theme') === 'dark';
     setAttr(document.getElementById('themeToggle'), 'aria-label', tr(dark ? 'themeToLight' : 'themeToDark'));
+    var lab = document.getElementById('themeLabel');     // visible word: the mode you can switch to
+    if (lab) { var w = tr(dark ? 'labelLight' : 'labelDark'); if (lab.textContent !== w) lab.textContent = w; }
   }
   function slides() {
     var dots = document.querySelectorAll('.hero-dot'), t = dots.length;

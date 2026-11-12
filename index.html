@@ -97,6 +97,10 @@
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a, .nav-links a:visited, .nav-links a:active, .nav-links a:focus { color: var(--navy) !important; text-decoration: none; font-size: var(--fs-sm); font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--orange) !important; }
+    @media (min-width: 1200px) {
+      .nav-links a, .nav-cta, .theme-toggle { white-space: nowrap; }          /* translated labels must not wrap inside the bar on desktop */
+      html[lang="ja"] .nav-links { gap: 32px; }                               /* Japanese labels are wider; keeps the bar on one line at 1280px */
+    }
     .nav-cta {
       background: var(--orange-fill); color: white; padding: 10px 22px; border-radius: 8px;
       font-size: var(--fs-sm); font-weight: 600; text-decoration: none; transition: background 0.2s;
@@ -2638,7 +2642,18 @@ footer .footer-brand p, footer .footer-desc {
 
   // Hero word typewriter effect
   (function() {
-    const phrases = ['Tax Advisory','Audit & Assurance','Compliance Services','Business Advisory','CFO Services'];
+    let phrases = ['Tax Advisory','Audit & Assurance','Compliance Services','Business Advisory','CFO Services'];
+    window.pdkaSetHeroPhrases = function (list) {
+      if (!list || !list.length) return;
+      var full = false;
+      try { full = ci > 0 && ci === phrases[pi].length; } catch (e) {}
+      phrases = list;
+      try {                                   // show the new language straight away instead of waiting for the next phrase
+        if (pi >= list.length) pi = 0;
+        ci = full ? phrases[pi].length : Math.min(ci, phrases[pi].length);
+        el.textContent = phrases[pi].substring(0, ci);
+      } catch (e) {}
+    };   // called by i18n-extra.js on language change
     const el = document.getElementById('hero-word');
     if (!el) return;
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }          // keep the static default word
@@ -3299,6 +3314,7 @@ function closeSvcIfOutside(e) {
 
 
 <script src="a11y.js" defer></script>
+<script src="i18n-extra.js" defer></script>
 <script id="pdka-i18n">
 (function() {
   var sections = {
@@ -4419,7 +4435,7 @@ function closeSvcIfOutside(e) {
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=320&fit=crop" alt="Fintech Services" loading="lazy" width="400" height="320" srcset="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=160&fit=crop 200w, https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=320&fit=crop 400w, https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=640&fit=crop 800w" sizes="(max-width:600px) 50vw, 300px" />
-        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h3>Fintech Services</h3></div>
+        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h3>フィンテックサービス</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=320&fit=crop" alt="多国籍企業" loading="lazy" width="400" height="320" srcset="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=160&fit=crop 200w, https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=320&fit=crop 400w, https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=640&fit=crop 800w" sizes="(max-width:600px) 50vw, 300px" />
@@ -4974,7 +4990,7 @@ function closeSvcIfOutside(e) {
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=320&fit=crop" alt="Fintech Services" loading="lazy" width="400" height="320" srcset="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=160&fit=crop 200w, https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=320&fit=crop 400w, https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=640&fit=crop 800w" sizes="(max-width:600px) 50vw, 300px" />
-        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h3>Fintech Services</h3></div>
+        <div class="industry-overlay"><i class="fas fa-chart-pie"></i><h3>फिनटेक सेवाएँ</h3></div>
       </div>
       <div class="industry-card">
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=320&fit=crop" alt="बहुराष्ट्रीय कंपनियां" loading="lazy" width="400" height="320" srcset="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=160&fit=crop 200w, https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=320&fit=crop 400w, https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=640&fit=crop 800w" sizes="(max-width:600px) 50vw, 300px" />
