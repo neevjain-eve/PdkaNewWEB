@@ -40,8 +40,12 @@
     return MONTHS.en[p.m - 1] + ' ' + p.d + ', ' + p.y;
   }
   function tr(e, l) { return (e.i18n && e.i18n[l]) || e; }
-  function topicOf(e) { return e.topic || CAT[e.category] || ''; }
-  function tagOf(e, l) { return topicOf(e) + ' · ' + monthYear(e, l); }
+  var TOPICS = {
+    ja: { 'Income Tax': '所得税', 'GST': 'GST', 'FEMA': 'FEMA', 'Companies Act': '会社法', 'Bangalore': 'バンガロール', 'FDI': 'FDI', 'FDI & India Entry': 'FDI・インド進出', 'MNC': 'MNC', 'MNC & Subsidiaries': 'MNC・子会社', 'DTAA': 'DTAA', 'DTAA & Treaties': 'DTAA・租税条約', 'Taxation': '税務', 'ICAI': 'ICAI', 'Company Law': '会社法', 'Transfer Pricing': '移転価格', 'DPDPA': 'DPDPA', 'Virtual CFO': 'バーチャルCFO' },
+    hi: { 'Income Tax': 'आयकर', 'GST': 'GST', 'FEMA': 'फेमा', 'Companies Act': 'कंपनी अधिनियम', 'Bangalore': 'बेंगलुरु', 'FDI': 'FDI', 'FDI & India Entry': 'FDI और भारत में प्रवेश', 'MNC': 'MNC', 'MNC & Subsidiaries': 'MNC और सहायक कंपनियाँ', 'DTAA': 'DTAA', 'DTAA & Treaties': 'DTAA और संधियाँ', 'Taxation': 'कराधान', 'ICAI': 'ICAI', 'Company Law': 'कंपनी कानून', 'Transfer Pricing': 'ट्रांसफर प्राइसिंग', 'DPDPA': 'DPDPA', 'Virtual CFO': 'वर्चुअल CFO' }
+  };
+  function topicOf(e, l) { var t = e.topic || CAT[e.category] || ''; return (TOPICS[l] && TOPICS[l][t]) || t; }
+  function tagOf(e, l) { return topicOf(e, l) + ' · ' + monthYear(e, l); }
   function metaOf(e, l) {
     var p = parts(e);
     if (l === 'ja') return fullDate(e, l) + ' 公開 · 読了' + e.readMins + '分';

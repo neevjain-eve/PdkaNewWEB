@@ -1,0 +1,121 @@
+/* PDKA dark-mode fixes. Loaded last on every page so it wins over the older per-page dark rules.
+   Only active when <html data-theme="dark">. Delete this file and its <link> tags to undo.
+   Palette: page #0b1628 / #0f1f47, card #14264b, card-inner #1b315f, border rgba(255,255,255,.10),
+   text #f0f4ff, body copy rgba(226,234,255,.86), accent text #f47820 (6.5:1 on #0b1628, 5.0:1 on #14264b). */
+
+:root[data-theme="dark"] { --orange-text: #f47820; }
+
+/* ---- Orange buttons/badges with white text: use the darker fill so text passes 4.5:1 ---- */
+[data-theme="dark"] .nav-cta,
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .form-submit,
+[data-theme="dark"] .career-apply,
+[data-theme="dark"] .filter-btn:hover,
+[data-theme="dark"] .filter-btn.active,
+[data-theme="dark"] .legal-card h2 .sec-num,
+[data-theme="dark"] .person-head-tag,
+[data-theme="dark"] .finops-manager-card .person-head-tag,
+[data-theme="dark"] .dept-nav-pill:hover { background: #c24e00 !important; border-color: #c24e00 !important; color: #fff !important; }
+[data-theme="dark"] .nav-cta:hover,
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] .form-submit:hover,
+[data-theme="dark"] .career-apply:hover { background: #a84300 !important; }
+
+/* ---- Index: service + insight cards (were forced white) ---- */
+[data-theme="dark"] .service-card,
+[data-theme="dark"] .insight-card {
+  background: #14264b !important; border: 1px solid rgba(255,255,255,0.10) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.40) !important;
+}
+[data-theme="dark"] .service-card h3,
+[data-theme="dark"] .insight-card h3,
+[data-theme="dark"] .insight-body h3 { color: #f0f4ff !important; }
+[data-theme="dark"] .service-card p,
+[data-theme="dark"] .insight-card p,
+[data-theme="dark"] .insight-body p { color: rgba(226,234,255,0.86) !important; }
+[data-theme="dark"] .insight-tag { background: rgba(244,120,32,0.16); color: #ff9a5c; }
+[data-theme="dark"] .insight-date,
+[data-theme="dark"] .insight-meta { color: rgba(226,234,255,0.72) !important; }
+[data-theme="dark"] .svc-know-more,
+[data-theme="dark"] .insight-link { color: #f47820; }
+
+/* ---- Index: contact form ---- */
+[data-theme="dark"] .contact-form-card { background: #14264b; border: 1px solid rgba(255,255,255,0.10); }
+[data-theme="dark"] .contact-form-card h3 { color: #f0f4ff !important; }
+[data-theme="dark"] .form-group label { color: #e2eaff; }
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea { background: #0b1628; border-color: rgba(255,255,255,0.24); color: #f0f4ff; }
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder { color: rgba(226,234,255,0.55); }
+[data-theme="dark"] .form-group select option { background: #0b1628; color: #f0f4ff; }
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus { border-color: #f47820; }
+[data-theme="dark"] .form-group input[aria-invalid="true"],
+[data-theme="dark"] .form-group select[aria-invalid="true"],
+[data-theme="dark"] .form-group textarea[aria-invalid="true"] { border-color: #f87171; }
+[data-theme="dark"] .field-error { color: #fca5a5; }
+[data-theme="dark"] .form-note { color: rgba(226,234,255,0.8) !important; }
+[data-theme="dark"] #formSuccess { background: rgba(22,163,74,0.16) !important; border-color: #4ade80 !important; color: #86efac !important; }
+[data-theme="dark"] .social-link { background: rgba(255,255,255,0.08); color: #e2eaff; border: 1px solid rgba(255,255,255,0.14); }
+[data-theme="dark"] .social-link:hover { background: #c24e00; color: #fff; border-color: #c24e00; }
+
+/* ---- Index: DPDPA guide modal ---- */
+[data-theme="dark"] .dpdpa-modal-box { background: #0f1d3a; box-shadow: 0 24px 80px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.10); }
+[data-theme="dark"] .dpdpa-modal-body p,
+[data-theme="dark"] .dpdpa-modal-body li,
+[data-theme="dark"] .dpdpa-modal-body span,
+[data-theme="dark"] .dpdpa-card p,
+[data-theme="dark"] .dpdpa-tl-text,
+[data-theme="dark"] .dpdpa-provision-list li { color: rgba(226,234,255,0.88) !important; }
+[data-theme="dark"] .dpdpa-modal-body strong,
+[data-theme="dark"] .dpdpa-modal-body em,
+[data-theme="dark"] .dpdpa-modal-body b { color: #f0f4ff !important; }
+[data-theme="dark"] .dpdpa-card { background: #16284f; border-color: rgba(255,255,255,0.10); }
+[data-theme="dark"] .dpdpa-card h3,
+[data-theme="dark"] .dpdpa-card h4 { color: #f0f4ff; }
+[data-theme="dark"] .dpdpa-provision-list li { border-bottom-color: rgba(255,255,255,0.08); }
+[data-theme="dark"] .dpdpa-section-title,
+[data-theme="dark"] .dpdpa-tl-date { color: #f47820; }
+[data-theme="dark"] .dpdpa-penalty-row { color: #e2eaff; }
+[data-theme="dark"] .dpdpa-penalty-row.high { background: rgba(232,96,10,0.16); }
+[data-theme="dark"] .dpdpa-penalty-row.mid  { background: rgba(245,158,11,0.15); }
+[data-theme="dark"] .dpdpa-penalty-row.low  { background: rgba(22,163,74,0.18); }
+[data-theme="dark"] .dpdpa-penalty-row.high .dpdpa-penalty-amt { color: #ff9a5c; }
+[data-theme="dark"] .dpdpa-penalty-row.mid  .dpdpa-penalty-amt { color: #fbbf24; }
+[data-theme="dark"] .dpdpa-penalty-row.low  .dpdpa-penalty-amt { color: #4ade80; }
+[data-theme="dark"] .dpdpa-timeline::before { background: rgba(255,255,255,0.16); }
+[data-theme="dark"] .dpdpa-tl-item::before { border-color: #0f1d3a; }
+[data-theme="dark"] .dpdpa-modal-footer { background: #0b1628; border-top-color: rgba(255,255,255,0.10); }
+[data-theme="dark"] .dpdpa-modal-footer p { color: rgba(226,234,255,0.75) !important; }
+
+/* ---- Service pages (service-*.html) ---- */
+[data-theme="dark"] .sp-overview,
+[data-theme="dark"] .sp-service-item,
+[data-theme="dark"] .sp-related { background: #14264b; border-color: rgba(255,255,255,0.10); }
+[data-theme="dark"] .sp-service-item:hover { border-color: rgba(244,120,32,0.5); box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+[data-theme="dark"] .sp-service-icon { background: rgba(244,120,32,0.16); color: #f47820; }
+[data-theme="dark"] .sp-overview h2,
+[data-theme="dark"] .sp-services h2,
+[data-theme="dark"] .sp-service-item h3,
+[data-theme="dark"] .sp-related h3 { color: #f0f4ff; }
+[data-theme="dark"] .sp-overview p,
+[data-theme="dark"] .sp-service-item p,
+[data-theme="dark"] .sp-related a { color: rgba(226,234,255,0.86) !important; }
+[data-theme="dark"] .sp-related a { border-bottom-color: rgba(255,255,255,0.08); }
+[data-theme="dark"] .sp-related a:hover { color: #f47820 !important; }
+[data-theme="dark"] .sp-why { background: #14264b; border: 1px solid rgba(255,255,255,0.10); }
+[data-theme="dark"] .sp-cta { background: #c24e00; }
+[data-theme="dark"] .sp-cta a { background: #fff; color: #8f3a00; }
+
+/* ---- Legal pages: contact card text was navy on dark ---- */
+[data-theme="dark"] .pp-contact h3, [data-theme="dark"] .tc-contact h3 { color: #f0f4ff; }
+[data-theme="dark"] .pp-contact a, [data-theme="dark"] .tc-contact a { color: #f47820; }
+
+/* ---- Small contrast fixes on other pages ---- */
+[data-theme="dark"] .article-date { color: rgba(226,234,255,0.72); }
+[data-theme="dark"] .article-tag,
+[data-theme="dark"] .dept-badge-label,
+[data-theme="dark"] .car-inner a { color: #f47820; }
+[data-theme="dark"] .career-badge { color: #4ade80; }

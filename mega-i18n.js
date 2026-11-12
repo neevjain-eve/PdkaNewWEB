@@ -66,7 +66,9 @@
     'nav-team': ['Team', 'チーム', 'टीम'],
     'nav-insights': ['Insights', 'インサイト', 'अंतर्दृष्टि'],
     'nav-careers': ['Careers', '採用情報', 'करियर'],
-    'nav-contact': ['Contact', 'お問い合わせ', 'संपर्क']
+    'nav-contact': ['Contact', 'お問い合わせ', 'संपर्क'],
+    'nav-founder': ['Founder', '創業者', 'संस्थापक'],
+    'nav-cta': ['Contact', 'お問い合わせ', 'संपर्क']
   };
   var IDX = { en: -1, ja: 0, hi: 1 };
 

@@ -1,0 +1,180 @@
+/* PDKA accessibility helpers for index.html: translated accessible names for icon-only controls
+   and aria state kept in sync. Language comes from localStorage 'pdka-lang' (en / ja / hi). */
+(function () {
+  'use strict';
+  var D = {
+    menuOpen:    { en: 'Open menu',  ja: 'メニューを開く',  hi: 'मेन्यू खोलें' },
+    menuClose:   { en: 'Close menu', ja: 'メニューを閉じる', hi: 'मेन्यू बंद करें' },
+    themeToDark: { en: 'Switch to dark theme',  ja: 'ダークテーマに切り替え', hi: 'डार्क थीम पर जाएँ' },
+    themeToLight:{ en: 'Switch to light theme', ja: 'ライトテーマに切り替え', hi: 'लाइट थीम पर जाएँ' },
+    labelDark:   { en: 'Dark',  ja: 'ダーク', hi: 'डार्क' },
+    labelLight:  { en: 'Light', ja: 'ライト', hi: 'लाइट' },
+    language:    { en: 'Language', ja: '言語', hi: 'भाषा' },
+    heroPause:   { en: 'Pause slideshow', ja: 'スライドショーを一時停止', hi: 'स्लाइडशो रोकें' },
+    heroPlay:    { en: 'Play slideshow',  ja: 'スライドショーを再生',   hi: 'स्लाइडशो चलाएँ' },
+    heroSub:     { en: 'Audit, tax and advisory for businesses in 9 countries', ja: '9か国の企業向けの監査・税務・アドバイザリー', hi: '9 देशों के व्यवसायों के लिए ऑडिट, कर और सलाहकार सेवाएँ' },
+    slide:       { en: 'Go to slide {n} of {t}', ja: 'スライド {n} / {t} へ移動', hi: 'स्लाइड {n} / {t} पर जाएँ' }
+  };
+  function lang() { try { return localStorage.getItem('pdka-lang') || 'en'; } catch (e) { return 'en'; } }
+  function tr(key, vars) {
+    var l = lang(), s = (D[key] && (D[key][l] || D[key].en)) || '';
+    if (vars) for (var k in vars) s = s.replace('{' + k + '}', vars[k]);
+    return s;
+  }
+  function $(sel) { return document.querySelector(sel); }
+  function setAttr(el, a, v) { if (el && el.getAttribute(a) !== v) el.setAttribute(a, v); }
+
+  function menuIsOpen() { var m = document.getElementById('mobileMenu'); return !!m && m.style.display === 'flex'; }
+  function menuState(open) {
+    if (open === undefined) open = menuIsOpen();
+    var b = document.getElementById('navToggle');
+    setAttr(b, 'aria-expanded', open ? 'true' : 'false');
+    setAttr(b, 'aria-label', tr(open ? 'menuClose' : 'menuOpen'));
+  }
+  function themeState() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    setAttr(document.getElementById('themeToggle'), 'aria-label', tr(dark ? 'themeToLight' : 'themeToDark'));
+    var lab = document.getElementById('themeLabel');     // visible word: the mode you can switch to
+    if (lab) { var w = tr(dark ? 'labelLight' : 'labelDark'); if (lab.textContent !== w) lab.textContent = w; }
+  }
+  function slides() {
+    var dots = document.querySelectorAll('.hero-dot'), t = dots.length;
+    for (var i = 0; i < t; i++) {
+      setAttr(dots[i], 'aria-label', tr('slide', { n: i + 1, t: t }));
+      if (dots[i].classList.contains('active')) setAttr(dots[i], 'aria-current', 'true');
+      else dots[i].removeAttribute('aria-current');
+    }
+  }
+  function heroLabel(paused) {
+    var b = document.getElementById('heroPause');
+    if (!b) return;
+    if (paused === undefined) paused = b.getAttribute('aria-pressed') === 'true';
+    setAttr(b, 'aria-label', tr(paused ? 'heroPlay' : 'heroPause'));
+  }
+  function apply() {
+    menuState(); themeState(); slides(); heroLabel();
+    var hs = document.getElementById('heroSub'); if (hs) { var tx = tr('heroSub'); if (hs.textContent !== tx) hs.textContent = tx; }
+    setAttr($('.lang-btn'), 'aria-label', tr('language'));
+  }
+
+  /* ---------- Contact form: inline validation + status message ---------- */
+  var F = {
+    nameReq:   { en: 'Please enter your name.', ja: 'お名前を入力してください。', hi: 'कृपया अपना नाम दर्ज करें।' },
+    emailReq:  { en: 'Please enter your email address.', ja: 'メールアドレスを入力してください。', hi: 'कृपया अपना ईमेल पता दर्ज करें।' },
+    emailBad:  { en: 'Please enter a valid email address, for example name@company.com.', ja: '有効なメールアドレスを入力してください(例: name@company.com)。', hi: 'कृपया मान्य ईमेल पता दर्ज करें, जैसे name@company.com।' },
+    success:   { en: "Thanks, {name}. We'll call or email you.", ja: '{name}様、ありがとうございます。お電話またはメールでご連絡いたします。', hi: 'धन्यवाद, {name}। हम आपको कॉल या ईमेल करेंगे।' },
+    successNoName: { en: "Thanks. We'll call or email you.", ja: 'ありがとうございます。お電話またはメールでご連絡いたします。', hi: 'धन्यवाद। हम आपको कॉल या ईमेल करेंगे।' }
+  };
+  function ft(key) { var l = lang(); return (F[key][l] || F[key].en); }
+  function showError(ctl, msg) {
+    var id = ctl.id + '-err', err = document.getElementById(id);
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'field-error'; err.id = id;
+      err.innerHTML = '<i class="fas fa-exclamation-circle" aria-hidden="true"></i><span></span>';
+      ctl.parentNode.insertBefore(err, ctl.nextSibling);
+    }
+    err.lastChild.textContent = msg;
+    ctl.setAttribute('aria-invalid', 'true');
+    ctl.setAttribute('aria-describedby', id);
+    if (!ctl._pdkaClear) {
+      ctl._pdkaClear = true;
+      ctl.addEventListener('input', function () { clearError(ctl); });
+    }
+  }
+  function clearError(ctl) {
+    var err = document.getElementById(ctl.id + '-err');
+    if (err && err.parentNode) err.parentNode.removeChild(err);
+    ctl.removeAttribute('aria-invalid');
+    ctl.removeAttribute('aria-describedby');
+  }
+  window.pdkaForm = {
+    validate: function (form) {
+      var name = form.querySelector('#cf-name'), email = form.querySelector('#cf-email'), first = null;
+      [name, email].forEach(function (c) { if (c) clearError(c); });
+      if (name && !name.value.trim()) { showError(name, ft('nameReq')); first = first || name; }
+      if (email) {
+        var v = email.value.trim();
+        if (!v) { showError(email, ft('emailReq')); first = first || email; }
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { showError(email, ft('emailBad')); first = first || email; }
+      }
+      if (first) { first.focus(); return false; }
+      return true;
+    },
+    announce: function (el, name) {
+      if (!el) return;
+      name = (name || '').trim();
+      var text = name ? ft('success').replace('{name}', name) : ft('successNoName');   // text node, never innerHTML, so the name can't inject markup
+      el.textContent = '';
+      el.style.display = 'block';
+      setTimeout(function () {     // content change inside a live region is what gets announced
+        el.textContent = '';
+        var ic = document.createElement('i'); ic.className = 'fas fa-check-circle'; ic.setAttribute('aria-hidden', 'true');
+        el.appendChild(ic); el.appendChild(document.createTextNode(' ' + text));
+      }, 60);
+    }
+  };
+
+
+  /* ---------- Keyboard: nav dropdowns open on focus, close on Escape; language menu Escape ---------- */
+  function megaKeyboard() {
+    var items = document.querySelectorAll('.has-mega');
+    for (var i = 0; i < items.length; i++) (function (li) {
+      var link = li.querySelector(':scope > a');
+      if (link) { link.setAttribute('aria-haspopup', 'true'); link.setAttribute('aria-expanded', 'false'); }
+      function sync() { if (link) link.setAttribute('aria-expanded', li.classList.contains('mega-open') ? 'true' : 'false'); }
+      new MutationObserver(sync).observe(li, { attributes: true, attributeFilter: ['class'] });
+      li.addEventListener('focusin', function () {
+        if (li._esc) return;           // focus was just returned here by Escape: keep the menu closed
+        for (var j = 0; j < items.length; j++) if (items[j] !== li) items[j].classList.remove('mega-open');
+        li.classList.add('mega-open');
+      });
+      li.addEventListener('focusout', function (e) {
+        if (!e.relatedTarget || !li.contains(e.relatedTarget)) { li._esc = false; li.classList.remove('mega-open'); }
+      });
+      li.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && li.classList.contains('mega-open')) {
+          li._esc = true;
+          li.classList.remove('mega-open');
+          if (link) link.focus();
+          e.stopPropagation();
+        }
+      });
+    })(items[i]);
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var menu = document.getElementById('langMenu'), btn = document.querySelector('.lang-btn');
+      if (menu && menu.style.display === 'block') {
+        menu.style.display = 'none';
+        var dd = document.getElementById('langDropdown'); if (dd) dd.classList.remove('open');
+        if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.focus(); }
+      }
+      var m = document.getElementById('mobileMenu');
+      if (m && m.style.display === 'flex') {
+        m.style.display = 'none'; menuState(false);
+        var t = document.getElementById('navToggle'); if (t) t.innerHTML = '<i class="fas fa-bars"></i>', t.focus();
+      }
+    });
+  }
+
+  window.pdkaA11y = { menuState: menuState, heroLabel: heroLabel, slides: slides, tr: tr, apply: apply };
+
+  try {
+    var orig = Storage.prototype.setItem;
+    Storage.prototype.setItem = function (k, v) {
+      var r = orig.apply(this, arguments);
+      if (k === 'pdka-lang') apply();
+      return r;
+    };
+  } catch (e) {}
+
+  function init() {
+    apply();
+    megaKeyboard();
+    if (window.MutationObserver) {
+      new MutationObserver(themeState).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  window.addEventListener('pageshow', apply);
+})();

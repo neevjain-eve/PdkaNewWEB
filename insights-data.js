@@ -32,6 +32,16 @@ window.PDKA_INSIGHTS = [
     "date": "2026-10-26",
     "title": "FAST-DS 2026: foreign assets disclosure scheme open until 31 December 2026",
     "summary": "A one-time scheme under the Finance Act, 2026 lets eligible residents declare undisclosed foreign assets or income by 31 December 2026. Categories, thresholds and payment steps are summarised.",
+    "i18n": {
+          "ja": {
+                "title": "FAST-DS 2026：海外資産開示制度、2026年12月31日まで受付",
+                "summary": "2026年財政法に基づく一回限りの制度により、対象となる居住者は未開示の海外資産または所得を2026年12月31日までに申告できます。対象区分、基準額、納付手続を要約しています。"
+          },
+          "hi": {
+                "title": "FAST-DS 2026: विदेशी संपत्ति प्रकटीकरण योजना 31 दिसंबर 2026 तक खुली",
+                "summary": "वित्त अधिनियम, 2026 के तहत यह एकबारगी योजना पात्र निवासियों को अघोषित विदेशी संपत्ति या आय 31 दिसंबर 2026 तक घोषित करने की अनुमति देती है। श्रेणियाँ, सीमाएँ और भुगतान के चरण संक्षेप में दिए गए हैं।"
+          }
+    },
     "readMins": 4,
     "status": "published",
     "sources": [
@@ -46,6 +56,16 @@ window.PDKA_INSIGHTS = [
     "date": "2026-10-19",
     "title": "57th GST Council recommendations of 8 October 2026: registration, refunds, ITC, penalties and arrest",
     "summary": "The Council recommended process reforms, ITC changes, higher prosecution thresholds and removal of arrest powers. These take effect only once notified or legislated.",
+    "i18n": {
+          "ja": {
+                "title": "2026年10月8日の第57回GST評議会勧告：登録、還付、ITC、罰則および逮捕",
+                "summary": "評議会は、手続の改革、ITCの変更、訴追基準額の引き上げ、逮捕権限の廃止を勧告しました。これらは通知または立法されて初めて効力を持ちます。"
+          },
+          "hi": {
+                "title": "8 अक्टूबर 2026 की 57वीं GST परिषद की सिफ़ारिशें: पंजीकरण, रिफंड, ITC, दंड और गिरफ्तारी",
+                "summary": "परिषद ने प्रक्रिया सुधार, ITC में बदलाव, अभियोजन की ऊँची सीमाएँ और गिरफ्तारी की शक्तियाँ हटाने की सिफ़ारिश की। ये तभी लागू होंगी जब अधिसूचित या कानून बना दी जाएँ।"
+          }
+    },
     "readMins": 4,
     "status": "published",
     "sources": [
@@ -60,6 +80,16 @@ window.PDKA_INSIGHTS = [
     "date": "2026-10-12",
     "title": "RBI export and import regulations in force from 1 October 2026: nine-month realisation period",
     "summary": "The FEMA Export and Import of Goods and Services Regulations, 2026 took effect on 1 October 2026. A 22 September amendment set export realisation at nine months, or twelve if invoiced in rupees.",
+    "i18n": {
+          "ja": {
+                "title": "2026年10月1日施行のRBI輸出入規則：9か月の回収期間",
+                "summary": "2026年FEMA（物品・サービスの輸出入）規則は2026年10月1日に施行されました。9月22日の改正により、輸出代金の回収期間は9か月（ルピー建てで請求する場合は12か月）とされました。"
+          },
+          "hi": {
+                "title": "1 अक्टूबर 2026 से लागू RBI निर्यात-आयात विनियम: नौ महीने की प्राप्ति अवधि",
+                "summary": "फेमा (वस्तुओं और सेवाओं का निर्यात और आयात) विनियम, 2026 1 अक्टूबर 2026 से प्रभावी हुए। 22 सितंबर के संशोधन ने निर्यात प्राप्ति की अवधि नौ महीने तय की, और रुपये में चालान होने पर बारह महीने।"
+          }
+    },
     "readMins": 3,
     "status": "published",
     "sources": [
@@ -74,6 +104,16 @@ window.PDKA_INSIGHTS = [
     "date": "2026-10-09",
     "title": "Annual filing with the ROC for FY 2025-26: AOC-4 and MGT-7 timelines under the Companies Act",
     "summary": "AOC-4 is due within 30 days and MGT-7 within 60 days of the AGM. For an AGM held on 30 September 2026, that is 30 October and 29 November 2026.",
+    "i18n": {
+          "ja": {
+                "title": "2025-26年度のROC年次提出：会社法に基づくAOC-4およびMGT-7の期限",
+                "summary": "AOC-4は年次株主総会（AGM）から30日以内、MGT-7は60日以内が期限です。2026年9月30日にAGMを開催した場合、期限は2026年10月30日と11月29日になります。"
+          },
+          "hi": {
+                "title": "वित्त वर्ष 2025-26 की ROC वार्षिक फाइलिंग: कंपनी अधिनियम के तहत AOC-4 और MGT-7 की समय-सीमाएँ",
+                "summary": "AOC-4 AGM के 30 दिनों के भीतर और MGT-7 60 दिनों के भीतर जमा करना होता है। 30 सितंबर 2026 को हुई AGM के लिए ये तिथियाँ 30 अक्टूबर और 29 नवंबर 2026 हैं।"
+          }
+    },
     "readMins": 3,
     "status": "published",
     "sources": [{ "label": "Ministry of Corporate Affairs: Companies Act, 2013 and Rules (sections 92, 96, 137)", "url": "https://www.mca.gov.in" }]
@@ -85,6 +125,16 @@ window.PDKA_INSIGHTS = [
     "date": "2026-10-08",
     "title": "CBDT extends AY 2026-27 due dates for tax audit report and return of income in audit cases",
     "summary": "CBDT has moved the tax audit report date to 21 October 2026 and the return due date for audit cases to 21 November 2026. A formal order is to follow; who is covered and what to check are summarised.",
+    "i18n": {
+          "ja": {
+                "title": "CBDT、監査対象ケースの税務監査報告書および所得申告の期限（2026-27課税年度）を延長",
+                "summary": "CBDTは税務監査報告書の期限を2026年10月21日に、監査対象者の申告期限を2026年11月21日に延長しました。正式な命令は追って出される予定です。対象者と確認事項を要約しています。"
+          },
+          "hi": {
+                "title": "CBDT ने कर निर्धारण वर्ष 2026-27 के लिए कर लेखापरीक्षा रिपोर्ट और ऑडिट मामलों में आय-विवरणी की नियत तिथियाँ बढ़ाईं",
+                "summary": "CBDT ने कर लेखापरीक्षा रिपोर्ट की तिथि 21 अक्टूबर 2026 और ऑडिट वाले मामलों में रिटर्न की तिथि 21 नवंबर 2026 कर दी है। औपचारिक आदेश आना बाकी है; कौन-कौन शामिल हैं और क्या जाँचना है, यह संक्षेप में दिया गया है।"
+          }
+    },
     "readMins": 3,
     "status": "published",
     "sources": [{ "label": "CBDT press release, 28 September 2026: extension of due date for furnishing return of income for AY 2026-27", "url": "https://www.incometaxindia.gov.in/documents/d/guest/cbdt-extends-due-date-for-furnishing-return-of-income-for-ay-2026-27-pdf" }]
@@ -108,6 +158,16 @@ window.PDKA_INSIGHTS = [
     "date": "2026-06-20",
     "title": "India Entry Strategy for Foreign Companies 2026: Subsidiary, Branch Office or Liaison Office?",
     "summary": "A practical guide for MNCs and foreign companies choosing between the three RBI-approved entry structures for doing business in India — with tax, FEMA, and operational trade-offs compared.",
+    "i18n": {
+          "ja": {
+                "title": "外国企業のインド進出戦略2026：子会社、支店、それとも連絡事務所？",
+                "summary": "インドで事業を行うMNCや外国企業が、RBI承認の3つの進出形態から選ぶための実践ガイドです。税務、FEMA、運営面のトレードオフを比較します。"
+          },
+          "hi": {
+                "title": "विदेशी कंपनियों के लिए भारत में प्रवेश रणनीति 2026: सब्सिडियरी, ब्रांच ऑफिस या संपर्क कार्यालय?",
+                "summary": "भारत में कारोबार के लिए RBI-अनुमोदित तीन प्रवेश संरचनाओं में से चुनने वाली MNC और विदेशी कंपनियों के लिए व्यावहारिक मार्गदर्शिका — कर, फेमा और संचालन संबंधी समझौतों की तुलना के साथ।"
+          }
+    },
     "readMins": 8,
     "status": "published",
     "sources": []
@@ -131,6 +191,16 @@ window.PDKA_INSIGHTS = [
     "date": "2026-06-18",
     "title": "GST Registration & Compliance for Foreign Companies in India 2026: NRTP, LUT & ITC Refunds",
     "summary": "Foreign companies operating in India face unique GST obligations — from Non-Resident Taxable Person registration to claiming zero-rated export refunds. A step-by-step compliance guide.",
+    "i18n": {
+          "ja": {
+                "title": "2026年インドにおける外国企業のGST登録とコンプライアンス：NRTP、LUT、ITC還付",
+                "summary": "インドで事業を行う外国企業には、非居住課税対象者（NRTP）の登録からゼロ税率の輸出還付の請求まで、固有のGST義務があります。段階的なコンプライアンスガイドです。"
+          },
+          "hi": {
+                "title": "भारत में विदेशी कंपनियों के लिए GST पंजीकरण और अनुपालन 2026: NRTP, LUT और ITC रिफंड",
+                "summary": "भारत में काम करने वाली विदेशी कंपनियों पर GST के विशिष्ट दायित्व होते हैं — अनिवासी कर-योग्य व्यक्ति (NRTP) पंजीकरण से लेकर शून्य-दर निर्यात रिफंड का दावा करने तक। चरण-दर-चरण अनुपालन मार्गदर्शिका।"
+          }
+    },
     "readMins": 7,
     "status": "published",
     "sources": []
@@ -142,6 +212,16 @@ window.PDKA_INSIGHTS = [
     "date": "2026-06-15",
     "title": "PLI Scheme 2026: How Manufacturing MNCs Can Claim Government Subsidies in India",
     "summary": "India's Production Linked Incentive scheme offers up to 20% cash subsidies across 14 sectors. Here is a sector-by-sector breakdown and the compliance steps to claim PLI benefits as a foreign manufacturer.",
+    "i18n": {
+          "ja": {
+                "title": "PLIスキーム2026：製造業MNCがインド政府の補助金を請求する方法",
+                "summary": "インドの生産連動型インセンティブ（PLI）スキームは、14分野で最大20%の現金補助を提供します。分野別の内訳と、外国製造業者がPLIの給付を請求するためのコンプライアンス手順を示します。"
+          },
+          "hi": {
+                "title": "PLI योजना 2026: विनिर्माण MNC भारत में सरकारी सब्सिडी का दावा कैसे करें",
+                "summary": "भारत की उत्पादन से जुड़ी प्रोत्साहन (PLI) योजना 14 क्षेत्रों में 20% तक नकद सब्सिडी देती है। क्षेत्र-वार विवरण और विदेशी विनिर्माता के रूप में PLI लाभ पाने के अनुपालन चरण यहाँ हैं।"
+          }
+    },
     "readMins": 7,
     "status": "published",
     "sources": []
