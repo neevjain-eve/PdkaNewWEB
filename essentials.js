@@ -130,7 +130,7 @@
       var c = e.target && e.target.getAttribute && e.target.getAttribute('data-c');
       if (!c) return;
       LS.set('pdka-cookie-consent', c);
-      try { document.cookie = 'pdka_consent=' + c + '; max-age=15552000; path=/; SameSite=Lax'; } catch (x) {}
+      try { document.cookie = 'pdka_consent=' + c + '; max-age=15552000; path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : ''); } catch (x) {}
       window.dispatchEvent(new CustomEvent('pdka-consent', { detail: c }));
       b.remove();
     });

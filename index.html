@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="security.js"></script>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -3293,12 +3296,14 @@ function closeSvcIfOutside(e) {
 
     if (window.pdkaForm && !pdkaForm.validate(form)) return;
 
-    var body = 'Name: ' + name + '%0D%0A' +
-               'Email: ' + email + '%0D%0A' +
-               (phone ? 'Phone: ' + phone + '%0D%0A' : '') +
-               (company ? 'Company: ' + company + '%0D%0A' : '') +
-               (service ? 'Service: ' + service + '%0D%0A' : '') +
-               (message ? '%0D%0AMessage:%0D%0A' + message : '');
+    // Every value is URL-encoded: a stray & # % or line break in the message used to cut the email short or add extra mail fields
+    var e2 = encodeURIComponent, NL = '%0D%0A';
+    var body = 'Name: ' + e2(name) + NL +
+               'Email: ' + e2(email) + NL +
+               (phone ? 'Phone: ' + e2(phone) + NL : '') +
+               (company ? 'Company: ' + e2(company) + NL : '') +
+               (service ? 'Service: ' + e2(service) + NL : '') +
+               (message ? NL + 'Message:' + NL + e2(message) : '');
 
     var subject = encodeURIComponent('Website Enquiry' + (service ? ' — ' + service : '') + (name ? ' from ' + name : ''));
     window.location.href = 'mailto:dilip@pdka.in?subject=' + subject + '&body=' + body;
@@ -5050,7 +5055,7 @@ function closeSvcIfOutside(e) {
     try {
       var frame = document.getElementById('pdka-page-frame');
       if (frame && frame.src && frame.src !== '') {
-        frame.contentWindow.postMessage({ type: 'pdka-set-lang', lang: lang }, '*');
+        frame.contentWindow.postMessage({ type: 'pdka-set-lang', lang: lang }, location.origin);
       }
     } catch(e) {}
   };
@@ -5080,7 +5085,7 @@ function closeSvcIfOutside(e) {
               fn.call(iw, lang);
             } else {
               // Fallback: postMessage if function not ready yet (shouldn't happen)
-              iw.postMessage({ type: 'pdka-set-lang', lang: lang }, '*');
+              iw.postMessage({ type: 'pdka-set-lang', lang: lang }, location.origin);
             }
           }
         } catch(e) {}
