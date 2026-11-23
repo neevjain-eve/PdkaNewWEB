@@ -381,7 +381,9 @@ window.PDKA_INSIGHTS = [
     "title": "Section 115BAB: India's 15% Corporate Tax Rate for New Manufacturing Companies — Full 2026 Guide",
     "summary": "New manufacturing companies in India can pay just 15% corporate tax — the lowest rate globally for an emerging economy. Eligibility, exclusions, and how MNCs can structure to qualify.",
     "readMins": 6,
-    "status": "published",
+    "status": "hold",
+    "reviewed": "2026-11-23",
+    "holdReason": "Body contains comparative and promotional wording and unverified claims (commencement deadline, 20% second-hand machinery condition, post-incentive tax figures, country comparisons, Income-tax Act 2025 section mapping) that could not be confirmed on official sources. Needs a verified, neutral rewrite.",
     "sources": []
   },
   {
@@ -439,7 +441,9 @@ window.PDKA_INSIGHTS = [
     "title": "ITR Filing FY 2025-26: Compliance Checklist for Companies, LLPs and Professionals",
     "summary": "Key deadlines, updated ITR forms, and a practical compliance checklist to ensure accurate and timely ITR filing for FY 2025-26.",
     "readMins": 7,
-    "status": "published",
+    "status": "hold",
+    "reviewed": "2026-11-23",
+    "holdReason": "Promotional-free rewrite not possible on verified facts: the 31 July/31 October/30 November dates, form schedule/clause changes, section references and penalty figures could not be confirmed on official sources, and the AY 2026-27 audit-case dates have since been extended by CBDT Circular 07/2026 (28 Sep 2026). Needs a verified rewrite.",
     "sources": [],
     "featured": true,
     "i18n": {
