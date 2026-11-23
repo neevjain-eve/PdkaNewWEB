@@ -26,6 +26,26 @@ window.PDKA_CATEGORIES = {
 };
 window.PDKA_INSIGHTS = [
   {
+    "id": "femaedf2611",
+    "category": "FEMA",
+    "topic": "FEMA",
+    "date": "2026-11-23",
+    "title": "RBI Second Amendment of 2 November 2026: deemed EDF for service exporters and IDPMS entry for service imports",
+    "summary": "The RBI amended the Export and Import of Goods and Services Regulations, 2026. Certain service exporters are deemed to have submitted the EDF, and a Rs 10 lakh threshold applies to IDPMS entries for service imports.",
+    "readMins": 3,
+    "status": "published",
+    "sources": [
+      {
+        "label": "RBI: Export and Import of Goods and Services Regulations, 2026 (amended up to 2 November 2026), incl. FEMA 23(R)/(2)/2026-RB",
+        "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13750"
+      },
+      {
+        "label": "RBI press releases listing (20 November 2026: Second Amendment Regulations, 2026)",
+        "url": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx"
+      }
+    ]
+  },
+  {
     "id": "fastds2610",
     "category": "ITR",
     "topic": "Income Tax",
